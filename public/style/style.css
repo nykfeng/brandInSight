@@ -10,7 +10,7 @@
   --secondary-color: #16e7dd;
   --green-price-color: #66f115;
   --primary-gray-color: #f7f7f7;
-  --secondary-gray-color: #a09e9e;
+  --secondary-gray-color: #888888;
 }
 
 *,
@@ -27,6 +27,14 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+/* Universal and generals */
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -47,7 +55,7 @@ a:active {
   display: inline-block;
 
   letter-spacing: 0.3rem;
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-family: "Anton", sans-serif;
 }
 
@@ -99,4 +107,87 @@ a:active {
 .main-nav-link.nav-cta:hover,
 .main-nav-link.nav-cta:active {
   background-color: var(--secondary-color);
+}
+
+/**************************/
+/* FOOTER */
+/**************************/
+.grid {
+  display: grid;
+}
+
+.footer {
+  padding: 2.8rem 4.8rem;
+  border-top: 1px solid #eee;
+}
+
+.grid--footer {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  column-gap: 1.5rem;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logo-col-logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+.social-icon a i {
+  font-size: 2rem;
+}
+
+.copyright {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--secondary-gray-color);
+  margin-top: auto;
+  text-align: center;
+}
+
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address {
+  margin-bottom: 2.4rem;
+}
+
+.footer-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: var(--secondary-gray-color);
+  transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+  color: var(--main-color);
 }
