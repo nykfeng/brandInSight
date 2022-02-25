@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Montserrat:wght@100;200;300;400;500&family=Roboto:wght@300;400;500&family=Secular+One&display=swap");
+
+:root {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+
+  --primary-dark-color: #191a19;
+  --secondary-dark-color: #2e4c6d;
+  --main-color: #00b4d8;
+  --secondary-color: #16e7dd;
+  --green-price-color: #66f115;
+  --primary-gray-color: #f7f7f7;
+  --secondary-gray-color: #a09e9e;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-gray-color);
+
+  /* Because we want header to be sticky later */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+}
+
+.logo {
+  display: inline-block;
+
+  letter-spacing: 0.3rem;
+  font-size: 5rem;
+  font-family: "Anton", sans-serif;
+}
+
+.logo-brand {
+  font-family: "Anton", sans-serif;
+  color: #fff;
+  background-color: #00b4d8;
+  padding: 0 1rem;
+  border-radius: 1rem;
+}
+
+.logo-insight {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3em;
+  letter-spacing: -1px;
+}
+
+.main-nav-list {
+  font-weight: 500;
+  font-size: 2rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6.5rem;
+  color: #333;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: var(--main-color);
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: var(--main-color);
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: var(--secondary-color);
+}
