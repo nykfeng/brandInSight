@@ -12,7 +12,7 @@
   --primary-gray-color: #f7f7f7;
   --secondary-gray-color: #888888;
 
-  --variety-color-purple: #533e85;
+  --variety-color-purple: #755eaa;
 }
 
 *,
@@ -109,6 +109,62 @@ a:active {
 .main-nav-link.nav-cta:hover,
 .main-nav-link.nav-cta:active {
   background-color: var(--secondary-color);
+}
+
+/* Hover drop down */
+
+.main-nav-link {
+  padding: 5rem 0;
+}
+
+.main-nav-list li {
+  position: relative;
+}
+
+.sub-menu li {
+  display: flex;
+  justify-content: start;
+  gap: 2rem;
+}
+.sub-menu li i {
+  min-width: 2.5rem;
+}
+.sub-menu li p {
+  display: inline-block;
+}
+
+.main-nav-list li .sub-menu {
+  display: none;
+  min-width: 25rem;
+  position: absolute;
+  left: -70%;
+  top: 8.5rem;
+  text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.main-nav-list li:hover .sub-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-nav-list li .sub-menu li {
+  background-color: whitesmoke;
+  border-top: 1px solid rgb(201, 201, 201);
+  border-left: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
+  margin: 0;
+  white-space: nowrap;
+  padding: 1.5rem 1rem;
+  width: 100%;
+
+  cursor: pointer;
+}
+
+.main-nav-list li .sub-menu li:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }
 
 /****************************************************/
@@ -282,7 +338,11 @@ a:active {
 }
 
 .linear-gradient-text {
-  background: linear-gradient(-90deg,var(--secondary-color),var(--main-color));
+  background: linear-gradient(
+    -90deg,
+    var(--secondary-color),
+    var(--main-color)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
