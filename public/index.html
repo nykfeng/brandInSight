@@ -11,7 +11,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./style/style.css">
-    <script src="script.js" defer></script>
+    <script src="./js/script.js" defer></script>
+    <script src="./js/index.js" defer></script>
     <title>BrandInSight</title>
 </head>
 
@@ -134,7 +135,89 @@
 
         <!-- Testimonials -->
         <section class="testimonials" id="testimonials">
+            <svg class="testimonial-clip-top" viewBox="0 0 1800 198" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M1800 .727H0c274.263 126.112 579.488 196.438 901.139 196.438 320.762 0 625.186-69.939 898.861-195.396V.727z">
+                </path>
+            </svg>
 
+            <div class="testimonial-carousel">
+                <button class="carousel__button carousel__button--left ">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <div class="carousel__track-container">
+                    <ul class="carousel__track">
+                        <li class="carousel__slide">
+                            <article class="carousel__slide-container">
+                                <figure class="carousel__profile">
+                                    <img src="./images/testimonials-profiles/testimonial-profile-1.jpg"
+                                        alt="Zoe Edwards" class="carousel__profile-pic">
+                                    <figcaption class="carousel__profile-caption">Zoe Edwards</figcaption>
+                                </figure>
+
+                                <div class="testimonial-text">
+                                    <p class="carousel__text">"This platform is getting better and better as I learn
+                                        more
+                                        about it. It really saves me time and effort. BrandInSight is exactly what our
+                                        business has been lacking. BrandInSight was the best investment I ever made."
+                                    </p>
+                                    <img src="./images/feature-logos/business-insider.png" alt=""
+                                        class="carousel__logo">
+                                </div>
+                            </article>
+                        </li>
+                        <li class="carousel__slide">
+                            <article class="carousel__slide-container">
+                                <figure class="carousel__profile">
+                                    <img src="./images/testimonials-profiles/testimonial-profile-2.jpg"
+                                        alt="Howard Chapman" class="carousel__profile-pic">
+                                    <figcaption class="carousel__profile-caption">Howard Chapman</figcaption>
+                                </figure>
+
+                                <div class="testimonial-text">
+                                    <p class="carousel__text">"I would also like to say thank you to all your staff.
+                                        We've used BrandInSight for the last five years. Thank you so much for your
+                                        help."</p>
+                                    <img src="./images/feature-logos/the-new-york-times.png" alt=""
+                                        class="carousel__logo">
+                                </div>
+                            </article>
+                        </li>
+                        <li class="carousel__slide current-slide">
+                            <article class="carousel__slide-container">
+                                <figure class="carousel__profile">
+                                    <img src="./images/testimonials-profiles/testimonial-profile-3.jpg"
+                                        alt="Dianne Williams" class="carousel__profile-pic">
+                                    <figcaption class="carousel__profile-caption">Dianne Williams</figcaption>
+                                </figure>
+
+                                <div class="testimonial-text">
+                                    <p class="carousel__text">"BrandInSight is exactly what our business has been
+                                        lacking. BrandInSight impressed me on multiple levels. Very easy to use."</p>
+                                    <img src="./images/feature-logos/usa-today.png" alt="" class="carousel__logo">
+                                </div>
+                            </article>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <button class="carousel__button carousel__button--right ">
+                    <i class="fa-solid fa-angle-right "></i>
+                </button>
+
+                <div class="carousel__nav">
+                    <button class="carousel__indicator current-slide--dot"><i class="fa-solid fa-circle"></i></button>
+                    <button class="carousel__indicator"><i class="fa-solid fa-circle"></i></button>
+                    <button class="carousel__indicator"><i class="fa-solid fa-circle"></i></button>
+                </div>
+            </div>
+
+            <svg class="testimonial-clip-bottom" viewBox="0 0 1800 198" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M1800 .727H0c274.263 126.112 579.488 196.438 901.139 196.438 320.762 0 625.186-69.939 898.861-195.396V.727z">
+                </path>
+            </svg>
         </section>
     </main>
 
@@ -172,7 +255,7 @@
                 </ul>
 
                 <p class="copyright">
-                    Copyright &copy; <span class="year">2022</span> by BrandInsight Inc.
+                    Copyright &copy; <span class="year">2022</span> by BrandInSight Inc.
                     All rights reserved.
                 </p>
             </div>
