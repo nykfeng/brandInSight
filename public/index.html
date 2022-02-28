@@ -134,7 +134,7 @@
         </section>
 
         <!-- Testimonials -->
-        <section class="testimonials" id="testimonials">
+        <section class="section-testimonials" id="testimonials">
             <svg class="testimonial-clip-top" viewBox="0 0 1800 198" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M1800 .727H0c274.263 126.112 579.488 196.438 901.139 196.438 320.762 0 625.186-69.939 898.861-195.396V.727z">
@@ -147,7 +147,7 @@
                 </button>
                 <div class="carousel__track-container">
                     <ul class="carousel__track">
-                        <li class="carousel__slide">
+                        <li class="carousel__slide current-slide">
                             <article class="carousel__slide-container">
                                 <figure class="carousel__profile">
                                     <img src="./images/testimonials-profiles/testimonial-profile-1.jpg"
@@ -159,9 +159,9 @@
                                     <p class="carousel__text">"This platform is getting better and better as I learn
                                         more
                                         about it. It really saves me time and effort. BrandInSight is exactly what our
-                                        business has been lacking. BrandInSight was the best investment I ever made."
+                                        business has been lacking."
                                     </p>
-                                    <img src="./images/feature-logos/business-insider.png" alt=""
+                                    <img src="./images/feature-logos/the-wall-street-journal.png" alt=""
                                         class="carousel__logo">
                                 </div>
                             </article>
@@ -183,7 +183,7 @@
                                 </div>
                             </article>
                         </li>
-                        <li class="carousel__slide current-slide">
+                        <li class="carousel__slide">
                             <article class="carousel__slide-container">
                                 <figure class="carousel__profile">
                                     <img src="./images/testimonials-profiles/testimonial-profile-3.jpg"
@@ -219,13 +219,108 @@
                 </path>
             </svg>
         </section>
+
+        <!-- How It Works -->
+        <section class="section-howItWorks" id="howItWorks">
+            <div class="howItWorks-logo">
+                <i class="fa-solid fa-bars-staggered linear-gradient-text"></i>
+            </div>
+
+            <h1 class="howItWorks-title">How it works</h1>
+            <div class="howItWorks-container">
+                <figure class="howItWorks-element">
+                    <article class="howItWorks-image-box"><img src="./images/how-it-works/how-it-works-element1.png"
+                            alt="" class="howItWorks-element--image"></article>
+                    <article class="howItWorks-text-box">
+                        <div class="howItWorks-title--box">
+                            <span class="howItWorks-title--number">1</span>
+                            <div class="howItWorks-title--text">Follow brand profiles</div>
+                        </div>
+                        <div class="howItWorks-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Quis in exercitationem sed error reiciendis laudantium, pariatur eum quo id magni
+                            consequatur ab provident quibusdam quod non nemo tempore, ipsam ipsum!</div>
+                    </article>
+                </figure>
+
+                <figure class="howItWorks-element">
+                    <article class="howItWorks-text-box">
+                        <div class="howItWorks-title--box">
+                            <span class="howItWorks-title--number">2</span>
+                            <div class="howItWorks-title--text">Get brand contacts</div>
+                        </div>
+                        <div class="howItWorks-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Perferendis a sunt beatae cumque qui quis magni eveniet autem voluptates totam! Neque
+                            pariatur corporis, beatae minus libero fuga in incidunt culm.</div>
+                    </article>
+                    <article class="howItWorks-image-box"><img src="./images/how-it-works/how-it-works-element2.png"
+                            alt="" class="howItWorks-element--image"></article>
+                </figure>
+
+                <figure class="howItWorks-element">
+                    <article class="howItWorks-image-box"><img src="./images/how-it-works/how-it-works-element3.png"
+                            alt="" class="howItWorks-element--image"></article>
+                    <article class="howItWorks-text-box">
+                        <div class="howItWorks-title--box">
+                            <span class="howItWorks-title--number">3</span>
+                            <div class="howItWorks-title--text">View brand products</div>
+                        </div>
+                        <div class="howItWorks-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Vitae voluptate ducimus officiis asperiores velit incidunt accusamus hic ratione eum, magnam
+                            excepturi repellat animi sapiente suscipit modi saepe adipisci quod aperiam.</div>
+                    </article>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Call To Action -->
+        <section class="section-cta" id="cta">
+
+            <div class="cta">
+                <div class="cta-text-box">
+                    <h2 class="heading-secondary">Get the data and insight you have been looking for!</h2>
+                    <p class="cta-text">
+                        Company and brand data and insights are just one click away. Start
+                        your free trial today. You can cancel or pause anytime.
+                    </p>
+
+                    <form class="cta-form" name="sign-up" netlify>
+                        <div>
+                            <label for="full-name">Full Name</label>
+                            <input id="full-name" type="text" placeholder="Michael Jordan" name="full-name" required />
+                        </div>
+
+                        <div>
+                            <label for="email">Email address</label>
+                            <input id="email" type="email" placeholder="me@example.com" name="email" required />
+                        </div>
+
+                        <div>
+                            <label for="select-where">Where did you hear from us?</label>
+                            <select id="select-where" name="select-where" required>
+                                <option value="">Please choose one option:</option>
+                                <option value="business">Business partners</option>
+                                <option value="youtube">YouTube video</option>
+                                <option value="podcast">Podcast</option>
+                                <option value="ad">Facebook ad</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn--form">Sign up now</button>
+
+                    </form>
+                </div>
+                <div class="cta-img-box" role="img" aria-label="Woman enjoying food"></div>
+            </div>
+
+        </section>
     </main>
 
     <footer class="footer">
         <div class="container grid grid--footer">
             <div class="logo-col">
                 <div class="logo-col-logo-container">
-                    <a href="#">
+                    <a href="/">
                         <h1 class='logo'><span class="logo-brand">Brand</span><span class="logo-insight">InSight</span>
                         </h1>
                     </a>
