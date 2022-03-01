@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A market research startup that collects public brand information and sell it as Sass",
   "main": "app.js",
-  "type": "module",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev" : "nodemon app.js"
   },
   "author": "Lifeng Huang",
   "license": "ISC",
