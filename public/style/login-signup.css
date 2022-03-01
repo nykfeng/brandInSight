@@ -130,6 +130,10 @@ main {
   font-style: italic;
 }
 
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
 #register {
   background: linear-gradient(to right, rgb(18, 175, 248), rgb(11, 241, 229));
 }
