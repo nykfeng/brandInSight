@@ -1,14 +1,3 @@
-a {
-  color: rgb(0, 131, 253);
-}
-
-.simple-nav {
-  padding: 2rem;
-  display: flex;
-  gap: 4rem;
-  font-size: 1.5em;
-}
-
 .internal-btn {
   border-radius: 0.05rem;
   background-color: cornflowerblue;
@@ -23,4 +12,33 @@ a {
 
 .form-add div {
   margin-bottom: 1rem;
+}
+
+.brand-header {
+  max-width: 90rem;
+  margin: 10rem auto;
+}
+
+.brand-btn {
+  border-radius: 0.05rem;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+.del-btn {
+  background-color: crimson;
+  color: #fff;
+}
+
+.simple-nav {
+  display: flex;
+  gap: 4rem;
+  max-width: 70rem;
+  padding: 10rem;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.brand-header .brand-name {
+  font-size: 3.2rem;
 }

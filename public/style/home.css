@@ -4,12 +4,13 @@ main {
   font-size: 1.8rem;
 }
 
-a {
-  color: rgb(0, 131, 253);
-}
 .simple-nav {
-    padding: 2rem;
-    display: flex;
-    gap: 4rem;
-    font-size: 1.5em;
-  }
+  padding: 2rem;
+  display: flex;
+  gap: 4rem;
+  font-size: 1.5em;
+}
+
+.trending-brand-list a {
+  color: #2d31fa;
+}

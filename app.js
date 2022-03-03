@@ -3,6 +3,7 @@ const { default: mongoose } = require("mongoose");
 const path = require("path");
 const Brand = require("./models/Brand");
 const methodOverride = require("method-override");
+const ejsMate = require('ejs-mate');
 
 const PORT = process.env.port || 3080;
 
@@ -23,6 +24,8 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+app.engine('ejs', ejsMate);
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -36,17 +39,17 @@ app.get("/createBrand", createBrand);
 
 app.get("/brands", async (req, res) => {
   const brands = await Brand.find({});
-  res.render("brands/index", { brands });
+  res.render("internal/brands/index", { brands });
 });
 
 app.get("/brands/:id", async (req, res) => {
   const brand = await Brand.findById(req.params.id);
-  res.render("brands/brand", { brand });
+  res.render("internal/brands/brand", { brand });
 });
 
 app.get("/brands/:id/edit", async (req, res) => {
   const brand = await Brand.findById(req.params.id);
-  res.render("internal/edit", { brand });
+  res.render("internal/brands/edit", { brand });
 });
 
 app.put("/brands/:id", async (req, res) => {
@@ -63,7 +66,7 @@ app.post("/brands", async (req, res) => {
 });
 
 app.get("/internal/new", async (req, res) => {
-  res.render("internal/new");
+  res.render("internal/brands/new");
 });
 
 app.delete("/brands/:id", async (req, res) => {
@@ -99,6 +102,10 @@ async function createBrand(req, res) {
   // await brand.save();
   // res.send(brand);
 }
+
+app.use((req, res) => {
+  res.status(404).send("Page not found");
+});
 
 app.listen(PORT, () => {
   console.log(`Serving on port ${PORT}`);
