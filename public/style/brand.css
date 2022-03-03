@@ -1,0 +1,22 @@
+.brand-header {
+  max-width: 90rem;
+  margin: 10rem auto;
+}
+
+.brand-btn {
+  border-radius: 0.05rem;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+.del-btn {
+  background-color: crimson;
+  color: #fff;
+}
+
+.simple-nav {
+  display: flex;
+  gap: 4rem;
+  max-width: 70rem;
+  padding: 10rem;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="shortcut icon" type="image/ico" href="./images/BrandInSight-favicon.ico" />
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/brand.css">
+    <title>BrandInSight - Home</title>
+</head>
+
+<body>
+    <div class="simple-nav">
+        <a href="/">Main Page</a>
+    </div>
+
+    <section class="brand-header">
+        <img src="" alt="" class="brand-logo">
+        <h1>Brand Detail Page</h1>
+        <br>
+        <h1 class="brand-name">
+            <%=brand.name%>
+        </h1>
+        <h3 class="brand-headquarters">
+            Locations: <%=brand.headquarters%>
+        </h3>
+        <h3 class="brand-employee">
+            Employee: <%=brand.employee.min%>-<%=brand.employee.max%>
+        </h3>
+        <h3 class="brand-website">
+            Website: <%=brand.website%>
+        </h3>
+        <h3 class="brand-description">
+            Description: <%=brand.description%>
+        </h3>
+
+    </section>
+
+    <div class="simple-nav">
+        <a href="/brands/<%=brand._id%>/edit" class="btn brand-btn">Edit brand</a>
+        <form action="/brands/<%=brand._id%>?_method=DELETE" method="POST">
+            <button class="btn del-btn">Delete</button>
+        </form>
+        <a href="/brands" class="btn brand-btn">All brands</a>
+    </div>
+
+</body>
+
+
+
+</html>

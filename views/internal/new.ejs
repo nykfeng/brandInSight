@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="shortcut icon" type="image/ico" href="./images/BrandInSight-favicon.ico" />
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/internal.css">
+    <title>BrandInSight - Internal Page</title>
+</head>
+
+<body>
+    <div class="simple-nav">
+        <a href="/">Main Page</a>
+
+        <a href="/internal">Internal Page</a>
+    </div>
+
+
+
+    <section class="internal-main">
+        <h1>Employee Access Only Page</h1>
+        <h2>Add brand information here</h2>
+
+        <br>
+
+        <h1>Add a new brand here:</h1>
+        <form action="/brands" method="POST" class="form-add">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="brand[name]">
+            </div>
+            <div>
+                <label for="headquarters">Headquarters</label>
+                <input type="text" id="headquarters" name="brand[headquarters]" size="50">
+            </div>
+            <div>
+                <label for="website">Website</label>
+                <input type="url" id="website" name="brand[website]" size="50" placeholder="https:// or http://">
+            </div>
+            <div>
+                <label for="employee">Employee number</label>
+                <label for="employee-min">Min:</label>
+                <input type="number" id="employee-min" name="brand[employee][min]">
+                <label for="employee-min">Max:</label>
+                <input type="number" id="employee-max" name="brand[employee][max]">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="brand[description]" id="description" cols="30" rows="10"></textarea>
+            </div>
+
+            <button class="btn">Submit</button>
+        </form>
+
+    </section>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+a {
+  color: rgb(0, 131, 253);
+}
+
+.simple-nav {
+  padding: 2rem;
+  display: flex;
+  gap: 4rem;
+  font-size: 1.5em;
+}
+
+.internal-btn {
+  border-radius: 0.05rem;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+.internal-main {
+  font-size: 2em;
+  margin: 10rem auto;
+  max-width: 100rem;
+}
+
+.form-add div {
+  margin-bottom: 1rem;
+}

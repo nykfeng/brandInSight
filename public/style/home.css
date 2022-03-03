@@ -1,0 +1,15 @@
+main {
+  max-width: 90rem;
+  margin: 10rem auto;
+  font-size: 1.8rem;
+}
+
+a {
+  color: rgb(0, 131, 253);
+}
+.simple-nav {
+    padding: 2rem;
+    display: flex;
+    gap: 4rem;
+    font-size: 1.5em;
+  }

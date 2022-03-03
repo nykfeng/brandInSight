@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Unity",
+    "headquarters": "San Francisco, California, United States",
+    "employee": { "min": 1001, "max": 5000 },
+    "website": "unity.com/",
+    "description": "Unity provides multiplatform tools and services to developers of interactive content."
+  },
+  {
+    "name": "JPMorgan Chase & Co.",
+    "headquarters": "New York, New York, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.jpmorganchase.com",
+    "description": "JPMorgan Chase & Co. provides innovative financial solutions for consumers, small businesses, corporations, governments, and institutions."
+  },
+  {
+    "name": "Unioncrate",
+    "headquarters": "New York, New York, United States",
+    "employee": { "min": 11, "max": 50 },
+    "website": "unioncrate.com",
+    "description": "Unioncrate is a supply chain platform that simplifies demand planning and daily operations for consumer goods companies."
+  },
+  {
+    "name": "Tesla",
+    "headquarters": "Palo Alto, California, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.tesla.com",
+    "description": "Tesla Motors specializes in developing a full range of electric vehicles."
+  },
+  {
+    "name": "Ford Motor",
+    "headquarters": "Dearborn, Michigan, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.ford.com",
+    "description": "Ford Motor is an automotive company that develops, manufactures, and distributes vehicles, parts, and accessories."
+  },
+  {
+    "name": "Microsoft",
+    "headquarters": "Redmond, Washington, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.microsoft.com",
+    "description": "Microsoft is a software corporation that develops, manufactures, licenses, supports, and sells a range of software products and services."
+  },
+
+  {
+    "name": "Media Radar",
+    "headquarters": "New York, New York, United States",
+    "employee": { "min": 500, "max": 1000 },
+    "website": "www.mediaradar.com",
+    "description": "MediaRadar was created to help publishers in all formats to improve sales and client management."
+  },
+  {
+    "name": "PayPal",
+    "headquarters": "San Jose, California, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.paypal.com/home",
+    "description": "PayPal is a financial service company that provides online payment solutions to its users worldwide."
+  },
+  {
+    "name": "WorkRamp",
+    "headquarters": "San Francisco, California, United States",
+    "employee": { "min": 11, "max": 50 },
+    "website": "www.workramp.com",
+    "description": "The all-in-one learning platform to train your customers, partners, and employees."
+  },
+  {
+    "name": "Roblox",
+    "headquarters": "San Mateo, California, United States",
+    "employee": { "min": 1001, "max": 5000 },
+    "website": "www.roblox.com",
+    "description": "Roblox is an online gaming and entertainment platform offering a shared digital experience that brings people together through play."
+  },
+  {
+    "name": "Fitbit",
+    "headquarters": "San Francisco, California, United States",
+    "employee": { "min": 251, "max": 500 },
+    "website": "www.fitbit.com",
+    "description": "Fitbit offers compact, wireless, wearable sensors that track a person’s daily activities in order to promote a healthy lifestyle."
+  },
+  {
+    "name": "Cummins",
+    "headquarters": "Columbus, Indiana, United States",
+    "employee": { "min": 10001, "max": 15000 },
+    "website": "www.cummins.com",
+    "description": "Cummins develops, sells, and services diesel and natural gas engines, power generation systems, and engine-related component products."
+  },
+  {
+    "name": "Apple Inc.",
+    "website": "www.apple.com",
+    "employee": {
+      "min": 10000,
+      "max": 15000
+    },
+    "headquarters": "Cupertino, California, United States",
+    "description": "Apple is a multinational corporation that designs, manufactures, and markets consumer electronics, personal computers, and software."
+  },
+
+  {
+    "name": "Nvidia Corp",
+    "website": "www.nvidia.com",
+    "employee": {
+      "min": 10000,
+      "max": 15000
+    },
+    "headquarters": "Santa Clara, California, United States",
+    "description": "NVIDIA is a computing platform company, innovating at the intersection of graphics, HPC, and AI."
+  }
+]

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="shortcut icon" type="image/ico" href="./images/BrandInSight-favicon.ico" />
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/brands.css">
+    <title>BrandInSight - Brands</title>
+</head>
+
+<body>
+    <div class="simple-nav">
+        <a href="/">Main Page</a>
+        <a href="/home">Home</a>
+    </div>
+
+    <section class="main-list">
+
+
+        <h1>This is the brands list page</h1>
+
+        <p>Brands List goes here</p>
+        <ul class="brand-list">
+            <% for (let brand of brands) { %>
+                <li><span class="name">
+                        <%=brand.name%>
+                    </span>
+                    <a href="/brands/<%=brand._id%>">Brand ID -></a>
+                </li>
+                <% } %>
+        </ul>
+    </section>
+
+
+
+
+    <div id="demo"></div>
+    <script>
+        // document.getElementById("demo").innerHTML = "<%= brands[3].description %>";
+
+
+        console.log("<%=brands.length%>");
+
+        const length = '<%-brands.length%>';
+
+
+        const data = [];
+
+        data.push({ name: '<%-brands[0].name%>', description: '<%-brands[0].description%>', headquarters: '<%-brands[0].headquarters%>' })
+
+
+        console.log(length);
+
+        console.log("brand list is " + data);
+        console.log(data);
+        console.log('brand list length is ' + data.length);
+        console.log('hello');
+    </script>
+</body>
+
+</html>
