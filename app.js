@@ -4,6 +4,10 @@ const path = require("path");
 const Brand = require("./models/Brand");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/ExpressError");
+const Joi = require("joi");
+const { brandSchema } = require("./utils/validationSchema");
 
 const PORT = process.env.port || 3080;
 
@@ -36,48 +40,74 @@ app.get("/free-user", homePage);
 app.get("/createBrand", createBrand);
 
 // ;------------------------
+const validateBrand = (req, res, next) => {
+  const { error } = brandSchema.validate(req.body);
+
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
 
 app.get("/brands", async (req, res) => {
   const brands = await Brand.find({});
   res.render("internal/brands/index", { brands });
 });
 
-app.get("/brands/:id", async (req, res) => {
-  const brand = await Brand.findById(req.params.id);
-  res.render("internal/brands/brand", { brand });
-});
+app.get(
+  "/brands/:id",
+  catchAsync(async (req, res) => {
+    const brand = await Brand.findById(req.params.id);
+    res.render("internal/brands/brand", { brand });
+  })
+);
 
-app.get("/brands/:id/edit", async (req, res) => {
-  const brand = await Brand.findById(req.params.id);
-  res.render("internal/brands/edit", { brand });
-});
+app.get(
+  "/brands/:id/edit",
+  catchAsync(async (req, res) => {
+    const brand = await Brand.findById(req.params.id);
+    res.render("internal/brands/edit", { brand });
+  })
+);
 
-app.put("/brands/:id", async (req, res) => {
-  const { id } = req.params;
-  const brand = await Brand.findByIdAndUpdate(
-    id,
-    { ...req.body.brand },
-    { runValidators: true }
-  );
-  res.redirect(`/brands/${brand._id}`);
-});
+app.put(
+  "/brands/:id",
+  validateBrand,
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const brand = await Brand.findByIdAndUpdate(
+      id,
+      { ...req.body.brand },
+      { runValidators: true }
+    );
+    res.redirect(`/brands/${brand._id}`);
+  })
+);
 
-app.post("/brands", async (req, res) => {
-  const brand = new Brand(req.body.brand);
-  await brand.save();
-  console.log(brand);
-  res.redirect("/brands");
-});
+app.post(
+  "/brands",
+  validateBrand,
+  catchAsync(async (req, res, next) => {
+    const brand = new Brand(req.body.brand);
+    await brand.save();
+    res.redirect("/brands");
+  })
+);
 
 app.get("/internal/new", async (req, res) => {
   res.render("internal/brands/new");
 });
 
-app.delete("/brands/:id", async (req, res) => {
-  const { id } = req.params;
-  await Brand.findByIdAndDelete(id);
-  res.redirect(`/brands`);
-});
+app.delete(
+  "/brands/:id",
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    await Brand.findByIdAndDelete(id);
+    res.redirect(`/brands`);
+  })
+);
 
 // -------------------------
 
@@ -107,8 +137,18 @@ async function createBrand(req, res) {
   // res.send(brand);
 }
 
-app.use((req, res) => {
-  res.status(404).send("Page not found");
+// app.use((req, res) => {
+//   res.status(404).send("Page not found");
+// });
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page not found", 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Something went super wrong!";
+  res.status(statusCode).render("internal/error", { error: err });
 });
 
 app.listen(PORT, () => {

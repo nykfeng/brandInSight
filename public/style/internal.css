@@ -42,3 +42,11 @@
 .brand-header .brand-name {
   font-size: 3.2rem;
 }
+
+.error-message {
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(248, 206, 206);
+  color: rgb(143, 10, 10);
+}
