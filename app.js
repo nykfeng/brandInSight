@@ -3,7 +3,7 @@ const { default: mongoose } = require("mongoose");
 const path = require("path");
 const Brand = require("./models/Brand");
 const methodOverride = require("method-override");
-const ejsMate = require('ejs-mate');
+const ejsMate = require("ejs-mate");
 
 const PORT = process.env.port || 3080;
 
@@ -24,7 +24,7 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-app.engine('ejs', ejsMate);
+app.engine("ejs", ejsMate);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -54,7 +54,11 @@ app.get("/brands/:id/edit", async (req, res) => {
 
 app.put("/brands/:id", async (req, res) => {
   const { id } = req.params;
-  const brand = await Brand.findByIdAndUpdate(id, { ...req.body.brand });
+  const brand = await Brand.findByIdAndUpdate(
+    id,
+    { ...req.body.brand },
+    { runValidators: true }
+  );
   res.redirect(`/brands/${brand._id}`);
 });
 
@@ -62,7 +66,7 @@ app.post("/brands", async (req, res) => {
   const brand = new Brand(req.body.brand);
   await brand.save();
   console.log(brand);
-  res.redirect("brands", { brands });
+  res.redirect("/brands");
 });
 
 app.get("/internal/new", async (req, res) => {
