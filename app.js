@@ -2,12 +2,14 @@ const express = require("express");
 const { default: mongoose } = require("mongoose");
 const path = require("path");
 const Brand = require("./models/Brand");
+const Contact = require("./models/Contact");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const Joi = require("joi");
-const { brandSchema } = require("./utils/validationSchema");
+const { brandSchema, contactSchema } = require("./utils/validationSchema");
+const { resourceUsage } = require("process");
 
 const PORT = process.env.port || 3080;
 
@@ -51,6 +53,17 @@ const validateBrand = (req, res, next) => {
   }
 };
 
+const validateContact = (req, res, next) => {
+  const { error } = contactSchema.validate(req.body);
+
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
 app.get("/brands", async (req, res) => {
   const brands = await Brand.find({});
   res.render("internal/brands/index", { brands });
@@ -59,7 +72,7 @@ app.get("/brands", async (req, res) => {
 app.get(
   "/brands/:id",
   catchAsync(async (req, res) => {
-    const brand = await Brand.findById(req.params.id);
+    const brand = await Brand.findById(req.params.id).populate("contact");
     res.render("internal/brands/brand", { brand });
   })
 );
@@ -106,6 +119,29 @@ app.delete(
     const { id } = req.params;
     await Brand.findByIdAndDelete(id);
     res.redirect(`/brands`);
+  })
+);
+
+app.post(
+  "/brands/:id/contact",
+  validateContact,
+  catchAsync(async (req, res) => {
+    const brand = await Brand.findById(req.params.id);
+    const contact = new Contact(req.body.contact);
+    brand.contact.push(contact);
+    await contact.save();
+    await brand.save();
+    res.redirect(`/brands/${brand._id}`);
+  })
+);
+
+app.delete(
+  "/brands/:id/contact/:contactId",
+  catchAsync(async (req, res) => {
+    const {id, contactId} = req.params;
+    await Brand.findByIdAndUpdate(id, { $pull: {contact: contactId}}) 
+    await Contact.findByIdAndDelete(contactId);
+    res.redirect(`/brands/${id}`);
   })
 );
 

@@ -27,6 +27,89 @@
 
     </section>
 
+    <section class="brand-contact">
+        <h1>Brand Contact Information:</h1>
+        <div class="brand-contact-list">
+            <% for (let contact of brand.contact) { %>
+                <p>
+                    <span>Name: </span>
+                    <span>
+                        <%=contact.name%>
+                    </span>
+                </p>
+                <p>
+                    <span>Position: </span>
+                    <span>
+                        <%=contact.position%>
+                    </span>
+                </p>
+                <p>
+                    <span>Rank: </span>
+                    <span>
+                        <%=contact.rank%>
+                    </span>
+                </p>
+                <p>
+                    <span>Email: </span>
+                    <span>
+                        <%=contact.email%>
+                    </span>
+                </p>
+                <p>
+                    <span>Phone number: </span>
+                    <span>
+                        <%=contact.phoneNumber%>
+                    </span>
+                </p>
+                <p>
+                    <span>Years of experience: </span>
+                    <span>
+                        <%=contact.yearsOfExperience%>
+                    </span>
+                </p>
+                <form action="/brands/<%=brand._id%>/contact/<%=contact._id%>?_method=DELETE" method="POST"
+                    class="btn del-btn">
+                    <button class="btn del-btn">Delete</button>
+                </form>
+                <br>
+                <% } %>
+
+        </div>
+
+        <br>
+        <div class="brand-contact--add">
+            <form action="/brands/<%=brand._id%>/contact" method="POST" class="contact--add">
+                <div>
+                    <label for="name">Full name:</label>
+                    <input type="text" id="name" name="contact[name]">
+                </div>
+                <div>
+                    <label for="position">Position:</label>
+                    <input type="text" id="position" name="contact[position]">
+                </div>
+                <div>
+                    <label for="rank">Rank:</label>
+                    <input type="text" id="rank" name="contact[rank]">
+                </div>
+                <div>
+                    <label for="phoneNumber">Phone number:</label>
+                    <input type="text" id="phoneNumber" name="contact[phoneNumber]">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="contact[email]">
+                </div>
+                <div>
+                    <label for="yearsOfExperience">Years of experience:</label>
+                    <input type="number" id="yearsOfExperience" name="contact[yearsOfExperience]">
+                </div>
+
+
+                <button class="btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
     <div class="simple-nav">
         <a href="/brands/<%=brand._id%>/edit" class="btn brand-btn">Edit brand</a>
         <form action="/brands/<%=brand._id%>?_method=DELETE" method="POST">
