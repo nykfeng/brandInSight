@@ -6,6 +6,8 @@ const message = document.getElementById("message");
 let isValid = false;
 let passwordsMatch = false;
 
+// TESTING
+
 async function validateForm() {
   // Use HTML constraint API to check form validity
   isValid = signupForm.checkValidity();
@@ -44,7 +46,7 @@ async function validateForm() {
   }
 
   //TODO
-  // We don't really need this, it will go to login 
+  // We don't really need this, it will go to login
   // If form is valid and passwords match
   if (isValid && passwordsMatch) {
     // Style main message for success
