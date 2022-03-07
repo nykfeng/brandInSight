@@ -37,6 +37,7 @@ router.post(
     brand.contact.push(contact);
     await contact.save();
     await brand.save();
+    req.flash('success','Successfully created a new contact!')
     res.redirect(`/brands/${brand._id}`);
   })
 );
@@ -47,6 +48,7 @@ router.delete(
     const { id, contactId } = req.params;
     await Brand.findByIdAndUpdate(id, { $pull: { contact: contactId } });
     await Contact.findByIdAndDelete(contactId);
+    req.flash('success','Successfully deleted a contact!')
     res.redirect(`/brands/${id}`);
   })
 );

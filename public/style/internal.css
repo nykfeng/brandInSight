@@ -61,3 +61,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.alert-success {
+  background-color: forestgreen;
+}
+
+.alert-error {
+  background-color: lightcoral;
+}

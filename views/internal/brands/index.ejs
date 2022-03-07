@@ -13,6 +13,7 @@
     <link rel="shortcut icon" type="image/ico" href="./images/BrandInSight-favicon.ico" />
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/brands.css">
+    <link rel="stylesheet" href="./style/internal.css">
     <title>BrandInSight - Brands</title>
 </head>
 
@@ -23,20 +24,22 @@
     </div>
 
     <section class="main-list">
+        <%- include("../../partials/flash") %>
 
+            <h1>internal</h1>
 
-        <h1>This is the brands list page</h1>
+            <h1>This is the brands list page</h1>
 
-        <p>Brands List goes here</p>
-        <ul class="brand-list">
-            <% for (let brand of brands) { %>
-                <li><span class="name">
-                        <%=brand.name%>
-                    </span>
-                    <a href="/brands/<%=brand._id%>">Brand ID -></a>
-                </li>
-                <% } %>
-        </ul>
+            <p>Brands List goes here</p>
+            <ul class="brand-list">
+                <% for (let brand of brands) { %>
+                    <li><span class="name">
+                            <%=brand.name%>
+                        </span>
+                        <a href="/brands/<%=brand._id%>">Brand ID -></a>
+                    </li>
+                    <% } %>
+            </ul>
     </section>
 
 

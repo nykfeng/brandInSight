@@ -32,6 +32,10 @@ router.get(
   "/:id",
   catchAsync(async (req, res) => {
     const brand = await Brand.findById(req.params.id).populate("contact");
+    if (!brand) {
+      req.flash("error", "Cannot find that brand!");
+      return res.redirect("/brands");
+    }
     res.render("internal/brands/brand", { brand });
   })
 );
@@ -40,6 +44,10 @@ router.get(
   "/:id/edit",
   catchAsync(async (req, res) => {
     const brand = await Brand.findById(req.params.id);
+    if (!brand) {
+        req.flash("error", "Cannot find that brand!");
+        return res.redirect("/brands");
+      }
     res.render("internal/brands/edit", { brand });
   })
 );
@@ -54,6 +62,7 @@ router.put(
       { ...req.body.brand },
       { runValidators: true }
     );
+    req.flash("success", "Successfully updated brand information!");
     res.redirect(`/brands/${brand._id}`);
   })
 );
@@ -64,14 +73,17 @@ router.post(
   catchAsync(async (req, res, next) => {
     const brand = new Brand(req.body.brand);
     await brand.save();
-    res.redirect("/brands");
+    req.flash("success", "Successfully created a new brand!");
+    res.redirect(`/brands/${brand._id}`);
   })
 );
+
 router.delete(
   "/:id",
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Brand.findByIdAndDelete(id);
+    req.flash("success", "Successfully deleted a brand!");
     res.redirect(`/brands`);
   })
 );

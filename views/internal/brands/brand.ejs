@@ -1,119 +1,119 @@
 <% layout("/layouts/boilerplateInternal.ejs") %>
-    <div class="simple-nav">
-        <a href="/"><button class="btn">Main Page</button></a>
-        <a href="/home"><button class="btn">Home</button></a>
-        <a href="/internal"><button class="btn">Internal </button></a>
-    </div>
+        <div class="simple-nav">
+            <a href="/"><button class="btn">Main Page</button></a>
+            <a href="/home"><button class="btn">Home</button></a>
+            <a href="/internal"><button class="btn">Internal </button></a>
+        </div>
 
-    <section class="brand-header">
-        <img src="" alt="" class="brand-logo">
-        <h1>Brand Detail Page</h1>
-        <br>
-        <h1 class="brand-name">
-            <%=brand.name%>
-        </h1>
-        <h3 class="brand-headquarters">
-            Locations: <%=brand.headquarters%>
-        </h3>
-        <h3 class="brand-employee">
-            Employee: <%=brand.employee.min%>-<%=brand.employee.max%>
-        </h3>
-        <h3 class="brand-website">
-            Website: <%=brand.website%>
-        </h3>
-        <h3 class="brand-description">
-            Description: <%=brand.description%>
-        </h3>
+        <section class="brand-header">
+            <img src="" alt="" class="brand-logo">
+            <h1>Brand Detail Page</h1>
+            <br>
+            <h1 class="brand-name">
+                <%=brand.name%>
+            </h1>
+            <h3 class="brand-headquarters">
+                Locations: <%=brand.headquarters%>
+            </h3>
+            <h3 class="brand-employee">
+                Employee: <%=brand.employee.min%>-<%=brand.employee.max%>
+            </h3>
+            <h3 class="brand-website">
+                Website: <%=brand.website%>
+            </h3>
+            <h3 class="brand-description">
+                Description: <%=brand.description%>
+            </h3>
 
-    </section>
+        </section>
 
-    <section class="brand-contact">
-        <h1>Brand Contact Information:</h1>
-        <div class="brand-contact-list">
-            <% for (let contact of brand.contact) { %>
-                <p>
-                    <span>Name: </span>
-                    <span>
-                        <%=contact.name%>
-                    </span>
-                </p>
-                <p>
-                    <span>Position: </span>
-                    <span>
-                        <%=contact.position%>
-                    </span>
-                </p>
-                <p>
-                    <span>Rank: </span>
-                    <span>
-                        <%=contact.rank%>
-                    </span>
-                </p>
-                <p>
-                    <span>Email: </span>
-                    <span>
-                        <%=contact.email%>
-                    </span>
-                </p>
-                <p>
-                    <span>Phone number: </span>
-                    <span>
-                        <%=contact.phoneNumber%>
-                    </span>
-                </p>
-                <p>
-                    <span>Years of experience: </span>
-                    <span>
-                        <%=contact.yearsOfExperience%>
-                    </span>
-                </p>
-                <form action="/brands/<%=brand._id%>/contact/<%=contact._id%>?_method=DELETE" method="POST"
-                    class="btn del-btn">
-                    <button class="btn del-btn">Delete</button>
+        <section class="brand-contact">
+            <h1>Brand Contact Information:</h1>
+            <div class="brand-contact-list">
+                <% for (let contact of brand.contact) { %>
+                    <p>
+                        <span>Name: </span>
+                        <span>
+                            <%=contact.name%>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Position: </span>
+                        <span>
+                            <%=contact.position%>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Rank: </span>
+                        <span>
+                            <%=contact.rank%>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Email: </span>
+                        <span>
+                            <%=contact.email%>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Phone number: </span>
+                        <span>
+                            <%=contact.phoneNumber%>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Years of experience: </span>
+                        <span>
+                            <%=contact.yearsOfExperience%>
+                        </span>
+                    </p>
+                    <form action="/brands/<%=brand._id%>/contact/<%=contact._id%>?_method=DELETE" method="POST"
+                        class="btn del-btn">
+                        <button class="btn del-btn">Delete</button>
+                    </form>
+                    <br>
+                    <% } %>
+
+            </div>
+
+            <br>
+            <div class="brand-contact--add">
+                <form action="/brands/<%=brand._id%>/contact" method="POST" class="contact--add">
+                    <div>
+                        <label for="name">Full name:</label>
+                        <input type="text" id="name" name="contact[name]">
+                    </div>
+                    <div>
+                        <label for="position">Position:</label>
+                        <input type="text" id="position" name="contact[position]">
+                    </div>
+                    <div>
+                        <label for="rank">Rank:</label>
+                        <input type="text" id="rank" name="contact[rank]">
+                    </div>
+                    <div>
+                        <label for="phoneNumber">Phone number:</label>
+                        <input type="text" id="phoneNumber" name="contact[phoneNumber]">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="contact[email]">
+                    </div>
+                    <div>
+                        <label for="yearsOfExperience">Years of experience:</label>
+                        <input type="number" id="yearsOfExperience" name="contact[yearsOfExperience]">
+                    </div>
+
+
+                    <button class="btn">Submit</button>
                 </form>
-                <br>
-                <% } %>
+            </div>
+        </section>
 
-        </div>
-
-        <br>
-        <div class="brand-contact--add">
-            <form action="/brands/<%=brand._id%>/contact" method="POST" class="contact--add">
-                <div>
-                    <label for="name">Full name:</label>
-                    <input type="text" id="name" name="contact[name]">
-                </div>
-                <div>
-                    <label for="position">Position:</label>
-                    <input type="text" id="position" name="contact[position]">
-                </div>
-                <div>
-                    <label for="rank">Rank:</label>
-                    <input type="text" id="rank" name="contact[rank]">
-                </div>
-                <div>
-                    <label for="phoneNumber">Phone number:</label>
-                    <input type="text" id="phoneNumber" name="contact[phoneNumber]">
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="contact[email]">
-                </div>
-                <div>
-                    <label for="yearsOfExperience">Years of experience:</label>
-                    <input type="number" id="yearsOfExperience" name="contact[yearsOfExperience]">
-                </div>
-
-
-                <button class="btn">Submit</button>
+        <div class="simple-nav">
+            <a href="/brands/<%=brand._id%>/edit" class="btn brand-btn">Edit brand</a>
+            <form action="/brands/<%=brand._id%>?_method=DELETE" method="POST">
+                <button class="btn del-btn">Delete</button>
             </form>
+            <a href="/brands" class="btn brand-btn">All brands</a>
         </div>
-    </section>
-
-    <div class="simple-nav">
-        <a href="/brands/<%=brand._id%>/edit" class="btn brand-btn">Edit brand</a>
-        <form action="/brands/<%=brand._id%>?_method=DELETE" method="POST">
-            <button class="btn del-btn">Delete</button>
-        </form>
-        <a href="/brands" class="btn brand-btn">All brands</a>
-    </div>
