@@ -3,15 +3,19 @@ const { default: mongoose } = require("mongoose");
 const path = require("path");
 const Brand = require("./models/Brand");
 const Contact = require("./models/Contact");
+const User = require("./models/User");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 
 // routes
-const brands = require("./routes/brands");
-const contacts = require("./routes/contacts");
+const brandRoutes = require("./routes/brands");
+const contactRoutes = require("./routes/contacts");
+const userRoutes = require("./routes/users");
 
 const PORT = process.env.port || 3080;
 
@@ -37,8 +41,6 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-
-
 // -----  session for now, change during production --------
 const sessionConfig = {
   secret: "thisneedstobemorecomplicated",
@@ -51,6 +53,21 @@ const sessionConfig = {
   },
 };
 app.use(session(sessionConfig));
+
+// -------------- passport -------------
+app.use(passport.initialize());
+app.use(passport.session());
+// In an Express-based application, passport.initialize() middleware
+// is required to initialize Passport. If your application uses persistent login sessions,
+// passport.session() middleware must also be used.
+passport.use(new LocalStrategy(User.authenticate()));
+// We did not specify a method called authenticate for the User model
+// This is coming from the mongoose plugin that added from passport methods
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+// These are also coming from the plugin
+
 app.use(flash());
 
 // ------ middleware for handling flash ----------
@@ -64,8 +81,9 @@ app.use((req, res, next) => {
 
 // ------------ Routes --------------
 
-app.use("/brands", brands);
-app.use("/brands/:id/contact", contacts);
+app.use("/brands", brandRoutes);
+app.use("/brands/:id/contact", contactRoutes);
+app.use("/", userRoutes);
 
 // ;------------------------
 

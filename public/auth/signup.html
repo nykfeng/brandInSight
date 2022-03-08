@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/login-signup.css">
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script src="../js/script.js" defer></script>
-    <script src="../js/signup.js" defer></script>
+    <script src="../js/signup.js" type="module" defer></script>
+
     <title>BrandInSight</title>
 </head>
 
@@ -70,7 +73,7 @@
         <section class="login-signup-container signup-container">
             <h1>Sign Up Today!</h1>
             <!-- Form -->
-            <form id="signup-form">
+            <form action="/register" method="POST" id="signup-form">
                 <!-- Full Name -->
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -95,9 +98,8 @@
                     <input type="password" id="password2" placeholder="Confirm Password" required
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password">
                 </div>
-                <div class="button-group">
-                    <button type="submit">Register</button>
-                </div>
+
+                <button type="submit">Register</button>
 
             </form>
 

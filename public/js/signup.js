@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const signupForm = document.getElementById("signup-form");
 const password1El = document.getElementById("password1");
 const password2El = document.getElementById("password2");
@@ -68,6 +70,7 @@ function storeFormData() {
   };
   // Do something with user data
   console.log(user);
+  register(user);
 }
 
 function processFormData(e) {
@@ -82,3 +85,17 @@ function processFormData(e) {
 
 // Event Listener
 signupForm.addEventListener("submit", processFormData);
+
+// POst request to register
+function register(user) {
+  const url = "/register";
+  axios({
+    method: "POST",
+    url: url,
+    data: {
+      user,
+    },
+  })
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+}
