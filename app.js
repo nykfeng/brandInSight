@@ -12,6 +12,9 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
+// our own middleware to verify logged in
+const { isLoggedIn } = require("./middleware/isLoggedIn");
+
 // routes
 const brandRoutes = require("./routes/brands");
 const contactRoutes = require("./routes/contacts");
@@ -74,6 +77,7 @@ app.use(flash());
 // need to define before routes
 
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
@@ -88,13 +92,17 @@ app.use("/", userRoutes);
 // ;------------------------
 
 app.get("/home", homePage);
-app.get("/internal", internal);
+app.get("/internal", isLoggedIn, internal);
 app.get("/free-user", homePage);
 
 app.get("/createBrand", createBrand);
 
-app.get("/internal/new", async (req, res) => {
+app.get("/internal/new", isLoggedIn, async (req, res) => {
   res.render("internal/brands/new");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("authen/signup");
 });
 
 // -------------------------
@@ -108,6 +116,7 @@ async function homePage(req, res) {
 }
 
 function internal(req, res) {
+
   res.render("internal/index");
 }
 

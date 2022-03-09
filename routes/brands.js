@@ -9,6 +9,9 @@ const Brand = require("../models/Brand");
 // Joi schema
 const { brandSchema } = require("../utils/validationSchema");
 
+// our own middleware to verify logged in
+const { isLoggedIn } = require("../middleware/isLoggedIn");
+
 // Custom error message from validating by Joi
 const validateBrand = (req, res, next) => {
   const { error } = brandSchema.validate(req.body);
@@ -23,13 +26,13 @@ const validateBrand = (req, res, next) => {
 
 // -----------------------------------------------
 
-router.get("/", async (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
   const brands = await Brand.find({});
   res.render("internal/brands/index", { brands });
 });
 
 router.get(
-  "/:id",
+  "/:id", isLoggedIn, 
   catchAsync(async (req, res) => {
     const brand = await Brand.findById(req.params.id).populate("contact");
     if (!brand) {
@@ -41,19 +44,19 @@ router.get(
 );
 
 router.get(
-  "/:id/edit",
+  "/:id/edit", isLoggedIn,
   catchAsync(async (req, res) => {
     const brand = await Brand.findById(req.params.id);
     if (!brand) {
-        req.flash("error", "Cannot find that brand!");
-        return res.redirect("/brands");
-      }
+      req.flash("error", "Cannot find that brand!");
+      return res.redirect("/brands");
+    }
     res.render("internal/brands/edit", { brand });
   })
 );
 
 router.put(
-  "/:id",
+  "/:id", isLoggedIn,
   validateBrand,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -68,7 +71,7 @@ router.put(
 );
 
 router.post(
-  "/",
+  "/", isLoggedIn, 
   validateBrand,
   catchAsync(async (req, res, next) => {
     const brand = new Brand(req.body.brand);
@@ -79,7 +82,7 @@ router.post(
 );
 
 router.delete(
-  "/:id",
+  "/:id", isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Brand.findByIdAndDelete(id);
