@@ -8,36 +8,18 @@ const router = express.Router({ mergeParams: true });
 // self-defined utility helper functions
 const catchAsync = require("../utils/catchAsync");
 
-// actual mongoose models
-const Brand = require("../models/Brand");
-const Contact = require("../models/Contact");
+// our own middleware to verify logged in
+const { isLoggedIn } = require("../middleware/isLoggedIn");
+
 
 // validation with Joi schema
 const { validateContact } = require("../middleware/validateData");
 
-router.post(
-  "/",
-  validateContact,
-  catchAsync(async (req, res) => {
-    const brand = await Brand.findById(req.params.id);
-    const contact = new Contact(req.body.contact);
-    brand.contact.push(contact);
-    await contact.save();
-    await brand.save();
-    req.flash("success", "Successfully created a new contact!");
-    res.redirect(`/brands/${brand._id}`);
-  })
-);
+// contacts controller
+const contacts = require("../controllers/contacts");
 
-router.delete(
-  "/:contactId",
-  catchAsync(async (req, res) => {
-    const { id, contactId } = req.params;
-    await Brand.findByIdAndUpdate(id, { $pull: { contact: contactId } });
-    await Contact.findByIdAndDelete(contactId);
-    req.flash("success", "Successfully deleted a contact!");
-    res.redirect(`/brands/${id}`);
-  })
-);
+router.post("/", isLoggedIn, validateContact, catchAsync(contacts.add));
+
+router.delete("/:contactId", isLoggedIn, catchAsync(contacts.deleteContact));
 
 module.exports = router;

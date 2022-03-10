@@ -13,77 +13,26 @@ const { isLoggedIn } = require("../middleware/isLoggedIn");
 // validation with Joi schema
 const { validateBrand } = require("../middleware/validateData");
 
+// controller
+const brands = require("../controllers/brands");
+
 // -----------------------------------------------
 
-router.get("/", isLoggedIn, async (req, res) => {
-  const brands = await Brand.find({});
-  res.render("internal/brands/index", { brands });
-});
+// Express offers this way of grouping routes
+router
+  .route("/")
+  .get(isLoggedIn, catchAsync(brands.index))
+  .post(isLoggedIn, validateBrand, catchAsync(brands.add));
 
-router.get(
-  "/:id",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const brand = await Brand.findById(req.params.id).populate("contact");
-    if (!brand) {
-      req.flash("error", "Cannot find that brand!");
-      return res.redirect("/brands");
-    }
-    res.render("internal/brands/brand", { brand });
-  })
-);
+// the /new route has to be before /:id, otherwise express takes /new as id
+router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));
 
-router.get(
-  "/:id/edit",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const brand = await Brand.findById(id);
-    if (!brand) {
-      req.flash("error", "Cannot find that brand!");
-      return res.redirect("/brands");
-    }
-    res.render("internal/brands/edit", { brand });
-  })
-);
+router
+  .route("/:id")
+  .get(isLoggedIn, catchAsync(brands.getById))
+  .put(isLoggedIn, validateBrand, catchAsync(brands.update))
+  .delete(isLoggedIn, catchAsync(brands.deleteBrand));
 
-router.put(
-  "/:id",
-  isLoggedIn,
-  validateBrand,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const brand = await Brand.findByIdAndUpdate(
-      id,
-      { ...req.body.brand },
-      { runValidators: true }
-    );
-    req.flash("success", "Successfully updated brand information!");
-    res.redirect(`/brands/${brand._id}`);
-  })
-);
-
-router.post(
-  "/",
-  isLoggedIn,
-  validateBrand,
-  catchAsync(async (req, res, next) => {
-    const brand = new Brand(req.body.brand);
-    await brand.save();
-    req.flash("success", "Successfully created a new brand!");
-    res.redirect(`/brands/${brand._id}`);
-  })
-);
-
-router.delete(
-  "/:id",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Brand.findByIdAndDelete(id);
-    req.flash("success", "Successfully deleted a brand!");
-    res.redirect(`/brands`);
-  })
-);
+router.get("/:id/edit", isLoggedIn, catchAsync(brands.renderEditForm));
 
 module.exports = router;
