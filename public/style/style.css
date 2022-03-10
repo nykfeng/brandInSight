@@ -183,6 +183,16 @@ html {
   color: #fff;
 }
 
+.main-nav-list .user-profile .sub-menu--user-profile {
+  left: -105%;
+  font-size: 1.8rem;
+  min-width: 22rem;
+}
+
+.main-nav-list li .sub-menu--user-profile li {
+  padding: 1rem;
+}
+
 /****************************************************/
 /* General components */
 /****************************************************/

@@ -3,26 +3,15 @@ const router = express.Router();
 
 // self-defined utility helper functions
 const catchAsync = require("../utils/catchAsync");
-const ExpressError = require("../utils/ExpressError");
+
 // actual mongoose models
 const Brand = require("../models/Brand");
-// Joi schema
-const { brandSchema } = require("../utils/validationSchema");
 
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
-// Custom error message from validating by Joi
-const validateBrand = (req, res, next) => {
-  const { error } = brandSchema.validate(req.body);
-
-  if (error) {
-    const msg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
+// validation with Joi schema
+const { validateBrand } = require("../middleware/validateData");
 
 // -----------------------------------------------
 
@@ -32,7 +21,8 @@ router.get("/", isLoggedIn, async (req, res) => {
 });
 
 router.get(
-  "/:id", isLoggedIn, 
+  "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const brand = await Brand.findById(req.params.id).populate("contact");
     if (!brand) {
@@ -44,9 +34,11 @@ router.get(
 );
 
 router.get(
-  "/:id/edit", isLoggedIn,
+  "/:id/edit",
+  isLoggedIn,
   catchAsync(async (req, res) => {
-    const brand = await Brand.findById(req.params.id);
+    const { id } = req.params;
+    const brand = await Brand.findById(id);
     if (!brand) {
       req.flash("error", "Cannot find that brand!");
       return res.redirect("/brands");
@@ -56,7 +48,8 @@ router.get(
 );
 
 router.put(
-  "/:id", isLoggedIn,
+  "/:id",
+  isLoggedIn,
   validateBrand,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -71,7 +64,8 @@ router.put(
 );
 
 router.post(
-  "/", isLoggedIn, 
+  "/",
+  isLoggedIn,
   validateBrand,
   catchAsync(async (req, res, next) => {
     const brand = new Brand(req.body.brand);
@@ -82,7 +76,8 @@ router.post(
 );
 
 router.delete(
-  "/:id", isLoggedIn,
+  "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Brand.findByIdAndDelete(id);

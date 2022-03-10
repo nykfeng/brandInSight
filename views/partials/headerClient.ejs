@@ -1,0 +1,61 @@
+<header class='header'>
+    <a href="/">
+        <h1 class='logo'><span class="logo-brand">Brand</span><span class="logo-insight">InSight</span></h1>
+    </a>
+
+    <nav class="main-nav">
+        <ul class="main-nav-list">
+            <li><a class="main-nav-link" href="#solutions"><i class="fa-solid fa-building"></i> Solutions</a>
+                <ul class="sub-menu">
+                    <li><i class="fa-solid fa-building linear-gradient-text"></i>
+                        <p>Company Insights</p>
+                    </li>
+                    <li><i class="fa-solid fa-chart-line linear-gradient-text"></i>
+                        <p>Brand Spending</p>
+                    </li>
+                    <li><i class="fa-solid fa-address-book linear-gradient-text"></i>
+                        <p>Contacts</p>
+                    </li>
+                    <li><i class="fa-solid fa-globe linear-gradient-text"></i>
+                        <p>Global Strategy</p>
+                    </li>
+                    <li><i class="fa-solid fa-timeline linear-gradient-text"></i>
+                        <p>Build Network</p>
+                    </li>
+                    <li><i class="fa-solid fa-phone linear-gradient-text"></i>
+                        <p>B2B Sales Insight</p>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="main-nav-link" href="#products"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+            </li>
+            <li><a class="main-nav-link" href="/brands"><i class="fa-solid fa-boxes-stacked"></i> Brands</a>
+            </li>
+            <li><a class="main-nav-link" href="/contacts"><i class="fa-solid fa-boxes-stacked"></i> Contacts</a>
+            </li>
+
+            <% if (currentUser) { %>
+                <li class="user-profile"><a class="main-nav-link" href="#">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Account
+                    </a>
+                    <ul class="sub-menu sub-menu--user-profile">
+                        <li></i>
+                            <p>
+                                👋 <%= currentUser.username%>
+                            </p>
+                        </li>
+                        <li><i class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i>
+                            <p>Account Settings</p>
+                        </li>
+                        <li><i class="fa-solid fa-right-from-bracket linear-gradient-text"></i>
+                            <a href="/logout">Log Out</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <% } %>
+
+        </ul>
+    </nav>
+</header>
