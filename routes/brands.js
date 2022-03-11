@@ -27,7 +27,7 @@ const upload = multer({ storage });
 router
   .route("/")
   .get(isLoggedIn, catchAsync(brands.index))
-  .post(isLoggedIn, validateBrand, upload.single("logo"), catchAsync(brands.add));
+  .post(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.add));
   // .post(upload.single("logo"), (req, res) => {
   //   console.log(req.body);
   //   console.log(req.file);
@@ -41,7 +41,7 @@ router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));
 router
   .route("/:id")
   .get(isLoggedIn, catchAsync(brands.getById))
-  .put(isLoggedIn, validateBrand, catchAsync(brands.update))
+  .put(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.update))
   .delete(isLoggedIn, catchAsync(brands.deleteBrand));
 
 router.get("/:id/edit", isLoggedIn, catchAsync(brands.renderEditForm));

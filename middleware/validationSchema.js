@@ -11,6 +11,10 @@ const brandSchema = Joi.object({
     headquarters: Joi.string(),
     website: Joi.string().allow(""),
     description: Joi.string().allow(""),
+    logo: {
+      url: Joi.string().allow(""),
+      filename: Joi.string().allow(""),
+    },
   }).required(),
 });
 

@@ -1,5 +1,7 @@
 // actual mongoose models
 const Brand = require("../models/Brand");
+// need cloudinary function to delete file on it
+const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
   const brands = await Brand.find({});
@@ -13,9 +15,9 @@ module.exports.renderAddForm = async (req, res) => {
 module.exports.add = async (req, res, next) => {
   // const { url, filename } = req.file;
   console.log(req.body);
-  console.log(req.file)
+  console.log(req.file);
   const brand = new Brand(req.body.brand);
-  brand.logo = { url: req.file.url, filename: req.file.filename}
+  brand.logo = { url: req.file.path, filename: req.file.filename };
   await brand.save();
   req.flash("success", "Successfully created a new brand!");
   res.redirect(`/brands/${brand._id}`);
@@ -47,13 +49,21 @@ module.exports.update = async (req, res) => {
     { ...req.body.brand },
     { runValidators: true }
   );
+
+  if (req.file) {
+    await cloudinary.uploader.destroy(brand.logo.filename);
+    brand.logo = { url: req.file.path, filename: req.file.filename };
+    await brand.save();
+  }
   req.flash("success", "Successfully updated brand information!");
   res.redirect(`/brands/${brand._id}`);
 };
 
 module.exports.deleteBrand = async (req, res) => {
   const { id } = req.params;
-  await Brand.findByIdAndDelete(id);
+  const brand = await Brand.findById(id);
+  await cloudinary.uploader.destroy(brand.logo.filename);
+  await brand.remove();
   req.flash("success", "Successfully deleted a brand!");
   res.redirect(`/brands`);
 };

@@ -6,6 +6,9 @@ const ExpressError = require("../utils/ExpressError");
 
 // Custom error message from validating by Joi
 module.exports.validateBrand = (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file);
+
   const { error } = brandSchema.validate(req.body);
 
   if (error) {
