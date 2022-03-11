@@ -18,7 +18,8 @@ const brands = require("../controllers/brands");
 
 // for handling image -- logo
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const { storage } = require("../cloudinary"); // Node will automatically look for index.js
+const upload = multer({ storage });
 
 // -----------------------------------------------
 
@@ -26,10 +27,13 @@ const upload = multer({ dest: "uploads/" });
 router
   .route("/")
   .get(isLoggedIn, catchAsync(brands.index))
-  // .post(isLoggedIn, validateBrand, catchAsync(brands.add));
-  .post(upload.single("image"), (req, res) => {
-    res.send(req.body);
-  });
+  .post(isLoggedIn, validateBrand, upload.single("logo"), catchAsync(brands.add));
+  // .post(upload.single("logo"), (req, res) => {
+  //   console.log(req.body);
+  //   console.log(req.file);
+  //   res.send("It's working~!");
+
+  // });
 
 // the /new route has to be before /:id, otherwise express takes /new as id
 router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));

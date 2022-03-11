@@ -24,6 +24,10 @@ const BrandSchema = new Schema({
     type: String,
     trim: true,
   },
+  logo: {
+    url: String,
+    filename: String,
+  },
   contact: [
     {
       type: Schema.Types.ObjectId,

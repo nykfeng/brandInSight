@@ -11,7 +11,11 @@ module.exports.renderAddForm = async (req, res) => {
 };
 
 module.exports.add = async (req, res, next) => {
+  // const { url, filename } = req.file;
+  console.log(req.body);
+  console.log(req.file)
   const brand = new Brand(req.body.brand);
+  brand.logo = { url: req.file.url, filename: req.file.filename}
   await brand.save();
   req.flash("success", "Successfully created a new brand!");
   res.redirect(`/brands/${brand._id}`);
