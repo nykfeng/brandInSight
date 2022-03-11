@@ -1,5 +1,5 @@
 // const axios = require("axios");
-import axios from 'axios';
+// import axios from 'axios';
 
 const postReq = function (url, reqData) {
   axios({

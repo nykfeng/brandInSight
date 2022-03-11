@@ -16,13 +16,20 @@ const { validateBrand } = require("../middleware/validateData");
 // controller
 const brands = require("../controllers/brands");
 
+// for handling image -- logo
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 // -----------------------------------------------
 
 // Express offers this way of grouping routes
 router
   .route("/")
   .get(isLoggedIn, catchAsync(brands.index))
-  .post(isLoggedIn, validateBrand, catchAsync(brands.add));
+  // .post(isLoggedIn, validateBrand, catchAsync(brands.add));
+  .post(upload.single("image"), (req, res) => {
+    res.send(req.body);
+  });
 
 // the /new route has to be before /:id, otherwise express takes /new as id
 router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));

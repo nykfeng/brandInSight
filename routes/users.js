@@ -14,6 +14,10 @@ router
   .route("/register")
   .get(users.renderRegister)
   .post(catchAsync(users.register));
+// .post((req, res) => {
+//   console.log(req);
+//   console.log(req.body);
+// });
 
 router
   .route("/login")
