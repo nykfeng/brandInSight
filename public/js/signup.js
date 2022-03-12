@@ -1,90 +1,134 @@
-const signupForm = document.getElementById("signup-form");
-const password1El = document.getElementById("password1");
-const password2El = document.getElementById("password2");
-const message = document.getElementById("message");
+const nameInputEl = document.querySelector("#name");
+const emailInputEl = document.querySelector("#email");
+const password1InputEl = document.querySelector("#password1");
+const password2InputEl = document.querySelector("#password2");
+const passwordNotMatchEl = document.querySelector(".password-not-match");
 
-// import request from "./request.js";
+const nameExclaimationEl = document.querySelector(".name-exclaimation");
+const emailExclaimationEl = document.querySelector(".email-exclaimation");
+const passwordExclaimation1El = document.querySelector(".password-1");
+const passwordExclaimation2El = document.querySelector(".password-2");
 
-let isValid = false;
-let passwordsMatch = false;
+const formSubmissionBtn = document.querySelector("#signup-form .submit");
 
-// TESTING
-console.log("Heyyyyy");
+const greenColor = "#85C88A";
+const redColor = "#E83A14";
 
-async function validateForm() {
-  // Use HTML constraint API to check form validity
-  isValid = signupForm.checkValidity();
-  // If the form isn't valid
-  if (!isValid) {
-    // Style main message for an error
-    message.textContent = "Please fill out all fields.";
-    message.style.display = "block";
+let isNameValid = false;
+let isEmailValid = false;
+let isPassword1Valid = false;
+let isPassword2Valid = false;
 
-    await timer();
-    message.style.display = "none";
-    return;
-  }
-  // Check to see if both password fields match
-  if (password1El.value === password2El.value) {
-    // If they match, set value to true and borders to green
-    passwordsMatch = true;
-    password1El.style.borderColor = "green";
-    password2El.style.borderColor = "green";
+// user name input
+nameInputEl.addEventListener("keyup", function () {
+  isNameValid = validate(this, nameExclaimationEl, nameValidation);
+});
+
+// user email input
+emailInputEl.addEventListener("keyup", function () {
+  isEmailValid = validate(this, emailExclaimationEl, emailValidation);
+});
+
+// user password 1 input
+password1InputEl.addEventListener("keyup", function () {
+  isPassword1Valid = validate(
+    this,
+    passwordExclaimation1El,
+    passwordValidation
+  );
+});
+
+// user password 2 input
+password2InputEl.addEventListener("keyup", function () {
+  if (this.value) {
+    if (passwordValidation(this.value)) {
+      if (!passwordMatch(this.value, password1InputEl.value)) {
+        restyleValidation(this, passwordExclaimation2El, redColor);
+        passwordNotMatchEl.style.display = "block";
+        isPassword2Valid = false;
+        return;
+      }
+      passwordNotMatchEl.style.display = "none";
+      restyleValidation(this, passwordExclaimation2El, greenColor, true);
+      isPassword2Valid = true;
+    }
   } else {
-    // If they don't match, border color of input to red, change message
-    passwordsMatch = false;
-    message.textContent = "Make sure passwords match.";
-    message.style.display = "block";
-
-    password1El.style.borderColor = "red";
-    password2El.style.borderColor = "red";
-
-    await timer();
-    message.style.display = "none";
-
-    password1El.style.borderColor = "inherit";
-    password2El.style.borderColor = "inherit";
-
-    return;
+    restyleValidation(this, passwordExclaimation2El, redColor);
+    isPassword2Valid = false;
   }
+});
 
-  //TODO
-  // We don't really need this, it will go to login
-  // If form is valid and passwords match
-  if (isValid && passwordsMatch) {
-    // Style main message for success
-    message.textContent = "Successfully Registered!";
-    message.style.color = "green";
-    message.style.borderColor = "green";
-  }
-}
-
-async function timer(ms = 3000) {
-  return new Promise((r) => setTimeout(r, ms));
-}
-
-async function storeFormData() {
-  const user = {
-    username: signupForm.name.value,
-    email: signupForm.email.value,
-    password: signupForm.password.value,
-  };
-  // Do something with user data
-  await register(user);
-}
-
-async function processFormData(e) {
+//form submission btn event listener
+formSubmissionBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  // Validate Form
-  validateForm();
-  // Submit Form if Valid
-  if (isValid && passwordsMatch) {
-    await storeFormData();
+  submitRegistration();
+});
+
+function nameValidation(username) {
+  const namePattern = /^(?=.{8,30}$)[a-zA-Z0-9._ ]+$/;
+  return namePattern.test(username);
+}
+
+function emailValidation(userEmail) {
+  const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return emailPattern.test(userEmail);
+}
+
+function passwordValidation(userPassword) {
+  const passwordPattern =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,50}$/;
+  return passwordPattern.test(userPassword);
+}
+
+function passwordMatch(password1, password2) {
+  if (password1 === password2) {
+    return true;
+  } else return false;
+}
+
+// Change input box and exclaimation icon color, green or red
+function restyleValidation(inputEl, exclaimEl, color, isValid = false) {
+  inputEl.style.borderColor = color;
+  if (isValid) {
+    exclaimEl.classList.remove("fa-circle-exclamation");
+    exclaimEl.classList.add("fa-check");
+  } else {
+    exclaimEl.classList.remove("fa-check");
+    if (!exclaimEl.classList.contains("fa-circle-exclamation")) {
+      exclaimEl.classList.add("fa-circle-exclamation");
+    }
+  }
+  exclaimEl.style.color = color;
+}
+
+// validate each input value and change the color between green and red
+// to indicate success or error
+function validate(inputEl, exclaimEl, validationFunction) {
+  if (inputEl.value) {
+    if (validationFunction(inputEl.value)) {
+      restyleValidation(inputEl, exclaimEl, greenColor, true);
+      return true;
+    }
+  }
+  restyleValidation(inputEl, exclaimEl, redColor);
+  return false;
+}
+
+async function submitRegistration() {
+  if (isNameValid && isEmailValid && isPassword1Valid && isPassword2Valid) {
+    await register(storeFormData());
+    renderFormAfterRegistration();
   }
 }
 
-// Event Listener
-signupForm.addEventListener("submit", processFormData);
+function storeFormData() {
+  const user = {
+    username: nameInputEl.value,
+    email: emailInputEl.value,
+    password: password2InputEl.value,
+  };
+  return user;
+}
 
 // Post request to register
 async function register(newUser) {
@@ -95,18 +139,16 @@ async function register(newUser) {
   }
   await fetch(url, {
     method: "POST",
-    mode: "cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer",
     headers: new Headers({
       "Content-Type": "application/x-www-form-urlencoded  ",
     }),
     body: data,
   });
-  // ------------------------------------------
 }
 
-
-
+// Change the original form html
+function renderFormAfterRegistration() {
+  const containerEl = document.querySelector(".signup-container");
+  containerEl.innerHTML =
+    "<h1>You have successfully registered!</h1><p>Your browser will redirect you!</p>";
+}

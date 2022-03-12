@@ -1,0 +1,138 @@
+#registration {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 5rem;
+}
+
+#registration .signup-logo {
+  font-size: 7rem;
+  margin-bottom: 2rem;
+}
+
+.login-signup-container {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 45rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 3rem 1rem rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.signup-container {
+  max-width: 60rem;
+}
+
+.signup-container h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  padding: 2.5rem;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  gap: 3.5rem;
+  max-width: 60rem;
+
+  margin-bottom: 2.5rem;
+}
+
+#signup-form input {
+  font-size: 1.5rem;
+  width: 30rem;
+  padding: 0.3rem;
+  border-style: solid;
+  border-radius: 0.3rem;
+}
+
+#signup-form .submit {
+  font-size: 2rem;
+  align-self: flex-end;
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  background-color: var(--main-color);
+}
+
+#signup-form .submit:active {
+  transform: scale(0.97);
+}
+
+#signup-form .submit:hover {
+  background-color: var(--secondary-color);
+}
+
+#signup-form input:focus {
+  outline: none;
+}
+
+.form-group {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.input-group {
+  position: relative;
+}
+
+.exclaimation {
+  cursor: pointer;
+}
+
+.note {
+  position: absolute;
+  border: 1px solid #639bb3;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  transform: scale(0);
+  padding: 0.8rem;
+  transition: transform 200ms ease-in-out;
+  top: -15%;
+}
+
+.name-note {
+  right: -81%;
+}
+
+.email-note {
+  right: -87%;
+}
+
+.password-note {
+  right: -109%;
+}
+
+.name-exclaimation:hover + .name-note {
+  transform: scale(1);
+}
+
+.email-exclaimation:hover + .email-note {
+  transform: scale(1);
+}
+
+.password-exclaimation:hover + .password-note {
+  transform: scale(1);
+}
+
+.password-not-match {
+  display: none;
+  color: red;
+  margin: 0;
+  font-size: 1rem;
+
+  position: absolute;
+}

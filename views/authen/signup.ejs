@@ -12,12 +12,10 @@
 
     <link rel="shortcut icon" type="image/ico" href="./images/BrandInSight-favicon.ico" />
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/login-signup.css">
+    <link rel="stylesheet" href="../style/authen.css">
+    <!-- <link rel="stylesheet" href="../style/login-signup.css"> -->
 
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <!-- <script src="./node_modules/axios/dist/axios.min.js"></script> -->
     <script src="./js/signup.js" type="module" defer></script>
     <script src="./js/request.js" type="module" defer></script>
 
@@ -66,8 +64,8 @@
         </nav>
     </header>
 
-    <main>
-        <div id="message">Error message to display here</div>
+    <main id="registration">
+        <div id="flash-message">Error message to display here</div>
         <%- include("../partials/flash") %>
 
             <div class="signup-logo">
@@ -77,40 +75,55 @@
             <section class="login-signup-container signup-container">
                 <h1>Sign Up Today!</h1>
                 <!-- Form -->
-                <form action="/register" method="POST" id="signup-form">
+                <form action="/register" method="POST" id="signup-form" novalidate>
                     <!-- Full Name -->
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Full Name" required minlength="3"
-                            maxlength="100">
+                        <label for="name">Username</label>
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder="Username" required minlength="3"
+                                maxlength="100">
+                            <i class="fa-solid fa-circle-exclamation name-exclaimation exclaimation"></i>
+                            <p class="name-note note">8 - 30 alphanumeric character with "_" and "."</p>
+                        </div>
                     </div>
                     <!-- Email Address -->
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="email@address.com" required>
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" placeholder="email@address.com" required>
+                            <i class="fa-solid fa-circle-exclamation email-exclaimation exclaimation"></i>
+                            <p class="email-note note">Must contain @ symbol and follow email format</p>
+                        </div>
                     </div>
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password1">Password</label>
-                        <input type="password" id="password1" placeholder="Create Password (Min. 8 characters)" required
-                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-                            title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number.">
+                        <div class="input-group">
+                            <input type="password" id="password1" placeholder="Minimum 8 characters" required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+                                title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number.">
+                            <i class="fa-solid fa-circle-exclamation password-exclaimation password-1 exclaimation"></i>
+                            <p class="password-note note">Must contain at least 1 uppercase, 1 lowercase and 1 number
+                            </p>
+                        </div>
                     </div>
                     <!-- Confirm Password -->
                     <div class="form-group">
                         <label for="password2">Confirm Password</label>
-                        <input type="password" id="password2" placeholder="Confirm Password" required
-                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password">
+                        <div class="input-group">
+                            <input type="password" id="password2" placeholder="Confirm Password" required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password">
+                            <i class="fa-solid fa-circle-exclamation password-exclaimation password-2 exclaimation"></i>
+                            <p class="password-note note">Must contain at least 1 uppercase, 1 lowercase and 1 number
+                            </p>
+                            <p class='password-not-match'>Both passwords must match!</p>
+                        </div>
                     </div>
 
-                    <button type="submit">Register</button>
+                    <button type="submit" class="submit btn">Register</button>
 
                 </form>
 
-            </section>
-
-            <section>
-                <button class="btn sub-test">Submit Test</button>
             </section>
 
     </main>
