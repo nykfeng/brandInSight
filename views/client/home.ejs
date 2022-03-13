@@ -1,0 +1,32 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+    <aside class="home-left-panel">
+        <% if (currentUser) { %>
+            <h2>👋Welcome back, <%= currentUser.username%>
+            </h2>
+            <% } %>
+    </aside>
+    <section class="home-search-bar"></section>
+    <main>
+        <h1>Home Page</h1>
+
+        <br>
+        <br>
+        <a href="/internal">Internal Team Management Tools -></a>
+        <br>
+        <br>
+        <div class="search-bar">---------------------</div>
+        <p>Brands List goes here</p>
+        <div class="trending-brand-list">
+            <ul class="brand-list">
+                <% for (let brand of brands) { %>
+                    <li><span class="name">
+                            <%=brand.name%>
+                        </span>
+                        <a href="/brands/<%=brand._id%>">Brand ID -></a>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </main>
+    <aside class="home-right-panel"></aside>

@@ -1,7 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
-
 
 const express = require("express");
 const { default: mongoose } = require("mongoose");
@@ -117,11 +116,10 @@ app.get("/signup", (req, res) => {
 async function homePage(req, res) {
   const brands = await Brand.find({});
 
-  res.render("home", { brands });
+  res.render("client/home", { brands });
 }
 
 function internal(req, res) {
-
   res.render("internal/index");
 }
 
