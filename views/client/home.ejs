@@ -1,13 +1,357 @@
 <% layout("/layouts/boilerplateClient.ejs") %>
 
-    <aside class="home-left-panel">
-        <% if (currentUser) { %>
+
+    <main class="content-body">
+        <!-- Home page left panel -->
+        <aside class="home-left-panel">
+
+            <div class="welcome-area">
+                <img src="./images/user-avatar.jpg" alt="" class="user-profile-avatar">
+                <div class="welcome-text-area">
+                    <h3>Welcome,</h3>
+                    <h3 class="user-profile-name">Julius Roberts</h3>
+                </div>
+            </div>
+
+            <div class="home-left-panel__division-tab">
+
+            </div>
+
+            <div class="user-functions">
+                <p class="functions-title">User functions</p>
+                <ul class="user-functions-list functions-list">
+                    <li class="user-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            Recommendations</a>
+                    </li>
+                    <li class="user-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-align-justify"></i>
+                            My Lists</a>
+                    </li>
+                    <li class="user-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-bookmark"></i>
+                            My Saved Searches</a>
+                    </li>
+                    <li class="user-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-book"></i>
+                            My Followed Brands</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="business-functions">
+                <p class="functions-title">BrandInSights Explore</p>
+                <ul class="business-functions-list functions-list">
+                    <li class="business-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-money-check"></i>
+                            Brands Search</a>
+                    </li>
+                    <li class="business-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-address-book"></i>
+                            Discover Contacts</a>
+                    </li>
+                    <li class="business-functions-item">
+                        <a href="" class="functions-item">
+                            <i class="fa-solid fa-building-columns"></i>
+                            Private Investors</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <% if (currentUser) { %>
             <h2>👋Welcome back, <%= currentUser.username%>
             </h2>
-            <% } %>
-    </aside>
-    <section class="home-search-bar"></section>
-    <main>
+            <% } %> -->
+        </aside>
+
+        <!-- home main content column -->
+        <main class="home-column">
+
+            <!-- treding brand list  -->
+            <div class="home-trending-brands home-tab">
+                <h1>Trending brands:</h1>
+                <div class="home-column-title-line"></div>
+                <ul class="brand-list">
+                    <li class="brand-list__brand">
+                        <img src="./logos/airbnb.png" alt="" class="brand-list__brand-logo">
+                        <div class="brand-list__text">
+                            <a href="" class="brand-list__brand-title">Unity</a>
+                            <p class="brand-list__brand-industry">Developer Platform, Augmented Reality, Mobile Apps</p>
+                        </div>
+                        <div class="brand-list__subscription-status">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </div>
+                    </li>
+
+                    <li class="brand-list__brand">
+
+                        <img src="./logos/bridge.png" alt="" class="brand-list__brand-logo">
+                        <div class="brand-list__text">
+                            <a href="" class="brand-list__brand-title">JPMorgan Chase & Co.</a>
+                            <p class="brand-list__brand-industry">Business Development, Finance, Financial Services</p>
+                        </div>
+                        <div class="brand-list__subscription-status">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </li>
+
+                    <li class="brand-list__brand">
+                        <img src="./logos/google-play.png" alt="" class="brand-list__brand-logo">
+                        <div class="brand-list__text">
+                            <a href="" class="brand-list__brand-title">NVIDIA</a>
+                            <p class="brand-list__brand-industry">Artificial Intelligence, GPU, Hardware, Software,
+                                Virtual
+                                Reality, Virtualization</p>
+                        </div>
+                    </li>
+
+                    <li class="brand-list__brand">
+                        <img src="./logos/paypal.png" alt="" class="brand-list__brand-logo">
+                        <div class="brand-list__text">
+                            <a href="/brands/621ecf3cac9258e3f087474c" class="brand-list__brand-title">Tesla</a>
+                            <p class="brand-list__brand-industry">Automotive, Autonomous Vehicles, Electric Vehicle,
+                                Electronics
+                            </p>
+                        </div>
+                    </li>
+
+
+                    <div class="right-brand-view-more">
+
+                        <button>View More</button>
+                    </div>
+
+                </ul>
+            </div>
+
+
+            <!-- news activity from trending brands -->
+            <div class="home-news-activity home-tab">
+                <h1 class="home-newsfeed">News activity:</h1>
+                <div class="home-column-title-line"></div>
+                <ul class="home-newsfeed-list">
+                    <li class="newsfeed-item">
+                        <img src="https://icdn.digitaltrends.com/image/digitaltrends/alder-lake-mobility-chip.jpg"
+                            alt="" class="news-image">
+                        <div class="news-text-block">
+                            <div class="news-avatar"></div>
+                            <div class="news-title-block">
+                                <h3 class="news-title">Engadget Podcast: Apple goes Super Ultra</h3>
+                                <span class="news-source-name">Engadget</span>
+                                <span> on </span>
+                                <span class="news-published-date"> Mar 11, 2022</span>
+                            </div>
+
+
+                            <p class="news-content">This week, Cherlynn and Devindra dive into all of the news from
+                                Apples
+                                first
+                                2022 event. Whats so great about the revamped iPhone SE? Is the new iPad Air better than
+                                the
+                                iPad Mini? And who really nee… [+1386 chars]</p>
+                        </div>
+                    </li>
+
+                    <li class="newsfeed-item">
+                        <img src="https://assets2.rockpapershotgun.com/msi-ge76-raider-2022.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/msi-ge76-raider-2022.jpg"
+                            alt="" class="news-image">
+                        <div class="news-text-block">
+                            <div class="news-header">
+                                <div class="news-avatar"></div>
+                                <div class="news-title-block">
+                                    <h3 class="news-title">Ubisoft says no user information was exposed in recent 'cyber
+                                        security incident'</h3>
+                                    <span class="news-source-name">Engadget</span>
+                                    <span> on </span>
+                                    <span class="news-published-date"> Mar 11, 2022</span>
+                                </div>
+                            </div>
+
+                            <p class="news-content">South American hacking group Lapsus$ is claiming responsibility for
+                                another
+                                high-profile hack. On Thursday, Ubisoft said\r\n it underwent a “cyber security
+                                incident”
+                                last
+                                week that saw some of its games, systems and services temporarily disrupted. At the
+                                time, …
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="newsfeed-item">
+                        <img src="https://icdn.digitaltrends.com/image/digitaltrends/rog-flow-z13-02.jpg" alt=""
+                            class="news-image">
+                        <div class="news-text-block">
+                            <div class="news-avatar"></div>
+                            <div class="news-title-block">
+                                <h3 class="news-title">Intel may have the first 16-core laptop CPU</h3>
+                                <span class="news-source-name">Digital Trends</span>
+                                <span> on </span>
+                                <span class="news-published-date"> Mar 11, 2022</span>
+                            </div>
+
+                            <p class="news-content">According to a freshly leaked benchmark, Intel may be about to set
+                                new
+                                standards in high-end gaming laptop performance. The upcoming Intel Core i9-12900HX
+                                mobility
+                                chip has been benchmarked and retur… [+3137 chars]</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Featured brand activities -->
+            <div class="home-featured-brand-activities">
+
+            </div>
+
+            <!-- Newly added brands -->
+            <div class="home-newly-added-brands"></div>
+
+            <br>
+            <br>
+
+
+            <a href="/internal">Internal Team Management Tools -></a>
+
+
+
+        </main>
+
+        <!-- home page right panel -->
+
+        <!-- subscribed brands -->
+        <aside class="home-right-panel">
+            <div class="home-subscribed-brands right-tab">
+                <h2>Subscribed Brands</h2>
+                <ul class="right-brands-list">
+                    <li class="right-brand-item">
+                        <img src="./logos/airbnb.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">JPMorgan Chase & Co.</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span class="right-brand-status-text">Subscribed</span>
+                        </div>
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/google-play.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">Unity</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="right-brand-status-text">Subscribe</span>
+                        </div>
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/powerpoint.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">NVIDIA</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="right-brand-status-text">Subscribe</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="right-brand-view-more">
+
+                            <button>View More</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- recently viewed history -->
+            <div class="home-recently-viewed right-tab">
+                <h2>Recently Viewed Brands:</h2>
+                <ul class="right-brands-list">
+                    <li class="right-brand-item">
+                        <img src="./logos/airbnb.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">JPMorgan Chase & Co.</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span class="right-brand-status-text">Subscribed</span>
+                        </div>
+
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/google-play.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">Unity</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="right-brand-status-text">Subscribe</span>
+                        </div>
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/powerpoint.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">NVIDIA</span>
+                        <div class="right-brand-status">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="right-brand-status-text">Subscribe</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="right-brand-view-more">
+
+                            <button>View More</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- most ad spend last quarter -->
+            <div class="home-most-ad-spend right-tab">
+                <h2>Most Ad Spend Last Quarter:</h2>
+                <ul class="right-brands-list">
+                    <li class="right-brand-item">
+                        <img src="./logos/airbnb.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">Apple</span>
+
+                        <div class="right-brand-spend">
+                            <p>$43,000,000</p>
+                        </div>
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/google-play.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">Unity</span>
+                        <div class="right-brand-spend">
+                            <p>$33,000,000</p>
+                        </div>
+                    </li>
+
+                    <li class="right-brand-item">
+                        <img src="./logos/powerpoint.png" alt="" class="right-brand-logo">
+                        <span class="right-brand-title">NVIDIA</span>
+                        <div class="right-brand-spend">
+                            <p>$23,000,000</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="right-brand-view-more">
+
+                            <button>View More</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </aside>
+
+    </main>
+
+    <!-- <main>
         <h1>Home Page</h1>
 
         <br>
@@ -29,4 +373,4 @@
             </ul>
         </div>
     </main>
-    <aside class="home-right-panel"></aside>
+    <aside class="home-right-panel"></aside> -->

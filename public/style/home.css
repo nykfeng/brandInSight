@@ -1,4 +1,4 @@
-main {
+/* main {
   max-width: 120rem;
   margin: 0 auto;
   font-size: 1.8rem;
@@ -13,4 +13,371 @@ main {
 
 .trending-brand-list a {
   color: #2d31fa;
+} */
+
+a,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+/* home page grid design */
+/* --------------------------- */
+/* --------------------------- */
+#home-page-body {
+  place-content: center;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  /* grid-template-areas:
+    ". header ."
+    "left-side home-main right-side"
+    ". footer ."; */
+
+  /* background-color: #EEF2FF; */
+}
+
+.content-body {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-left-panel,
+.home-column,
+.home-right-panel {
+  margin: 2rem;
+  border-radius: 1.5rem;
+  background-color: var(--primary-gray-color);
+}
+
+.home-left-panel,
+.home-right-panel {
+  padding: 2rem;
+}
+
+.home-left-panel {
+  grid-area: left-side;
+  max-width: 35rem;
+}
+
+.home-column {
+  grid-area: home-main;
+  max-width: 60rem;
+  background-color: #fff;
+}
+
+.home-right-panel {
+  grid-area: right-side;
+  max-width: 40rem;
+}
+
+/* left-panel */
+/* --------------------------- */
+/* --------------------------- */
+.home-left-panel,
+.home-right-panel {
+  border-top: 2.5rem solid var(--main-color);
+}
+
+.welcome-area {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.user-profile-avatar {
+  width: 5rem;
+  height: 5rem;
+  border: 0.1rem solid black;
+  border-radius: 100%;
+}
+
+.welcome-text-area {
+  align-self: flex-end;
+}
+
+.user-profile-name {
+  font-size: 1.5rem;
+}
+
+.user-functions-item {
+  white-space: nowrap;
+}
+
+.user-functions,
+.business-functions {
+  border-top: 1rem solid var(--main-color);
+}
+
+.functions-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.functions-list {
+  font-size: 1.6rem;
+}
+
+.functions-list {
+  margin-bottom: 2rem;
+}
+
+.functions-list li {
+  padding: 0.5rem;
+}
+
+.functions-item:hover {
+  color: var(--main-color);
+}
+
+/*  home main content column */
+/* --------------------------- */
+/* --------------------------- */
+.home-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.home-column .brand-list {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.home-column .brand-list__brand {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+
+  overflow: hidden;
+  box-shadow: 5px 5px 15px 5px rgb(189, 189, 189);
+
+  display: flex;
+  gap: 1rem;
+}
+
+.home-trending-brands {
+  border-radius: 1.5rem;
+}
+
+.home-trending-brands h1,
+.home-news-activity h1 {
+  margin-bottom: 0.1rem;
+  background-color: var(--main-color);
+  display: inline-block;
+  color: #fff;
+  padding: 1rem;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.home-column-title-line {
+  border-top: 0.2rem solid var(--main-color);
+
+  margin-bottom: 2rem;
+}
+
+.brand-list__brand:hover {
+  transform: scale(1.01);
+}
+/* .brand-list__title-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+} */
+
+ul.brand-list > li {
+  counter-increment: step-counter;
+}
+
+ul.brand-list > li:before {
+  content: counter(step-counter);
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.brand-list__brand-logo {
+  max-width: 4.5rem;
+  max-height: 4.5rem;
+  display: inline-block;
+}
+
+.brand-list__brand-title {
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.brand-list__brand-title:hover {
+  color: var(--main-color);
+}
+
+.brand-list__brand-industry {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.brand-list__subscription-status {
+  margin-left: auto;
+  font-size: 3rem;
+  align-self: center;
+  cursor: pointer;
+
+  color: var(--main-color);
+}
+
+/*  home main content column -- news activity section */
+/* -------------------------------------------------- */
+
+.newsfeed-item {
+  margin-bottom: 2rem;
+  background-color: #fff;
+  padding: 0.5rem;
+
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.2rem 1rem black;
+
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsfeed-item .news-avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+
+  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsfeed-item .news-title-block {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.newsfeed-item .news-image {
+  width: 30%;
+}
+
+.news-header {
+  display: flex;
+}
+
+.news-title-block .news-source-name {
+  font-size: 1.2rem;
+}
+
+.news-title-block .news-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+}
+
+.news-title-block .news-title:hover {
+  color: var(--main-color);
+}
+
+.newsfeed-item .news-content {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/*  right panel  */
+/* --------------------------- */
+/* --------------------------- */
+.home-subscribed-brands,
+.home-recently-viewed,
+.home-most-ad-spend {
+  margin-bottom: 2rem;
+}
+.home-subscribed-brands h2,
+.home-recently-viewed h2,
+.home-most-ad-spend h2 {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.home-subscribed-brands {
+  width: 100%;
+}
+
+.right-tab {
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.right-brands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.right-brand-title {
+  font-size: 1.3rem;
+  white-space: nowrap;
+  display: block;
+  margin-right: auto;
+}
+
+.right-brand-status {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.right-brand-status {
+  cursor: pointer;
+}
+
+.right-brand-logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.right-brand-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.right-brand-view-more {
+  border-top: 1px solid rgba(0, 0, 0, 0.366);
+  padding: 1rem;
+  text-align: center;
+}
+
+.right-brand-view-more button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: 0.2rem solid var(--main-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--main-color);
+}
+
+.right-brand-spend p {
+  font-size: 1.3rem;
 }
