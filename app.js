@@ -119,8 +119,9 @@ async function homePage(req, res) {
   res.render("client/home", { brands });
 }
 
-function internal(req, res) {
-  res.render("internal/index");
+async function internal(req, res) {
+  const brands = await Brand.find({});
+  res.render("internal/index",{ brands });
 }
 
 async function createBrand(req, res) {

@@ -51,7 +51,9 @@ module.exports.update = async (req, res) => {
   );
 
   if (req.file) {
-    await cloudinary.uploader.destroy(brand.logo.filename);
+    if (brand.logo.filename) {
+      await cloudinary.uploader.destroy(brand.logo.filename);
+    }
     brand.logo = { url: req.file.path, filename: req.file.filename };
     await brand.save();
   }

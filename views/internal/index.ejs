@@ -8,6 +8,22 @@
         <h1>Employee Access Only Page</h1>
         <h2>Edit all data and brands information here</h2>
 
+        <br>
+        <br>
+        <div class="search-bar">---------------------</div>
+        <p>Brands List goes here</p>
+        <div class="trending-brand-list">
+            <ul class="brand-list">
+                <% for (let brand of brands) { %>
+                    <li><span class="name">
+                            <%=brand.name%>
+                        </span>
+                        <a href="/brands/<%=brand._id%>">Brand ID -></a>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+
         <a href="/brands/new" class="internal-btn btn">Add a brand</a>
 
     </section>
