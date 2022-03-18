@@ -13,11 +13,32 @@ module.exports.renderAddForm = async (req, res) => {
 };
 
 module.exports.add = async (req, res, next) => {
-  // const { url, filename } = req.file;
-  console.log(req.body);
-  console.log(req.file);
+  // console.log(req.body);
+  // console.log(req.file);
   const brand = new Brand(req.body.brand);
-  brand.logo = { url: req.file.path, filename: req.file.filename };
+  console.log(brand._id);
+  if (req.file) {
+    let url = req.file.path;
+    let filename = req.file.filename;
+
+    const newUrl = url.replace("logo", `brands/${brand._id}/logo`);
+    const newFilename = filename.replace("logo", `brands/${brand._id}/logo`);
+
+    await cloudinary.uploader.rename(
+      filename,
+      newFilename,
+      function (error, result) {
+        console.log(result, error);
+      }
+    );
+
+    brand.logo = { url: newUrl, filename: newFilename };
+
+    // brand.logo = { url: req.file.path, filename: req.file.filename };
+  }
+
+  console.log(brand);
+
   await brand.save();
   req.flash("success", "Successfully created a new brand!");
   res.redirect(`/brands/${brand._id}`);
@@ -64,7 +85,23 @@ module.exports.update = async (req, res) => {
 module.exports.deleteBrand = async (req, res) => {
   const { id } = req.params;
   const brand = await Brand.findById(id);
-  await cloudinary.uploader.destroy(brand.logo.filename);
+  if (brand.logo.filename) {
+    // must delete the logo file before the folder can be deleted
+    await cloudinary.uploader.destroy(
+      brand.logo.filename,
+      function (error, result) {
+        console.log("Cloudinary Result: ",result, "Cloudinary Error: ", error);
+      }
+    );
+
+    // Delete the brand id folder that holds the logo file
+    await cloudinary.api.delete_folder(`BrandInSight/brands/${id}`,
+    function (error, result) {
+      console.log("Cloudinary Result: ",result, "Cloudinary Error: ", error);
+    }
+  );
+  }
+
   await brand.remove();
   req.flash("success", "Successfully deleted a brand!");
   res.redirect(`/brands`);

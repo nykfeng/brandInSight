@@ -26,6 +26,10 @@ const contactSchema = new Schema({
   yearsOfExperience: {
     type: Number,
   },
+  brand: {
+    type: Schema.Types.ObjectId,
+    ref: "Brand",
+  }
 });
 
 module.exports = mongoose.model("Contact", contactSchema);

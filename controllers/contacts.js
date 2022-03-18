@@ -7,8 +7,10 @@ module.exports.add = async (req, res) => {
     const brand = await Brand.findById(req.params.id);
     const contact = new Contact(req.body.contact);
     brand.contact.push(contact);
+    contact.brand = req.params.id;
     await contact.save();
     await brand.save();
+    console.log(contact);
     req.flash("success", "Successfully created a new contact!");
     res.redirect(`/brands/${brand._id}`);
   }

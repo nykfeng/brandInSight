@@ -150,6 +150,9 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
+  // TODO
+  // console.log("err---", err); // There is error on the home page
+  console.log("Express last error----")
   if (!err.message) err.message = "Something went super wrong!";
   res.status(statusCode).render("internal/error", { error: err });
 });
