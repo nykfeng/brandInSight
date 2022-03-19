@@ -153,6 +153,7 @@ app.use((err, req, res, next) => {
   // TODO
   // console.log("err---", err); // There is error on the home page
   console.log("Express last error----")
+  console.log(err);
   if (!err.message) err.message = "Something went super wrong!";
   res.status(statusCode).render("internal/error", { error: err });
 });

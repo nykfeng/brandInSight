@@ -4,13 +4,36 @@ const myCustomJoi = Joi.extend(require("joi-phone-number"));
 const brandSchema = Joi.object({
   brand: Joi.object({
     name: Joi.string().required(),
-    employee: {
-      min: Joi.number().min(0),
-      max: Joi.number(),
-    },
-    headquarters: Joi.string(),
+    employee: Joi.number().min(0).allow('').optional(),
+    headquarters: Joi.string().allow(""),
     website: Joi.string().allow(""),
     description: Joi.string().allow(""),
+    typeOfCompany: {
+      isPublicCompany: Joi.boolean(),
+      stockTicker: Joi.string().allow(""),
+    },
+    socialMedia: {
+      facebook: {
+        profileHandle: Joi.string().allow(""),
+        likes: Joi.number().min(0),
+      },
+      twitter: {
+        profileHandle: Joi.string().allow(""),
+        followers: Joi.number().min(0),
+      },
+      linkedin: {
+        profileHandle: Joi.string().allow(""),
+      },
+    },
+    industry: [Joi.string().allow("")],
+    FoundedDate: Joi.date(),
+    founders: [Joi.string().allow("")],
+    highlights: {
+      acquisition: Joi.number().min(0),
+      investment: Joi.number().min(0),
+      adSpend: Joi.number().min(0),
+      contacts: Joi.number().min(0),
+    },
     logo: {
       url: Joi.string().allow(""),
       filename: Joi.string().allow(""),

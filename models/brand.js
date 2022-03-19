@@ -14,8 +14,7 @@ const BrandSchema = new Schema({
     trim: true,
   },
   employee: {
-    min: { type: Number, min: 0 },
-    max: { type: Number, min: 0 },
+    type: Number,
   },
   headquarters: {
     type: String,
@@ -23,6 +22,59 @@ const BrandSchema = new Schema({
   description: {
     type: String,
     trim: true,
+  },
+  typeOfCompany: {
+    isPublicCompany: {
+      type: Boolean,
+    },
+    stockTicker: {
+      type: String,
+      default: "N/A",
+    },
+  },
+  socialMedia: {
+    facebook: {
+      profileHandle: {
+        type: String,
+      },
+      likes: {
+        type: Number,
+        min: 0,
+      },
+    },
+    twitter: {
+      profileHandle: {
+        type: String,
+      },
+      followers: {
+        type: Number,
+        min: 0,
+      },
+    },
+    linkedin: {
+      profileHandle: {
+        type: String,
+      },
+    },
+  },
+  industry: [{ type: String }],
+  FoundedDate: {
+    type: Date,
+  },
+  founders: [{ type: String }],
+  highlights: {
+    acquisition: {
+      type: Number,
+    },
+    investment: {
+      type: Number,
+    },
+    adSpend: {
+      type: Number,
+    }, 
+    contacts: {
+      type: Number
+    }
   },
   logo: {
     url: String,
@@ -34,6 +86,12 @@ const BrandSchema = new Schema({
       ref: "Contact",
     },
   ],
+  leadership: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Leadership',
+    },
+  ]
 });
 
 // Mongoose middleware to delete contacts after brand was deleted
