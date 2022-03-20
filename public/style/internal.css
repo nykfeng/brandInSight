@@ -14,10 +14,10 @@
   margin-bottom: 1rem;
 }
 
-.brand-header {
+/* .brand-header {
   max-width: 90rem;
   margin: 10rem auto;
-}
+} */
 
 .brand-btn {
   border-radius: 0.05rem;
@@ -104,4 +104,292 @@
 .internal-footer-block {
   display: flex;
   flex-direction: column;
+}
+
+/* Check out all styles above to delete */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+
+/* Internal Edit Page for brand info, contacts, highlights, leadership */
+
+/*-------------------- Internal General Items -------------------- */
+#internal-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 3rem;
+}
+
+.internal-btn {
+  border-radius: 1rem;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1.5rem;
+  max-height: 4rem;
+}
+
+.internal-btn:active {
+  transform: scale(0.98);
+}
+
+.internal-btn-save {
+  background-color: var(--variety-color-purple);
+}
+
+.internal-btn-delete {
+  background-color: var(--warning-red);
+}
+
+.internal-btn-add {
+  background-color: var(--main-color);
+}
+
+.internal-btn-save:hover {
+  opacity: 0.85;
+}
+
+.internal-btn-delete:hover {
+  opacity: 0.8;
+}
+
+.internal-btn-add:hover {
+  opacity: 0.8;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.internal-brand-title {
+  margin-bottom: 0.1rem;
+  background-color: var(--variety-color-purple);
+  display: inline-block;
+  color: #fff;
+  padding: 1rem;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.internal-brand-title-line {
+  border-top: 0.2rem solid var(--variety-color-purple);
+
+  margin-bottom: 2rem;
+}
+
+.internal-brand-section-logo {
+  align-items: center;
+  justify-content: center;
+}
+.internal-brand-section-logo img {
+  max-width: 18rem;
+  max-height: 18rem;
+  /* background-color: var(--variety-color-purple); */
+}
+
+.internal-brand-container {
+  display: flex;
+  gap: 2rem;
+  width: 120rem;
+  padding: 2rem;
+
+  background: linear-gradient(
+    to left,
+    var(--background-blue),
+    rgb(240, 246, 252)
+  );
+
+  box-shadow: 0.2rem 0.2rem 0.5rem var(--transparent-gray);
+}
+
+/* -------------------- End of Internal General Items -------------------- */
+
+/* Internal Brand Information Editing Area */
+/* ------------------------------------ */
+/* ------------------------------------ */
+
+.brand-information-title {
+  font-size: 2.5rem;
+}
+
+.brand-information,
+.brand-highlight-form,
+.internal-contacts-form,
+.brand-leadership-item-form {
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 2rem;
+  justify-content: space-between;
+}
+
+#internal-brand input {
+  width: 35rem;
+  padding: 0.5rem;
+  border: 1px solid var(--transparent-gray);
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--transparent-gray);
+  background-color: #fff;
+}
+
+#internal-brand input:focus,
+#internal-brand textarea:focus {
+  outline-color: var(--main-color);
+}
+
+#internal-brand .short-input-field {
+  width: 20rem;
+}
+
+#internal-brand .input-group {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-social-media {
+  gap: 2rem;
+}
+
+#internal-brand .brand-social-media .input-group {
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.description-input {
+  max-height: 20rem;
+  min-width: 50rem;
+}
+
+#internal-brand .description-input textarea {
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--transparent-gray);
+}
+
+#internal-brand .logo-input {
+  align-items: flex-start;
+  border: 1px solid var(--transparent-gray);
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0.1rem 0.1rem 0.5rem var(--transparent-gray);
+}
+
+#internal-brand .logo-input input {
+  border: none;
+  box-shadow: none;
+  width: auto;
+}
+
+.internal-submit-brand-information {
+  align-items: center;
+  margin-left: auto;
+  max-height: 4rem;
+  align-self: flex-end;
+}
+
+/* Internal Brand Highlights Editing Area */
+/* ------------------------------------ */
+/* ------------------------------------ */
+
+.brand-highlights {
+  gap: 2rem;
+  width: 100%;
+}
+
+.brand-highlights-block {
+  width: 100%;
+}
+
+.highlight-group {
+  gap: 2rem;
+}
+
+.internal-brand-btn-group {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.internal-submit-brand-highlights {
+  align-items: center;
+}
+
+/* Internal Brand Contacts Editing Area */
+/* ------------------------------------ */
+/* ------------------------------------ */
+.internal-brand-contacts {
+  gap: 2rem;
+  width: 100%;
+}
+
+.internal-contacts-form {
+  box-shadow: 0.2rem 0.2rem 0.5rem var(--transparent-gray);
+  background-color: #fff;
+}
+
+.internal-brand-contacts-block {
+  width: 100%;
+}
+
+.contacts-personal-detail {
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.contacts-submit-container {
+  justify-content: space-between;
+}
+
+.internal-contacts-btn-group,
+.leadership-btn-group {
+  gap: 5rem;
+}
+
+.contacts-add,
+.contacts-delete,
+.contacts-submit {
+  align-items: center;
+}
+
+.contacts-linkedin-handle {
+  font-size: 2.5rem;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.contacts-add {
+  max-width: 15.5rem;
+  margin-left: auto;
+}
+
+/* Internal Brand Leadership Editing Area */
+/* ------------------------------------ */
+/* ------------------------------------ */
+.internal-brand-leadership {
+  gap: 2rem;
+}
+
+.brand-leadership-item-form {
+  box-shadow: 0.2rem 0.2rem 0.5rem var(--transparent-gray);
+}
+
+.brand-leadership-profile {
+  max-width: 5rem;
+  max-height: 5rem;
+}
+
+.leadership-add {
+  align-items: center;
+  max-width: 24rem;
+  margin-left: auto;
+}
+
+.brand-leadership-item-form {
+  background-color: #fff;
 }

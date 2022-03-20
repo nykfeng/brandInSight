@@ -111,6 +111,10 @@ app.get("/signup", (req, res) => {
   res.render("authen/signup");
 });
 
+app.get("/internal/brandPage", (req, res) => {
+  res.render("internal/brands/brandPage");
+});
+
 // -------------------------
 
 // ---------------------------
@@ -123,7 +127,7 @@ async function homePage(req, res) {
 
 async function internal(req, res) {
   const brands = await Brand.find({});
-  res.render("internal/index",{ brands });
+  res.render("internal/index", { brands });
 }
 
 async function createBrand(req, res) {
@@ -154,7 +158,7 @@ app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   // TODO
   // console.log("err---", err); // There is error on the home page
-  console.log("Express last error----")
+  console.log("Express last error----");
   console.log(err);
   if (!err.message) err.message = "Something went super wrong!";
   res.status(statusCode).render("internal/error", { error: err });

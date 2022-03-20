@@ -1,0 +1,313 @@
+<% layout("/layouts/boilerplateInternal.ejs") %>
+<main id="internal-brand">
+    <section class="section-brand-details">
+
+            <div class="internal-brand-container brand-header">
+                <div class="brand-logo-container">
+                    <img src="../images/logo/nvidia.gif" alt="" class="brand-logo">
+                </div>
+
+                <div class="brand-information-container">
+
+
+                    <h1 class="brand-information-title internal-brand-title">Brand Information</h1>
+                    <div class="internal-brand-title-line"></div>
+                    <form class="brand-information">
+                        <!-- Short input field for brand information -->
+                        <div class="brand-information-short flex-column">
+                            <div class="input-group flex">
+                                <label for="brand-name" id="brand-name">Brand Name: </label>
+                                <input type="text" name="brand-name" class="short-input-field" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-employee" id="brand-employee">Brand Employee: </label>
+                                <input type="number" name="brand-employee" class="short-input-field" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-stock" id="brand-stock">Brand Stock: </label>
+                                <input type="text" name="brand-stock" class="short-input-field" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-founded-date" id="brand-founded-date">Brand Founded Date: </label>
+                                <input type="number" name="brand-founded-date" class="short-input-field" value="">
+                            </div>
+
+                        </div>
+
+                        <!-- Long input field for brand information -->
+                        <div class="brand-information-long flex-column">
+
+                            <div class="input-group flex">
+                                <label for="brand-url" id="brand-url">Brand Website: </label>
+                                <input type="text" name="brand-url" id="brand-url" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-location" id="brand-location">Brand Location: </label>
+                                <input type="text" name="brand-location" id="brand-location" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-industry" id="brand-industry">Brand Industry: </label>
+                                <input type="text" name="brand-industry" id="brand-industry" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="brand-founders" id="brand-founders">Brand Founders: </label>
+                                <input type="text" name="brand-founders" id="brand-founders" value="">
+                            </div>
+                        </div>
+
+
+                        <!-- Social media block for brand information -->
+                        <div class="brand-social-media flex-column">
+                            <div class="input-group flex-column">
+                                <label for="brand-facebook-handle" id="brand-facebook-handle"><i
+                                        class="fa-brands fa-facebook"></i>Facebook</label>
+                                <input type="text" name="brand-facebook-handle" class="short-input-field" value="">
+
+                                <label for="brand-facebook-likes" id="brand-facebook-likes"><i
+                                        class="fa-brands fa-facebook"></i>Facebook Likes</label>
+                                <input type="text" name="brand-facebook-likes" class="short-input-field" value="">
+                            </div>
+
+                            <div class="input-group flex-column">
+                                <label for="brand-twitter-handle" id="brand-twitter-handle"><i
+                                        class="fa-brands fa-twitter"></i>Twitter</label>
+                                <input type="text" name="brand-twitter-handle" class="short-input-field" value="">
+
+                                <label for="brand-twitter-followers" id="brand-twitter-followers"><i
+                                        class="fa-brands fa-twitter"></i>Twitter followers</label>
+                                <input type="text" name="brand-twitter-followers" class="short-input-field" value="">
+                            </div>
+
+                            <div class="input-group flex-column">
+                                <label for="brand-linkedin-handle" id="brand-linkedin-handle"><i
+                                        class="fa-brands fa-linkedin"></i>Linkedin</label>
+                                <input type="text" name="brand-linkedin-handle" class="short-input-field" value="">
+                            </div>
+                        </div>
+
+                        <!-- Brand description text block -->
+                        <div class="description-input flex-column">
+                            <label for="brand-description" id="brand-description">Brand Description: </label>
+                            <textarea name="brand-description" id="brand-description" cols="30" rows="10"
+                                value=""></textarea>
+                        </div>
+
+                        <!-- Brand logo upload -->
+                        <div class="input-group logo-input flex-column">
+                            <label for="brand-logo">Choose a Logo File:</label>
+                            <input type="file" id="brand-logo" name="brand-logo"
+                                accept="image/png, image/jpeg, image/jpg, image/gif">
+                        </div>
+
+
+                        <!-- Submit change and save button group -->
+                        <button class="internal-submit-brand-information internal-btn internal-btn-save flex">Save
+                            Changes</button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        
+    </section>
+
+    <!-- brand hightlights section -->
+    <section class="section-brand-highlights">
+        <div class="internal-brand-container">
+            <div class="brand-highlights flex">
+                <div class="internal-brand-section-logo flex">
+                    <img src="/images/internal/highlights.png" alt="" class="highlights-image internal-brand-section-img">
+                </div>
+                <div class="brand-highlights-block">
+                    <h1 class="brand-information-title internal-brand-title">Brand Highlights</h1>
+                    <div class="internal-brand-title-line"></div>
+
+                    <!-- Forms and input for brand highlights -->
+                    <div class="brand-highlights-content">
+                        <form action="" class="brand-highlight-form ">
+                            <div class="highlight-group flex-column">
+                                <div class="input-group flex">
+                                    <label for="brand-acquisition" id="brand-acquisition">Brand Acquisitions: </label>
+                                    <input type="text" name="brand-acquisition" value="" class="short-input-field">
+                                </div>
+
+                                <div class="input-group flex">
+                                    <label for="brand-investment" id="brand-investment">Brand Investments: </label>
+                                    <input type="text" name="brand-investment" value="" class="short-input-field">
+                                </div>
+                            </div>
+
+                            <div class="highlight-group flex-column">
+                                <div class="input-group flex">
+                                    <label for="brand-yearly-ad-spend" id="brand-yearly-ad-spend">Brand Yearly Ad
+                                        Spends:
+                                    </label>
+                                    <input type="text" name="brand-yearly-ad-spend" value="" class="short-input-field">
+                                </div>
+
+                                <div class="input-group flex">
+                                    <label for="brand-contacts" id="brand-contacts">Brand Contacts: </label>
+                                    <input type="text" name="brand-contacts" value="" class="short-input-field">
+                                </div>
+                            </div>
+
+                            <!-- Submit change and save button group -->
+                            <div class="internal-brand-btn-group flex">
+                                <button
+                                    class="internal-submit-brand-highlights internal-btn internal-btn-save flex">Save
+                                    Changes</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Brand Contacts Section -->
+    <section class="section-brand-contacts">
+        <div class="internal-brand-container">
+            <div class="internal-brand-contacts flex">
+                <!-- contacts section logo -->
+                <div class="internal-brand-section-logo flex">
+                    <img src="/images/internal/contacts.png" alt="" class="highlights-image internal-brand-section-img">
+                </div>
+
+                <!-- contacts content -->
+                <div class="internal-brand-contacts-block flex-column">
+                    <div class="brand-contacts-title-container">
+                        <h1 class="brand-information-title internal-brand-title">Brand Contacts</h1>
+                        <div class="internal-brand-title-line"></div>
+                    </div>
+
+
+                    <button class="contacts-add internal-btn internal-btn-add flex">Add New Contact</button>
+
+                    <div class="contacts-list">
+                        <form action="" class="internal-contacts-form flex-column">
+                            <div class="contacts-personal-detail flex">
+                                <div class="internal-contacts-form-group flex-column">
+                                    <div class="input-group flex">
+                                        <label for="contacts-name" id="contacts-name">Name </label>
+                                        <input type="text" name="contacts-name" value="" class="short-input-field">
+                                    </div>
+                                    <div class="input-group flex">
+                                        <label for="contacts-rank" id="contacts-rank">Rank </label>
+                                        <input type="text" name="contacts-rank" value="" class="short-input-field">
+                                    </div>
+                                    <div class="input-group flex">
+                                        <label for="contacts-name" id="contacts-name">Position</label>
+                                        <input type="text" name="contacts-name" value="" class="short-input-field">
+                                    </div>
+                                </div>
+
+                                <div class="internal-contacts-form-group flex-column">
+                                    <div class="input-group flex">
+                                        <label for="contacts-email" id="contacts-email">Email </label>
+                                        <input type="text" name="contacts-email" value="">
+                                    </div>
+                                    <div class="input-group flex">
+                                        <label for="contacts-rank" id="contacts-rank">Location </label>
+                                        <input type="text" name="contacts-rank" value="">
+                                    </div>
+                                    <div class="input-group flex">
+                                        <label for="contacts-name" id="contacts-name">Phone</label>
+                                        <input type="text" name="contacts-name" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contacts-submit-container flex">
+                                <div class="contacts-linkedin-handle flex">
+                                    <label for="contacts-linkedin-handle" id="contacts-linkedin-handle"><i
+                                            class="fa-brands fa-linkedin"></i></label>
+                                    <input type="text" name="contacts-linkedin-handle" value=""
+                                        class="short-input-field">
+                                </div>
+
+                                <div class="internal-contacts-btn-group flex ">
+
+                                    <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
+                                        Contacts</button>
+                                    <button class="contacts-submit internal-btn internal-btn-save flex">Save
+                                        Changes</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand leadership Section -->
+    <section class="section-brand-leadership">
+        <div class="internal-brand-container">
+            <div class="internal-brand-leadership flex">
+
+                <!-- leadership section logo -->
+                <div class="internal-brand-section-logo flex">
+                    <img src="/images/internal/leadership.png" alt="" class="highlights-image internal-brand-section-img">
+                </div>
+
+                <div class="brand-leadership-container flex-column">
+                   
+                    <div class="brand-leadership-title-container">
+                        <h1 class="brand-information-title internal-brand-title">Brand Leadership</h1>
+                    <div class="internal-brand-title-line"></div>
+                    </div>
+
+
+                    <button class="leadership-add internal-btn internal-btn-add flex">Add New Leadership Person</button>
+
+
+                    <div class="brand-leadership-list">
+                        <form class="brand-leadership-item-form">
+                            <img src="../images/nvidia/jensen.webp" alt="" class="brand-leadership-profile">
+
+                            <div class="input-group flex">
+                                <label for="leadership-name" id="leadership-name">Name</label>
+                                <input type="text" name="leadership-name" value="">
+                            </div>
+
+                            <div class="input-group flex">
+                                <label for="leadership-position" id="leadership-position">Position</label>
+                                <input type="text" name="leadership-position" value="">
+                            </div>
+
+                            <!-- Leadership profile picture upload -->
+                            <div class="input-group flex">
+                                <label for="leadership-profile-picture">Choose a New Picture File to Upload:</label>
+                                <input type="file" id="leadership-profile-picture" name="leadership-profile-picture"
+                                    accept="image/png, image/jpeg, image/jpg, image/gif">
+                            </div>
+
+                            <div class="leadership-btn-group flex ">
+                                <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
+                                    Person</button>
+                                <button class="contacts-submit internal-btn internal-btn-save flex">Save
+                                    Changes</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+</main>
