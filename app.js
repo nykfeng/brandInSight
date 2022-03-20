@@ -24,6 +24,7 @@ const brandRoutes = require("./routes/brands");
 const contactRoutes = require("./routes/contacts");
 const userRoutes = require("./routes/users");
 const clientRoutes = require("./routes/client");
+const internalRoutes = require("./routes/internal");
 
 const PORT = process.env.port || 3080;
 
@@ -94,11 +95,13 @@ app.use("/brands", brandRoutes);
 app.use("/brands/:id/contact", contactRoutes);
 app.use("/", userRoutes);
 app.use("/", clientRoutes);
+app.use("/internal", internalRoutes)
+
 
 // ;------------------------
 
 // app.get("/home", homePage);
-app.get("/internal", isLoggedIn, internal);
+// app.get("/internal", isLoggedIn, internal);
 app.get("/free-user", homePage);
 
 app.get("/createBrand", createBrand);

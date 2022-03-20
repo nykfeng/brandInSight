@@ -1,10 +1,17 @@
 <% layout("/layouts/boilerplateInternal.ejs") %>
-<main id="internal-brand">
-    <section class="section-brand-details">
+
+    <h1>
+        <%=brand%>
+    </h1>
+
+
+
+    <main id="internal-brand">
+        <section class="section-brand-details">
 
             <div class="internal-brand-container brand-header">
                 <div class="brand-logo-container">
-                    <img src="../images/logo/nvidia.gif" alt="" class="brand-logo">
+                    <img src="/images/logo/nvidia.gif" alt="" class="brand-logo">
                 </div>
 
                 <div class="brand-information-container">
@@ -115,199 +122,212 @@
                 </div>
             </div>
 
-        
-    </section>
 
-    <!-- brand hightlights section -->
-    <section class="section-brand-highlights">
-        <div class="internal-brand-container">
-            <div class="brand-highlights flex">
-                <div class="internal-brand-section-logo flex">
-                    <img src="/images/internal/highlights.png" alt="" class="highlights-image internal-brand-section-img">
+        </section>
+
+        <!-- brand hightlights section -->
+        <section class="section-brand-highlights">
+            <div class="internal-brand-container">
+                <div class="brand-highlights flex">
+                    <div class="internal-brand-section-logo flex">
+                        <img src="/images/internal/highlights.png" alt=""
+                            class="highlights-image internal-brand-section-img">
+                    </div>
+                    <div class="brand-highlights-block">
+                        <h1 class="brand-information-title internal-brand-title">Brand Highlights</h1>
+                        <div class="internal-brand-title-line"></div>
+
+                        <!-- Forms and input for brand highlights -->
+                        <div class="brand-highlights-content">
+                            <form action="" class="brand-highlight-form ">
+                                <div class="highlight-group flex-column">
+                                    <div class="input-group flex">
+                                        <label for="brand-acquisition" id="brand-acquisition">Brand Acquisitions:
+                                        </label>
+                                        <input type="number" name="brand-acquisition" value=""
+                                            class="short-input-field">
+                                    </div>
+
+                                    <div class="input-group flex">
+                                        <label for="brand-investment" id="brand-investment">Brand Investments: </label>
+                                        <input type="number" name="brand-investment" value="" class="short-input-field">
+                                    </div>
+                                </div>
+
+                                <div class="highlight-group flex-column">
+                                    <div class="input-group flex">
+                                        <label for="brand-yearly-ad-spend" id="brand-yearly-ad-spend">Brand Yearly Ad
+                                            Spends:
+                                        </label>
+                                        <input type="number" name="brand-yearly-ad-spend" value=""
+                                            class="short-input-field">
+                                    </div>
+
+                                    <div class="input-group flex">
+                                        <label for="brand-contacts" id="brand-contacts">Brand Contacts: </label>
+                                        <input type="number" name="brand-contacts" value="" class="short-input-field">
+                                    </div>
+                                </div>
+
+                                <!-- Submit change and save button group -->
+                                <div class="internal-brand-btn-group flex">
+                                    <button
+                                        class="internal-submit-brand-highlights internal-btn internal-btn-save flex">Save
+                                        Changes</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="brand-highlights-block">
-                    <h1 class="brand-information-title internal-brand-title">Brand Highlights</h1>
-                    <div class="internal-brand-title-line"></div>
+        </section>
 
-                    <!-- Forms and input for brand highlights -->
-                    <div class="brand-highlights-content">
-                        <form action="" class="brand-highlight-form ">
-                            <div class="highlight-group flex-column">
-                                <div class="input-group flex">
-                                    <label for="brand-acquisition" id="brand-acquisition">Brand Acquisitions: </label>
-                                    <input type="text" name="brand-acquisition" value="" class="short-input-field">
+        <!-- Brand Contacts Section -->
+        <section class="section-brand-contacts">
+            <div class="internal-brand-container">
+                <div class="internal-brand-contacts flex">
+                    <!-- contacts section logo -->
+                    <div class="internal-brand-section-logo flex">
+                        <img src="/images/internal/contacts.png" alt=""
+                            class="highlights-image internal-brand-section-img">
+                    </div>
+
+                    <!-- contacts content -->
+                    <div class="internal-brand-contacts-block flex-column">
+                        <div class="brand-contacts-title-container">
+                            <h1 class="brand-information-title internal-brand-title">Brand Contacts</h1>
+                            <div class="internal-brand-title-line"></div>
+                        </div>
+
+
+                        <button class="contacts-add internal-btn internal-btn-add flex">Add New Contact</button>
+
+                        <div class="contacts-list">
+                            <form action="" class="internal-contacts-form flex-column">
+                                <div class="contacts-personal-detail flex">
+                                    <div class="internal-contacts-form-group flex-column">
+                                        <div class="input-group flex">
+                                            <label for="contacts-name" id="contacts-name">Name </label>
+                                            <input type="text" name="contacts-name" value="" class="short-input-field">
+                                        </div>
+                                        <div class="input-group flex">
+                                            <label for="contacts-rank" id="contacts-rank">Rank </label>
+                                            <input type="text" name="contacts-rank" value="" class="short-input-field">
+                                        </div>
+                                        <div class="input-group flex">
+                                            <label for="contacts-name" id="contacts-name">Position</label>
+                                            <input type="text" name="contacts-name" value="" class="short-input-field">
+                                        </div>
+                                    </div>
+
+                                    <div class="internal-contacts-form-group flex-column">
+                                        <div class="input-group flex">
+                                            <label for="contacts-email" id="contacts-email">Email </label>
+                                            <input type="text" name="contacts-email" value="">
+                                        </div>
+                                        <div class="input-group flex">
+                                            <label for="contacts-rank" id="contacts-rank">Location </label>
+                                            <input type="text" name="contacts-rank" value="">
+                                        </div>
+                                        <div class="input-group flex">
+                                            <label for="contacts-name" id="contacts-name">Phone</label>
+                                            <input type="text" name="contacts-name" value="">
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="input-group flex">
-                                    <label for="brand-investment" id="brand-investment">Brand Investments: </label>
-                                    <input type="text" name="brand-investment" value="" class="short-input-field">
+                                <div class="contacts-submit-container flex">
+                                    <div class="contacts-linkedin-handle flex">
+                                        <label for="contacts-linkedin-handle" id="contacts-linkedin-handle"><i
+                                                class="fa-brands fa-linkedin"></i></label>
+                                        <input type="text" name="contacts-linkedin-handle" value=""
+                                            class="short-input-field">
+                                    </div>
+
+                                    <div class="internal-contacts-btn-group flex ">
+
+                                        <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
+                                            Contact</button>
+                                        <button class="contacts-submit internal-btn internal-btn-save flex">Save
+                                            Changes</button>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="highlight-group flex-column">
-                                <div class="input-group flex">
-                                    <label for="brand-yearly-ad-spend" id="brand-yearly-ad-spend">Brand Yearly Ad
-                                        Spends:
-                                    </label>
-                                    <input type="text" name="brand-yearly-ad-spend" value="" class="short-input-field">
-                                </div>
+                            </form>
+                        </div>
 
-                                <div class="input-group flex">
-                                    <label for="brand-contacts" id="brand-contacts">Brand Contacts: </label>
-                                    <input type="text" name="brand-contacts" value="" class="short-input-field">
-                                </div>
-                            </div>
 
-                            <!-- Submit change and save button group -->
-                            <div class="internal-brand-btn-group flex">
-                                <button
-                                    class="internal-submit-brand-highlights internal-btn internal-btn-save flex">Save
-                                    Changes</button>
-                            </div>
-
-                        </form>
                     </div>
                 </div>
             </div>
-    </section>
+        </section>
 
-    <!-- Brand Contacts Section -->
-    <section class="section-brand-contacts">
-        <div class="internal-brand-container">
-            <div class="internal-brand-contacts flex">
-                <!-- contacts section logo -->
-                <div class="internal-brand-section-logo flex">
-                    <img src="/images/internal/contacts.png" alt="" class="highlights-image internal-brand-section-img">
-                </div>
+        <!-- Brand leadership Section -->
+        <section class="section-brand-leadership">
+            <div class="internal-brand-container">
+                <div class="internal-brand-leadership flex">
 
-                <!-- contacts content -->
-                <div class="internal-brand-contacts-block flex-column">
-                    <div class="brand-contacts-title-container">
-                        <h1 class="brand-information-title internal-brand-title">Brand Contacts</h1>
-                        <div class="internal-brand-title-line"></div>
+                    <!-- leadership section logo -->
+                    <div class="internal-brand-section-logo flex">
+                        <img src="/images/internal/leadership.png" alt=""
+                            class="highlights-image internal-brand-section-img">
                     </div>
 
+                    <div class="brand-leadership-container flex-column">
 
-                    <button class="contacts-add internal-btn internal-btn-add flex">Add New Contact</button>
+                        <div class="brand-leadership-title-container">
+                            <h1 class="brand-information-title internal-brand-title">Brand Leadership</h1>
+                            <div class="internal-brand-title-line"></div>
+                        </div>
 
-                    <div class="contacts-list">
-                        <form action="" class="internal-contacts-form flex-column">
-                            <div class="contacts-personal-detail flex">
-                                <div class="internal-contacts-form-group flex-column">
-                                    <div class="input-group flex">
-                                        <label for="contacts-name" id="contacts-name">Name </label>
-                                        <input type="text" name="contacts-name" value="" class="short-input-field">
-                                    </div>
-                                    <div class="input-group flex">
-                                        <label for="contacts-rank" id="contacts-rank">Rank </label>
-                                        <input type="text" name="contacts-rank" value="" class="short-input-field">
-                                    </div>
-                                    <div class="input-group flex">
-                                        <label for="contacts-name" id="contacts-name">Position</label>
-                                        <input type="text" name="contacts-name" value="" class="short-input-field">
-                                    </div>
+
+                        <button class="leadership-add internal-btn internal-btn-add flex">Add New Leadership
+                            Person</button>
+
+
+                        <div class="brand-leadership-list">
+                            <form class="brand-leadership-item-form">
+                                <img src="../images/nvidia/jensen.webp" alt="" class="brand-leadership-profile">
+
+                                <div class="input-group flex">
+                                    <label for="leadership-name" id="leadership-name">Name</label>
+                                    <input type="text" name="leadership-name" value="">
                                 </div>
 
-                                <div class="internal-contacts-form-group flex-column">
-                                    <div class="input-group flex">
-                                        <label for="contacts-email" id="contacts-email">Email </label>
-                                        <input type="text" name="contacts-email" value="">
-                                    </div>
-                                    <div class="input-group flex">
-                                        <label for="contacts-rank" id="contacts-rank">Location </label>
-                                        <input type="text" name="contacts-rank" value="">
-                                    </div>
-                                    <div class="input-group flex">
-                                        <label for="contacts-name" id="contacts-name">Phone</label>
-                                        <input type="text" name="contacts-name" value="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="contacts-submit-container flex">
-                                <div class="contacts-linkedin-handle flex">
-                                    <label for="contacts-linkedin-handle" id="contacts-linkedin-handle"><i
-                                            class="fa-brands fa-linkedin"></i></label>
-                                    <input type="text" name="contacts-linkedin-handle" value=""
-                                        class="short-input-field">
+                                <div class="input-group flex">
+                                    <label for="leadership-position" id="leadership-position">Position</label>
+                                    <input type="text" name="leadership-position" value="">
                                 </div>
 
-                                <div class="internal-contacts-btn-group flex ">
+                                <!-- Leadership profile picture upload -->
+                                <div class="input-group flex">
+                                    <label for="leadership-profile-picture">Choose a New Picture File to Upload:</label>
+                                    <input type="file" id="leadership-profile-picture" name="leadership-profile-picture"
+                                        accept="image/png, image/jpeg, image/jpg, image/gif">
+                                </div>
 
+                                <div class="leadership-btn-group flex ">
                                     <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
-                                        Contacts</button>
+                                        Person</button>
                                     <button class="contacts-submit internal-btn internal-btn-save flex">Save
                                         Changes</button>
                                 </div>
-                            </div>
+                            </form>
 
-                        </form>
+
+                        </div>
+
                     </div>
+
 
 
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Brand leadership Section -->
-    <section class="section-brand-leadership">
-        <div class="internal-brand-container">
-            <div class="internal-brand-leadership flex">
-
-                <!-- leadership section logo -->
-                <div class="internal-brand-section-logo flex">
-                    <img src="/images/internal/leadership.png" alt="" class="highlights-image internal-brand-section-img">
-                </div>
-
-                <div class="brand-leadership-container flex-column">
-                   
-                    <div class="brand-leadership-title-container">
-                        <h1 class="brand-information-title internal-brand-title">Brand Leadership</h1>
-                    <div class="internal-brand-title-line"></div>
-                    </div>
-
-
-                    <button class="leadership-add internal-btn internal-btn-add flex">Add New Leadership Person</button>
-
-
-                    <div class="brand-leadership-list">
-                        <form class="brand-leadership-item-form">
-                            <img src="../images/nvidia/jensen.webp" alt="" class="brand-leadership-profile">
-
-                            <div class="input-group flex">
-                                <label for="leadership-name" id="leadership-name">Name</label>
-                                <input type="text" name="leadership-name" value="">
-                            </div>
-
-                            <div class="input-group flex">
-                                <label for="leadership-position" id="leadership-position">Position</label>
-                                <input type="text" name="leadership-position" value="">
-                            </div>
-
-                            <!-- Leadership profile picture upload -->
-                            <div class="input-group flex">
-                                <label for="leadership-profile-picture">Choose a New Picture File to Upload:</label>
-                                <input type="file" id="leadership-profile-picture" name="leadership-profile-picture"
-                                    accept="image/png, image/jpeg, image/jpg, image/gif">
-                            </div>
-
-                            <div class="leadership-btn-group flex ">
-                                <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
-                                    Person</button>
-                                <button class="contacts-submit internal-btn internal-btn-save flex">Save
-                                    Changes</button>
-                            </div>
-                        </form>
-
-
-                    </div>
-
-                </div>
-
-
-
-            </div>
-        </div>
-    </section>
-</main>
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let getBrand = JSON.parse('<%-JSON.stringify(brand)%>');
+    </script>
