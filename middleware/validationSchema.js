@@ -9,30 +9,30 @@ const brandSchema = Joi.object({
     website: Joi.string().allow(""),
     description: Joi.string().allow(""),
     typeOfCompany: {
-      isPublicCompany: Joi.boolean(),
+      isPublicCompany: Joi.boolean().allow(""),
       stockTicker: Joi.string().allow(""),
     },
     socialMedia: {
       facebook: {
         profileHandle: Joi.string().allow(""),
-        likes: Joi.number().min(0),
+        likes: Joi.number().min(0).allow('').optional(),
       },
       twitter: {
         profileHandle: Joi.string().allow(""),
-        followers: Joi.number().min(0),
+        followers: Joi.number().min(0).allow('').optional(),
       },
       linkedin: {
         profileHandle: Joi.string().allow(""),
       },
     },
     industry: [Joi.string().allow("")],
-    FoundedDate: Joi.date(),
+    foundedDate: Joi.number().min(1900).allow('').optional(),
     founders: [Joi.string().allow("")],
     highlights: {
-      acquisition: Joi.number().min(0),
-      investment: Joi.number().min(0),
-      adSpend: Joi.number().min(0),
-      contacts: Joi.number().min(0),
+      acquisition: Joi.number().min(0).allow('').optional(),
+      investment: Joi.number().min(0).allow('').optional(),
+      adSpend: Joi.number().min(0).allow('').optional(),
+      contacts: Joi.number().min(0).allow('').optional(),
     },
     logo: {
       url: Joi.string().allow(""),

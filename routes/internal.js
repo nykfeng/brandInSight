@@ -10,15 +10,30 @@ const Brand = require("../models/Brand");
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
+// validation with Joi schema
+const { validateBrand } = require("../middleware/validateData");
+
 // controller
 const brands = require("../controllers/brands");
 const internal = require("../controllers/internal");
 
+// for handling image -- logo
+const multer = require("multer");
+const { storage } = require("../cloudinary"); // Node will automatically look for index.js
+const upload = multer({ storage });
 
-router.route('/').get(isLoggedIn, catchAsync(internal.index))
+router.route("/").get(isLoggedIn, catchAsync(internal.index));
 
-router.route('/new').get(isLoggedIn, catchAsync(internal.renderNewBrandForm))
+router.route("/new").get(isLoggedIn, catchAsync(internal.renderNewBrandForm));
 
-router.route('/brands/:id').get(isLoggedIn, catchAsync(internal.brandEdit))
+router
+  .route("/brands/:id")
+  .get(isLoggedIn, catchAsync(internal.brandEdit))
+  .put(
+    isLoggedIn,
+    upload.single("logo"),
+    validateBrand,
+    catchAsync(internal.brandUpdate)
+  );
 
 module.exports = router;

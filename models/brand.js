@@ -58,8 +58,8 @@ const BrandSchema = new Schema({
     },
   },
   industry: [{ type: String }],
-  FoundedDate: {
-    type: Date,
+  foundedDate: {
+    type: Number,
   },
   founders: [{ type: String }],
   highlights: {
@@ -71,10 +71,10 @@ const BrandSchema = new Schema({
     },
     adSpend: {
       type: Number,
-    }, 
+    },
     contacts: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   logo: {
     url: String,
@@ -89,9 +89,9 @@ const BrandSchema = new Schema({
   leadership: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Leadership',
+      ref: "Leadership",
     },
-  ]
+  ],
 });
 
 // Mongoose middleware to delete contacts after brand was deleted

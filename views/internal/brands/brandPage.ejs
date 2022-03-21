@@ -1,17 +1,11 @@
 <% layout("/layouts/boilerplateInternal.ejs") %>
 
-    <h1>
-        <%=brand%>
-    </h1>
-
-
-
     <main id="internal-brand">
         <section class="section-brand-details">
 
             <div class="internal-brand-container brand-header">
                 <div class="brand-logo-container">
-                    <img src="/images/logo/nvidia.gif" alt="" class="brand-logo">
+                    <img src="<%=brand.logo.url %> " alt="" class="brand-logo">
                 </div>
 
                 <div class="brand-information-container">
@@ -19,27 +13,33 @@
 
                     <h1 class="brand-information-title internal-brand-title">Brand Information</h1>
                     <div class="internal-brand-title-line"></div>
-                    <form class="brand-information">
+                    <form action="/internal/brands/<%=brand._id%>?_method=PUT" method="POST" class="brand-information"
+                        enctype="multipart/form-data">
                         <!-- Short input field for brand information -->
                         <div class="brand-information-short flex-column">
                             <div class="input-group flex">
-                                <label for="brand-name" id="brand-name">Brand Name: </label>
-                                <input type="text" name="brand-name" class="short-input-field" value="">
+                                <label for="brand-name">Brand Name: </label>
+                                <input type="text" id="brand-name" name="brand[name]" class="short-input-field"
+                                    value="<%= brand.name  %> ">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-employee" id="brand-employee">Brand Employee: </label>
-                                <input type="number" name="brand-employee" class="short-input-field" value="">
+                                <label for="brand-employee">Brand Employee: </label>
+                                <input type="number" id="brand-employee" name="brand[employee]"
+                                    class="short-input-field" value="<%= brand.employee  %>">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-stock" id="brand-stock">Brand Stock: </label>
-                                <input type="text" name="brand-stock" class="short-input-field" value="">
+                                <label for="brand-stock">Brand Stock: </label>
+                                <input type="text" id="brand-stock" name="brand[typeOfCompany][stockTicker]"
+                                    class="short-input-field" value="<%= brand.typeOfCompany.stockTicker  %>">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-founded-date" id="brand-founded-date">Brand Founded Date: </label>
-                                <input type="number" name="brand-founded-date" class="short-input-field" value="">
+                                <label for="brand-founded-date">Brand Founded Date: </label>
+                                <input type="number" min="1900" max="2099" step="1" id="brand-founded-date"
+                                    name="brand[foundedDate]" class="short-input-field"
+                                    value="<%= brand.foundedDate  %>">
                             </div>
 
                         </div>
@@ -48,23 +48,26 @@
                         <div class="brand-information-long flex-column">
 
                             <div class="input-group flex">
-                                <label for="brand-url" id="brand-url">Brand Website: </label>
-                                <input type="text" name="brand-url" id="brand-url" value="">
+                                <label for="brand-url">Brand Website: </label>
+                                <input type="text" id="brand-url" name="brand[website]" value="<%= brand.website  %>">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-location" id="brand-location">Brand Location: </label>
-                                <input type="text" name="brand-location" id="brand-location" value="">
+                                <label for="brand-location">Brand Location: </label>
+                                <input type="text" id="brand-location" name="brand[headquarters]"
+                                    value="<%= brand.headquarters  %>">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-industry" id="brand-industry">Brand Industry: </label>
-                                <input type="text" name="brand-industry" id="brand-industry" value="">
+                                <label for="brand-industry">Brand Industry: </label>
+                                <input type="text" id="brand-industry" name="brand[industry]"
+                                    value="<%= brand.industry  %>">
                             </div>
 
                             <div class="input-group flex">
-                                <label for="brand-founders" id="brand-founders">Brand Founders: </label>
-                                <input type="text" name="brand-founders" id="brand-founders" value="">
+                                <label for="brand-founders">Brand Founders: </label>
+                                <input type="text" id="brand-founders" name="brand[founders]"
+                                    value="<%= brand.founders  %>">
                             </div>
                         </div>
 
@@ -72,43 +75,49 @@
                         <!-- Social media block for brand information -->
                         <div class="brand-social-media flex-column">
                             <div class="input-group flex-column">
-                                <label for="brand-facebook-handle" id="brand-facebook-handle"><i
-                                        class="fa-brands fa-facebook"></i>Facebook</label>
-                                <input type="text" name="brand-facebook-handle" class="short-input-field" value="">
+                                <label for="brand-facebook-handle"><i class="fa-brands fa-facebook"></i>Facebook</label>
+                                <input type="text" id="brand-facebook-handle"
+                                    name="brand[socialMedia][facebook][profileHandle]" class="short-input-field"
+                                    value="<%= brand.socialMedia.facebook.profileHandle  %>">
 
                                 <label for="brand-facebook-likes" id="brand-facebook-likes"><i
                                         class="fa-brands fa-facebook"></i>Facebook Likes</label>
-                                <input type="text" name="brand-facebook-likes" class="short-input-field" value="">
+                                <input type="text" name="brand[socialMedia][facebook][likes]" class="short-input-field"
+                                    value="<%= brand.socialMedia.facebook.likes  %>">
                             </div>
 
                             <div class="input-group flex-column">
-                                <label for="brand-twitter-handle" id="brand-twitter-handle"><i
-                                        class="fa-brands fa-twitter"></i>Twitter</label>
-                                <input type="text" name="brand-twitter-handle" class="short-input-field" value="">
+                                <label for="brand-twitter-handle"><i class="fa-brands fa-twitter"></i>Twitter</label>
+                                <input type="text" id="brand-twitter-handle"
+                                    name="brand[socialMedia][twitter][profileHandle]" class="short-input-field"
+                                    value="<%= brand.socialMedia.twitter.profileHandle  %>">
 
-                                <label for="brand-twitter-followers" id="brand-twitter-followers"><i
-                                        class="fa-brands fa-twitter"></i>Twitter followers</label>
-                                <input type="text" name="brand-twitter-followers" class="short-input-field" value="">
+                                <label for="brand-twitter-followers"><i class="fa-brands fa-twitter"></i>Twitter
+                                    followers</label>
+                                <input type="text" id="brand-twitter-followers"
+                                    name="brand[socialMedia][twitter][followers]" class="short-input-field"
+                                    value="<%= brand.socialMedia.twitter.followers %>">
                             </div>
 
                             <div class="input-group flex-column">
-                                <label for="brand-linkedin-handle" id="brand-linkedin-handle"><i
-                                        class="fa-brands fa-linkedin"></i>Linkedin</label>
-                                <input type="text" name="brand-linkedin-handle" class="short-input-field" value="">
+                                <label for="brand-linkedin-handle"><i class="fa-brands fa-linkedin"></i>Linkedin</label>
+                                <input type="text" id="brand-linkedin-handle"
+                                    name="brand[socialMedia][linkedin][profileHandle]" class="short-input-field"
+                                    value="<%= brand.socialMedia.linkedin.profileHandle %>">
                             </div>
                         </div>
 
                         <!-- Brand description text block -->
                         <div class="description-input flex-column">
-                            <label for="brand-description" id="brand-description">Brand Description: </label>
-                            <textarea name="brand-description" id="brand-description" cols="30" rows="10"
-                                value=""></textarea>
+                            <label for="brand-description">Brand Description: </label>
+                            <textarea name="brand[description]" id="brand-description" cols="30" rows="10"
+                                value=""><%= brand.description %></textarea>
                         </div>
 
                         <!-- Brand logo upload -->
                         <div class="input-group logo-input flex-column">
                             <label for="brand-logo">Choose a Logo File:</label>
-                            <input type="file" id="brand-logo" name="brand-logo"
+                            <input type="file" id="brand-logo" name="logo"
                                 accept="image/png, image/jpeg, image/jpg, image/gif">
                         </div>
 
