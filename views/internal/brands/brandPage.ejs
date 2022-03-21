@@ -148,33 +148,36 @@
 
                         <!-- Forms and input for brand highlights -->
                         <div class="brand-highlights-content">
-                            <form action="" class="brand-highlight-form ">
+                            <form action="/internal/brands/highlights/<%=brand._id%>?_method=PUT" method="POST"  class="brand-highlight-form ">
                                 <div class="highlight-group flex-column">
                                     <div class="input-group flex">
-                                        <label for="brand-acquisition" id="brand-acquisition">Brand Acquisitions:
+                                        <label for="brand-acquisition">Brand Acquisitions:
                                         </label>
-                                        <input type="number" name="brand-acquisition" value=""
-                                            class="short-input-field">
+                                        <input type="number" id="brand-acquisition"
+                                            name="brand[highlights][acquisition]"
+                                            value="<%= brand.highlights.acquisition %>" class="short-input-field">
                                     </div>
 
                                     <div class="input-group flex">
-                                        <label for="brand-investment" id="brand-investment">Brand Investments: </label>
-                                        <input type="number" name="brand-investment" value="" class="short-input-field">
+                                        <label for="brand-investment">Brand Investments: </label>
+                                        <input type="number" id="brand-investment" name="brand[highlights][investment]"
+                                            value="<%= brand.highlights.investment %>" class="short-input-field">
                                     </div>
                                 </div>
 
                                 <div class="highlight-group flex-column">
                                     <div class="input-group flex">
-                                        <label for="brand-yearly-ad-spend" id="brand-yearly-ad-spend">Brand Yearly Ad
+                                        <label for="brand-yearly-ad-spend">Brand Yearly Ad
                                             Spends:
                                         </label>
-                                        <input type="number" name="brand-yearly-ad-spend" value=""
-                                            class="short-input-field">
+                                        <input type="number" id="brand-yearly-ad-spend" name="brand[highlights][adSpend]"
+                                            value="<%= brand.highlights.adSpend %>" class="short-input-field">
                                     </div>
 
                                     <div class="input-group flex">
-                                        <label for="brand-contacts" id="brand-contacts">Brand Contacts: </label>
-                                        <input type="number" name="brand-contacts" value="" class="short-input-field">
+                                        <label for="brand-contacts">Brand Contacts: </label>
+                                        <input type="number" id="brand-contacts" name="brand[highlights][contacts]"
+                                            value="<%= brand.highlights.contacts %>" class="short-input-field">
                                     </div>
                                 </div>
 

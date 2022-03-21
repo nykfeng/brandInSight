@@ -23,8 +23,8 @@ const contactSchema = new Schema({
   email: {
     type: String,
   },
-  yearsOfExperience: {
-    type: Number,
+  location: {
+    type: String,
   },
   brand: {
     type: Schema.Types.ObjectId,

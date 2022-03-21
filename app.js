@@ -114,9 +114,7 @@ app.get("/signup", (req, res) => {
   res.render("authen/signup");
 });
 
-app.get("/internal/brandPage", (req, res) => {
-  res.render("internal/brands/brandPage");
-});
+
 
 // -------------------------
 

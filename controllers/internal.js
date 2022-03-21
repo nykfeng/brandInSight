@@ -24,6 +24,7 @@ module.exports.brandEdit = async (req, res) => {
   res.render("internal/brands/brandPage", { brand });
 };
 
+// Update brand information
 module.exports.brandUpdate = async (req, res) => {
   const { id } = req.params;
   console.log("req.body.brand is - - - - - - - - ");
@@ -44,3 +45,22 @@ module.exports.brandUpdate = async (req, res) => {
   req.flash("success", "Successfully updated brand information!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
+
+// update brand highlight information
+module.exports.brandHighlightsUpdate = async (req, res) => {
+  const { id } = req.params;
+  console.log("req.body.brand with highlights update is - - - - - - - - ");
+  console.log(req.body.brand);
+
+  const brand = await Brand.findByIdAndUpdate(
+    id,
+    { ...req.body.brand },
+    { runValidators: true }
+  );
+
+  await brand.save();
+
+  req.flash("success", "Successfully updated brand information!");
+  res.redirect(`/internal/brands/${id}`);
+};
+

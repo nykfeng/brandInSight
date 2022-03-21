@@ -12,6 +12,7 @@ const { isLoggedIn } = require("../middleware/isLoggedIn");
 
 // validation with Joi schema
 const { validateBrand } = require("../middleware/validateData");
+const { validateBrandHighlights } = require("../middleware/validateData");
 
 // controller
 const brands = require("../controllers/brands");
@@ -35,5 +36,9 @@ router
     validateBrand,
     catchAsync(internal.brandUpdate)
   );
+
+router
+  .route("/brands/highlights/:id")
+  .put(isLoggedIn, validateBrandHighlights, catchAsync(internal.brandHighlightsUpdate));
 
 module.exports = router;
