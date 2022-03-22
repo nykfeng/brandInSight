@@ -5,14 +5,18 @@
         <header class="brand-header">
             <section class="brand-container flex">
                 <div class="brand-logo-container">
-                    <img src="/images/logo/nvidia.gif" alt="" class="brand-logo">
+                    <img src="<%=brand.logo.url %> " alt="" class="brand-logo">
                 </div>
                 <div class="brand-header-container flex">
                     <div class="brand-heading-container flex">
                         <div class="brand-header-title-container flex">
                             <div class="brand-type"><i class="fa-solid fa-building"></i> Public Company</div>
-                            <div class="brand-name">Nvidia Corp.</div>
-                            <a href="https://www.nvidia.com" class="brand-website">www.nvidia.com</a>
+                            <div class="brand-name">
+                                <%= brand.name %>
+                            </div>
+                            <a href="https://www.nvidia.com" class="brand-website">
+                                <%= brand.website %>
+                            </a>
                         </div>
                         <div class="brand-user-options flex">
                             <div class="brand-add-notes header-btn"><i class="fa-solid fa-clipboard"></i> Add Brand
@@ -49,54 +53,67 @@
                             <i class="fa-regular fa-building"></i> Brand Details
                         </h1>
                         <p class="brand-details-description">
-                            Nvidia Corporation is an American multinational technology company incorporated in Delaware
-                            and
-                            based in Santa Clara, California. It is a fabless company which designs graphics processing
-                            units for the gaming and professional markets, as well as system on a chip units for the
-                            mobile
-                            computing and automotive market.
+                            <%= brand.description %>
                         </p>
                     </div>
                     <div class="brand-detail-list flex">
                         <ul class="flex">
                             <li class="brand-detail-item">
                                 <span class="brand-detail-icon location"><i class="fa-solid fa-location-dot"></i></span>
-                                <span class="brand-location">Santa Clara, California, United States</span>
+                                <span class="brand-location">
+                                    <%= brand.headquarters %>
+                                </span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-icon employee"><i class="fa-solid fa-user"></i></span>
-                                <span class="brand-employee">10,000+</span>
+                                <span class="brand-employee">
+                                    <%= brand.employee %>
+                                </span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-icon stock"><i class="fa-solid fa-chart-line"></i></span>
-                                <span class="brand-stock">NASDAQ: NVDA</span>
+                                <span class="brand-stock">
+                                    <%= brand.typeOfCompany.stockTicker %>
+                                </span>
                             </li>
                             <li class="brand-detail-item">
-                                <span class="brand-detail-icon facebook"><i class="fa-brands fa-facebook"></i></span>
-                                <span class="brand-facebook">2.24 Million Likes</span>
+                                <a href="https://www.<%= brand.socialMedia.facebook.profileHandle  %>">
+                                    <span class="brand-detail-icon facebook"><i
+                                            class="fa-brands fa-facebook"></i></span>
+                                    <span class="brand-facebook">
+                                        <%= brand.socialMedia.facebook.likes %> Likes
+                                    </span>
+                                </a>
                             </li>
                             <li class="brand-detail-item">
-                                <span class="brand-detail-icon twitter"><i class="fa-brands fa-twitter"></i></span>
-                                <span class="brand-twitter">1.47 Million Followers</span>
+                                <a href="https://www.<%= brand.socialMedia.twitter.profileHandle  %>">
+                                    <span class="brand-detail-icon twitter"><i class="fa-brands fa-twitter"></i></span>
+                                    <span class="brand-twitter">
+                                        <%= brand.socialMedia.twitter.followers %> Followers
+                                    </span>
+                                </a>
                             </li>
                             <li class="brand-detail-item">
-                                <span class="brand-detail-icon linkedin"><i class="fa-brands fa-linkedin"></i></span>
-                                <span class="brand-linkedin"> Actively Hiring</span>
+                                <a href="https://www.<%= brand.socialMedia.linkedin.profileHandle %>">
+                                    <span class="brand-detail-icon linkedin"><i
+                                            class="fa-brands fa-linkedin"></i></span>
+                                    <span class="brand-linkedin"> Actively Hiring</span>
+                                </a>
                             </li>
 
                         </ul>
                         <ul class="flex">
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Industry: </span>
-                                <span class="brand-industry">GPU, Artificial Intelligence, Virtual Reality</span>
+                                <span class="brand-industry"><%= brand.industry  %></span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Founded Date: </span>
-                                <span class="brand-industry">1993</span>
+                                <span class="brand-industry"><%= brand.foundedDate  %></span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Founders: </span>
-                                <span class="brand-industry">Chris Malachowsky, Curtis Priem, Jensen Huang</span>
+                                <span class="brand-industry"><%= brand.founders  %></span>
                             </li>
                         </ul>
                     </div>
@@ -111,19 +128,19 @@
                         <ul class="brand-highlights-list flex">
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Acquisition: </span>
-                                <span class="brand-highlights-number">21</span>
+                                <span class="brand-highlights-number"><%= brand.highlights.acquisition %></span>
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Investment: </span>
-                                <span class="brand-highlights-number">25</span>
+                                <span class="brand-highlights-number"><%= brand.highlights.investment %></span>
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Yearly Ad Spend: </span>
-                                <span class="brand-highlights-number">$8 Million</span>
+                                <span class="brand-highlights-number">$<%= brand.highlights.adSpend %></span>
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Contacts: </span>
-                                <span class="brand-highlights-number">6,500</span>
+                                <span class="brand-highlights-number"><%= brand.highlights.contacts %></span>
                             </li>
                         </ul>
                     </div>
@@ -144,7 +161,7 @@
                         </h1>
                         <div class="brand-financial-stock-information flex">
                             <div class="stock-info flex">
-                                <img src="../logos/nvidia.gif" alt="" class="stock-logo">
+                                <img src="<%=brand.logo.url %>" alt="" class="stock-logo">
                                 <div class="stock-info-header flex">
                                     <p class="stock-company-name">Nvidia Corp.</p>
                                     <p class="stock-symbol-full">
@@ -157,10 +174,10 @@
 
                             <div class="stock-stats flex">
                                 <div class="stock-price-block">
-                                    <span class="stock-price">255.65</span>
+                                    <span class="stock-price">267.34</span>
                                     <span class="stock-currency">USD </span>
-                                    <span class="stock-change">+8.98 </span>
-                                    <span class="stock-change-percent">(3.79%)</span>
+                                    <span class="stock-change">+2.81 </span>
+                                    <span class="stock-change-percent">(1.06%)</span>
                                 </div>
 
                                 <ul class="stock-stat-list flex">

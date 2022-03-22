@@ -46,8 +46,7 @@ module.exports.add = async (req, res, next) => {
 
 module.exports.getById = async (req, res) => {
   const brand = await Brand.findById(req.params.id).populate("contact");
-  console.log("brand is -------------------");
-  console.log(brand);
+
   if (!brand) {
     req.flash("error", "Cannot find that brand!");
     return res.redirect("/brands");

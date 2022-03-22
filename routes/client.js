@@ -18,6 +18,6 @@ const client = require("../controllers/client");
 
 router.route("/home").get(client.renderHome);
 
-// router.route("/:id").get(isLoggedIn, catchAsync(client.getBrandById));
+router.route("/client/brands/:id").get(isLoggedIn, catchAsync(client.getBrandById));
 
 module.exports = router;
