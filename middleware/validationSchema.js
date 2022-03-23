@@ -58,9 +58,9 @@ const contactSchema = Joi.object({
     position: Joi.string().required(),
     rank: Joi.string(),
     phoneNumber: Joi.string(),
-    // phoneNumber: myCustomJoi.string().phoneNumber().validate("7777777777"),
     email: Joi.string().email(),
-    yearsOfExperience: Joi.number().integer().min(0),
+    location: Joi.string(),
+    linkedin: Joi.string(),
   }).required(),
 });
 

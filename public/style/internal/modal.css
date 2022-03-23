@@ -1,0 +1,30 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+
+  z-index: 2;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-background .input-group {
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.modal-background .internal-contacts-btn-group,
+.modal-background .leadership-btn-group {
+  gap: 2rem;
+}
+
+
+.modal-background .leadership-btn-group {
+  justify-content: flex-end;
+}

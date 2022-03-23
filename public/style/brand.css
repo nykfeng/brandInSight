@@ -56,7 +56,7 @@
 }
 
 .brand-logo-container {
-  z-index: 100;
+  z-index: 1;
 }
 
 .brand-header .brand-logo {

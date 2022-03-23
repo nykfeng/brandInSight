@@ -148,7 +148,8 @@
 
                         <!-- Forms and input for brand highlights -->
                         <div class="brand-highlights-content">
-                            <form action="/internal/brands/highlights/<%=brand._id%>?_method=PUT" method="POST"  class="brand-highlight-form ">
+                            <form action="/internal/brands/highlights/<%=brand._id%>?_method=PUT" method="POST"
+                                class="brand-highlight-form ">
                                 <div class="highlight-group flex-column">
                                     <div class="input-group flex">
                                         <label for="brand-acquisition">Brand Acquisitions:
@@ -170,8 +171,9 @@
                                         <label for="brand-yearly-ad-spend">Brand Yearly Ad
                                             Spends:
                                         </label>
-                                        <input type="number" id="brand-yearly-ad-spend" name="brand[highlights][adSpend]"
-                                            value="<%= brand.highlights.adSpend %>" class="short-input-field">
+                                        <input type="number" id="brand-yearly-ad-spend"
+                                            name="brand[highlights][adSpend]" value="<%= brand.highlights.adSpend %>"
+                                            class="short-input-field">
                                     </div>
 
                                     <div class="input-group flex">
@@ -293,8 +295,7 @@
                         </div>
 
 
-                        <button class="leadership-add internal-btn internal-btn-add flex">Add New Leadership
-                            Person</button>
+                        <button class="leadership-add internal-btn internal-btn-add flex">Add New Leadership</button>
 
 
                         <div class="brand-leadership-list">
@@ -302,13 +303,13 @@
                                 <img src="../images/nvidia/jensen.webp" alt="" class="brand-leadership-profile">
 
                                 <div class="input-group flex">
-                                    <label for="leadership-name" id="leadership-name">Name</label>
-                                    <input type="text" name="leadership-name" value="">
+                                    <label for="leadership-name">Name</label>
+                                    <input type="text" id="leadership-name" name="leadership-name" value="">
                                 </div>
 
                                 <div class="input-group flex">
-                                    <label for="leadership-position" id="leadership-position">Position</label>
-                                    <input type="text" name="leadership-position" value="">
+                                    <label for="leadership-position">Position</label>
+                                    <input type="text" id="leadership-position" name="leadership-position" value="">
                                 </div>
 
                                 <!-- Leadership profile picture upload -->

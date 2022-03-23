@@ -26,6 +26,9 @@ const contactSchema = new Schema({
   location: {
     type: String,
   },
+  linkedin : {
+    type: String,
+  },
   brand: {
     type: Schema.Types.ObjectId,
     ref: "Brand",
