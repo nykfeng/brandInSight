@@ -11,14 +11,11 @@ module.exports.add = async (req, res) => {
   await brand.save();
   console.log(contact);
   req.flash("success", "Successfully created a new contact!");
-  res.redirect(`/brands/${brand._id}`);
+  res.redirect(`/internal/brands/${brand._id}`);
 };
 
 module.exports.edit = async (req, res) => {
   const { id, contactId } = req.params;
-
-  console.log("brand id is ", id);
-  console.log("contact id is ", contactId);
   const contact = await Contact.findByIdAndUpdate(
     contactId,
     { ...req.body.contact },

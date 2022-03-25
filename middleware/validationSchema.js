@@ -57,10 +57,10 @@ const contactSchema = Joi.object({
     name: Joi.string().required(),
     position: Joi.string().required(),
     rank: Joi.string(),
-    phoneNumber: Joi.string(),
-    email: Joi.string().email(),
-    location: Joi.string(),
-    linkedin: Joi.string(),
+    phoneNumber: Joi.string().allow(""),
+    email: Joi.string().email().allow(""),
+    location: Joi.string().allow(""),
+    linkedin: Joi.string().allow(""),
   }).required(),
 });
 

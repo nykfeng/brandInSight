@@ -1,41 +1,50 @@
 import modal from "./modal.js";
 
-const addContactBtn = document.querySelector('.contacts-add');
-const addLeadershipBtn = document.querySelector('.leadership-add');
+const addContactBtn = document.querySelector(".contacts-add");
+const addLeadershipBtn = document.querySelector(".leadership-add");
 
-addContactBtn.addEventListener('click', function() {
-    modal.open('Contact');
+addContactBtn.addEventListener("click", function () {
+  modal.open("Contact");
 });
-addLeadershipBtn.addEventListener('click', function() {
-    modal.open('Leadership');
+addLeadershipBtn.addEventListener("click", function () {
+  modal.open("Leadership");
 });
-
 
 // console.log(currentBrand);
 
-const renderListOfContacts = function() {
-    if (brand.contact.length > 0) {
+const renderListOfContacts = function () {
+  if (brand.contact.length > 0) {
+    // get the contacts section HTML element
+    const contactContainerEl = document.querySelector(".contacts-list");
+    // remove the default empty form
+    // contactContainerEl.removeChild(contactContainerEl.firstChild);
+    contactContainerEl.innerHTML = "";
 
-        // get the contacts section HTML element
-        const contactContainerEl = document.querySelector('.contacts-list');
-        // remove the default empty form
-        // contactContainerEl.removeChild(contactContainerEl.firstChild);
-        contactContainerEl.innerHTML = '';
+    brand.contact.forEach((contact) => {
+      console.log("Conact is: ");
+      console.log(contact);
+      contactContainerEl.insertAdjacentHTML(
+        "beforeend",
+        generateContactHTML(contact)
+      );
+    });
 
-        brand.contact.forEach(contact=> {
-            console.log('Conact is: ')
-            console.log(contact);
-            contactContainerEl.insertAdjacentHTML('beforeend',generateContactHTML(contact));
+    const deleteContactBtns = document.querySelectorAll(".contacts-delete");
+    deleteContactBtns.forEach((btn) => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            const contactId = btn.dataset.id;
+            deleteContact(contactId);
+            location.reload();
         })
-    }
-}
+    });
+  }
+};
 
 renderListOfContacts();
 
-
 function generateContactHTML(contact) {
-    const html = 
-    `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
+  const html = `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
     <div class="contacts-personal-detail flex">
         <div class="internal-contacts-form-group flex-column">
             <div class="input-group flex">
@@ -78,14 +87,23 @@ function generateContactHTML(contact) {
 
         <div class="internal-contacts-btn-group flex ">
 
-            <button class="contacts-delete internal-btn internal-btn-delete flex">Delete
+            <button class="contacts-delete internal-btn internal-btn-delete flex" data-id="${contact._id}">Delete
                 Contact</button>
-            <button class="contacts-submit internal-btn internal-btn-save flex">Save
+
+
+            <button type="submit" class="contacts-submit internal-btn internal-btn-save flex">Save
                 Changes</button>
         </div>
     </div>
 
 </form>
     `;
-    return html;
+  return html;
+}
+
+async function deleteContact(contactId) {
+  const url = `/brands/${brand._id}/contact/${contactId}`;
+  await fetch(url, {
+    method: "DELETE",
+  });
 }
