@@ -35,7 +35,7 @@ renderListOfContacts();
 
 function generateContactHTML(contact) {
     const html = 
-    `<form action="/brands/${brand._id}/contact" method="POST" class="internal-contacts-form flex-column">
+    `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
     <div class="contacts-personal-detail flex">
         <div class="internal-contacts-form-group flex-column">
             <div class="input-group flex">
