@@ -1,6 +1,8 @@
 const bodyEl = document.querySelector("body");
 
 const currentBrand = brand;
+console.log("current brand in modal js is ");
+console.log(currentBrand);
 
 const open = function (module) {
   if (module === "Contact") {

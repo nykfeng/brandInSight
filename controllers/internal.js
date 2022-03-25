@@ -19,7 +19,7 @@ module.exports.renderNewBrandForm = async (req, res) => {
 // render brand edit page with all brand information
 module.exports.brandEdit = async (req, res) => {
   const id = "623545d55a3d7c711c5cfccc";
-  const brand = await Brand.findById(id);
+  const brand = await Brand.findById(id).populate('contact');
   //   const brand = await Brand.find({}).populate('Contact');
   res.render("internal/brands/brandPage", { brand });
 };
