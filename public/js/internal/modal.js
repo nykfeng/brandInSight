@@ -1,5 +1,7 @@
 const bodyEl = document.querySelector("body");
 
+const currentBrand = brand;
+
 const open = function (module) {
   if (module === "Contact") {
     bodyEl.insertAdjacentHTML("beforeend", renderAddContactHTML());
@@ -32,35 +34,43 @@ function renderAddContactHTML() {
   const html = `
   <div class="modal-background">
     <div class="internal-brand-contacts--add">
-    <form action="/brands/<%=brand._id%>/contact" method="POST"  class="internal-contacts-form flex-column">
+
+    <div class="modal-title-bar">
+    <h1>Add New Contact:</h1>
+    </div>
+
+
+    
+
+    <form action="/brands/${currentBrand._id}/contact" method="POST"  class="internal-contacts-form flex-column">
     <div class="contacts-personal-detail flex">
     <div class="internal-contacts-form-group flex-column">
         <div class="input-group flex">
             <label for="contacts-name">Name </label>
-            <input type="text" id="contacts-name" name="contacts[name]" value="" class="short-input-field">
+            <input type="text" id="contacts-name" name="contact[name]" value="" class="short-input-field">
         </div>
         <div class="input-group flex">
             <label for="contacts-rank">Rank </label>
-            <input type="text" id="contacts-rank" name="contacts[rank]" value="" class="short-input-field">
+            <input type="text" id="contacts-rank" name="contact[rank]" value="" class="short-input-field">
         </div>
         <div class="input-group flex">
             <label for="contacts-name" >Position</label>
-            <input type="text" id="contacts-name" name="contacts[name]" value="" class="short-input-field">
+            <input type="text" id="contacts-name" name="contact[position]" value="" class="short-input-field">
         </div>
     </div>
 
     <div class="internal-contacts-form-group flex-column">
         <div class="input-group flex">
             <label for="contacts-email">Email </label>
-            <input type="text" id="contacts-email" name="contacts[email]" value="">
+            <input type="text" id="contacts-email" name="contact[email]" value="">
         </div>
         <div class="input-group flex">
             <label for="contacts-rank">Location </label>
-            <input type="text" id="contacts-rank" name="contacts[rank]" value="">
+            <input type="text" id="contacts-rank" name="contact[location]" value="">
         </div>
         <div class="input-group flex">
             <label for="contacts-name">Phone</label>
-            <input type="text" id="contacts-name" name="contacts[name]" value="">
+            <input type="text" id="contacts-name" name="contact[phoneNumber]" value="">
         </div>
     </div>
 </div>
@@ -69,7 +79,7 @@ function renderAddContactHTML() {
     <div class="contacts-linkedin-handle flex">
         <label for="contacts-linkedin-handle"><i
                 class="fa-brands fa-linkedin"></i></label>
-        <input type="text" id="contacts-linkedin-handle" name="contacts[linkedin]" value=""
+        <input type="text" id="contacts-linkedin-handle" name="contact[linkedin]" value=""
             class="short-input-field">
     </div>
 
@@ -89,6 +99,11 @@ function renderAddLeadershipHTML() {
   const html = `
     <div class="modal-background">
     <div class="internal-brand-leadership--add">
+
+    <div class="modal-title-bar">
+    <h1>Add New Leadership:</h1>
+    </div>
+
     <form class="brand-leadership-item-form flex-column">
 
     <div class="input-group flex">

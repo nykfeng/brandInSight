@@ -37,6 +37,9 @@ module.exports.validateBrandHighlights = (req, res, next)=> {
 module.exports.validateContact = (req, res, next) => {
   const { error } = contactSchema.validate(req.body);
 
+  console.log('Error in Joi, req body is ---------------------');
+  console.log(req.body);
+
   if (error) {
     console.log('brandSchema error by JOI ---')
     const msg = error.details.map((el) => el.message).join(",");

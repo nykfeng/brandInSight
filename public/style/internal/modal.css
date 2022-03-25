@@ -24,7 +24,12 @@
   gap: 2rem;
 }
 
-
 .modal-background .leadership-btn-group {
   justify-content: flex-end;
+}
+
+.modal-title-bar {
+  padding: 1rem;
+  background-color: var(--variety-color-purple);
+  color: #fff;
 }
