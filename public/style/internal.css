@@ -60,6 +60,8 @@
 .form-add {
   display: flex;
   flex-direction: column;
+
+  background-color: #fff;
 }
 
 .alert-success {
@@ -326,6 +328,7 @@
 .internal-brand-btn-group {
   width: 100%;
   justify-content: flex-end;
+  gap: 2rem;
 }
 
 .internal-submit-brand-highlights {
@@ -404,3 +407,6 @@
 .brand-leadership-item-form {
   background-color: #fff;
 }
+
+
+/* New brand po */

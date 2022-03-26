@@ -1,5 +1,6 @@
 import modal from "./modal.js";
 
+
 const addContactBtn = document.querySelector(".contacts-add");
 const addLeadershipBtn = document.querySelector(".leadership-add");
 
@@ -10,7 +11,6 @@ addLeadershipBtn.addEventListener("click", function () {
   modal.open("Leadership");
 });
 
-// console.log(currentBrand);
 
 const renderListOfContacts = function () {
   if (brand.contact.length > 0) {
@@ -21,20 +21,23 @@ const renderListOfContacts = function () {
     contactContainerEl.innerHTML = "";
 
     brand.contact.forEach((contact) => {
-      console.log("Conact is: ");
-      console.log(contact);
       contactContainerEl.insertAdjacentHTML(
         "beforeend",
         generateContactHTML(contact)
       );
     });
 
+    // Get all the delete contacts buttons
     const deleteContactBtns = document.querySelectorAll(".contacts-delete");
     deleteContactBtns.forEach((btn) => {
-        btn.addEventListener("click", function(e) {
+        btn.addEventListener("click", async function(e) {
+            // Since the button is in the same form of save submit
             e.preventDefault();
+
+            // Get the contact id from the data attribute
             const contactId = btn.dataset.id;
-            deleteContact(contactId);
+            await deleteContact(contactId);
+            // Need to reload the page after delete so the content is gone
             location.reload();
         })
     });

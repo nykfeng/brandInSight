@@ -23,6 +23,26 @@
                     <% } %>
             </ul>
         </div>
+        <br>
+        <br>
+
+
+
+        <div class="action-items">
+
+            <div class="add-new-brand">
+                <button class="internal-btn btn brand-add">Add New Brand</button>
+            </div>
+
+            <div class="view-action-history">
+                <button class="internal-btn btn">View History</button>
+            </div>
+
+        </div>
+
+        <p>-------------------------------------------------------</p>
+        <p>-------------------------------------------------------</p>
+
 
         <a href="/brands/new" class="internal-btn btn">Add a brand</a>
         <br>
@@ -30,3 +50,12 @@
         <a href="/internal/brandPage" class="internal-btn btn">Internal Brand Page</a>
 
     </section>
+
+
+    <script>
+        const addNewBrandBtn = document.querySelector(".brand-add");
+
+        addNewBrandBtn.addEventListener("click", function () {
+            modal.open("Brand");
+        });
+    </script>

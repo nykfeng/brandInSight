@@ -33,3 +33,17 @@
   background-color: var(--variety-color-purple);
   color: #fff;
 }
+
+
+/* New Brand Modal */
+.new-brand-form {
+  padding: 2rem;
+  font-size: 1.5rem;
+  background-color: #fff;
+
+  gap: 1.5rem;
+}
+
+.new-brand-form #name {
+  width: 38.3rem;
+}
