@@ -2,11 +2,9 @@ import generateHTML from "./generateHTML.js";
 
 const bodyEl = document.querySelector("body");
 
-const currentBrand = brand;
-console.log("current brand in modal js is ");
-console.log(currentBrand);
 
-const open = function (module) {
+
+const open = function (module, currentBrand) {
   if (module === "Contact") {
     bodyEl.insertAdjacentHTML("beforeend", generateHTML.newContactModal(currentBrand));
     closeModalListener();

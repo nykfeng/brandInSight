@@ -42,7 +42,7 @@ function newBrandModal() {
 
   <div class="internal-brand-btn-group flex">
         <button class="modal-cancel internal-btn internal-btn-cancel flex">Cancel</button>
-        <button type="submit" class="leadership-new internal-btn internal-btn-add flex">Submit</button>
+        <button type="submit" class="internal-btn internal-btn-add flex">Submit</button>
   </div>
 </form>
 

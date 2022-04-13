@@ -4,11 +4,14 @@ import modal from "./modal.js";
 const addContactBtn = document.querySelector(".contacts-add");
 const addLeadershipBtn = document.querySelector(".leadership-add");
 
+// console.log("current brand in brand js is ");
+// console.log(brand);
+
 addContactBtn.addEventListener("click", function () {
-  modal.open("Contact");
+  modal.open("Contact", brand);
 });
 addLeadershipBtn.addEventListener("click", function () {
-  modal.open("Leadership");
+  modal.open("Leadership", brand);
 });
 
 
