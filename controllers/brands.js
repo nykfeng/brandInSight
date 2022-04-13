@@ -41,7 +41,7 @@ module.exports.add = async (req, res, next) => {
 
   await brand.save();
   req.flash("success", "Successfully created a new brand!");
-  res.redirect(`/brands/${brand._id}`);
+  res.redirect(`/internal/brands/${brand._id}`);
 };
 
 module.exports.getById = async (req, res) => {
