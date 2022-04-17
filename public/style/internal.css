@@ -1,8 +1,8 @@
-.internal-btn {
+/* .internal-btn {
   border-radius: 0.05rem;
   background-color: cornflowerblue;
   color: #fff;
-}
+} */
 
 .internal-main {
   font-size: 2em;
@@ -132,7 +132,7 @@
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 1.5rem;
+  padding: 1rem;
 
   align-items: center;
 }
@@ -142,10 +142,14 @@
 }
 
 .internal-btn-save {
+  font-size: 1.2rem;
+  padding: 0.8rem;
   background-color: var(--variety-color-purple);
 }
 
 .internal-btn-delete {
+  font-size: 1.2rem;
+  padding: 0.8rem;
   background-color: var(--warning-red);
 }
 
@@ -369,7 +373,6 @@
   gap: 1.5rem;
 }
 
-
 .contacts-linkedin-handle {
   font-size: 2.5rem;
   gap: 1.5rem;
@@ -384,7 +387,12 @@
 /* Internal Brand Leadership Editing Area */
 /* ------------------------------------ */
 /* ------------------------------------ */
+.brand-leadership-container {
+  width: 100%;
+}
+
 .internal-brand-leadership {
+  width: 100%;
   gap: 2rem;
 }
 
@@ -392,9 +400,14 @@
   box-shadow: 0.2rem 0.2rem 0.5rem var(--transparent-gray);
 }
 
+.leadership-profile-div {
+  margin-right: 1rem;
+}
+
 .brand-leadership-profile {
-  max-width: 5rem;
-  max-height: 5rem;
+  object-fit: cover;
+  width: 10rem;
+  height: 10rem;
 }
 
 .leadership-add {
@@ -405,7 +418,11 @@
 
 .brand-leadership-item-form {
   background-color: #fff;
+  margin-bottom: 1rem;
 }
 
+.brand-leadership-list input {
+  max-width: 25rem;
+}
 
 /* New brand po */

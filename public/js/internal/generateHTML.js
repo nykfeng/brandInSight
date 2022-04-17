@@ -212,36 +212,46 @@ function listOfContacts(brand, contact) {
 }
 
 function listOfLeaderships(brand, leadership) {
-    const html = `
-    <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
-                                <img src="${leadership.profilePicture.url}" alt="${leadership.name} profile picture"
-                                    class="brand-leadership-profile">
+  const html = `
+    <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="brand-leadership-item-form flex">
+    <div class="flex">
+        <div class="leadership-profile-div">
+        <img src="${leadership.profilePicture.url}" alt="${leadership.name} profile picture"
+                    class="brand-leadership-profile">
+        </div>
+        <div class="flex-column">
+        <div class="input-group flex">
+        <label for="leadership-name">Name</label>
+        <input type="text" id="leadership-name" name="leadership[name]" value="${leadership.name}">
+    </div>
 
-                                <div class="input-group flex">
-                                    <label for="leadership-name">Name</label>
-                                    <input type="text" id="leadership-name" name="leadership[name]" value="${leadership.name}">
-                                </div>
+    <div class="input-group flex">
+        <label for="leadership-position">Position</label>
+        <input type="text" id="leadership-position" name="leadership[position]" value="${leadership.position}">
+    </div>
+        </div>
+        
+    </div>
+    
+    <div class="flex-column">
+        <div class="input-group flex-column">
+            <label for="profilePicture">Update with a new profile picture:</label>
+            <input type="file" id="leadership-profile-picture" name="profilePicture"
+        accept="image/png, image/jpeg, image/jpg, image/gif">
+    </div>
 
-                                <div class="input-group flex">
-                                    <label for="leadership-position">Position</label>
-                                    <input type="text" id="leadership-position" name="leadership[position]" value="${leadership.position}">
-                                </div>
+    <div class="leadership-btn-group flex">
+        <button class="leadership-delete internal-btn internal-btn-delete flex" data-id="${leadership._id}">Delete
+        Person</button>
+        <button class="leadership-submit internal-btn internal-btn-save flex">Save
+        Changes</button>
+    </div>
 
-                                <div class="input-group flex">
-                                    <label for="profilePicture">Choose a New Picture File to Upload:</label>
-                                    <input type="file" id="leadership-profile-picture" name="profilePicture"
-                                        accept="image/png, image/jpeg, image/jpg, image/gif">
-                                </div>
+    </div>
 
-                                <div class="leadership-btn-group flex ">
-                                    <button class="leadership-delete internal-btn internal-btn-delete flex" data-id="${leadership._id}">Delete
-                                        Person</button>
-                                    <button class="leadership-submit internal-btn internal-btn-save flex">Save
-                                        Changes</button>
-                                </div>
-                            </form>
+    </form>
     `;
-    return html;
+  return html;
 }
 
 export default {
@@ -249,5 +259,5 @@ export default {
   newLeadershipModal,
   newContactModal,
   listOfContacts,
-  listOfLeaderships
+  listOfLeaderships,
 };
