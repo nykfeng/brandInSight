@@ -16,8 +16,12 @@ module.exports.add = async (req, res, next) => {
   // console.log(req.body);
   // console.log(req.file);
   const brand = new Brand(req.body.brand);
+  console.log("print brand _id");
   console.log(brand._id);
   if (req.file) {
+    console.log("req.file is ... ");
+    console.log(req.file);
+
     let url = req.file.path;
     let filename = req.file.filename;
 
@@ -37,6 +41,7 @@ module.exports.add = async (req, res, next) => {
     // brand.logo = { url: req.file.path, filename: req.file.filename };
   }
 
+  console.log("print whole brand info");
   console.log(brand);
 
   await brand.save();
@@ -91,16 +96,17 @@ module.exports.deleteBrand = async (req, res) => {
     await cloudinary.uploader.destroy(
       brand.logo.filename,
       function (error, result) {
-        console.log("Cloudinary Result: ",result, "Cloudinary Error: ", error);
+        console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
       }
     );
 
     // Delete the brand id folder that holds the logo file
-    await cloudinary.api.delete_folder(`BrandInSight/brands/${id}`,
-    function (error, result) {
-      console.log("Cloudinary Result: ",result, "Cloudinary Error: ", error);
-    }
-  );
+    await cloudinary.api.delete_folder(
+      `BrandInSight/brands/${id}`,
+      function (error, result) {
+        console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+      }
+    );
   }
 
   await brand.remove();

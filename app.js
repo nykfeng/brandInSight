@@ -22,6 +22,7 @@ const { isLoggedIn } = require("./middleware/isLoggedIn");
 // routes
 const brandRoutes = require("./routes/brands");
 const contactRoutes = require("./routes/contacts");
+const leadershipRoutes = require("./routes/leaderships");
 const userRoutes = require("./routes/users");
 const clientRoutes = require("./routes/client");
 const internalRoutes = require("./routes/internal");
@@ -93,6 +94,7 @@ app.use((req, res, next) => {
 
 app.use("/brands", brandRoutes);
 app.use("/brands/:id/contact", contactRoutes);
+app.use("/brands/:id/leadership", leadershipRoutes);
 app.use("/", userRoutes);
 app.use("/", clientRoutes);
 app.use("/internal", internalRoutes)

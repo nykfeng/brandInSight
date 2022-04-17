@@ -15,7 +15,16 @@ const storage = new CloudinaryStorage({
   },
 });
 
+const leadershipProfile = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "BrandInSight/leadershipProfilePicture",
+    allowedFormats: ["jpeg", "jpg", "png", "gif"],
+  },
+});
+
 module.exports = {
   cloudinary,
   storage,
+  leadershipProfile
 };

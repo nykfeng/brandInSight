@@ -61,22 +61,22 @@ function newLeadershipModal() {
       <h1>Add New Leadership:</h1>
       </div>
   
-      <form class="brand-leadership-item-form flex-column">
+      <form action="/brands/${brand._id}/leadership" method="POST" class="brand-leadership-item-form flex-column" enctype="multipart/form-data">
   
       <div class="input-group flex">
           <label for="leadership-name">Name</label>
-          <input type="text" id="leadership-name" name="leadership-name" value="">
+          <input type="text" id="leadership-name" name="leadership[name]" value="">
       </div>
   
       <div class="input-group flex">
           <label for="leadership-position">Position</label>
-          <input type="text" id="leadership-position" name="leadership-position" value="">
+          <input type="text" id="leadership-position" name="leadership[position]" value="">
       </div>
   
       <!-- Leadership profile picture upload -->
       <div class="input-group flex">
-          <label for="leadership-profile-picture">Choose a New Picture File to Upload:</label>
-          <input type="file" id="leadership-profile-picture" name="leadership-profile-picture"
+          <label for="profilePicture">Choose a New Picture File to Upload:</label>
+          <input type="file" id="leadership-profile-picture" name="profilePicture"
               accept="image/png, image/jpeg, image/jpg, image/gif">
       </div>
   
@@ -154,7 +154,7 @@ function newContactModal(currentBrand) {
 }
 
 function listOfContacts(brand, contact) {
-    const html = `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
+  const html = `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
     <div class="contacts-personal-detail flex">
         <div class="internal-contacts-form-group flex-column">
             <div class="input-group flex">
@@ -215,5 +215,5 @@ export default {
   newBrandModal,
   newLeadershipModal,
   newContactModal,
-  listOfContacts
+  listOfContacts,
 };

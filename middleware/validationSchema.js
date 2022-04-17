@@ -64,8 +64,20 @@ const contactSchema = Joi.object({
   }).required(),
 });
 
+const leadershipSchema = Joi.object({
+  leadership: Joi.object({
+    name: Joi.string().required(),
+    position: Joi.string().required(),
+    profilePicture: {
+      url: Joi.string().allow(""),
+      filename: Joi.string().allow(""),
+    },
+  })
+})
+
 module.exports = {
   brandSchema,
   contactSchema,
   brandHighlightsSchema,
+  leadershipSchema
 };

@@ -345,7 +345,11 @@
     <script>
         // have to do it this way because of default formatter auto adding space to ejs
         // < % - will not work, space between % and - 
-        let brand = JSON.parse('<%-JSON.stringify(brand)%>');
+        let brand = JSON.parse(`<%-JSON.stringify(brand)%>`);
+
+
+
+        console.log('brand is in internal view brand page');
+        console.log(brand);
     </script>
     <script src="/js/internal/brand.js" type="module"></script>
-    
