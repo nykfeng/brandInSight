@@ -36,6 +36,6 @@ router
     isLoggedIn,
     catchAsync(leaderships.deleteLeadership)
   )
-  .put("/:leadershipId", isLoggedIn, catchAsync(leaderships.edit));
+  .put("/:leadershipId", isLoggedIn, upload.single("profilePicture"), catchAsync(leaderships.edit));
 
 module.exports = router;

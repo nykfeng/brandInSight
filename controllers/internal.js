@@ -20,10 +20,10 @@ module.exports.renderNewBrandForm = async (req, res) => {
 module.exports.brandEdit = async (req, res) => {
   // const id = "623545d55a3d7c711c5cfccc";
   const { id } = req.params;
-  const brand = await Brand.findById(id).populate('contact');
-  console.log('brand controller here')
-  console.log(brand);
-  //   const brand = await Brand.find({}).populate('Contact');
+  const brand = await Brand.findById(id)
+    .populate("contact")
+    .populate("leadership");
+
   res.render("internal/brands/brandPage", { brand });
 };
 
@@ -67,3 +67,52 @@ module.exports.brandHighlightsUpdate = async (req, res) => {
   res.redirect(`/internal/brands/${id}`);
 };
 
+// delete the whole brand
+module.exports.deleteBrand = async (req, res) => {
+  const { id } = req.params;
+  const brand = await Brand.findById(id);
+
+  // Delete logo file on Cloudinary
+  if (brand.logo.filename) {
+    // must delete the logo file before the folder can be deleted
+    await cloudinary.uploader.destroy(
+      brand.logo.filename,
+      function (error, result) {
+        console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+      }
+    );
+
+    // Delete the brand id folder that holds the logo file
+    await cloudinary.api.delete_folder(
+      `BrandInSight/brands/${id}`,
+      function (error, result) {
+        console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+      }
+    );
+  }
+
+  // Delete leadership files on Cloudinary
+  if (brand.leadership.length > 0) {
+    for (leadership of brand.leadership) {
+      // must delete the leadership file before the folder can be deleted
+      await cloudinary.uploader.destroy(
+        leadership.filename,
+        function (error, result) {
+          console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+        }
+      );
+
+      // Delete the leadership folder that holds the leadership file
+      await cloudinary.api.delete_folder(
+        `BrandInSight/brands/${id}/leadershipProfilePicture`,
+        function (error, result) {
+          console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+        }
+      );
+    }
+  }
+
+  await brand.remove();
+  req.flash("success", "Successfully deleted a brand!");
+  res.redirect(`/brands`);
+};

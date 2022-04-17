@@ -13,15 +13,9 @@ module.exports.renderAddForm = async (req, res) => {
 };
 
 module.exports.add = async (req, res, next) => {
-  // console.log(req.body);
-  // console.log(req.file);
   const brand = new Brand(req.body.brand);
-  console.log("print brand _id");
-  console.log(brand._id);
-  if (req.file) {
-    console.log("req.file is ... ");
-    console.log(req.file);
 
+  if (req.file) {
     let url = req.file.path;
     let filename = req.file.filename;
 
@@ -41,16 +35,15 @@ module.exports.add = async (req, res, next) => {
     // brand.logo = { url: req.file.path, filename: req.file.filename };
   }
 
-  console.log("print whole brand info");
-  console.log(brand);
-
   await brand.save();
   req.flash("success", "Successfully created a new brand!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
 
 module.exports.getById = async (req, res) => {
-  const brand = await Brand.findById(req.params.id).populate("contact");
+  const brand = await Brand.findById(req.params.id)
+    .populate("contact")
+    .populate("leadership");
 
   if (!brand) {
     req.flash("error", "Cannot find that brand!");
