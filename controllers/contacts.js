@@ -9,7 +9,6 @@ module.exports.add = async (req, res) => {
   contact.brand = req.params.id;
   await contact.save();
   await brand.save();
-  console.log(contact);
   req.flash("success", "Successfully created a new contact!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
