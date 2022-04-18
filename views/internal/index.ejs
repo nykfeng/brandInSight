@@ -1,15 +1,11 @@
 <% layout("/layouts/boilerplateInternal.ejs") %>
-    <div class="simple-nav">
-        <button class="btn"><a href="/">Main Page</a></button>
-        <button class="btn"><a href="/home">Home</a></button>
+    <div class="internal-nav flex">
+        <a href="/" class="internal-nav-item">Client Landing Page</a>
+        <a href="/home" class="internal-nav-item">Client Home</a>
     </div>
 
     <section class="internal-main">
-        <h1>Employee Access Only Page</h1>
-        <h2>Edit all data and brands information here</h2>
 
-        <br>
-        <br>
         <div class="search-bar">---------------------</div>
         <p>Brands List goes here</p>
         <div class="trending-brand-list">
@@ -18,7 +14,7 @@
                     <li><span class="name">
                             <%=brand.name%>
                         </span>
-                        <a href="/brands/<%=brand._id%>">Brand ID -></a>
+                        <a href="/internal/brands/<%=brand._id%>">Brand ID -></a>
                     </li>
                     <% } %>
             </ul>
@@ -26,17 +22,69 @@
         <br>
         <br>
 
+        <ul class="brand-list">
+            <li class="brand-list__brand">
+                <img src="/images/logo/unity.png" alt="" class="brand-list__brand-logo">
+                <div class="brand-list__text">
+                    <a href="" class="brand-list__brand-title">Unity</a>
+                    <p class="brand-list__brand-industry">Developer Platform, Augmented Reality, Mobile Apps</p>
+                </div>
+                <div class="brand-list__subscription-status">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </div>
+            </li>
+
+            <li class="brand-list__brand">
+
+                <img src="/images/logo/jpmorgan.png" alt="" class="brand-list__brand-logo">
+                <div class="brand-list__text">
+                    <a href="" class="brand-list__brand-title">JPMorgan Chase &amp; Co.</a>
+                    <p class="brand-list__brand-industry">Business Development, Finance, Financial Services</p>
+                </div>
+                <div class="brand-list__subscription-status">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </li>
+
+            <li class="brand-list__brand">
+                <img src="/images/logo/nvidia.gif" alt="" class="brand-list__brand-logo">
+                <div class="brand-list__text">
+                    <a href="" class="brand-list__brand-title">NVIDIA</a>
+                    <p class="brand-list__brand-industry">Artificial Intelligence, GPU, Hardware, Software,
+                        Virtual
+                        Reality, Virtualization</p>
+                </div>
+            </li>
+
+            <li class="brand-list__brand">
+                <img src="/images/logo/Tesla.jpg" alt="" class="brand-list__brand-logo">
+                <div class="brand-list__text">
+                    <a href="/brands/621ecf3cac9258e3f087474c" class="brand-list__brand-title">Tesla</a>
+                    <p class="brand-list__brand-industry">Automotive, Autonomous Vehicles, Electric Vehicle,
+                        Electronics
+                    </p>
+                </div>
+            </li>
+
+
+            <div>
+
+                <button class="view-more-btn">View More</button>
+            </div>
+
+        </ul>
+
 
 
         <div class="action-items">
 
             <div class="add-new-brand">
-                <button class="internal-btn brand-add">Add New Brand</button>
+                <button class="internal-btn internal-main-btn brand-add">Add New Brand</button>
             </div>
             <br>
 
             <div class="view-action-history">
-                <button class="internal-btn ">View History</button>
+                <button class="internal-btn internal-main-btn ">View History</button>
             </div>
 
         </div>
@@ -45,10 +93,7 @@
         <p>-------------------------------------------------------</p>
 
 
-        <a href="/brands/new" class="internal-btn btn">Add a brand</a>
-        <br>
-        <br>
-        <a href="/internal/brandPage" class="internal-btn btn">Internal Brand Page</a>
+
 
     </section>
 

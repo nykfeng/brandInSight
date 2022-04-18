@@ -1,49 +1,8 @@
-/* .internal-btn {
-  border-radius: 0.05rem;
-  background-color: cornflowerblue;
-  color: #fff;
-} */
 
-.internal-main {
-  font-size: 2em;
-  margin: 10rem auto;
-  max-width: 100rem;
-}
 
-.form-add div {
-  margin-bottom: 1rem;
-}
 
-/* .brand-header {
-  max-width: 90rem;
-  margin: 10rem auto;
-} */
 
-.brand-btn {
-  border-radius: 0.05rem;
-  background-color: cornflowerblue;
-  color: #fff;
-}
-
-.del-btn {
-  background-color: crimson;
-  color: #fff;
-}
-
-.simple-nav {
-  display: flex;
-  gap: 4rem;
-  max-width: 70rem;
-  padding: 10rem;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.brand-header .brand-name {
-  font-size: 3.2rem;
-}
-
-.error-message {
+/* .error-message {
   max-width: 80rem;
   margin: 0 auto;
   text-align: center;
@@ -70,9 +29,9 @@
 
 .alert-error {
   background-color: lightcoral;
-}
+} */
 
-/* Adding styles for reall */
+/* Internal header */
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 .internal-logo-text {
   display: block;
@@ -86,14 +45,11 @@
   border-radius: 0.5rem;
 }
 
-.internal {
-  color: var(--variety-color-purple);
-}
-
 .internal-background-color {
   background-color: var(--variety-color-purple);
 }
 
+/* Internal footer */
 .internal-use-text {
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -107,10 +63,8 @@
   display: flex;
   flex-direction: column;
 }
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
-/* Check out all styles above to delete */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
 
 /* Internal Edit Page for brand info, contacts, highlights, leadership */
 

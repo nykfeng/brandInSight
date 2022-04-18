@@ -1,0 +1,45 @@
+/* body */
+.internal-main-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* internal nav bar */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.internal-nav {
+  background-color: var(--variety-color-purple);
+  padding: 1rem;
+  gap: 2.5rem;
+}
+
+.internal-nav-item {
+  color: #fff;
+  letter-spacing: 0.1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: inline-flex;
+  padding: 0.8rem;
+}
+
+.internal-nav-item:hover {
+  border-radius: 1rem;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: #fff;
+}
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* main section */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.internal-main {
+  font-size: 2em;
+  margin: 5rem auto;
+}
+
+.brand-add {
+
+}
+
+.internal-main-btn {
+    background-color: var(--variety-color-purple);
+}
