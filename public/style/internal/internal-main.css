@@ -37,9 +37,49 @@
 }
 
 .brand-add {
-
 }
 
 .internal-main-btn {
-    background-color: var(--variety-color-purple);
+  background-color: var(--variety-color-purple);
+}
+
+/* brand list */
+/* ---------------------------------------------- */
+/* ---------------------------------------------- */
+.brand-list {
+  max-width: 80rem;
+}
+
+.brand-list__brand-logo {
+  width: 8rem;
+  height: 8rem;
+}
+
+.brand-list__brand {
+  border: 1px solid black;
+  border-radius: 1rem;
+  overflow: hidden;
+  
+  margin-bottom: 2rem;
+}
+
+.internal-main-brand-logo {
+  display: inline-flex;
+}
+
+.brand-list__text {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.brand-list__brand-title {
+  font-size: 2.5rem;
+  color: #fff;
+  background-color: var(--variety-color-purple);
+  padding-left: 0.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.brand-list__brand-industry {
+  font-size: 1.6rem;
 }
