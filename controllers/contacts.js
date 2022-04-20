@@ -31,5 +31,4 @@ module.exports.deleteContact = async (req, res) => {
   await Brand.findByIdAndUpdate(id, { $pull: { contact: contactId } });
   await Contact.findByIdAndDelete(contactId);
   req.flash("success", "Successfully deleted a contact!");
-  res.redirect(`/internal/brands/${id}`);
 };

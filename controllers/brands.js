@@ -12,6 +12,21 @@ module.exports.renderAddForm = async (req, res) => {
   res.render("internal/brands/new");
 };
 
+// get a list of trending brands
+module.exports.trending = async (req, res) => {
+  // some algorithm to determine trending
+
+  // setting option for pagination
+  const options = {
+    page: 1,
+    limit: 5,
+  };
+
+  // paginate is not built in, using mongoose-paginate-v2 here
+  const brands = await Brand.paginate({}, options);
+  res.send( brands );
+};
+
 module.exports.add = async (req, res, next) => {
   const brand = new Brand(req.body.brand);
 

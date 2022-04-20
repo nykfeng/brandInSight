@@ -38,6 +38,10 @@ router
 // the /new route has to be before /:id, otherwise express takes /new as id
 router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));
 
+// a route to get a list of trending brands
+router.get("/trending", isLoggedIn, catchAsync(brands.trending));
+
+
 router
   .route("/:id")
   .get(isLoggedIn, catchAsync(brands.getById))

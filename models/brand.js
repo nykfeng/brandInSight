@@ -3,6 +3,9 @@ const Contact = require("./Contact");
 const Schema = mongoose.Schema; // Doing this to shorten the variable name down the line,
 //since mongoose.Schema will be used a lot
 
+// adding this plugin to use paginate
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 const BrandSchema = new Schema({
   name: {
     type: String,
@@ -94,8 +97,9 @@ const BrandSchema = new Schema({
   ],
 });
 
-// Mongoose middleware to delete contacts after brand was deleted
+BrandSchema.plugin(mongoosePaginate);
 
+// Mongoose middleware to delete contacts after brand was deleted
 BrandSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
     await Contact.deleteMany({
