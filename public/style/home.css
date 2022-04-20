@@ -156,6 +156,7 @@ ul {
   gap: 1.2rem;
 
   align-items: center;
+  margin-bottom: 2rem
 }
 
 .home-column .brand-list__brand {
@@ -174,6 +175,7 @@ ul {
 
 .home-trending-brands {
   border-radius: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .home-trending-brands h1,
@@ -243,6 +245,11 @@ ul.brand-list > li:before {
   cursor: pointer;
 
   color: var(--main-color);
+}
+
+.home-trending-view-more {
+  display: flex;
+  justify-content: center;
 }
 
 /*  home main content column -- news activity section */

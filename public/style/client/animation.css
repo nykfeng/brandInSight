@@ -1,0 +1,42 @@
+/* ========================== content placeholder ========================== */
+/* ========================== ******************* ========================== */
+.animated-bg {
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 10%,
+    #edeef1 20%,
+    #f6f7f8 100%
+  );
+  background-size: 200% 100%;
+  animation: bgMoving 1100ms linear infinite;
+  border-radius: 1rem;
+}
+
+@keyframes bgMoving {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+/* placeholder sizing */
+/* Need to add size to placeholder elements */
+.cph-brand-logo {
+  min-width: 5rem;
+  height: 5rem;
+}
+
+.cph-brand-title {
+  height: 3rem;
+  width: 45rem;
+  display: inline-block;
+}
+
+.cph-brand-p {
+  height: 3rem;
+  width: 45rem;
+  display: inline-block;
+}
