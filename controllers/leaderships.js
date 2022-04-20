@@ -17,17 +17,6 @@ module.exports.add = async (req, res) => {
 
   // if a file was uploaded, add to cloudinary and database with path
   if (req.file) {
-    // const { filename, newUrl, newFilename } =
-    //   leadershipFileRename(brand, req.file);
-
-    // await cloudinary.uploader.rename(
-    //   filename,
-    //   newFilename,
-    //   function (error, result) {
-    //     console.log(result, error);
-    //   }
-    // );
-
     leadership.profilePicture = await leadershipFileRename(brand, req.file);
   }
 

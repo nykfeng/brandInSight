@@ -242,7 +242,7 @@ function listOfLeaderships(brand, leadership) {
     <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="brand-leadership-item-form flex">
     <div class="flex">
         <div class="leadership-profile-div">
-        <img src="${leadership.profilePicture.url}" alt="${leadership.name} profile picture"
+        <img src="${leadership?.profilePicture?.url || ''}" alt="${leadership.name} profile picture"
                     class="brand-leadership-profile">
         </div>
         <div class="flex-column">

@@ -113,6 +113,9 @@ async function deleteBrand(brandId) {
   await fetch(url, {
     method: "DELETE",
   });
+  location.replace("/internal"); 
+  // location.href = "/internal";
+  // location.reload();
 }
 
 renderListOfContacts();

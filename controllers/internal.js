@@ -124,5 +124,5 @@ module.exports.deleteBrand = async (req, res) => {
   await brand.remove();
   console.log("Brand removed")
   req.flash("success", "Successfully deleted a brand!");
-  res.redirect('/internal');
+  res.redirect(200,'/internal');
 };
