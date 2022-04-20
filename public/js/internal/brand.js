@@ -1,17 +1,28 @@
 import generateHTML from "./generateHTML.js";
 import modal from "./modal.js";
 
+// buttons that follow up with modal open
 const addContactBtn = document.querySelector(".contacts-add");
 const addLeadershipBtn = document.querySelector(".leadership-add");
+const deleteBrandBtn = document.querySelector(".internal-delete-brand");
 
-// console.log("current brand in brand js is ");
-// console.log(brand);
-
+// Listener for modal to open
 addContactBtn.addEventListener("click", function () {
   modal.open("Contact", brand);
 });
 addLeadershipBtn.addEventListener("click", function () {
   modal.open("Leadership", brand);
+});
+deleteBrandBtn.addEventListener("click", async function () {
+  modal.open("DeleteBrand", brand);
+  const confirmDeleteBtn = document.querySelector(
+    ".delete-confirmation-modal .confirm_button--ok"
+  );
+  confirmDeleteBtn.addEventListener("click", async function () {
+    await deleteBrand(brand._id);
+    const modalEl = document.querySelector(".modal-background");
+    if (modalEl) modalEl.remove();
+  });
 });
 
 const renderListOfContacts = function () {
@@ -65,7 +76,8 @@ const renderListOfLeaderships = function () {
     });
 
     // Get all the delete contacts buttons
-    const deleteLeadershipBtns = document.querySelectorAll(".leadership-delete");
+    const deleteLeadershipBtns =
+      document.querySelectorAll(".leadership-delete");
     deleteLeadershipBtns.forEach((btn) => {
       btn.addEventListener("click", async function (e) {
         // Since the button is in the same form of save submit
@@ -79,7 +91,6 @@ const renderListOfLeaderships = function () {
       });
     });
   }
-
 };
 
 async function deleteContact(contactId) {
@@ -91,6 +102,14 @@ async function deleteContact(contactId) {
 
 async function deleteleadership(leadershipId) {
   const url = `/brands/${brand._id}/leadership/${leadershipId}`;
+  await fetch(url, {
+    method: "DELETE",
+  });
+}
+
+async function deleteBrand(brandId) {
+  console.log(`brand id is ${brandId}`);
+  const url = `/internal/brands/${brandId}`;
   await fetch(url, {
     method: "DELETE",
   });

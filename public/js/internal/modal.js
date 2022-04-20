@@ -14,6 +14,9 @@ const open = function (module, currentBrand) {
   } else if (module === "Brand") {
     bodyEl.insertAdjacentHTML("beforeend", generateHTML.newBrandModal());
     closeModalListener();
+  } else if (module === "DeleteBrand") {
+    bodyEl.insertAdjacentHTML("beforeend", generateHTML.deleteBrandConfirmation(currentBrand));
+    closeModalListener();
   }
 };
 

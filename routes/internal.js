@@ -35,10 +35,15 @@ router
     upload.single("logo"),
     validateBrand,
     catchAsync(internal.brandUpdate)
-  );
+  )
+  .delete(isLoggedIn, catchAsync(internal.deleteBrand));
 
 router
   .route("/brands/highlights/:id")
-  .put(isLoggedIn, validateBrandHighlights, catchAsync(internal.brandHighlightsUpdate));
+  .put(
+    isLoggedIn,
+    validateBrandHighlights,
+    catchAsync(internal.brandHighlightsUpdate)
+  );
 
 module.exports = router;

@@ -32,6 +32,11 @@
   padding: 1rem;
   background-color: var(--variety-color-purple);
   color: #fff;
+  font-size: 2rem;
+}
+
+.modal-title-bar h1 {
+  font-size: 2rem;
 }
 
 
@@ -50,4 +55,38 @@
 
 .internal-brand-leadership--add {
   width: 65rem;
+}
+
+/* brand deletion confirmation modal */
+.delete-confirmation-modal {
+  width: 50rem;
+  background-color:  #fff;
+  font-size: 1.5rem;
+}
+
+.delete-confirmation-modal .modal-title-bar {
+  background-color: var(--warning-red);
+}
+
+.delete-confirmation-message {
+  padding: 0 1rem;
+}
+
+.confirmation-box {
+  justify-content: flex-end;
+  padding: 0 1rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.confirm_button--ok, .confirm_button--no {
+  min-width: 7rem;
+}
+
+.confirm_button--ok {
+  background-color: var(--warning-red);
+}
+
+.confirm_button--no {
+  background-color: var(--variety-color-purple);
 }

@@ -265,6 +265,14 @@
   align-self: flex-end;
 }
 
+.delete-brand-container {
+  padding: 0 2rem;
+}
+
+.internal-delete-brand {
+  
+}
+
 /* Internal Brand Highlights Editing Area */
 /* ------------------------------------ */
 /* ------------------------------------ */

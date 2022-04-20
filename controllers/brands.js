@@ -49,7 +49,7 @@ module.exports.getById = async (req, res) => {
     req.flash("error", "Cannot find that brand!");
     return res.redirect("/brands");
   }
-  res.render("internal/brands/brand", { brand });
+  res.render("internal/brands/brandPage", { brand });
 };
 
 module.exports.renderEditForm = async (req, res) => {

@@ -153,6 +153,32 @@ function newContactModal(currentBrand) {
   return html;
 }
 
+function deleteBrandConfirmation(brand) {
+    const html = `
+    <div class="modal-background">
+
+        <div class="delete-confirmation-modal flex-column">
+
+        <div class="modal-title-bar">
+            <p>Confirm Brand Delete</p>
+        </div>
+
+        <div class="delete-confirmation-message">
+          <span>Are you sure you want to delete <b>${brand.name}</b> and all of its information?</span>
+        </div>
+
+        <div class="confirmation-box flex">
+          <button class="internal-btn confirm_button--ok">Yes</button>
+          <button class="internal-btn confirm_button--no modal-cancel">No</button>
+        </div>
+
+        </div>
+
+    </div>
+    `;
+    return html;
+}
+
 function listOfContacts(brand, contact) {
   const html = `<form action="/brands/${brand._id}/contact/${contact._id}?_method=PUT" method="POST" class="internal-contacts-form flex-column">
     <div class="contacts-personal-detail flex">
@@ -260,4 +286,5 @@ export default {
   newContactModal,
   listOfContacts,
   listOfLeaderships,
+  deleteBrandConfirmation
 };
