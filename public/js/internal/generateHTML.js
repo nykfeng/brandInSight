@@ -239,7 +239,7 @@ function listOfContacts(brand, contact) {
 
 function listOfLeaderships(brand, leadership) {
   const html = `
-    <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="brand-leadership-item-form flex">
+    <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="brand-leadership-item-form flex" enctype="multipart/form-data">
     <div class="flex">
         <div class="leadership-profile-div">
         <img src="${leadership?.profilePicture?.url || ''}" alt="${leadership.name} profile picture"

@@ -67,5 +67,4 @@ module.exports.deleteLeadership = async (req, res) => {
   }
   await Leadership.findByIdAndDelete(leadershipId);
   req.flash("success", "Successfully deleted the leadership data!");
-  res.redirect(`/internal/brands/${id}`);
 };

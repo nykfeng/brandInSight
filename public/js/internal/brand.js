@@ -85,9 +85,9 @@ const renderListOfLeaderships = function () {
 
         // Get the contact id from the data attribute
         const leadershipId = btn.dataset.id;
-        await deleteleadership(leadershipId);
-        // Need to reload the page after delete so the content is gone
         location.reload();
+        await deleteLeadership(leadershipId);
+        // Need to reload the page after delete so the content is gone
       });
     });
   }
@@ -100,11 +100,12 @@ async function deleteContact(contactId) {
   });
 }
 
-async function deleteleadership(leadershipId) {
+async function deleteLeadership(leadershipId) {
   const url = `/brands/${brand._id}/leadership/${leadershipId}`;
   await fetch(url, {
     method: "DELETE",
   });
+  // location.replace(`/internal/brands/${brand._id}`); 
 }
 
 async function deleteBrand(brandId) {
