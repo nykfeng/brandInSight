@@ -330,7 +330,41 @@
 
                     <div class="contacts-content">
                         <ul class="contacts-list">
-                            <li class="contacts-item">
+
+                            <!-- Loop to get exactly 3 contacts here -->
+
+                            <% if (brand.contact.length>0) { %> 
+                                <% const number = brand.contact.length > 3? 3 : brand.contact.length %> 
+                                <% for (let i=0; i < number; i++) { %>
+                                    <li class="contacts-item">
+                                        <div class="contacts-basics flex">
+                                            <a href="<%= brand.contact[i].linkedin %>" class="contacts-name"><span
+                                                    class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i></span><%= brand.contact[i].name %>  </a>
+                                            <p class="contacts-title"><%= brand.contact[i].position %></p>
+                                            <p class="contacts-rank"><%= brand.contact[i].rank %></p>
+                                        </div>
+                                        <div class="contacts-info flex">
+                                            <p class="contacts-email">
+                                                <a href="mailto:<%= brand.contact[i].email %>">
+                                                    <i class="fa-solid fa-envelope"></i> <%= brand.contact[i].email %>
+                                                </a>
+                                            </p>
+                                            <p class="contacts-phone">
+                                                <a href="tel:<%= brand.contact[i].phoneNumber %>">
+                                                    <i class="fa-solid fa-square-phone"></i> <%= brand.contact[i].phoneNumber %>
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="contact-save">
+                                            <div class="contacts-save-button">
+                                                <i class="fa-solid fa-circle-plus"></i> SAVE
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% } %> 
+                            <% } %> 
+
+                            <!-- <li class="contacts-item">
                                 <div class="contacts-basics flex">
                                     <a href="https://www.linkedin.com" class="contacts-name"><span
                                             class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i></span> Peter
@@ -409,7 +443,7 @@
                                         <i class="fa-solid fa-circle-plus"></i> SAVE
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
 
                         <div class="view-more-block">
@@ -426,7 +460,23 @@
                     </h1>
 
                     <ul class="leadership-list flex">
-                        <li class="leadership-list-item flex">
+
+                        <!-- Loop to get exactly 6 or less leadership display here -->
+
+                        <% if (brand.leadership.length>0) { %> 
+                            <% const number = brand.leadership.length > 6? 6 : brand.leadership.length %> 
+                            <% for (let i=0; i < number; i++) { %>
+                                <li class="leadership-list-item flex">
+                                    <img src="<%= brand.leadership[i].profilePicture.url %>" alt="" class="leadership-profile">
+                                    <div class="leadership-detail flex">
+                                        <p class="leadership-name"><%= brand.leadership[i].name %></p>
+                                        <p class="leadership-role"><%= brand.leadership[i].position %></p>
+                                    </div>
+                                </li>
+                            <% } %> 
+                        <% } %> 
+
+                        <!-- <li class="leadership-list-item flex">
                             <img src="../images/nvidia/jensen.webp" alt="" class="leadership-profile">
                             <div class="leadership-detail flex">
                                 <p class="leadership-name">Jensen Huang</p>
@@ -472,7 +522,7 @@
                                 <p class="leadership-name">Greg Estes</p>
                                 <p class="leadership-role">VP Marketing</p>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
 
 

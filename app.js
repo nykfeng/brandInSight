@@ -102,19 +102,16 @@ app.use("/internal", internalRoutes)
 
 // ;------------------------
 
-// app.get("/home", homePage);
-// app.get("/internal", isLoggedIn, internal);
+
 app.get("/free-user", homePage);
 
-app.get("/createBrand", createBrand);
+// app.get("/createBrand", createBrand);
 
-app.get("/internal/new", isLoggedIn, async (req, res) => {
-  res.render("internal/brands/new");
-});
 
-app.get("/signup", (req, res) => {
-  res.render("authen/signup");
-});
+
+// app.get("/signup", (req, res) => {
+//   res.render("authen/signup");
+// });
 
 
 
@@ -128,10 +125,7 @@ async function homePage(req, res) {
   res.render("client/home", { brands });
 }
 
-async function internal(req, res) {
-  const brands = await Brand.find({});
-  res.render("internal/index", { brands });
-}
+
 
 async function createBrand(req, res) {
   // const brand = new Brand({

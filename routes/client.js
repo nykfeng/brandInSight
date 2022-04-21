@@ -16,7 +16,7 @@ const brands = require("../controllers/brands");
 // client controller
 const client = require("../controllers/client");
 
-router.route("/home").get(client.renderHome);
+router.route("/home").get(isLoggedIn, client.renderHome);
 
 router.route("/client/brands/:id").get(isLoggedIn, catchAsync(client.getBrandById));
 

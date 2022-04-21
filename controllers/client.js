@@ -7,10 +7,13 @@ module.exports.renderHome = async (req, res, next) => {
 };
 
 module.exports.getBrandById = async (req, res, next) => {
-  const brand = await Brand.findById(req.params.id);
+  const brand = await Brand.findById(req.params.id)
+    .populate("contact")
+    .populate("leadership");
+    
   if (!brand) {
     req.flash("error", "Cannot find that brand!");
     return res.redirect("/brands");
   }
-  res.render("client/brand",{ brand });
+  res.render("client/brand", { brand });
 };
