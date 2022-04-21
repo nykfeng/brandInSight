@@ -28,13 +28,13 @@
                     </div>
                     <div class="brand-header-tab-container flex">
                         <div class="brand-header-tab selected">
-                            Summary
+                            <a href="#summary">Summary</a>
                         </div>
                         <div class="brand-header-tab">
-                            Financial
+                            <a href="#financial">Financial</a>
                         </div>
                         <div class="brand-header-tab">
-                            Contacts
+                            <a href="#contacts">Contacts</a>
                         </div>
                         <div class="brand-header-tab">
                             Signals & News
@@ -145,7 +145,7 @@
                                 </span>
                             </li>
                             <li class="brand-highlights-item">
-                                <span class="brand-highlights-option">Yearly Ad Spend: </span>
+                                <span class="brand-highlights-option">Ad Spend: </span>
                                 <span class="brand-highlights-number">$<%= brand.highlights.adSpend %></span>
                             </li>
                             <li class="brand-highlights-item">
@@ -339,7 +339,7 @@
                                     <li class="contacts-item">
                                         <div class="contacts-basics flex">
                                             <a href="<%= brand.contact[i].linkedin %>" class="contacts-name"><span
-                                                    class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i></span><%= brand.contact[i].name %>  </a>
+                                                    class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span><%= brand.contact[i].name %>  </a>
                                             <p class="contacts-title"><%= brand.contact[i].position %></p>
                                             <p class="contacts-rank"><%= brand.contact[i].rank %></p>
                                         </div>
@@ -446,12 +446,12 @@
                             </li> -->
                         </ul>
 
-                        <div class="view-more-block">
-
-                            <button class="view-more-btn">View More</button>
-                        </div>
+                        
+                        
                     </div>
-
+                    <div class="view-more-block flex">
+                        <button class="view-more-btn">View More</button>
+                    </div>
                 </div>
 
                 <div class="brand-leadership-block flex">
@@ -467,7 +467,9 @@
                             <% const number = brand.leadership.length > 6? 6 : brand.leadership.length %> 
                             <% for (let i=0; i < number; i++) { %>
                                 <li class="leadership-list-item flex">
-                                    <img src="<%= brand.leadership[i].profilePicture.url %>" alt="" class="leadership-profile">
+                                    <div class="leadershipt-list-profile-block">
+                                        <img src="<%= brand.leadership[i].profilePicture.url %>" alt="" class="leadership-profile">
+                                    </div>
                                     <div class="leadership-detail flex">
                                         <p class="leadership-name"><%= brand.leadership[i].name %></p>
                                         <p class="leadership-role"><%= brand.leadership[i].position %></p>
@@ -527,7 +529,9 @@
 
 
 
-                    <button class="view-more-btn">View More</button>
+                    <div class="view-more-block flex">
+                        <button class="view-more-btn">View More</button>
+                    </div>
 
                 </div>
 
@@ -544,3 +548,4 @@
         </article>
 
     </main>
+    <script src="/js/client/brand.js" type="module" defer></script>
