@@ -228,6 +228,9 @@
 .brand-hightlights {
   flex-direction: column;
   gap: 2.5rem;
+
+  padding-right: 2rem;
+  border-right: 1px solid var(--transparent-gray);
 }
 
 .brand-highlights-list {
@@ -246,6 +249,31 @@
 .brand-highlights-number {
   font-weight: bold;
   color: var(--main-color);
+}
+
+/* ------------ brand news ------------ */
+.brand-news-activity-title {
+  margin-bottom: 2.5rem;
+}
+
+.brand-news-activity {
+  width: 26%;
+  font-size: 1.2rem;
+}
+
+.brand-news-item {
+  gap: 0.5rem;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  padding-bottom: 1rem;
+}
+
+.brand-news-source {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.brand-news__article-block p {
+  display: block;
 }
 
 /* brand financial section */

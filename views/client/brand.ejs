@@ -105,15 +105,21 @@
                         <ul class="flex">
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Industry: </span>
-                                <span class="brand-industry"><%= brand.industry  %></span>
+                                <span class="brand-industry">
+                                    <%= brand.industry %>
+                                </span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Founded Date: </span>
-                                <span class="brand-industry"><%= brand.foundedDate  %></span>
+                                <span class="brand-industry">
+                                    <%= brand.foundedDate %>
+                                </span>
                             </li>
                             <li class="brand-detail-item">
                                 <span class="brand-detail-item-property">Founders: </span>
-                                <span class="brand-industry"><%= brand.founders  %></span>
+                                <span class="brand-industry">
+                                    <%= brand.founders %>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -128,11 +134,15 @@
                         <ul class="brand-highlights-list flex">
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Acquisition: </span>
-                                <span class="brand-highlights-number"><%= brand.highlights.acquisition %></span>
+                                <span class="brand-highlights-number">
+                                    <%= brand.highlights.acquisition %>
+                                </span>
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Investment: </span>
-                                <span class="brand-highlights-number"><%= brand.highlights.investment %></span>
+                                <span class="brand-highlights-number">
+                                    <%= brand.highlights.investment %>
+                                </span>
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Yearly Ad Spend: </span>
@@ -140,11 +150,39 @@
                             </li>
                             <li class="brand-highlights-item">
                                 <span class="brand-highlights-option">Contacts: </span>
-                                <span class="brand-highlights-number"><%= brand.highlights.contacts %></span>
+                                <span class="brand-highlights-number">
+                                    <%= brand.highlights.contacts %>
+                                </span>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- news and activity  -->
+                <div class="brand-news-activity flex-column">
+                    <div class="brand-news-activity-title">
+                        <p class="brand-section-title">
+                            <i class="fa-solid fa-rss"></i> News & Activity
+                        </p>
+                    </div>
+
+                    <div class="brand-news-item flex-column">
+                        <div class="brand-news__title-block flex">
+                            <div class="brand-news__title-icon">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span>News ▫ </span>
+                            </div>
+                            <div class="brand-news__date">Apr 7, 2022</div>
+                        </div>
+                        <div class="brand-news__article-block">
+                            <p class="brand-news-source">The Register</p>
+                            <p class="brand-news-article">The Emerging Unicorn Board: Meet 300 Companies That Could Be
+                                The Next Billion-Dollar Startups</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </section>
         </article>
 
