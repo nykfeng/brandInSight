@@ -70,8 +70,24 @@ function contactList(contact) {
   return html;
 }
 
+function leadershipList(leadership) {
+  const html = `
+  <li class="leadership-list-item flex">
+    <div class="leadershipt-list-profile-block">
+      <img src="${leadership.profilePicture.url}" alt="" class="leadership-profile">
+    </div>
+    <div class="leadership-detail flex">
+      <p class="leadership-name">${leadership.name}</p>
+      <p class="leadership-role">${leadership.position}</p>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
-  contactList
+  contactList,
+  leadershipList
 };

@@ -21,13 +21,37 @@ viewMoreBtns.forEach((viewMoreBtn) => {
   viewMoreBtn.addEventListener("click", function () {
     const viewMoreParent = this.parentNode.parentNode;
     const viewMoreContainerEl = this.parentNode;
-    this.style.display = 'none';
+    const module = this.parentNode.getAttribute("data-module"); // Get module name
+    this.style.display = "none"; // hide the viewmore button after getting clicked
     console.log("viewMoreParent ---------------");
     console.log(viewMoreParent);
 
-    const moduleListEl = viewMoreParent.querySelector('.contacts-list');
-    // moduleListEl.innerHTML = '';
-    viewMoreContainerEl.insertAdjacentHTML('beforeend', pagination.setupButtons('contact', brand.contact.length, 3));
-    pagination.setupControl(viewMoreParent, brand.contact, 'contacts');
+    modulePagination(
+      module,
+      viewMoreContainerEl,
+      viewMoreParent
+    );
   });
 });
+
+// module pagination controller
+function modulePagination(module, viewMoreContainerEl, viewMoreParent) {
+  switch (module) {
+    case "contacts":
+      viewMoreContainerEl.insertAdjacentHTML(
+        "beforeend",
+        pagination.setupButtons("contact", brand.contact.length, 3)
+      );
+      pagination.setupControl(viewMoreParent, brand.contact, "contacts");
+      break;
+    case "leaderships":
+      viewMoreContainerEl.insertAdjacentHTML(
+        "beforeend",
+        pagination.setupButtons("leaderships", brand.leadership.length, 6)
+      );
+      pagination.setupControl(viewMoreParent, brand.leadership, "leaderships");
+      break;
+    default:
+  }
+}
+

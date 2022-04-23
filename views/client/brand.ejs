@@ -449,7 +449,7 @@
 
                     <!-- base display is 0-3, if more than 3 to display, use the show more button -->
                     <% if (brand.contact.length>3) { %> 
-                        <div class="view-more-block flex">
+                        <div class="view-more-block flex" data-module="contacts">
                             <button class="view-more-btn">View More</button>
                         </div>
                     <% } %> 
@@ -530,13 +530,13 @@
 
                     <!-- base display is 0-6, if more than 6 to display, use the show more button -->
                     <% if (brand.leadership.length > 6) { %> 
-                        <div class="view-more-block flex">
+                        <div class="view-more-block flex" data-module="leaderships">
                             <button class="view-more-btn">View More</button>
                         </div>
                     <% } %> 
 
 
-                    <div class="pagination flex">
+                    <!-- <div class="pagination flex">
                         <button class="prev-page pagination-btn">Previous</button>
                         <ul class="pagination-numbers flex">
                             <li><button class="pagination-number-btn active-pagination-btn">1</button></li>
@@ -545,7 +545,7 @@
                             <li><button class="pagination-number-btn">4</button></li>
                         </ul>
                         <button class="next-page pagination-btn">Next</button>
-                    </div>
+                    </div> -->
                 </div>
 
 

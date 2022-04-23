@@ -90,11 +90,42 @@ function pageSetup(
   // manipulate HTML content, delete old data
   moduleDataListEl.innerHTML = "";
   // moduleDataListEl insert new data
-  for (let i = startIndex; i < startIndex + size; i++) {
-    moduleDataListEl.insertAdjacentHTML(
-      "beforeend",
-      generateHTML.contactList(data[i])
-    );
+  insertModuleHTML(
+    startIndex,
+    startIndex + size,
+    data,
+    moduleDataListEl,
+    module
+  );
+  //   for (let i = startIndex; i < startIndex + size; i++) {
+  //     moduleDataListEl.insertAdjacentHTML(
+  //       "beforeend",
+  //       generateHTML.contactList(data[i])
+  //     );
+  //   }
+}
+
+function insertModuleHTML(
+  startIndex,
+  endIndex,
+  data,
+  moduleDataListEl,
+  module
+) {
+  if (module === "contacts") {
+    for (let i = startIndex; i < endIndex; i++) {
+      moduleDataListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.contactList(data[i])
+      );
+    }
+  } else if (module === "leaderships") {
+    for (let i = startIndex; i < endIndex; i++) {
+      moduleDataListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.leadershipList(data[i])
+      );
+    }
   }
 }
 
