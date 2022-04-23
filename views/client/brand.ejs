@@ -561,4 +561,14 @@
         </article>
 
     </main>
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let brand = JSON.parse(`<%-JSON.stringify(brand)%>`);
+
+
+
+        console.log('brand is in client view brand page');
+        console.log(brand);
+    </script>
     <script src="/js/client/brand.js" type="module" defer></script>
