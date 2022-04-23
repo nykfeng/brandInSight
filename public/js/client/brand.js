@@ -12,3 +12,5 @@ brandHeaderEls.forEach((brandHeader) => {
     }
   });
 });
+
+
