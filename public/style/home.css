@@ -37,12 +37,8 @@ ul {
 
   display: flex;
   flex-direction: column;
-  /* grid-template-areas:
-    ". header ."
-    "left-side home-main right-side"
-    ". footer ."; */
-
-  /* background-color: #EEF2FF; */
+ 
+  position: relative;
 }
 
 .content-body {
