@@ -1,0 +1,49 @@
+.section-error {
+  margin: 10rem auto;
+  gap: 10rem;
+}
+
+.section-error h1 {
+  font-size: 2.5rem;
+}
+
+.section-error h2 {
+  font-size: 1.6rem;
+}
+
+.error-404-sign {
+  font-size: 15rem;
+}
+
+.error-page-message {
+  margin: 5rem;
+  padding: 1rem;
+  color: red;
+  border: 1px solid red;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.error-image {
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(255, 50, 67);
+  min-width: 40rem;
+  min-height: 40rem;
+
+  clip-path: circle(50% at 50% 50%);
+}
+
+.error-image p {
+  color: #fff;
+  font-size: 15rem;
+  text-decoration: underline;
+  transform: skewY(-15deg);
+
+  text-shadow: 0 5px 5px rgba(17, 17, 17, 0.26);
+}
+
+.error-image-div {
+  filter: drop-shadow(2px 4px 8px #585858);
+}

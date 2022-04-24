@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+
+    <section class="section-error flex">
+        <div class="error-image-div">
+            <div class="error-image flex">
+
+                <p>Opps!</p>
+            </div>
+        </div>
+
+        <div class="error-text">
+            <h1>Well, well, well..</h1>
+            <h2>There is nothing to see here unfortunately.</h2>
+
+            <div class="error-404-sign">
+                404
+            </div>
+
+            <h2>Page does not exist!</h2>
+            <h2>Check the following error message for more details</h2>
+            <p class="error-page-message">
+                <%= error %>
+            </p>
+        </div>
+    </section>

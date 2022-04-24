@@ -158,7 +158,7 @@ app.use((err, req, res, next) => {
   console.log("Express last error----");
   console.log(err);
   if (!err.message) err.message = "Something went super wrong!";
-  res.status(statusCode).render("internal/error", { error: err });
+  res.status(statusCode).render("client/error", { error: err });
 });
 
 app.listen(PORT, () => {
