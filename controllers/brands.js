@@ -27,6 +27,28 @@ module.exports.trending = async (req, res) => {
   res.send( brands );
 };
 
+// get a list of search result by string
+module.exports.searching = async (req, res) => {
+  console.log("req query")
+  console.log(req.query);
+
+
+  const term = req.query.term;
+  const reg = new RegExp(term,"i");
+
+
+  const options = {
+    page: 1,
+    limit: 10,
+  };
+
+  const search = await Brand.paginate({ name: reg}, options);
+  console.log('Brand Search Result -------------')
+  console.log(search);
+
+  res.send( search );
+};
+
 module.exports.add = async (req, res, next) => {
   const brand = new Brand(req.body.brand);
 
