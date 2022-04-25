@@ -62,7 +62,6 @@
 .search-result__list-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 
-
   padding: 0 1rem;
   background-color: rgba(255, 255, 255, 0.542);
   cursor: pointer;
@@ -84,16 +83,27 @@
 
 .result-logo,
 .result-logo-img {
-  max-width: 8rem;
-  max-height: 8rem;
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
 }
 
 .result-brand__name {
   font-size: 2.2rem;
   font-weight: bold;
+
+  justify-content: flex-end;
 }
 
 .result-brand__url {
   font-size: 1.3rem;
   color: var(--stock-green);
+  justify-content: flex-end;
+}
+
+.search-result__no-result {
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: var(--warning-red);
 }

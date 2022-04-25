@@ -85,9 +85,35 @@ function leadershipList(leadership) {
   return html;
 }
 
+function searchResultList(brand) {
+  const html = `
+  <li class="search-result__list-item flex">
+      <a href="/brands/${brand._id}" class="flex search-item">
+        <div class="result-logo"><img src="${brand.logo.url}" alt="" class="result-logo-img"></div>
+          <div class="result-brand-info">
+            <p class="result-brand__name flex">${brand.name}</p>
+            <p class="result-brand__url flex">${brand.website}</p>
+          </div>
+      </a>
+    </li>
+  `;
+  return html;
+}
+
+function searchResultListEmpty() {
+  const html = `
+  <li class="search-result__list-item flex">
+    <p class="search-result__no-result search-item flex"> Not result was found </p>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
   contactList,
-  leadershipList
+  leadershipList,
+  searchResultList,
+  searchResultListEmpty
 };
