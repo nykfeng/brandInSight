@@ -72,6 +72,7 @@ module.exports.add = async (req, res, next) => {
   res.redirect(`/internal/brands/${brand._id}`);
 };
 
+// this route will be for client side brand page
 module.exports.getById = async (req, res) => {
   const brand = await Brand.findById(req.params.id)
     .populate("contact")
@@ -81,7 +82,7 @@ module.exports.getById = async (req, res) => {
     req.flash("error", "Cannot find that brand!");
     return res.redirect("/brands");
   }
-  res.render("internal/brands/brandPage", { brand });
+  res.render("client/brand", { brand });
 };
 
 module.exports.renderEditForm = async (req, res) => {

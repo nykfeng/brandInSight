@@ -1,4 +1,7 @@
-import generateHTML from "./generateHTML.js";
+import generateHTML from "./client/generateHTML.js";
+import generateHTMLInternal from "./internal/generateHTML.js";
+import getData from "./getData.js";
+
 // DOM elements to work with
 const searchBarInput = document.querySelector(".search-bar__input");
 const searchResultListEl = document.querySelector(".search-result__list");
@@ -19,11 +22,13 @@ searchBarInput.addEventListener("keyup", async function () {
   clearTimeout(timeout);
 
   timeout = setTimeout(async function () {
+    // if search bar input was empty, just return
     if (searchBarInput.value === "") return;
+
     const query = searchBarInput.value;
-    const listOfBrands = await sendQuery(query);
+    const listOfBrands = await getData.sendQuery(query);
     console.log(listOfBrands);
-    searchResultListEl.innerHTML = "";
+    searchResultListEl.innerHTML = ""; // empty out the result list
 
     // If server returned no result
     if (listOfBrands.length === 0) {
@@ -40,27 +45,23 @@ searchBarInput.addEventListener("keyup", async function () {
     } else resultToDisplay = MAX_SEARCH_RESULT;
 
     for (let i = 0; i < resultToDisplay; i++) {
-      searchResultListEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.searchResultList(listOfBrands[i])
-      );
+      console.log("Current url is ");
+      console.log(window.location.href);
+      if (window.location.href.includes("internal")) {
+        searchResultListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTMLInternal.searchResultList(listOfBrands[i])
+        );
+      } else {
+        searchResultListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.searchResultList(listOfBrands[i])
+        );
+      }
     }
   }, 1500);
 });
 
-// to send search term to server
-async function sendQuery(query) {
-  const url = `/brands/searching?term=${query}`;
-  const res = await fetch(url, {
-    method: "GET",
-    query: query,
-  });
-  const data = await res.json();
-  console.log(data);
-  const listOfBrands = Array.from(data.docs);
-  // console.log(listOfBrands);
-  return listOfBrands;
-}
 
 // After the dropdown result list was rendered
 // add listener for clicking outside of the list to close it
@@ -75,7 +76,6 @@ document.addEventListener("click", function (e) {
   // Listen for clicking search button
   // which will default to searching the first result
   if (e.target.closest(".search-bar__submit")) {
-
     // targeting the first search result
     const firstResult = document.querySelector(
       ".search-result__list-item:first-child"

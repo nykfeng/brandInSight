@@ -280,11 +280,27 @@ function listOfLeaderships(brand, leadership) {
   return html;
 }
 
+function searchResultList(brand) {
+    const html = `
+    <li class="search-result__list-item flex">
+        <a href="/internal/brands/${brand._id}" class="flex search-item">
+          <div class="result-logo"><img src="${brand.logo.url}" alt="" class="result-logo-img"></div>
+            <div class="result-brand-info">
+              <p class="result-brand__name flex">${brand.name}</p>
+              <p class="result-brand__url flex">${brand.website}</p>
+            </div>
+        </a>
+      </li>
+    `;
+    return html;
+  }
+
 export default {
   newBrandModal,
   newLeadershipModal,
   newContactModal,
   listOfContacts,
   listOfLeaderships,
-  deleteBrandConfirmation
+  deleteBrandConfirmation,
+  searchResultList
 };

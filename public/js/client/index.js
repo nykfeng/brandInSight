@@ -1,4 +1,4 @@
-import getData from "./getData.js";
+import getData from "../getData.js";
 import generateHTML from "./generateHTML.js";
 
 // DOM elements to work with

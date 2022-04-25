@@ -60,14 +60,16 @@
 }
 
 .brand-header .brand-logo {
-  max-width: 18rem;
-  max-height: 18rem;
+  width: 18rem;
+  height: 18rem;
   border-radius: 1rem;
   border: 1px solid #dee2e6;
   padding: 0.5rem;
   box-shadow: 0 0.2rem 0.3rem black;
   overflow: hidden;
   background-color: var(--background-blue);
+
+  object-fit: contain;
 }
 
 .brand-header-title-container {
