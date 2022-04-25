@@ -1,6 +1,8 @@
 // DOM elements to work with
-let timeout;
 const searchBarInput = document.querySelector(".search-bar__input");
+
+// need a variable to hold the timeout and cancel it later
+let timeout;
 
 searchBarInput.addEventListener("keyup", async function () {
     //clearTimeout method cancels a timeout previously established

@@ -29,24 +29,19 @@ module.exports.trending = async (req, res) => {
 
 // get a list of search result by string
 module.exports.searching = async (req, res) => {
-  console.log("req query")
-  console.log(req.query);
-
-
+  // the query is named term
   const term = req.query.term;
+  // using RegEx to set it to /term/i
   const reg = new RegExp(term,"i");
-
 
   const options = {
     page: 1,
     limit: 10,
   };
 
-  const search = await Brand.paginate({ name: reg}, options);
-  console.log('Brand Search Result -------------')
-  console.log(search);
+  const searchResults = await Brand.paginate({ name: reg }, options);
 
-  res.send( search );
+  res.send( searchResults );
 };
 
 module.exports.add = async (req, res, next) => {
