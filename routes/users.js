@@ -31,6 +31,10 @@ router
   );
 // You can use other strategy here as well, like Google, twitter account instead of local
 
+
+// Access and edit user data
+router.route("/user/:id").get(users.access).put().delete();
+
 router.get("/logout", users.logout);
 
 module.exports = router;

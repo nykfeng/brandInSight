@@ -1,0 +1,80 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-setting-main {
+  width: 50rem;
+  margin: 10rem auto;
+
+  font-size: 1.6rem;
+
+  border: 1px solid black;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.user-setting__title {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 1rem;
+  font-size: 2.5rem;
+}
+
+.user-setting__content {
+  gap: 2rem;
+  padding: 5rem;
+}
+
+.user-setting__profile-pic-block {
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-radius: 1rem;
+  /* border: 2px solid var(--main-color); */
+}
+
+.user-setting__upload {
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+#leadership-profile-picture {
+  font-size: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-profile-img {
+  width: 15rem;
+  height: 15rem;
+
+  border: 0.2rem solid rgb(145, 143, 143);
+  border-radius: 100%;
+
+  box-shadow: 0 5px 5px rgb(161, 161, 161);
+
+  object-fit: cover;
+}
+
+.user-setting__input-group {
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.user-setting__submit {
+  margin-top: 2rem;
+  padding: 0 2rem;
+  justify-content: flex-end;
+}
+
+.user-setting__submit button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: 0.2rem solid var(--main-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--main-color);
+}

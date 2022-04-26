@@ -39,3 +39,11 @@ module.exports.logout = (req, res) => {
   req.flash("success", "Goodbye");
   res.redirect("/");
 };
+
+
+// get user information
+module.exports.access = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  res.render(`authen/user`, {user});
+}

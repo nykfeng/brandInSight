@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+    <main class="user-setting-main flex-column">
+        <div class="user-setting__title">
+            User Setting
+        </div>
+
+        <form action="" class="user-setting__content flex-column" enctype="multipart/form-data">
+            <div class="user-setting__profile-pic-block flex">
+                <div class="user-setting__profile-pic">
+                    <img src="https://res.cloudinary.com/nykfengcloud/image/upload/v1650232089/BrandInSight/leadershipProfilePicture/aywmmxpvuizji1sjcgzw.jpg"
+                        alt="" class="user-profile-img">
+                </div>
+                <div class="user-setting__upload flex-column">
+                    <label for="profilePicture">Upload a new profile picture:</label><br>
+                    <input type="file" id="leadership-profile-picture" name="profilePicture"
+                        accept="image/png, image/jpeg, image/jpg, image/gif">
+                </div>
+            </div>
+
+            <div class="user-setting__input-group  flex">
+                <label for="user-setting__email">Email</label>
+                <input type="text" id="user-setting__email" name="email" value="JohnAdams@hotmail.com" disabled>
+            </div>
+
+            <div class="user-setting__input-group  flex">
+                <label for="user-setting__username">Username</label>
+                <input type="text" id="user-setting__username" name="username" value="JohnAdams123" disabled>
+            </div>
+
+            <div class="user-setting__input-group user-setting__name flex">
+                <label for="user-setting__firstName">First Name</label>
+                <input type="text" id="user-setting__firstName" name="firstName" value="John">
+            </div>
+
+            <div class="user-setting__input-group user-setting__name flex">
+                <label for="user-setting__lastName">Last Name</label>
+                <input type="text" id="user-setting__lastName" name="lastName" value="Adams">
+            </div>
+
+            <div class="user-setting__submit flex">
+                <button>Save</button>
+            </div>
+
+        </form>
+
+
+    </main>
+
+    <script>
+        let user = JSON.parse(`<%-JSON.stringify(user)%>`);
+
+
+
+        console.log('user is in internal view user page');
+        console.log(user);
+    </script>

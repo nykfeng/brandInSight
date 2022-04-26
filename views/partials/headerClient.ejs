@@ -65,8 +65,9 @@
                                 👋 <%= currentUser.username%>
                             </p>
                         </li>
-                        <li><i class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i>
-                            <p>Account Settings</p>
+                        <li>
+                            <a href="/user/<%=currentUser._id%>"><i
+                                    class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i>Account Settings</a>
                         </li>
                         <li><i class="fa-solid fa-right-from-bracket linear-gradient-text"></i>
                             <a href="/logout">Log Out</a>
