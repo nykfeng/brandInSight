@@ -6,10 +6,21 @@
         <aside class="home-left-panel">
 
             <div class="welcome-area">
-                <img src="/images/development-use/user-avatar.jpg" alt="" class="user-profile-avatar">
+                <% if (currentUser.profilePicture) { %> 
+                    <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
+                <% } else { %>
+                    <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
+                <% } %>
                 <div class="welcome-text-area">
-                    <h3>Welcome,</h3>
-                    <h3 class="user-profile-name">Julius Roberts</h3>
+                    <h3 class="welcome-text">Welcome,</h3>
+                    <h3 class="user-profile-name">
+                        <% if (currentUser.firstName) { %>
+                            <%= currentUser.firstName %>
+                            <%= currentUser.lastName %>
+                        <% } else { %>
+                            <%= currentUser.username %>
+                        <% } %>
+                    </h3>
                 </div>
             </div>
 

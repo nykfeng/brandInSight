@@ -91,18 +91,23 @@ ul {
 }
 
 .user-profile-avatar {
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   border: 0.1rem solid black;
   border-radius: 100%;
 }
 
 .welcome-text-area {
   align-self: flex-end;
+  align-self: center;
+}
+
+.welcome-text {
+  font-size: 1.3rem;
 }
 
 .user-profile-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .user-functions-item {

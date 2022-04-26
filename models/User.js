@@ -21,6 +21,9 @@ const UserSchema = new Schema({
     url: String,
     filename: String,
   },
+  lastLoggedIn : {
+    type: String,
+  }
 });
 
 // plugin is a mongoose tool for reusing logic in multiple schemas
