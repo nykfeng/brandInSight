@@ -15,6 +15,14 @@ const storage = new CloudinaryStorage({
   },
 });
 
+const userProfile = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "BrandInSight/users",
+    allowedFormats: ["jpeg", "jpg", "png", "gif"],
+  },
+});
+
 const leadershipProfile = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -26,5 +34,6 @@ const leadershipProfile = new CloudinaryStorage({
 module.exports = {
   cloudinary,
   storage,
+  userProfile,
   leadershipProfile
 };

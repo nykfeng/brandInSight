@@ -5,40 +5,44 @@
             User Setting
         </div>
 
-        <form action="" class="user-setting__content flex-column" enctype="multipart/form-data">
+        <form action="/user/<%= user._id %>?_method=PUT" method="POST" class="user-setting__content flex-column"
+            enctype="multipart/form-data">
             <div class="user-setting__profile-pic-block flex">
                 <div class="user-setting__profile-pic">
-                    <img src="https://res.cloudinary.com/nykfengcloud/image/upload/v1650232089/BrandInSight/leadershipProfilePicture/aywmmxpvuizji1sjcgzw.jpg"
-                        alt="" class="user-profile-img">
+                    <% if (user.profilePicture) { %>
+                        <img src="<%=user.profilePicture.url %>" alt="" class="user-profile-img">
+                        <% } %>
                 </div>
+
                 <div class="user-setting__upload flex-column">
-                    <label for="profilePicture">Upload a new profile picture:</label><br>
-                    <input type="file" id="leadership-profile-picture" name="profilePicture"
+                    <label for="user-profilePicture">Upload a new profile picture:</label><br>
+                    <input type="file" id="user-profilePicture" name="userProfile"
                         accept="image/png, image/jpeg, image/jpg, image/gif">
                 </div>
             </div>
 
             <div class="user-setting__input-group  flex">
                 <label for="user-setting__email">Email</label>
-                <input type="text" id="user-setting__email" name="email" value="JohnAdams@hotmail.com" disabled>
+                <input type="text" id="user-setting__email" name="email" value="<%= user.email %>" disabled>
             </div>
 
             <div class="user-setting__input-group  flex">
                 <label for="user-setting__username">Username</label>
-                <input type="text" id="user-setting__username" name="username" value="JohnAdams123" disabled>
+                <input type="text" id="user-setting__username" name="username" value="<%= user.username %>" disabled>
             </div>
 
             <div class="user-setting__input-group user-setting__name flex">
                 <label for="user-setting__firstName">First Name</label>
-                <input type="text" id="user-setting__firstName" name="firstName" value="John">
+                <input type="text" id="user-setting__firstName" name="user[firstName]" value="<%= user.firstName %>">
             </div>
 
             <div class="user-setting__input-group user-setting__name flex">
                 <label for="user-setting__lastName">Last Name</label>
-                <input type="text" id="user-setting__lastName" name="lastName" value="Adams">
+                <input type="text" id="user-setting__lastName" name="user[lastName]" value="<%= user.lastName %>">
             </div>
 
             <div class="user-setting__submit flex">
+
                 <button>Save</button>
             </div>
 

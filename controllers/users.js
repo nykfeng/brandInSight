@@ -1,5 +1,8 @@
 const User = require("../models/User");
 
+// need cloudinary function to delete and modify file on it
+const { cloudinary } = require("../cloudinary");
+
 module.exports.renderRegister = (req, res) => {
   res.render("authen/signup");
 };
@@ -40,10 +43,46 @@ module.exports.logout = (req, res) => {
   res.redirect("/");
 };
 
-
 // get user information
 module.exports.access = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
-  res.render(`authen/user`, {user});
-}
+  res.render(`authen/user`, { user });
+};
+
+// Edit user information
+module.exports.edit = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  console.log(user);
+
+  console.log("req.body is ...");
+  console.log(req.body);
+  console.log("req.body user ...");
+
+  console.log(req.body.user);
+
+  console.log("req file is ");
+  console.log(req.file);
+
+
+  user.firstName = req.body.user.firstName;
+  user.lastName = req.body.user.lastName;
+
+  if (req.file) {
+    if (user.profilePicture.filename) {
+      await cloudinary.uploader.destroy(user.profilePicture.filename);
+    }
+    user.profilePicture = { url: req.file.path, filename: req.file.filename };
+  }
+
+  // const user = await User.findByIdAndUpdate(
+  //   id,
+  //   { ...req.body.user },
+  //   { runValidators: true }
+  // );
+  await user.save();
+
+  req.flash("success", "Successfully updated your profile!");
+  res.redirect(`/user/${id}`);
+};
