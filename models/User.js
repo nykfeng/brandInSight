@@ -9,6 +9,18 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  subscribedBrands: [{ type: String }],
+  viewedBrandHistory: [{ type: String }],
+  profilePicture: {
+    url: String,
+    filename: String,
+  },
 });
 
 // plugin is a mongoose tool for reusing logic in multiple schemas
@@ -17,4 +29,4 @@ const UserSchema = new Schema({
 // passport also makes sure username is unique
 UserSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

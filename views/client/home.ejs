@@ -340,4 +340,14 @@
         </aside>
 
     </main>
+
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
+
+        console.log('The current user at client home page is ');
+        console.log(user);
+    </script>
+
     <script src="/js/client/index.js" type="module" defer></script>

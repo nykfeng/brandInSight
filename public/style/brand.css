@@ -68,6 +68,7 @@
   box-shadow: 0 0.2rem 0.3rem black;
   overflow: hidden;
   background-color: var(--background-blue);
+  background-color: #fff;
 
   object-fit: contain;
 }
