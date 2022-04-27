@@ -256,6 +256,7 @@ ul.brand-list > li:before {
   color: var(--stock-green);
 }
 
+
 .home-trending-view-more {
   display: flex;
   justify-content: center;

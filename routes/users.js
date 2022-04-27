@@ -43,11 +43,10 @@ router
   .put(isLoggedIn, upload.single("userProfile"), catchAsync(users.edit))
   .delete();
 
-router.post(
-  "/user/:id/addBrandSubscription",
-  isLoggedIn,
-  catchAsync(users.addBrandSubscription)
-);
+router
+  .route("/user/:id/brandSubscription")
+  .post(isLoggedIn, catchAsync(users.addBrandSubscription))
+  .delete(isLoggedIn, catchAsync(users.deleteBrandSubscription));
 
 router.get("/logout", users.logout);
 

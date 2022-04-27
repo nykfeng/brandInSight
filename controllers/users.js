@@ -74,19 +74,23 @@ module.exports.edit = async (req, res) => {
 
 // User adding subscribed brands to profile
 module.exports.addBrandSubscription = async (req, res) => {
-  console.log("req.body");
-  console.log(req.body);
-
+  // Getting brand id to add to subscribed
   const { id } = req.body;
   const userId = req.params.id;
-
-  console.log("user id is ", userId);
-  console.log("brand id is ", id);
 
   const user = await User.findById(userId);
   const brand = await Brand.findById(id);
 
   user.subscribedBrands.push(brand);
 
-  user.save();
+  await user.save();
+};
+
+// User unsubscribed brands from profile
+module.exports.deleteBrandSubscription = async (req, res) => {
+  // Getting brand id to delete
+  const { id } = req.body;
+  const userId = req.params.id;
+
+  await User.findByIdAndUpdate(userId, { $pull: { subscribedBrands: id } });
 };

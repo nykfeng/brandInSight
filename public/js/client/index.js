@@ -17,7 +17,9 @@ function init() {
   trendingBrandList();
 }
 
+// Set up the trending list with brands on home page
 async function trendingBrandList() {
+  // Send request and get data from server
   const brands = await getData.trendingList();
   console.log(brands);
 
@@ -45,17 +47,34 @@ async function trendingBrandList() {
   trendingSubBtns = document.querySelectorAll(".brand-list i");
   trendingSubBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
+      let brandId = this.closest(".brand-list__brand").dataset.brandId;
       if (this.classList.contains("fa-circle-plus")) {
         this.classList.remove("fa-circle-plus");
         this.classList.add("fa-circle-check");
-
-        let brandId = this.closest(".brand-list__brand").dataset.brandId;
         console.log(brandId);
-         userActivity.addBrandSubscription(brandId)
+        userActivity.addBrandSubscription(brandId);
       } else {
         this.classList.remove("fa-circle-check");
         this.classList.add("fa-circle-plus");
+        console.log(brandId);
+
+        userActivity.deleteBrandSubscription(brandId);
       }
     });
   });
+
+  trendingSubBtns.forEach((btn) => {
+    btn.addEventListener("mouseover", function () {
+      console.log(this.parentNode.parentNode);
+      this.parentNode.parentNode.style.overflow = "auto";
+    });
+  });
 }
+
+const subBtns = document.querySelectorAll(".brand-list i");
+subBtns.forEach((btn) => {
+  btn.addEventListener("mouseover", function () {
+    console.log(this.parentNode.parentNode);
+    this.parentNode.parentNode.style.overflow = "visible";
+  });
+});

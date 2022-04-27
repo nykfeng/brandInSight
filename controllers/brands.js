@@ -1,5 +1,7 @@
 // actual mongoose models
 const Brand = require("../models/Brand");
+const User = require("../models/User");
+
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
 
@@ -24,7 +26,7 @@ module.exports.trending = async (req, res) => {
 
   // paginate is not built in, using mongoose-paginate-v2 here
   const brands = await Brand.paginate({}, options);
-  res.send( brands );
+  res.send(brands);
 };
 
 // get a list of search result by string
@@ -32,7 +34,7 @@ module.exports.searching = async (req, res) => {
   // the query is named term
   const term = req.query.term;
   // using RegEx to set it to /term/i
-  const reg = new RegExp(term,"i");
+  const reg = new RegExp(term, "i");
 
   const options = {
     page: 1,
@@ -41,7 +43,7 @@ module.exports.searching = async (req, res) => {
 
   const searchResults = await Brand.paginate({ name: reg }, options);
 
-  res.send( searchResults );
+  res.send(searchResults);
 };
 
 module.exports.add = async (req, res, next) => {
@@ -77,6 +79,16 @@ module.exports.getById = async (req, res) => {
   const brand = await Brand.findById(req.params.id)
     .populate("contact")
     .populate("leadership");
+
+  console.log("Getting brand data on client side");
+  console.log("req.user is ", req.user);
+
+  // Add to user viewed history
+  if (brand) {
+    const user = await User.findById(req.user._id);
+    user.viewedBrandHistory.push(brand);
+    await user.save();
+  }
 
   if (!brand) {
     req.flash("error", "Cannot find that brand!");
