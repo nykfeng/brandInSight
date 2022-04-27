@@ -37,7 +37,7 @@ ul {
 
   display: flex;
   flex-direction: column;
- 
+
   position: relative;
 }
 
@@ -157,7 +157,7 @@ ul {
   gap: 1.2rem;
 
   align-items: center;
-  margin-bottom: 2rem
+  margin-bottom: 2rem;
 }
 
 .home-column .brand-list__brand {
@@ -172,6 +172,10 @@ ul {
   gap: 1rem;
 
   width: 100%;
+}
+
+.brand-list__text {
+  overflow: hidden;
 }
 
 .home-trending-brands {
@@ -246,6 +250,10 @@ ul.brand-list > li:before {
   cursor: pointer;
 
   color: var(--main-color);
+}
+
+.brand-list__subscription-status .fa-circle-check {
+  color: var(--stock-green);
 }
 
 .home-trending-view-more {

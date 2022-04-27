@@ -15,15 +15,31 @@ const UserSchema = new Schema({
   lastName: {
     type: String,
   },
-  subscribedBrands: [{ type: String }],
-  viewedBrandHistory: [{ type: String }],
+  subscribedBrands: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Brand",
+    },
+  ],
+  subscribedContacts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Contact",
+    },
+  ],
+  viewedBrandHistory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Brand",
+    },
+  ],
   profilePicture: {
     url: String,
     filename: String,
   },
-  lastLoggedIn : {
+  lastLoggedIn: {
     type: String,
-  }
+  },
 });
 
 // plugin is a mongoose tool for reusing logic in multiple schemas
