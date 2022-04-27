@@ -24,7 +24,6 @@ router
   .get(users.renderRegister)
   .post(catchAsync(users.register));
 
-
 router
   .route("/login")
   .get(users.renderLogin)
@@ -43,6 +42,12 @@ router
   .get(isLoggedIn, catchAsync(users.access))
   .put(isLoggedIn, upload.single("userProfile"), catchAsync(users.edit))
   .delete();
+
+router.post(
+  "/user/:id/addBrandSubscription",
+  isLoggedIn,
+  catchAsync(users.addBrandSubscription)
+);
 
 router.get("/logout", users.logout);
 

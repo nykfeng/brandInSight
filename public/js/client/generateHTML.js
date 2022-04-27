@@ -1,6 +1,6 @@
 function homeTrendingList(brand, subscribed) {
   const html = `
-    <li class="brand-list__brand">
+    <li class="brand-list__brand" data-brand-id="${brand._id}">
       <img src="${brand.logo.url || ""} " alt="${brand.name} logo" class="brand-list__brand-logo">
       <div class="brand-list__text">
           <a href="/brands/${brand._id || "/home"}" class="brand-list__brand-title">${brand.name}</a>

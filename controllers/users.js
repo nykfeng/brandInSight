@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Brand = require("../models/Brand");
 
 // need cloudinary function to delete and modify file on it
 const { cloudinary } = require("../cloudinary");
@@ -54,17 +55,6 @@ module.exports.access = async (req, res) => {
 module.exports.edit = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
-  console.log(user);
-
-  console.log("req.body is ...");
-  console.log(req.body);
-  console.log("req.body user ...");
-
-  console.log(req.body.user);
-
-  console.log("req file is ");
-  console.log(req.file);
-
 
   user.firstName = req.body.user.firstName;
   user.lastName = req.body.user.lastName;
@@ -76,13 +66,27 @@ module.exports.edit = async (req, res) => {
     user.profilePicture = { url: req.file.path, filename: req.file.filename };
   }
 
-  // const user = await User.findByIdAndUpdate(
-  //   id,
-  //   { ...req.body.user },
-  //   { runValidators: true }
-  // );
   await user.save();
 
   req.flash("success", "Successfully updated your profile!");
   res.redirect(`/user/${id}`);
+};
+
+// User adding subscribed brands to profile
+module.exports.addBrandSubscription = async (req, res) => {
+  console.log("req.body");
+  console.log(req.body);
+
+  const { id } = req.body;
+  const userId = req.params.id;
+
+  console.log("user id is ", userId);
+  console.log("brand id is ", id);
+
+  const user = await User.findById(userId);
+  const brand = await Brand.findById(id);
+
+  user.subscribedBrands.push(brand);
+
+  user.save();
 };
