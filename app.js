@@ -68,7 +68,7 @@ app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 // In an Express-based application, passport.initialize() middleware
-// is required to initialize Passport. If your application uses persistent login sessions,
+// is required to initialize Passport. If the application uses persistent login sessions,
 // passport.session() middleware must also be used.
 passport.use(new LocalStrategy(User.authenticate()));
 // We did not specify a method called authenticate for the User model

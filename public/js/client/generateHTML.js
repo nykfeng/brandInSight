@@ -82,6 +82,7 @@ function leadershipList(leadership) {
   return html;
 }
 
+// search bar dropdown result list
 function searchResultList(brand) {
   const html = `
   <li class="search-result__list-item flex">
@@ -97,10 +98,28 @@ function searchResultList(brand) {
   return html;
 }
 
+// search bar dropdown when no result was found
 function searchResultListEmpty() {
   const html = `
   <li class="search-result__list-item flex">
     <p class="search-result__no-result search-item flex"> Not result was found </p>
+  </li>
+  `;
+  return html;
+}
+
+// home right panel, subscribed brand list
+function subscribedBrandList(brand) {
+  // brand here does not have full brand info, only id, name, logo url
+  const html = `
+  <li class="right-brand-item">
+      <img src="${brand.logo}" alt="" class="right-brand-logo">
+      <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
+
+    <div class="right-brand-status">
+      <i class="fa-solid fa-circle-check"></i>
+      <a class="right-brand-status-text">Subscribed</span>
+    </div>
   </li>
   `;
   return html;
@@ -112,5 +131,6 @@ export default {
   contactList,
   leadershipList,
   searchResultList,
-  searchResultListEmpty
+  searchResultListEmpty,
+  subscribedBrandList
 };

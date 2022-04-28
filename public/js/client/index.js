@@ -4,6 +4,10 @@ import userActivity from "./userActivity.js";
 
 // DOM elements to work with
 const trendingBrandListEl = document.querySelector(".home-column .brand-list");
+const subscribedBrandListEl = document.querySelector(
+  ".right-brands-list__subscribed"
+);
+const viewedBrandListEl = document.querySelector(".right-brands-viewed");
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
 // when the client home page HTML is loaded, javascript will send request to get client data
@@ -15,6 +19,7 @@ function init() {
   // things to do once page is loaded
 
   trendingBrandList();
+  subscribedBrandsList();
 }
 
 // Set up the trending list with brands on home page
@@ -65,16 +70,24 @@ async function trendingBrandList() {
 
   trendingSubBtns.forEach((btn) => {
     btn.addEventListener("mouseover", function () {
-      console.log(this.parentNode.parentNode);
       this.parentNode.parentNode.style.overflow = "auto";
     });
   });
 }
 
-const subBtns = document.querySelectorAll(".brand-list i");
-subBtns.forEach((btn) => {
-  btn.addEventListener("mouseover", function () {
-    console.log(this.parentNode.parentNode);
-    this.parentNode.parentNode.style.overflow = "visible";
+// Get and make subscribed brands list on the right panel
+async function subscribedBrandsList() {
+  let listOfBrand;
+
+  if (user.subscribedBrands.length > 0) {
+    // get all the subscribed brands from server
+    listOfBrand = await getData.listOfSubscribedBrands();
+  }
+
+  listOfBrand.forEach((brand) => {
+    subscribedBrandListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.subscribedBrandList(brand)
+    );
   });
-});
+}

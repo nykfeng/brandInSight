@@ -17,6 +17,7 @@ module.exports.renderAddForm = async (req, res) => {
 // get a list of trending brands
 module.exports.trending = async (req, res) => {
   // some algorithm to determine trending
+  // TODO
 
   // setting option for pagination
   const options = {
@@ -44,6 +45,29 @@ module.exports.searching = async (req, res) => {
   const searchResults = await Brand.paginate({ name: reg }, options);
 
   res.send(searchResults);
+};
+
+// Get a list of already subscribed brands from user
+module.exports.listOfSubscribedBrands = async (req, res) => {
+  // get the list of brand id from req
+  const { userId } = req.params;
+
+  const user = await User.findById(userId).populate("subscribedBrands");
+  console.log("user with sub brands");
+  console.log(user.subscribedBrands);
+
+  let listOfBrands = [];
+
+  // create an array of object, since we only need a handful of data
+  user.subscribedBrands.forEach((brand) => {
+    listOfBrands.push({
+      id: brand._id,
+      name: brand.name,
+      logo: brand.logo.url,
+    });
+  });
+
+  res.send(listOfBrands);
 };
 
 module.exports.add = async (req, res, next) => {
