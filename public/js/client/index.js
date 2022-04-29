@@ -34,8 +34,6 @@ async function trendingBrandList() {
 
   trendingBrandListEl.innerHTML = "";
 
-  console.log("Current user in trending list function is ");
-  console.log(user);
 
   brands.forEach((brand) => {
     let subscribed = false;

@@ -67,7 +67,7 @@ module.exports.listOfSubscribedBrands = async (req, res) => {
 };
 
 // Get a list of viewed history brands from user
-module.exports.listOfSubscribedBrands = async (req, res) => {
+module.exports.listOfViewedBrands = async (req, res) => {
   // get the list of brand id from req
   const { userId } = req.params; // can just be req.user, already exists
   const user = await User.findById(userId).populate("viewedBrandHistory");
@@ -75,37 +75,23 @@ module.exports.listOfSubscribedBrands = async (req, res) => {
   let listOfBrands = [];
   // create an array of object, since we only need a handful of data
   user.viewedBrandHistory.forEach((brand) => {
+    let subscribed = false;
+    // determine if the brands on viewed history list are subscribed or not
+    if (user.subscribedBrands.length > 0) {
+      for (let i = 0; i < user.subscribedBrands.length; i++) {
+        if (String(brand._id) === String(user.subscribedBrands[i])) {
+          subscribed = true;
+        }
+      }
+    }
+
     listOfBrands.push({
       id: brand._id,
       name: brand.name,
       logo: brand.logo.url,
+      subscribed
     });
   });
-
-  // TEMPORARY========================================
-
-  // const brands = await Brand.find({});
-
-  // brands.forEach((brand) => {
-  //   if (brand.highlights.adSpend) {
-  //     console.log("brand: ", brand.name);
-  //     console.log("brand ad spend: ", brand.highlights.adSpend);
-  //   }
-  // });
-
-  // brands.sort(function(a, b) {
-  //   return b.highlights.adSpend - a.highlights.adSpend
-  // })
-
-  // console.log("AFTER SORTING -=-0=------------------------------");
-  // brands.forEach((brand) => {
-  //   if (brand.highlights.adSpend) {
-  //     console.log("brand: ", brand.name);
-  //     console.log("brand ad spend: ", brand.highlights.adSpend);
-  //   }
-  // });
-
-  // TEMPORARY ================================
 
   res.send(listOfBrands);
 };
@@ -115,11 +101,13 @@ module.exports.listOfBrandsWithAdSpending = async (req, res) => {
   const brands = await Brand.find({});
 
   // sort the ad spend number descending
-  brands.sort(function(a, b) {
-    return b.highlights.adSpend - a.highlights.adSpend
-  })
+  brands.sort(function (a, b) {
+    return b.highlights.adSpend - a.highlights.adSpend;
+  });
 
-  const brandsWithAdSpend = brands.filter(brand => brand.highlights.adSpend > 0)
+  const brandsWithAdSpend = brands.filter(
+    (brand) => brand.highlights.adSpend > 0
+  );
 
   brandsWithAdSpend.forEach((brand) => {
     console.log("brand: ", brand.name);
@@ -133,17 +121,17 @@ module.exports.listOfBrandsWithAdSpending = async (req, res) => {
       id: brand._id,
       name: brand.name,
       logo: brand.logo.url,
-      adSpend : brand.highlights.adSpend.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      adSpend: brand.highlights.adSpend
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
     });
   });
-  
-  // number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+
+  // number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   // convert 1000000 to 1,000,000
 
   res.send(listOfBrands);
 };
-
-
 
 // CRUD
 module.exports.add = async (req, res, next) => {

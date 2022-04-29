@@ -362,6 +362,10 @@ ul.brand-list > li:before {
   margin-right: auto;
 }
 
+.right-brand-title:hover {
+  color: var(--main-color);
+}
+
 .right-brand-status {
   font-size: 1.2rem;
   display: flex;

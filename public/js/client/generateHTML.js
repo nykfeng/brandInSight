@@ -1,13 +1,21 @@
 function homeTrendingList(brand, subscribed) {
   const html = `
     <li class="brand-list__brand" data-brand-id="${brand._id}">
-      <img src="${brand.logo.url || ""} " alt="${brand.name} logo" class="brand-list__brand-logo">
+      <img src="${brand.logo.url || ""} " alt="${
+    brand.name
+  } logo" class="brand-list__brand-logo">
       <div class="brand-list__text">
-          <a href="/brands/${brand._id || "/home"}" class="brand-list__brand-title">${brand.name}</a>
+          <a href="/brands/${
+            brand._id || "/home"
+          }" class="brand-list__brand-title">${brand.name}</a>
           <p class="brand-list__brand-industry">${brand.industry || ""}</p>
       </div>
       <div class="brand-list__subscription-status">
-          ${subscribed? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-plus"></i>'}
+          ${
+            subscribed
+              ? '<i class="fa-solid fa-circle-check"></i>'
+              : '<i class="fa-solid fa-circle-plus"></i>'
+          }
       </div>
     </li>`;
   return html;
@@ -134,8 +142,11 @@ function viewedHistoryBrandList(brand) {
       <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
 
     <div class="right-brand-status">
-      <i class="fa-solid fa-circle-check"></i>
-      <span class="right-brand-status-text">Subscribed</span>
+      ${
+        brand.subscribed
+          ? '<i class="fa-solid fa-circle-check"></i><span class="right-brand-status-text">Subscribed</span>'
+          : '<i class="fa-solid fa-circle-plus"></i><span class="right-brand-status-text">Subscribe</span>'
+      }
     </div>
   </li>
   `;
@@ -167,5 +178,5 @@ export default {
   searchResultListEmpty,
   subscribedBrandList,
   viewedHistoryBrandList,
-  adSpendBrandsList
+  adSpendBrandsList,
 };
