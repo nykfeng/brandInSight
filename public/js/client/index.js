@@ -7,7 +7,7 @@ const trendingBrandListEl = document.querySelector(".home-column .brand-list");
 const subscribedBrandListEl = document.querySelector(
   ".right-brands-list__subscribed"
 );
-const viewedBrandListEl = document.querySelector(".right-brands-viewed");
+const viewedBrandListEl = document.querySelector(".right-brands-list__viewed");
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
 // when the client home page HTML is loaded, javascript will send request to get client data
@@ -20,6 +20,7 @@ function init() {
 
   trendingBrandList();
   subscribedBrandsList();
+  viewedHistoryBrandsList();
 }
 
 // Set up the trending list with brands on home page
@@ -88,6 +89,23 @@ async function subscribedBrandsList() {
     subscribedBrandListEl.insertAdjacentHTML(
       "beforeend",
       generateHTML.subscribedBrandList(brand)
+    );
+  });
+}
+
+// Get and make viewed history brands list on the right panel
+async function viewedHistoryBrandsList() {
+  let listOfBrand;
+
+  if (user.viewedBrandHistory.length > 0) {
+    // get all the subscribed brands from server
+    listOfBrand = await getData.listOfViewedHistoryBrand();
+  }
+
+  listOfBrand.forEach((brand) => {
+    viewedBrandListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.viewedHistoryBrandList(brand)
     );
   });
 }

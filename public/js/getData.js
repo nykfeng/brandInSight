@@ -35,8 +35,22 @@ async function listOfSubscribedBrands() {
   return listOfBrands;
 }
 
+// get list of viewed history brands
+async function listOfViewedHistoryBrand() {
+  const url = `/brands/viewedList/${user._id}`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+  const listOfBrands = await res.json();
+  console.log("from server, brand list by ids");
+  console.log(listOfBrands);
+  return listOfBrands;
+}
+
 export default {
   trendingList,
   sendQuery,
   listOfSubscribedBrands,
+  listOfViewedHistoryBrand
 };
+

@@ -50,14 +50,10 @@ module.exports.searching = async (req, res) => {
 // Get a list of already subscribed brands from user
 module.exports.listOfSubscribedBrands = async (req, res) => {
   // get the list of brand id from req
-  const { userId } = req.params;
-
+  const { userId } = req.params; // can just be req.user, already exists
   const user = await User.findById(userId).populate("subscribedBrands");
-  console.log("user with sub brands");
-  console.log(user.subscribedBrands);
 
   let listOfBrands = [];
-
   // create an array of object, since we only need a handful of data
   user.subscribedBrands.forEach((brand) => {
     listOfBrands.push({
@@ -69,6 +65,26 @@ module.exports.listOfSubscribedBrands = async (req, res) => {
 
   res.send(listOfBrands);
 };
+
+// Get a list of viewed history brands from user
+module.exports.listOfSubscribedBrands = async (req, res) => {
+  // get the list of brand id from req
+  const { userId } = req.params; // can just be req.user, already exists
+  const user = await User.findById(userId).populate("viewedBrandHistory");
+
+  let listOfBrands = [];
+  // create an array of object, since we only need a handful of data
+  user.viewedBrandHistory.forEach((brand) => {
+    listOfBrands.push({
+      id: brand._id,
+      name: brand.name,
+      logo: brand.logo.url,
+    });
+  });
+
+  res.send(listOfBrands);
+};
+
 
 module.exports.add = async (req, res, next) => {
   const brand = new Brand(req.body.brand);
@@ -104,13 +120,34 @@ module.exports.getById = async (req, res) => {
     .populate("contact")
     .populate("leadership");
 
-  console.log("Getting brand data on client side");
-  console.log("req.user is ", req.user);
+  // req.user exist, so i can just pull it
 
   // Add to user viewed history
   if (brand) {
     const user = await User.findById(req.user._id);
+    // check if the brand is already on the viewed history list
+    if (user.viewedBrandHistory.length > 0) {
+      for (let i = 0; i < user.viewedBrandHistory.length; i++) {
+        // need to use String function to convert the id to string
+        // Can't directly compare objects
+        if (String(brand._id) === String(user.viewedBrandHistory[i])) {
+          // splice, 1st argument, index to remove
+          // 2nd argument, number of elments to remove
+          user.viewedBrandHistory.splice(i, 1);
+        }
+      }
+    }
+
+    // now check if the view history array has exceeded 100 lenght
+    // 100 is our max here
+    const MAX_LENGTH = 100;
+    if (user.viewedBrandHistory.length === MAX_LENGTH) {
+      user.viewedBrandHistory.shift(); // removes the first element
+    }
+
+    // now finally add the brand to the last place of the array
     user.viewedBrandHistory.push(brand);
+
     await user.save();
   }
 

@@ -118,7 +118,24 @@ function subscribedBrandList(brand) {
 
     <div class="right-brand-status">
       <i class="fa-solid fa-circle-check"></i>
-      <a class="right-brand-status-text">Subscribed</span>
+      <span class="right-brand-status-text">Subscribed</span>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
+// home right panel, viewed history brand list
+function viewedHistoryBrandList(brand) {
+  // brand here does not have full brand info, only id, name, logo url
+  const html = `
+  <li class="right-brand-item">
+      <img src="${brand.logo}" alt="" class="right-brand-logo">
+      <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
+
+    <div class="right-brand-status">
+      <i class="fa-solid fa-circle-check"></i>
+      <span class="right-brand-status-text">Subscribed</span>
     </div>
   </li>
   `;
@@ -132,5 +149,6 @@ export default {
   leadershipList,
   searchResultList,
   searchResultListEmpty,
-  subscribedBrandList
+  subscribedBrandList,
+  viewedHistoryBrandList
 };
