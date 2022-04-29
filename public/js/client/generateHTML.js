@@ -142,6 +142,22 @@ function viewedHistoryBrandList(brand) {
   return html;
 }
 
+// home right panel, ad spend brand list
+function adSpendBrandsList(brand) {
+  // brand here does not have full brand info, only id, name, logo url
+  const html = `
+  <li class="right-brand-item">
+      <img src="${brand.logo}" alt="" class="right-brand-logo">
+      <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
+
+      <div class="right-brand-spend">
+          <p>$${brand.adSpend}</p>
+      </div>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -150,5 +166,6 @@ export default {
   searchResultList,
   searchResultListEmpty,
   subscribedBrandList,
-  viewedHistoryBrandList
+  viewedHistoryBrandList,
+  adSpendBrandsList
 };

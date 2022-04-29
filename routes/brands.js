@@ -41,6 +41,7 @@ router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));
 // a route to get a list of trending brands
 router.get("/trending", isLoggedIn, catchAsync(brands.trending));
 router.get("/searching", isLoggedIn, catchAsync(brands.searching));
+router.get("/withAdSpend", isLoggedIn, catchAsync(brands.listOfBrandsWithAdSpending));
 router.get("/subscribedList/:userId", isLoggedIn, catchAsync(brands.listOfSubscribedBrands));
 router.get("/viewedList/:userId", isLoggedIn, catchAsync(brands.listOfSubscribedBrands));
 

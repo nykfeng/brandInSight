@@ -8,6 +8,8 @@ const subscribedBrandListEl = document.querySelector(
   ".right-brands-list__subscribed"
 );
 const viewedBrandListEl = document.querySelector(".right-brands-list__viewed");
+const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
+
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
 // when the client home page HTML is loaded, javascript will send request to get client data
@@ -21,6 +23,7 @@ function init() {
   trendingBrandList();
   subscribedBrandsList();
   viewedHistoryBrandsList();
+  adSpendBrandsList();
 }
 
 // Set up the trending list with brands on home page
@@ -106,6 +109,19 @@ async function viewedHistoryBrandsList() {
     viewedBrandListEl.insertAdjacentHTML(
       "beforeend",
       generateHTML.viewedHistoryBrandList(brand)
+    );
+  });
+}
+
+// Get and make brands list with ad spend descendingly on the right panel
+async function adSpendBrandsList() {
+  // get all the subscribed brands from server
+  const listOfBrands = await getData.listOfBrandsWithAdSpend();
+  
+  listOfBrands.forEach((brand) => {
+    adSpendListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.adSpendBrandsList(brand)
     );
   });
 }

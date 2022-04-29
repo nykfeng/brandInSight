@@ -47,10 +47,24 @@ async function listOfViewedHistoryBrand() {
   return listOfBrands;
 }
 
+// get list of brands with ad spend descending
+async function listOfBrandsWithAdSpend() {
+  const url = `/brands/withAdSpend`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+  const listOfBrands = await res.json();
+  console.log("from server, brand list by ids");
+  console.log(listOfBrands);
+  return listOfBrands;
+}
+
+
 export default {
   trendingList,
   sendQuery,
   listOfSubscribedBrands,
-  listOfViewedHistoryBrand
+  listOfViewedHistoryBrand,
+  listOfBrandsWithAdSpend
 };
 
