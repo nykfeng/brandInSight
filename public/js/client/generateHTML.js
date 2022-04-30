@@ -1,3 +1,4 @@
+// Home page front trending list
 function homeTrendingList(brand, subscribed) {
   const html = `
     <li class="brand-list__brand" data-brand-id="${brand._id}">
@@ -44,6 +45,7 @@ function pagination(name, totalPages) {
   return html;
 }
 
+// For brand page - contact list
 function contactList(contact) {
   const html = `
   <li class="contacts-item">
@@ -75,6 +77,7 @@ function contactList(contact) {
   return html;
 }
 
+// For brand page - leadership list
 function leadershipList(leadership) {
   const html = `
   <li class="leadership-list-item flex">
@@ -169,6 +172,23 @@ function adSpendBrandsList(brand) {
   return html;
 }
 
+// Content loader for trending list
+function trendingBrandListContentLoader() {
+  const html = `
+  <li class="brand-list__brand">
+    <div class="cph-brand-logo animated-bg">
+      <img alt="" class="">
+    </div>
+
+    <div class="">
+      <a href="" class="cph-brand-title animated-bg"></a>
+      <p class="cph-brand-p animated-bg"></p>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -179,4 +199,5 @@ export default {
   subscribedBrandList,
   viewedHistoryBrandList,
   adSpendBrandsList,
+  trendingBrandListContentLoader,
 };

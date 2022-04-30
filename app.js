@@ -143,9 +143,6 @@ async function createBrand(req, res) {
   // res.send(brand);
 }
 
-// app.use((req, res) => {
-//   res.status(404).send("Page not found");
-// });
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found", 404));

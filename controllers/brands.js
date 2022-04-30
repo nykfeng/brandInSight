@@ -109,11 +109,6 @@ module.exports.listOfBrandsWithAdSpending = async (req, res) => {
     (brand) => brand.highlights.adSpend > 0
   );
 
-  brandsWithAdSpend.forEach((brand) => {
-    console.log("brand: ", brand.name);
-    console.log("brand ad spend: ", brand.highlights.adSpend);
-  });
-
   let listOfBrands = [];
   // create an array of object, since we only need a handful of data
   brandsWithAdSpend.forEach((brand) => {

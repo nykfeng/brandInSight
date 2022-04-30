@@ -10,6 +10,9 @@ const subscribedBrandListEl = document.querySelector(
 const viewedBrandListEl = document.querySelector(".right-brands-list__viewed");
 const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
 
+// DOM elements view more buttons
+const viewMoreBtns = document.querySelectorAll(".view-more-btn");
+
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
 // when the client home page HTML is loaded, javascript will send request to get client data
@@ -19,7 +22,9 @@ window.onload = function () {
 
 function init() {
   // things to do once page is loaded
+  trendingListContentLoader();
 
+  // Get data and render them
   trendingBrandList();
   subscribedBrandsList();
   viewedHistoryBrandsList();
@@ -33,7 +38,6 @@ async function trendingBrandList() {
   console.log(brands);
 
   trendingBrandListEl.innerHTML = "";
-
 
   brands.forEach((brand) => {
     let subscribed = false;
@@ -115,11 +119,63 @@ async function viewedHistoryBrandsList() {
 async function adSpendBrandsList() {
   // get all the subscribed brands from server
   const listOfBrands = await getData.listOfBrandsWithAdSpend();
-  
+
   listOfBrands.forEach((brand) => {
     adSpendListEl.insertAdjacentHTML(
       "beforeend",
       generateHTML.adSpendBrandsList(brand)
     );
   });
+}
+
+// trending brand list content loader
+function trendingListContentLoader() {
+  const COUNT = 5; // 5 content loader for trending brand list
+  for (let i = 0; i < COUNT; i++) {
+    trendingBrandListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.trendingBrandListContentLoader()
+    );
+  }
+}
+
+// view more button
+viewMoreBtns.forEach((viewMoreBtn) => {
+  viewMoreBtn.addEventListener("click", function () {
+    const viewMoreParent = this.parentNode.parentNode;
+    const viewMoreContainerEl = this.parentNode;
+    const module = this.parentNode.getAttribute("data-module"); // Get module name
+    console.log("THe module is ");
+    console.log(module);
+    // this.style.display = "none"; // hide the viewmore button after getting clicked
+    console.log("viewMoreParent ---------------");
+    console.log(viewMoreParent);
+
+    // modulePagination(
+    //   module,
+    //   viewMoreContainerEl,
+    //   viewMoreParent
+    // );
+  });
+});
+
+// module pagination controller
+function modulePagination(module, viewMoreContainerEl, viewMoreParent) {
+  switch (module) {
+    case "contacts":
+      viewMoreContainerEl.insertAdjacentHTML(
+        "beforeend",
+        pagination.setupButtons("contact", brand.contact.length, 3)
+      );
+      pagination.setupControl(viewMoreParent, brand.contact, "contacts");
+      break;
+    case "leaderships":
+      viewMoreContainerEl.insertAdjacentHTML(
+        "beforeend",
+        pagination.setupButtons("leaderships", brand.leadership.length, 6)
+      );
+      pagination.setupControl(viewMoreParent, brand.leadership, "leaderships");
+      break;
+    default:
+  }
 }
