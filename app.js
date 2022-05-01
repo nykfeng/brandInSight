@@ -104,7 +104,7 @@ app.use("/internal", internalRoutes);
 
 app.get("/", ifLoggedIn, landingPage);
 
-app.get("/free-user", homePage);
+// app.get("/free-user", homePage);
 
 // ---------------------------
 

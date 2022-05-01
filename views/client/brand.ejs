@@ -10,7 +10,13 @@
                 <div class="brand-header-container flex">
                     <div class="brand-heading-container flex">
                         <div class="brand-header-title-container flex">
-                            <div class="brand-type"><i class="fa-solid fa-building"></i> Public Company</div>
+                            <div class="brand-type"><i class="fa-solid fa-building"></i> 
+                            <% if (brand.typeOfCompany.stockTicker != 'N/A') {%> 
+                                Public Company
+                            <% } else { %>    
+                                Private Company
+                            <% } %>    
+                            </div>
                             <div class="brand-name">
                                 <%= brand.name %>
                             </div>

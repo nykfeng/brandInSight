@@ -5,14 +5,19 @@ const User = require("../models/User");
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
 
-module.exports.index = async (req, res) => {
-  const brands = await Brand.find({});
-  res.render("internal/brands/index", { brands });
-};
+// -=-=-=-=-=-==-=-=- These can be deleted -=-=-=-=-=-=-=-=-=-=-==-
 
-module.exports.renderAddForm = async (req, res) => {
-  res.render("internal/brands/new");
-};
+// module.exports.index = async (req, res) => {
+//   const brands = await Brand.find({});
+//   res.render("client/brands", { brands });
+// };
+
+// module.exports.renderAddForm = async (req, res) => {
+//   res.render("internal/brands/new");
+// };
+
+// -=-=-=-=-=-==-=-=- These can be deleted -=-=-=-=-=-=-=-=-=-=-==-
+
 
 // get a list of trending brands
 module.exports.trending = async (req, res) => {

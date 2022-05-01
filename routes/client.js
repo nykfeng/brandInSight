@@ -16,9 +16,11 @@ const brands = require("../controllers/brands");
 // client controller
 const client = require("../controllers/client");
 
-// router.route("/").get(isLoggedIn, client.renderHome);
-router.route("/home").get(isLoggedIn, client.renderHome);
+router.route("/home").get(isLoggedIn, catchAsync(client.renderHome));
+router.route("/brands").get(isLoggedIn, catchAsync(client.brandListPage));
 
-router.route("/client/brands/:id").get(isLoggedIn, catchAsync(client.getBrandById));
+router
+  .route("/client/brands/:id")
+  .get(isLoggedIn, catchAsync(client.getBrandById));
 
 module.exports = router;

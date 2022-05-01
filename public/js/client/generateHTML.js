@@ -1,3 +1,5 @@
+import utilities from "./utilities.js";
+
 // Home page front trending list
 function homeTrendingList(brand, subscribed) {
   const html = `
@@ -189,6 +191,35 @@ function trendingBrandListContentLoader() {
   return html;
 }
 
+// brand list page brand rows
+function brandListRow(brand, index) {
+  const html = `
+  <div class="brand-table-row flex">
+      <div class="brand-table-row-number flex">${index + 1}</div>
+      <div class="brand-table-brand-logo flex">
+      <img src="${brand.logo.url}" alt="" class="brand-table-brand-logo-img">
+      </div>
+      <a href="/brands/${brand._id}" class="brand-table-brand-name flex">${brand.name}</a>
+      <a href="${brand.website}" class="brand-table-brand-website flex">${brand.website}</a>
+      <div class="brand-table-brand-stock flex">${utilities.trimWhiteSpace(brand.typeOfCompany.stockTicker)}</div>
+      <div class="brand-table-brand-employee flex">${utilities.numberFormat(brand.employee)}</div>
+      <div class="brand-table-brand-industries flex">${utilities.shortenString(
+        brand.industry[0],
+        30
+      )}</div>
+      <div class="brand-table-brand-headquarters flex">${utilities.shortenString(
+        brand.headquarters,
+        30
+      )}</div>
+      <div class="brand-table-brand-description flex">${utilities.shortenString(
+        brand.description,
+        50
+      )}</div>
+  </div>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -200,4 +231,5 @@ export default {
   viewedHistoryBrandList,
   adSpendBrandsList,
   trendingBrandListContentLoader,
+  brandListRow
 };

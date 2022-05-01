@@ -5,6 +5,11 @@ module.exports.renderHome = async (req, res, next) => {
   res.render("client/home");
 };
 
+module.exports.brandListPage = async (req, res) => {
+  const brands = await Brand.find({});
+  res.render("client/brands", { brands });
+};
+
 module.exports.getBrandById = async (req, res, next) => {
   const brand = await Brand.findById(req.params.id)
     .populate("contact")

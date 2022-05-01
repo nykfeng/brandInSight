@@ -26,7 +26,7 @@ const upload = multer({ storage });
 // Express offers this way of grouping routes
 router
   .route("/")
-  .get(isLoggedIn, catchAsync(brands.index))
+  // .get(isLoggedIn, catchAsync(brands.index))
   .post(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.add));
   // .post(upload.single("logo"), (req, res) => {
   //   console.log(req.body);

@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+
+    <main id="brand-list-main">
+        <h1>Brand List</h1>
+
+        <section class="brand-table flex-column">
+            <div class="brand-table-headers flex">
+                <div class="row-number-header brand-table-row-number flex">
+                    <span class="header-text">#</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-logo-header brand-table-brand-logo flex">
+                    <span class="header-text">Logo</span>
+
+                </div>
+                <div class="brand-name-header brand-table-brand-name flex" data-column="name">
+                    <span class="header-text">Brand Name</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-website-header brand-table-brand-website flex" data-column="website">
+                    <span class="header-text">Brand Website</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-stock-header brand-table-brand-stock flex" data-column="typeOfCompany.stockTicker">
+                    <span class="header-text">Company Stock</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-employee-header brand-table-brand-employee flex" data-column="employee">
+                    <span class="header-text">Employee </span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-industries-header brand-table-brand-industries flex" data-column="industry">
+                    <span class="header-text">Industries</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-headquarters-header brand-table-brand-headquarters flex" data-column="headquarters">
+                    <span class="header-text">Headquarters</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+                <div class="brand-description-header brand-table-brand-description flex" data-column="description">
+                    <span class="header-text">Description</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let brands = JSON.parse(`<%-JSON.stringify(brands)%>`);
+
+        console.log('The current list of brands at brand list page are ');
+        console.log(brands);
+    </script>
+
+    <script src="/js/client/brandList.js" type="module" defer></script>
