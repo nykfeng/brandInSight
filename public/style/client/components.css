@@ -9,7 +9,7 @@
 
 .pagination-numbers {
   width: 10rem;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 

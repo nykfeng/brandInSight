@@ -123,7 +123,7 @@ function searchResultListEmpty() {
 function subscribedBrandList(brand) {
   // brand here does not have full brand info, only id, name, logo url
   const html = `
-  <li class="right-brand-item">
+  <li class="right-brand-item brand-list__brand" data-brand-id="${brand.id}">
       <img src="${brand.logo}" alt="" class="right-brand-logo">
       <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
 
@@ -140,7 +140,7 @@ function subscribedBrandList(brand) {
 function viewedHistoryBrandList(brand) {
   // brand here does not have full brand info, only id, name, logo url
   const html = `
-  <li class="right-brand-item">
+  <li class="right-brand-item brand-list__brand" data-brand-id="${brand.id}">
       <img src="${brand.logo}" alt="" class="right-brand-logo">
       <a href="/brands/${brand.id}" class="right-brand-title">${brand.name}</a>
 

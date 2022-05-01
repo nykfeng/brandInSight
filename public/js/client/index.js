@@ -79,8 +79,28 @@ async function trendingBrandList() {
       }
     });
   });
+}
 
-
+// Subscription buttons from different lists
+function subscriptionButtons(subBtns) {
+  subBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      let brandId = this.closest(".brand-list__brand").dataset.brandId;
+      if (this.querySelector("i").classList.contains("fa-circle-plus")) {
+        this.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        <span class="right-brand-status-text">Subscribed</span>
+      `;
+        userActivity.addBrandSubscription(brandId);
+      } else {
+        this.innerHTML = `
+        <i class="fa-solid fa-circle-plus"></i>
+        <span class="right-brand-status-text">Subscribe</span>
+      `;
+        userActivity.deleteBrandSubscription(brandId);
+      }
+    });
+  });
 }
 
 // Get and make subscribed brands list on the right panel
@@ -96,6 +116,10 @@ async function subscribedBrandsList() {
       generateHTML.subscribedBrandList(brand)
     );
   });
+
+  // listen for clicking subscribe buttons
+  const subBtns = subscribedBrandListEl.querySelectorAll(".right-brand-status");
+  subscriptionButtons(subBtns);
 }
 
 // Get and make viewed history brands list on the right panel
@@ -111,6 +135,10 @@ async function viewedHistoryBrandsList() {
       generateHTML.viewedHistoryBrandList(brand)
     );
   });
+  
+  // listen for clicking subscribe buttons
+  const subBtns = viewedBrandListEl.querySelectorAll(".right-brand-status");
+  subscriptionButtons(subBtns);
 }
 
 // Get and make brands list with ad spend descendingly on the right panel
@@ -143,11 +171,8 @@ viewMoreBtns.forEach((viewMoreBtn) => {
     const viewMoreParent = this.parentNode.parentNode;
     const paginationContainerEl = this.parentNode;
     const module = this.parentNode.getAttribute("data-module"); // Get module name
-    console.log("THe module is ");
-    console.log(module);
+
     this.style.display = "none"; // hide the viewmore button after getting clicked
-    console.log("viewMoreParent ---------------");
-    console.log(viewMoreParent);
 
     modulePagination(module, paginationContainerEl, viewMoreParent);
   });
