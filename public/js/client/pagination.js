@@ -97,12 +97,6 @@ function pageSetup(
     moduleDataListEl,
     module
   );
-  //   for (let i = startIndex; i < startIndex + size; i++) {
-  //     moduleDataListEl.insertAdjacentHTML(
-  //       "beforeend",
-  //       generateHTML.contactList(data[i])
-  //     );
-  //   }
 }
 
 function insertModuleHTML(
@@ -110,24 +104,67 @@ function insertModuleHTML(
   endIndex,
   data,
   moduleDataListEl,
-  module
+  module,
+  subscribed = false
 ) {
-  if (module === "contacts") {
-    for (let i = startIndex; i < endIndex; i++) {
-      moduleDataListEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.contactList(data[i])
-      );
-    }
-  } else if (module === "leaderships") {
-    for (let i = startIndex; i < endIndex; i++) {
-      moduleDataListEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.leadershipList(data[i])
-      );
-    }
+  switch (module) {
+    case "contacts":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.contactList(data[i])
+        );
+      }
+      break;
+    case "leaderships":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.leadershipList(data[i])
+        );
+      }
+      break;
+
+    case "subscribed-brands":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.subscribedBrandList(data[i])
+        );
+      }
+      break;
+
+    case "viewed-brands":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.viewedHistoryBrandList(data[i])
+        );
+      }
+      break;
+
+    case "adSpend-brands":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.adSpendBrandsList(data[i])
+        );
+      }
+      break;
+    case "trending-brands":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.homeTrendingList(data[i], subscribed)
+        );
+      }
+      break;
+    default:
   }
 }
+
+// control function for generating HTML pagination data item
+function pageContentGenerate(dataListEl, startIndex, endIndex) {}
 
 // a function logics to determine what is the starting index of the data
 // to display on certain page
@@ -163,6 +200,10 @@ function setNumberPerPage(module) {
   let numberPerPage;
   switch (module) {
     case "brands":
+    case "subscribed-brands":
+    case "viewed-brands":
+    case "adSpend-brands":
+    case "trending-brands":
       numberPerPage = 5;
       break;
     case "contacts":
@@ -181,7 +222,7 @@ function setNumberPerPage(module) {
 function setModuleElement(element, module) {
   let moduleEl;
   switch (module) {
-    case "brands":
+    case "trending-brands":
       moduleEl = element.querySelector(".brand-list");
       break;
     case "contacts":
@@ -189,6 +230,15 @@ function setModuleElement(element, module) {
       break;
     case "leaderships":
       moduleEl = element.querySelector(".leadership-list");
+      break;
+    case "subscribed-brands":
+      moduleEl = element.querySelector(".right-brands-list__subscribed");
+      break;
+    case "viewed-brands":
+      moduleEl = element.querySelector(".right-brands-list__viewed");
+      break;
+    case "adSpend-brands":
+      moduleEl = element.querySelector(".right-brands-list__adSpend");
       break;
     default:
       moduleEl = "";
