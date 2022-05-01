@@ -3,6 +3,9 @@ const router = express.Router();
 // mongoose user model
 const User = require("../models/User");
 
+// client controller
+const client = require("../controllers/client");
+
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
@@ -23,6 +26,8 @@ router
   .route("/register")
   .get(users.renderRegister)
   .post(catchAsync(users.register));
+
+// router.get("/login", isLoggedIn, client.renderHome)
 
 router
   .route("/login")

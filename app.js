@@ -18,6 +18,7 @@ const LocalStrategy = require("passport-local");
 
 // our own middleware to verify logged in
 const { isLoggedIn } = require("./middleware/isLoggedIn");
+const { ifLoggedIn } = require("./middleware/ifLoggedIn")
 
 // routes
 const brandRoutes = require("./routes/brands");
@@ -97,25 +98,13 @@ app.use("/brands/:id/contact", contactRoutes);
 app.use("/brands/:id/leadership", leadershipRoutes);
 app.use("/", userRoutes);
 app.use("/", clientRoutes);
-app.use("/internal", internalRoutes)
-
+app.use("/internal", internalRoutes);
 
 // ;------------------------
 
+app.get("/", ifLoggedIn, landingPage);
 
 app.get("/free-user", homePage);
-
-// app.get("/createBrand", createBrand);
-
-
-
-// app.get("/signup", (req, res) => {
-//   res.render("authen/signup");
-// });
-
-
-
-// -------------------------
 
 // ---------------------------
 
@@ -125,7 +114,9 @@ async function homePage(req, res) {
   res.render("client/home", { brands });
 }
 
-
+async function landingPage(req, res) {
+  res.render("client/landing");
+}
 
 async function createBrand(req, res) {
   // const brand = new Brand({
@@ -142,7 +133,6 @@ async function createBrand(req, res) {
   // await brand.save();
   // res.send(brand);
 }
-
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found", 404));
