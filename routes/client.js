@@ -18,6 +18,7 @@ const client = require("../controllers/client");
 
 router.route("/home").get(isLoggedIn, catchAsync(client.renderHome));
 router.route("/brands").get(isLoggedIn, catchAsync(client.brandListPage));
+router.route("/contacts").get(isLoggedIn, catchAsync(client.contactListPage));
 
 router
   .route("/client/brands/:id")

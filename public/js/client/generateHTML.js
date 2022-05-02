@@ -194,14 +194,14 @@ function trendingBrandListContentLoader() {
 // brand list page brand rows
 function brandListRow(brand, index) {
   const html = `
-  <div class="brand-table-row flex">
+  <div class="brand-table-row row flex">
       <div class="brand-table-row-number flex">${index + 1}</div>
       <div class="brand-table-brand-logo flex">
-      <img src="${brand.logo.url}" alt="" class="brand-table-brand-logo-img">
+          <img src="${brand.logo.url}" alt="" class="brand-table-brand-logo-img">
       </div>
       <a href="/brands/${brand._id}" class="brand-table-brand-name flex">${brand.name}</a>
       <a href="${brand.website}" class="brand-table-brand-website flex">${brand.website}</a>
-      <div class="brand-table-brand-stock flex">${utilities.trimWhiteSpace(brand.typeOfCompany.stockTicker)}</div>
+      <div class="brand-table-brand-stock flex">${utilities.trimWhiteSpace(brand.stock)}</div>
       <div class="brand-table-brand-employee flex">${utilities.numberFormat(brand.employee)}</div>
       <div class="brand-table-brand-industries flex">${utilities.shortenString(
         brand.industry[0],
@@ -220,6 +220,29 @@ function brandListRow(brand, index) {
   return html;
 }
 
+// contact list page contact rows
+function contactListRow(contact, index) {
+  const html = `
+  <div class="contact-table-row row flex">
+      <div class="contact-table-row-number flex">${index + 1}</div>
+      <div class="contact-table-contact-brand flex">
+        <img src="${contact.brand.logo.url}" alt="" class="contact-table-brand-logo-img">
+      </div>
+      <div class="contact-table-contact-name flex">${contact.name}</div>
+      <div class="contact-table-contact-position flex">${contact.position}</div>
+      <div class="contact-table-contact-rank flex">${contact.rank}</div>
+      <div class="contact-table-contact-phoneNumber flex">${contact.phoneNumber}</div>
+      <div class="contact-table-contact-email flex">${contact.email}</div>
+      <div class="contact-table-contact-location flex">${contact.location}</div>
+      <a href="${contact.linkedin}" class="contact-table-contact-linkedin flex">
+        <i class="fa-brands fa-linkedin"></i>
+        ${contact.linkedin}
+      </a>
+  </div>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -231,5 +254,6 @@ export default {
   viewedHistoryBrandList,
   adSpendBrandsList,
   trendingBrandListContentLoader,
-  brandListRow
+  brandListRow,
+  contactListRow
 };

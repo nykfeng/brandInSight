@@ -8,9 +8,7 @@
             <div class="brand-table-headers flex">
                 <div class="row-number-header brand-table-row-number flex">
                     <span class="header-text">#</span>
-                    <span class="row-number-sort sort-pending">
-                        <i class="fa-solid fa-sort"></i>
-                    </span>
+
                 </div>
                 <div class="brand-logo-header brand-table-brand-logo flex">
                     <span class="header-text">Logo</span>
@@ -28,7 +26,7 @@
                         <i class="fa-solid fa-sort"></i>
                     </span>
                 </div>
-                <div class="brand-stock-header brand-table-brand-stock flex" data-column="typeOfCompany.stockTicker">
+                <div class="brand-stock-header brand-table-brand-stock flex" data-column="stock">
                     <span class="header-text">Company Stock</span>
                     <span class="row-number-sort sort-pending">
                         <i class="fa-solid fa-sort"></i>
@@ -68,8 +66,6 @@
         // < % - will not work, space between % and - 
         let brands = JSON.parse(`<%-JSON.stringify(brands)%>`);
 
-        console.log('The current list of brands at brand list page are ');
-        console.log(brands);
     </script>
 
     <script src="/js/client/brandList.js" type="module" defer></script>

@@ -1,0 +1,84 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+    <main id="contact-list-main">
+        <h1>Contact List</h1>
+
+        <section class="contact-table flex-column">
+            <div class="contact-table-headers flex">
+                <div class="row-number-header contact-table-row-number flex">
+                    <span class="header-text">#</span>
+                </div>
+
+                <div class="contact-brand-header contact-table-contact-brand flex" data-column="brandName">
+                    <span class="header-text"> Brand</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-name-header contact-table-contact-name flex" data-column="name">
+                    <span class="header-text"> Name</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-position-header contact-table-contact-position flex" data-column="position">
+                    <span class="header-text"> Position</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-rank-header contact-table-contact-rank flex" data-column="rank">
+                    <span class="header-text"> Rank</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-phoneNumber-header contact-table-contact-phoneNumber flex" data-column="phoneNumber">
+                    <span class="header-text"> Phone Number</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-email-header contact-table-contact-email flex" data-column="email">
+                    <span class="header-text"> Email</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-location-header contact-table-contact-location flex" data-column="location">
+                    <span class="header-text"> Location</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+                <div class="contact-linkedin-header contact-table-contact-linkedin flex" data-column="linkedin">
+                    <span class="header-text"> LinkedIn</span>
+                    <span class="row-number-sort sort-pending">
+                        <i class="fa-solid fa-sort"></i>
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let contacts = JSON.parse(`<%-JSON.stringify(contacts)%>`);
+        
+        console.log('All contacts with their brand');
+        console.log(contacts)
+    </script>
+
+    <script src="/js/client/contactList.js" type="module" defer></script>
