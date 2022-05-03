@@ -76,9 +76,6 @@
         // have to do it this way because of default formatter auto adding space to ejs
         // < % - will not work, space between % and - 
         let contacts = JSON.parse(`<%-JSON.stringify(contacts)%>`);
-        
-        console.log('All contacts with their brand');
-        console.log(contacts)
     </script>
 
     <script src="/js/client/contactList.js" type="module" defer></script>

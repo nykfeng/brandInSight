@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Brand = require("../models/Brand");
+const Contact = require("../models/Contact");
 
 // need cloudinary function to delete and modify file on it
 const { cloudinary } = require("../cloudinary");
@@ -93,4 +94,26 @@ module.exports.deleteBrandSubscription = async (req, res) => {
   const userId = req.params.id;
 
   await User.findByIdAndUpdate(userId, { $pull: { subscribedBrands: id } });
+};
+
+// User saving contacts to profile
+module.exports.saveContact = async (req, res) => {
+  // Getting contact id to save
+  const { id } = req.body;
+  const userId = req.params.id;
+
+  const user = await User.findById(userId);
+  const contact = await Contact.findById(id);
+
+  user.savedContacts.push(contact);
+  await user.save();
+};
+
+// User unsave contact from profile
+module.exports.unsaveContact = async (req, res) => {
+  // Getting brand id to delete
+  const { id } = req.body;
+  const userId = req.params.id;
+
+  await User.findByIdAndUpdate(userId, { $pull: { savedContacts: id } });
 };

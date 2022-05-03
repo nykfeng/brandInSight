@@ -325,6 +325,12 @@
         </article>
 
 
+        <script>
+            let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
+
+            console.log(user);
+        </script>
+
         <!-- brand contacts section -->
         <article class="brand-contacts" id="contacts">
             <section class="brand-container flex">
@@ -342,7 +348,7 @@
                             <% if (brand.contact.length>0) { %> 
                                 <% const number = brand.contact.length > 3? 3 : brand.contact.length %> 
                                 <% for (let i=0; i < number; i++) { %>
-                                    <li class="contacts-item">
+                                    <li class="contacts-item" data-contact-id="<%= brand.contact[i]._id%>">
                                         <div class="contacts-basics flex">
                                             <a href="<%= brand.contact[i].linkedin %>" class="contacts-name"><span
                                                     class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span><%= brand.contact[i].name %>  </a>
@@ -362,10 +368,11 @@
                                             </p>
                                         </div>
                                         <div class="contact-save">
-                                            <div class="contacts-save-button">
+                                            <div class="contacts-button contacts-save-button">
                                                 <i class="fa-solid fa-circle-plus"></i> SAVE
                                             </div>
                                         </div>
+
                                     </li>
                                 <% } %> 
                             <% } %> 
@@ -440,9 +447,9 @@
         console.log(brand);
 
 
-        let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
+        // let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
 
-        console.log(`The current user at client brand page ${brand.name} is `);
-        console.log(user);
+        // console.log(`The current user at client brand page ${brand.name} is `);
+        // console.log(user);
     </script>
     <script src="/js/client/brand.js" type="module" defer></script>

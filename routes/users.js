@@ -53,6 +53,11 @@ router
   .post(isLoggedIn, catchAsync(users.addBrandSubscription))
   .delete(isLoggedIn, catchAsync(users.deleteBrandSubscription));
 
+router
+  .route("/user/:id/savedContacts")
+  .post(isLoggedIn, catchAsync(users.saveContact))
+  .delete(isLoggedIn, catchAsync(users.unsaveContact));
+
 router.get("/logout", users.logout);
 
 module.exports = router;

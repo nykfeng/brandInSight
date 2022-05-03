@@ -393,7 +393,6 @@
 .brand-contacts {
   background-color: #fff;
   /* min-height: 48rem;  */
-
 }
 
 .brand-contacts-block {
@@ -443,16 +442,25 @@
   text-decoration: underline;
   color: var(--dark-blue);
 }
-.contacts-save-button {
+
+.contacts-button {
   padding: 1rem;
   font-size: 1.6rem;
-  background-color: var(--main-color);
   color: #fff;
   border-radius: 1.5rem;
   cursor: pointer;
 }
 
-.contacts-save-button:active {
+.contacts-save-button {
+  background-color: var(--main-color);
+}
+
+.contacts-saved-button {
+  background-color: var(--stock-green);
+}
+
+.contacts-save-button:active,
+.contacts-saved-button:active {
   transform: scale(0.98);
 }
 
@@ -481,7 +489,6 @@
   padding: 1rem;
   gap: 1.5rem;
 }
-
 
 .leadership-profile {
   width: 7rem;

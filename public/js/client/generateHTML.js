@@ -50,7 +50,7 @@ function pagination(name, totalPages) {
 // For brand page - contact list
 function contactList(contact) {
   const html = `
-  <li class="contacts-item">
+  <li class="contacts-item" data-contact-id="${contact._id}">
   <div class="contacts-basics flex">
       <a href="${contact.linkedin}" class="contacts-name"><span
               class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span>${contact.name}</a>
@@ -191,6 +191,7 @@ function trendingBrandListContentLoader() {
   return html;
 }
 
+// home page --------
 // brand list page brand rows
 function brandListRow(brand, index) {
   const html = `
@@ -220,6 +221,7 @@ function brandListRow(brand, index) {
   return html;
 }
 
+// home page --------
 // contact list page contact rows
 function contactListRow(contact, index) {
   const html = `

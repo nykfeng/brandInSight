@@ -21,7 +21,7 @@ const UserSchema = new Schema({
       ref: "Brand",
     },
   ],
-  subscribedContacts: [
+  savedContacts: [
     {
       type: Schema.Types.ObjectId,
       ref: "Contact",
