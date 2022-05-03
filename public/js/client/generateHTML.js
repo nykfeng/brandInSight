@@ -53,7 +53,9 @@ function contactList(contact) {
   <li class="contacts-item" data-contact-id="${contact._id}">
   <div class="contacts-basics flex">
       <a href="${contact.linkedin}" class="contacts-name"><span
-              class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span>${contact.name}</a>
+              class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span>${
+                contact.name
+              }</a>
       <p class="contacts-title">${contact.position}</p>
       <p class="contacts-rank">${contact.rank}</p>
   </div>
@@ -69,12 +71,14 @@ function contactList(contact) {
           </a>
       </p>
   </div>
-  <div class="contact-save">
-      <div class="contacts-save-button">
-          <i class="fa-solid fa-circle-plus"></i> SAVE
-      </div>
-  </div>
-</li>
+    <div class="contact-save">
+      ${
+        contact.saved
+          ? '<div class="contacts-button contacts-saved-button"><i class="fa-solid fa-circle-check"></i> SAVED</div>'
+          : '<div class="contacts-button contacts-save-button"><i class="fa-solid fa-circle-plus"></i> SAVE</div>'
+      }
+    </div>
+  </li>
   `;
   return html;
 }
@@ -198,12 +202,22 @@ function brandListRow(brand, index) {
   <div class="brand-table-row row flex">
       <div class="brand-table-row-number flex">${index + 1}</div>
       <div class="brand-table-brand-logo flex">
-          <img src="${brand.logo.url}" alt="" class="brand-table-brand-logo-img">
+          <img src="${
+            brand.logo.url
+          }" alt="" class="brand-table-brand-logo-img">
       </div>
-      <a href="/brands/${brand._id}" class="brand-table-brand-name flex">${brand.name}</a>
-      <a href="${brand.website}" class="brand-table-brand-website flex">${brand.website}</a>
-      <div class="brand-table-brand-stock flex">${utilities.trimWhiteSpace(brand.stock)}</div>
-      <div class="brand-table-brand-employee flex">${utilities.numberFormat(brand.employee)}</div>
+      <a href="/brands/${brand._id}" class="brand-table-brand-name flex">${
+    brand.name
+  }</a>
+      <a href="${brand.website}" class="brand-table-brand-website flex">${
+    brand.website
+  }</a>
+      <div class="brand-table-brand-stock flex">${utilities.trimWhiteSpace(
+        brand.stock
+      )}</div>
+      <div class="brand-table-brand-employee flex">${utilities.numberFormat(
+        brand.employee
+      )}</div>
       <div class="brand-table-brand-industries flex">${utilities.shortenString(
         brand.industry[0],
         30
@@ -228,12 +242,16 @@ function contactListRow(contact, index) {
   <div class="contact-table-row row flex">
       <div class="contact-table-row-number flex">${index + 1}</div>
       <div class="contact-table-contact-brand flex">
-        <img src="${contact.brand.logo.url}" alt="" class="contact-table-brand-logo-img">
+        <img src="${
+          contact.brand.logo.url
+        }" alt="" class="contact-table-brand-logo-img">
       </div>
       <div class="contact-table-contact-name flex">${contact.name}</div>
       <div class="contact-table-contact-position flex">${contact.position}</div>
       <div class="contact-table-contact-rank flex">${contact.rank}</div>
-      <div class="contact-table-contact-phoneNumber flex">${contact.phoneNumber}</div>
+      <div class="contact-table-contact-phoneNumber flex">${
+        contact.phoneNumber
+      }</div>
       <div class="contact-table-contact-email flex">${contact.email}</div>
       <div class="contact-table-contact-location flex">${contact.location}</div>
       <a href="${contact.linkedin}" class="contact-table-contact-linkedin flex">
@@ -257,5 +275,5 @@ export default {
   adSpendBrandsList,
   trendingBrandListContentLoader,
   brandListRow,
-  contactListRow
+  contactListRow,
 };

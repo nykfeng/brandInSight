@@ -12,6 +12,7 @@ init();
 
 function init() {
   secUserContactSubscription();
+  resetContactButtons();
 }
 
 // sec User if the brand contact is already saved by the user
@@ -22,7 +23,6 @@ function secUserContactSubscription() {
       if (user.savedContacts.length > 0) {
         user.savedContacts.forEach((saveContact) => {
           if (saveContact === brandContact._id) {
-            console.log("equal");
             brandContact.saved = true;
           }
         });
@@ -33,11 +33,24 @@ function secUserContactSubscription() {
 
 // reset contacts section save buttons from view engine
 function resetContactButtons() {
-  const contactListItemEls = brandConctactsEl.querySelectorAll('.contacts-item');
+  const contactListItemEls =
+    brandConctactsEl.querySelectorAll(".contacts-item");
   if (contactListItemEls) {
-    contactListItemEls.forEach(listItem => {
-      
-    })
+    contactListItemEls.forEach((listItem) => {
+      const contactId = listItem.dataset.contactId;
+
+      // cosmetically set up save buttons to save or saved
+      if (brand.contact.length > 0) {
+        brand.contact.forEach((contact) => {
+          if (contactId === contact._id && contact.saved) {
+            const btnEl = listItem.querySelector(".contacts-button");
+            btnEl.classList.remove("contacts-save-button");
+            btnEl.classList.add("contacts-saved-button");
+            btnEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> SAVED`;
+          }
+        });
+      }
+    });
   }
 }
 
