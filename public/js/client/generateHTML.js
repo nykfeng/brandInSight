@@ -263,6 +263,61 @@ function contactListRow(contact, index) {
   return html;
 }
 
+// user profile subscribed brand list
+function profileSubBrands(brand) {
+  const html = `
+  <li class="subscribed-brands-list-item flex">
+    <div class="logo-item">
+      <img src="${brand.logo.url}" alt="" class="subscribed-brand-logo">
+    </div>
+
+    <div class="brand-information-item">
+      <div class="brand-name-item">
+          ${brand.name}
+      </div>
+      <a href="${brand.website}" class="brand-website-item">
+          ${brand.website}
+      </a>
+    </div>
+    
+    <div class="brand-list__subscription-status">
+          <i class="fa-solid fa-circle-check"></i>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
+// user profile saved contact list
+function profleSavedBrands(contact) {
+  const html = `
+  <li class="saved-contacts-list-item">
+    <div class="logo-item">
+      <img src="" alt="" class="subscribed-brand-logo">
+    </div>
+    <div class="brand-name-item">
+      Some Brand
+    </div>
+    <div class="contact-name-item">
+      ${contact.name}
+    </div>
+    <div class="contact-position-item">
+      ${contact.position}
+    </div>
+    <div class="contact-phoneNumber-item">
+      ${contact.phoneNumber}
+    </div>
+    <div class="contact-email-item">
+      ${contact.email}
+    </div>
+    <div class="contact-linkedin-item">
+      ${contact.linkedin}
+    </div>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -276,4 +331,6 @@ export default {
   trendingBrandListContentLoader,
   brandListRow,
   contactListRow,
+  profileSubBrands,
+  profleSavedBrands
 };

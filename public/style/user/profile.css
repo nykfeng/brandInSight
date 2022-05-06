@@ -1,0 +1,60 @@
+.user-profile-main {
+  width: 100rem;
+  margin: 5rem auto;
+
+  font-size: 1.6rem;
+
+  border: 0.2rem solid var(--main-color);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.profile-content {
+  gap: 5rem;
+}
+
+.profile-content .no-data-yet {
+  font-size: 1.8rem;
+  font-style: italic;
+}
+
+.profile-content h1 {
+  font-size: 2.2rem;
+  text-decoration: underline;
+}
+
+.user-profile-main .welcome-area {
+  padding: 1.5rem;
+  color: #fff;
+  background-color: var(--main-color);
+}
+
+.user-profile-main .welcome-area .user-profile-name:hover {
+  color: #fff;
+}
+
+.subscribed-brand-logo {
+  width: 5rem;
+  height: 5rem;
+}
+
+.profile-content > * {
+  width: 50%;
+  padding: 1.5rem;
+}
+
+.user-subscribed-brands-list {
+  gap: 1rem;
+}
+
+.subscribed-brands-list-item {
+  gap: 1rem;
+}
+
+.subscribed-brands-list-item .brand-name-item {
+  font-weight: bold;
+}
+
+.subscribed-brands-list-item .brand-website-item:hover {
+  color: var(--main-color);
+}

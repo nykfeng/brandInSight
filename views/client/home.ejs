@@ -7,20 +7,26 @@
 
             <div class="welcome-area">
                 <% if (currentUser.profilePicture) { %> 
-                    <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
+                    <a href="/user-profile">
+                        <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
+                    </a>
                 <% } else { %>
-                    <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
+                    <a href="/user-profile">
+                        <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
+                    </a>
                 <% } %>
                 <div class="welcome-text-area">
                     <h3 class="welcome-text">Welcome,</h3>
-                    <h3 class="user-profile-name">
+                    <a href="/user-profile">
+                        <h3 class="user-profile-name">
                         <% if (currentUser.firstName) { %>
                             <%= currentUser.firstName %>
                             <%= currentUser.lastName %>
                         <% } else { %>
                             <%= currentUser.username %>
                         <% } %>
-                    </h3>
+                        </h3>
+                    </a>
                 </div>
             </div>
 

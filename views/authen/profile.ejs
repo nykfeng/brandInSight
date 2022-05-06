@@ -1,0 +1,96 @@
+<% layout("/layouts/boilerplateClient.ejs") %>
+
+<main class="user-profile-main">
+
+    <div class="welcome-area">
+        <% if (currentUser.profilePicture) { %> 
+            
+                <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
+            
+        <% } else { %>
+            
+                <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
+            
+        <% } %>
+        <div class="welcome-text-area">
+            
+            
+                <h3 class="user-profile-name">
+                <% if (currentUser.firstName) { %>
+                    <%= currentUser.firstName %>
+                    <%= currentUser.lastName %>
+                <% } else { %>
+                    <%= currentUser.username %>
+                <% } %>
+                </h3>
+            
+        </div>
+    </div>
+
+    <div class="profile-content flex">
+
+        <div class="profile-user-subscribed-brands">
+            <h1>Subscribed Brands List:</h1>
+            <div class="no-data-yet">No data found.</div>
+            <ul class="user-subscribed-brands-list flex-column">
+                <li class="subscribed-brands-list-item">
+                    <div class="logo-item">
+                        <img src="" alt="" class="subscribed-brand-logo">
+                    </div>
+                    <div class="brand-name-item">
+                        <p></p>
+                    </div>
+                    <div class="brand-website-item">
+                        <p></p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="profile-user-saved-contacts">
+            <h1>Saved Contacts List:</h1>
+            <div class="no-data-yet">No data found.</div>
+
+            <ul class="user-saved-contacts-list flex-column">
+                <li class="saved-contacts-list-item">
+                    <div class="logo-item">
+                        <img src="" alt="" class="subscribed-brand-logo">
+                    </div>
+                    <div class="brand-name-item">
+                        <p></p>
+                    </div>
+                    <div class="contact-name-item">
+                        <p></p>
+                    </div>
+                    <div class="contact-position-item">
+                        <p></p>
+                    </div>
+                    <div class="contact-phoneNumber-item">
+                        <p></p>
+                    </div>
+                    <div class="contact-email-item">
+                        <p></p>
+                    </div>
+                    <div class="contact-linkedin-item">
+                        <p></p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+    </div>
+
+
+</main>
+
+<script>
+    // have to do it this way because of default formatter auto adding space to ejs
+    // < % - will not work, space between % and - 
+    let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
+</script>
+
+<script src="/js/client/profile.js" type="module" defer></script>

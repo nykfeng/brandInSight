@@ -58,6 +58,8 @@ router
   .post(isLoggedIn, catchAsync(users.saveContact))
   .delete(isLoggedIn, catchAsync(users.unsaveContact));
 
+router.get('/user-profile', isLoggedIn, catchAsync(users.profile))  
+
 router.get("/logout", users.logout);
 
 module.exports = router;

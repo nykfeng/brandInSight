@@ -117,3 +117,11 @@ module.exports.unsaveContact = async (req, res) => {
 
   await User.findByIdAndUpdate(userId, { $pull: { savedContacts: id } });
 };
+
+// user profile page for viewing subscribed brands and saved contacts
+// ------------------------------------------------------------------
+module.exports.profile = async (req, res) => {
+  await req.user.populate(["subscribedBrands", "savedContacts"]);
+
+  res.render("authen/profile");
+};
