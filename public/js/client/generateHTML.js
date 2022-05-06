@@ -291,28 +291,37 @@ function profileSubBrands(brand) {
 // user profile saved contact list
 function profleSavedBrands(contact) {
   const html = `
-  <li class="saved-contacts-list-item">
+  <li class="saved-contacts-list-item flex">
     <div class="logo-item">
-      <img src="" alt="" class="subscribed-brand-logo">
+      <img src="" alt="" class="contact-brand-logo">
     </div>
-    <div class="brand-name-item">
-      Some Brand
+
+    <div class="contact-basics flex-column">
+      <div class="contact-name-item">
+        ${contact.name}
+      </div>
+      <div class="contact-position-item">
+        ${contact.position}
+      </div>
     </div>
-    <div class="contact-name-item">
-      ${contact.name}
-    </div>
-    <div class="contact-position-item">
-      ${contact.position}
-    </div>
-    <div class="contact-phoneNumber-item">
-      ${contact.phoneNumber}
-    </div>
+
+    <div class="contact-method flex-column">
+      <div class="contact-phoneNumber-item">
+        ${contact.phoneNumber}
+      </div>
     <div class="contact-email-item">
-      ${contact.email}
+        ${contact.email}
+      </div>
     </div>
-    <div class="contact-linkedin-item">
-      ${contact.linkedin}
+
+    <a href="${contact.linkedin}" class="contact-linkedin-item">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+
+    <div class="contact-list__subscription-status">
+          <i class="fa-solid fa-circle-check"></i>
     </div>
+
   </li>
   `;
   return html;

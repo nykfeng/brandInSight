@@ -33,13 +33,22 @@
   color: #fff;
 }
 
+.profile-user-subscribed-brands {
+  width: 45%;
+}
+
+.profile-user-saved-contacts {
+  width: 55%;
+}
+
+/* subscribed brand section */
 .subscribed-brand-logo {
   width: 5rem;
   height: 5rem;
 }
 
 .profile-content > * {
-  width: 50%;
+  /* width: 50%; */
   padding: 1.5rem;
 }
 
@@ -56,5 +65,39 @@
 }
 
 .subscribed-brands-list-item .brand-website-item:hover {
+  color: var(--main-color);
+}
+
+/* saved contact section */
+.user-saved-contacts-list {
+  gap: 1rem;
+}
+
+.saved-contacts-list-item {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-item .contact-brand-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.contact-basics {
+  width: 15rem;
+  font-size: 1.5rem;
+}
+
+.contact-position-item {
+  font-size: 1.3rem;
+}
+
+.contact-method {
+  width: 20rem;
+  font-size: 1.3rem;
+}
+
+.contact-linkedin-item {
+  font-size: 3.5rem;
   color: var(--main-color);
 }
