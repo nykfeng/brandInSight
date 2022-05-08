@@ -53,6 +53,7 @@
 .brand-list__brand-logo {
   width: 8rem;
   height: 8rem;
+  object-fit: contain;
 }
 
 .brand-list__brand {

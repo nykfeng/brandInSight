@@ -129,7 +129,13 @@
   background-color: #fff;
 }
 
-.brand-subscribe-status {
+.brand-subscribe-status.status-yes {
+  background-color: var(--stock-green);
+  color: #fff;
+  border: 1px solid var(--stock-green);
+}
+
+.brand-subscribe-status.status-no {
   background-color: var(--main-color);
   color: #fff;
   border: 1px solid var(--main-color);

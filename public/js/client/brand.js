@@ -7,16 +7,30 @@ const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
 const brandConctactsEl = document.querySelector("#contacts");
 
+// Brand subscription status from top menu
+const subscribedEl = document.querySelector(".brand-subscribe-status");
+
 // Certain data variables have to be set up after html is loaded
 init();
 
 function init() {
-  secUserContactSubscription();
+  checkCurrentBrandSubscriptionStatus();
+  checkUserContactSubscription();
   resetContactButtons();
 }
 
-// sec User if the brand contact is already saved by the user
-function secUserContactSubscription() {
+// This is brand page, so check if the current brand is a subscribed from user
+function checkCurrentBrandSubscriptionStatus() {
+  const status = user.subscribedBrands.includes(brand._id);
+  if (status) {
+    subscribedEl.classList.remove("status-no");
+    subscribedEl.classList.add("status-yes");
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Subscribed`;
+  }
+}
+
+// Check if the brand contact is already saved by the user
+function checkUserContactSubscription() {
   if (brand.contact.length > 0) {
     brand.contact.forEach((brandContact) => {
       brandContact.saved = false;
@@ -127,5 +141,20 @@ brandConctactsEl.addEventListener("click", function (e) {
       btnEl.innerHTML = `<i class="fa-solid fa-circle-plus"></i> SAVE`;
       userActivity.unsaveContact(contactId);
     }
+  }
+});
+
+// listen for top menu buttons
+subscribedEl.addEventListener("click", function () {
+  if (this.classList.contains("status-no")) {
+    this.classList.remove("status-no");
+    this.classList.add("status-yes");
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Subscribed`;
+    userActivity.addBrandSubscription(brand._id);
+  } else {
+    this.classList.remove("status-yes");
+    this.classList.add("status-no");
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-plus"></i> Subscribe`;
+    userActivity.deleteBrandSubscription(brand._id);
   }
 });
