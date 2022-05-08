@@ -90,8 +90,8 @@
   color: var(--main-color);
 }
 
-.brand-table > *:not(:last-child),
-.contact-table > *:not(:last-child) {
+.brand-table > .brand-table-list > *:not(:last-child),
+.contact-table > .contact-table-list > *:not(:last-child) {
   border-bottom: 0.1rem solid rgba(145, 145, 145, 0.582);
 }
 
@@ -124,6 +124,7 @@
 .brand-table-brand-logo-img {
   width: 3.5rem;
   height: 3.5rem;
+  object-fit: contain;
 }
 
 .brand-table-brand-name {
@@ -193,4 +194,11 @@
   width: 25rem;
   color: rgb(0, 26, 255);
   font-weight: bold;
+}
+/* -------- individual contact column width and styles ---------- */
+/* ************************************************************ */
+
+.main-brand-list-viewmore, .main-contact-list-viewmore {
+  justify-content: center;
+  margin-top: 2rem;
 }

@@ -175,6 +175,22 @@ function insertModuleHTML(
         );
       }
       break;
+    case "main-brand-list":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.brandListRow(data[i], i)
+        );
+      }
+      break;
+    case "main-contact-list":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.contactListRow(data[i], i)
+        );
+      }
+      break;
     case "internal-brand-list":
       for (let i = startIndex; i < endIndex; i++) {
         moduleDataListEl.insertAdjacentHTML(
@@ -237,6 +253,12 @@ function setNumberPerPage(module) {
     case "profile-saved-contacts":
       numberPerPage = 10;
       break;
+    case "main-brand-list":
+      numberPerPage = 15;
+      break;
+    case "main-contact-list":
+      numberPerPage = 5;
+      break;
     case "internal-brand-list":
       numberPerPage = 7;
       break;
@@ -273,6 +295,12 @@ function setModuleElement(element, module) {
       break;
     case "profile-saved-contacts":
       moduleEl = element.querySelector(".user-saved-contacts-list");
+      break;
+    case "main-brand-list":
+      moduleEl = element.querySelector(".brand-table-list");
+      break;
+    case "main-contact-list":
+      moduleEl = element.querySelector(".contact-table-list");
       break;
     case "internal-brand-list":
       moduleEl = element.querySelector(".internal-brand-list");

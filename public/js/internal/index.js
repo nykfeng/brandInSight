@@ -17,8 +17,7 @@ addNewBrandBtns.forEach((btn) => {
   });
 });
 
-console.log("brand list is ");
-console.log(brands);
+
 
 if (brands.length > 0) {
   // iterate the list and reneder at max 10 items at first
@@ -40,14 +39,13 @@ if (brands.length > 0) {
     `;
     brandListSection.insertAdjacentHTML("beforeend", html);
 
-    //
+    
     const paginationEl = brandListSection.querySelector(
       ".internal-brand-list-viewmore"
     );
     const viewMoreBtn = brandListSection.querySelector(".view-more-btn");
 
     viewMoreBtn.addEventListener("click", function () {
-      console.log(this);
       this.style.display = "none";
       paginationEl.insertAdjacentHTML(
         "beforeend",
@@ -64,8 +62,4 @@ if (brands.length > 0) {
   }
 }
 
-// make brand list
-function internalBrandList() {
-  // url route to pull from backend
-  // const brands =
-}
+

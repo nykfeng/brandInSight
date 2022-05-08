@@ -1,35 +1,106 @@
 import generateHTML from "./generateHTML.js";
+import pagination from "./pagination.js";
+
+// DOM element
+const mainBrandListEl = document.querySelector("#brand-list-main");
+const mainContactListEl = document.querySelector("#contact-list-main");
+const brandListTableEl = document.querySelector('.brand-table-list');
 
 // max number for items per table page
 const MAX_BRAND_PER_PAGE = 15;
-const MAX_CONTACT_PER_PAGE = 25;
+const MAX_CONTACT_PER_PAGE = 5;
 
 // render the table list
 function render(moduleData, tableEl) {
-  moduleData.forEach((data, index) => {
-    if (tableEl.classList.contains("brand-table")) {
+  // Brand list -------------------------------------------------------
+  // render the first page
+  if (tableEl.classList.contains("brand-table")) {
+    moduleData.forEach((data, index) => {
+      const tableListEl = tableEl.querySelector('.brand-table-list');
       // set up the initial page within the max number
       if (index < MAX_BRAND_PER_PAGE) {
-        tableEl.insertAdjacentHTML(
+        tableListEl.insertAdjacentHTML(
           "beforeend",
           generateHTML.brandListRow(data, index)
         );
       }
+    });
 
-      // if there are more than 1 page of data, render view more for pagination
-      if (data.length > MAX_BRAND_PER_PAGE) {
-        
-      }
-      
-    } else if (tableEl.classList.contains("contact-table")) {
-      tableEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.contactListRow(data, index)
+    // if there are more than 1 page of data, render view more for pagination
+    if (moduleData.length > MAX_BRAND_PER_PAGE) {
+      const html = `
+      <div class="main-brand-list-viewmore flex" data-module="main-brand-list">
+        <button class="view-more-btn">View More</button>
+      </div>
+    `;
+
+      mainBrandListEl.insertAdjacentHTML("beforeend", html);
+      const paginationEl = mainBrandListEl.querySelector(
+        ".main-brand-list-viewmore"
       );
-    }
+      const viewMoreBtn = mainBrandListEl.querySelector(".view-more-btn");
 
-    // if 
-  });
+      viewMoreBtn.addEventListener("click", function () {
+        this.style.display = "none";
+        paginationEl.insertAdjacentHTML(
+          "beforeend",
+          pagination.setupButtons(
+            "main-brand-list",
+            moduleData.length,
+            MAX_BRAND_PER_PAGE
+          )
+        );
+
+        const module = "main-brand-list";
+        pagination.setupControl(mainBrandListEl, moduleData, module);
+      });
+    }
+  }
+
+
+  // Contact list -------------------------------------------------------
+  if (tableEl.classList.contains("contact-table")) {
+    moduleData.forEach((data, index) => {
+      const tableListEl = tableEl.querySelector('.contact-table-list');
+      // set up the initial page within the max number
+      if (index < MAX_CONTACT_PER_PAGE) {
+        tableListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.contactListRow(data, index)
+        );
+      }
+    });
+  
+    // if there are more than 1 page of data, render view more for pagination
+    if (moduleData.length > MAX_CONTACT_PER_PAGE) {
+      const html = `
+        <div class="main-contact-list-viewmore flex" data-module="main-contact-list">
+          <button class="view-more-btn">View More</button>
+        </div>
+      `;
+
+      mainContactListEl.insertAdjacentHTML("beforeend", html);
+      const paginationEl = mainContactListEl.querySelector(
+        ".main-contact-list-viewmore"
+      );
+      const viewMoreBtn = mainContactListEl.querySelector(".view-more-btn");
+
+      viewMoreBtn.addEventListener("click", function () {
+        this.style.display = "none";
+        paginationEl.insertAdjacentHTML(
+          "beforeend",
+          pagination.setupButtons(
+            "main-contact-list",
+            moduleData.length,
+            MAX_CONTACT_PER_PAGE
+          )
+        );
+
+        const module = "main-contact-list";
+        pagination.setupControl(mainContactListEl, moduleData, module);
+      });
+    }
+  }
 }
 
 // sorting table column buttons
@@ -80,9 +151,11 @@ function sortIcon(btn, asc) {
 const sortingTable = function (module, column, asc = true) {
   const dirModifier = asc ? 1 : -1;
   module.sort((a, b) => {
-    if(typeof a[column] === 'string') {
-      return a[column].toLowerCase() < b[column].toLowerCase() ? dirModifier * 1 : dirModifier * -1;
-    } else if (typeof a[column] === 'number') {
+    if (typeof a[column] === "string") {
+      return a[column].toLowerCase() < b[column].toLowerCase()
+        ? dirModifier * 1
+        : dirModifier * -1;
+    } else if (typeof a[column] === "number") {
       return a[column] < b[column] ? dirModifier * 1 : dirModifier * -1;
     }
   });
