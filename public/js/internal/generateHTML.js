@@ -154,7 +154,7 @@ function newContactModal(currentBrand) {
 }
 
 function deleteBrandConfirmation(brand) {
-    const html = `
+  const html = `
     <div class="modal-background">
 
         <div class="delete-confirmation-modal flex-column">
@@ -176,7 +176,7 @@ function deleteBrandConfirmation(brand) {
 
     </div>
     `;
-    return html;
+  return html;
 }
 
 function listOfContacts(brand, contact) {
@@ -239,21 +239,29 @@ function listOfContacts(brand, contact) {
 
 function listOfLeaderships(brand, leadership) {
   const html = `
-    <form action="/brands/${brand._id}/leadership/${leadership._id}?_method=PUT" method="POST" class="brand-leadership-item-form flex" enctype="multipart/form-data">
+    <form action="/brands/${brand._id}/leadership/${
+    leadership._id
+  }?_method=PUT" method="POST" class="brand-leadership-item-form flex" enctype="multipart/form-data">
     <div class="flex">
         <div class="leadership-profile-div">
-        <img src="${leadership?.profilePicture?.url || ''}" alt="${leadership.name} profile picture"
+        <img src="${leadership?.profilePicture?.url || ""}" alt="${
+    leadership.name
+  } profile picture"
                     class="brand-leadership-profile">
         </div>
         <div class="flex-column">
         <div class="input-group flex">
         <label for="leadership-name">Name</label>
-        <input type="text" id="leadership-name" name="leadership[name]" value="${leadership.name}">
+        <input type="text" id="leadership-name" name="leadership[name]" value="${
+          leadership.name
+        }">
     </div>
 
     <div class="input-group flex">
         <label for="leadership-position">Position</label>
-        <input type="text" id="leadership-position" name="leadership[position]" value="${leadership.position}">
+        <input type="text" id="leadership-position" name="leadership[position]" value="${
+          leadership.position
+        }">
     </div>
         </div>
         
@@ -267,7 +275,9 @@ function listOfLeaderships(brand, leadership) {
     </div>
 
     <div class="leadership-btn-group flex">
-        <button class="leadership-delete internal-btn internal-btn-delete flex" data-id="${leadership._id}">Delete
+        <button class="leadership-delete internal-btn internal-btn-delete flex" data-id="${
+          leadership._id
+        }">Delete
         Person</button>
         <button class="leadership-submit internal-btn internal-btn-save flex">Save
         Changes</button>
@@ -281,7 +291,7 @@ function listOfLeaderships(brand, leadership) {
 }
 
 function searchResultList(brand) {
-    const html = `
+  const html = `
     <li class="search-result__list-item flex">
         <a href="/internal/brands/${brand._id}" class="flex search-item">
           <div class="result-logo"><img src="${brand.logo.url}" alt="" class="result-logo-img"></div>
@@ -292,8 +302,26 @@ function searchResultList(brand) {
         </a>
       </li>
     `;
-    return html;
-  }
+  return html;
+}
+
+function brandList(brand) {
+  const html = `
+    <li class="brand-list__brand flex">
+        <a href="/internal/brands/${brand._id}" class="internal-main-brand-logo"><img
+            src="${brand.logo.url}" alt="" class="brand-list__brand-logo"></a>
+        <div class="brand-list__text flex-column">
+            <a href="/internal/brands/${brand._id}" class="brand-list__brand-title">
+            ${brand.name}
+            </a>
+            <p class="brand-list__brand-industry">
+            ${brand.industry}
+            </p>
+        </div>
+    </li>
+    `;
+  return html;
+}
 
 export default {
   newBrandModal,
@@ -302,5 +330,6 @@ export default {
   listOfContacts,
   listOfLeaderships,
   deleteBrandConfirmation,
-  searchResultList
+  searchResultList,
+  brandList,
 };

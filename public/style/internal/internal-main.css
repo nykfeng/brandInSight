@@ -10,6 +10,8 @@
   background-color: var(--variety-color-purple);
   padding: 1rem;
   gap: 2.5rem;
+
+  justify-content: space-between;
 }
 
 .internal-nav-item {
@@ -27,6 +29,28 @@
   border: none;
   background-color: #fff;
 }
+
+.internal-nav__add-brand {
+  color: var(--variety-color-purple);
+  background-color: #fff;
+  font-size: 1.6rem;
+  padding: 0.8rem;
+
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+}
+
+.internal-nav__add-brand:hover {
+  color: #fff;
+  background-color: var(--stock-green);
+  cursor: pointer;
+}
+
+.internal-nav__add-brand:active {
+  transform: scale(0.98);
+}
+
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
 /* main section */
@@ -34,9 +58,9 @@
 .internal-main {
   font-size: 2em;
   margin: 5rem auto;
-}
 
-.brand-add {
+  width: 120rem;
+  gap: 7rem;
 }
 
 .internal-main-btn {
@@ -46,8 +70,40 @@
 /* brand list */
 /* ---------------------------------------------- */
 /* ---------------------------------------------- */
-.brand-list {
+.internal-brand-list-section {
+  width: 60%;
+}
+
+.internal-brand-list-section h1 {
+  margin-bottom: 0.1rem;
+  background-color: var(--variety-color-purple);
+  display: inline-block;
+  color: #fff;
+  padding: 1rem;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  font-size: 2rem;
+}
+
+.internal-title-line {
+  border-top: 0.2rem solid var(--variety-color-purple);
+
+  margin-bottom: 2rem;
+}
+
+.internal-brand-list {
   max-width: 80rem;
+}
+
+.add-new-brand {
+  justify-content: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.add-new-brand:hover {
+  opacity: 0.75;
 }
 
 .brand-list__brand-logo {
@@ -60,7 +116,7 @@
   border: 1px solid black;
   border-radius: 1rem;
   overflow: hidden;
-  
+
   margin-bottom: 2rem;
 }
 
@@ -83,4 +139,29 @@
 
 .brand-list__brand-industry {
   font-size: 1.6rem;
+}
+
+/* ---- view more and pagination ------- */
+.internal-brand-list-section .view-more-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: 0.2rem solid var(--variety-color-purple);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--variety-color-purple);
+}
+
+.internal-brand-list-viewmore {
+  justify-content: center;
+}
+
+.internal-brand-list-viewmore .pagination-btn {
+  background-color: var(--variety-color-purple);
+}
+
+.internal-brand-list-viewmore ul {
+  list-style: none;
 }

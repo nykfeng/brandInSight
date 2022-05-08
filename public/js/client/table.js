@@ -1,19 +1,34 @@
 import generateHTML from "./generateHTML.js";
 
+// max number for items per table page
+const MAX_BRAND_PER_PAGE = 15;
+const MAX_CONTACT_PER_PAGE = 25;
+
 // render the table list
 function render(moduleData, tableEl) {
   moduleData.forEach((data, index) => {
     if (tableEl.classList.contains("brand-table")) {
-      tableEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.brandListRow(data, index)
-      );
+      // set up the initial page within the max number
+      if (index < MAX_BRAND_PER_PAGE) {
+        tableEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.brandListRow(data, index)
+        );
+      }
+
+      // if there are more than 1 page of data, render view more for pagination
+      if (data.length > MAX_BRAND_PER_PAGE) {
+        
+      }
+      
     } else if (tableEl.classList.contains("contact-table")) {
       tableEl.insertAdjacentHTML(
         "beforeend",
         generateHTML.contactListRow(data, index)
       );
     }
+
+    // if 
   });
 }
 

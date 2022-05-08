@@ -1,4 +1,5 @@
 import generateHTML from "./generateHTML.js";
+import internalHTML from "../internal/generateHTML.js";
 
 // name is the section name, like brand list, contact list, leadership list
 // totalNumber is total number of data to display
@@ -174,10 +175,17 @@ function insertModuleHTML(
         );
       }
       break;
+    case "internal-brand-list":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          internalHTML.brandList(data[i])
+        );
+      }
+      break;
     default:
   }
 }
-
 
 // a function logics to determine what is the starting index of the data
 // to display on certain page
@@ -229,6 +237,9 @@ function setNumberPerPage(module) {
     case "profile-saved-contacts":
       numberPerPage = 10;
       break;
+    case "internal-brand-list":
+      numberPerPage = 7;
+      break;
     default:
       numberPerPage = 0;
   }
@@ -262,6 +273,9 @@ function setModuleElement(element, module) {
       break;
     case "profile-saved-contacts":
       moduleEl = element.querySelector(".user-saved-contacts-list");
+      break;
+    case "internal-brand-list":
+      moduleEl = element.querySelector(".internal-brand-list");
       break;
     default:
       moduleEl = "";

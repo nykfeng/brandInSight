@@ -1,59 +1,35 @@
 <% layout("/layouts/boilerplateInternal.ejs") %>
     <div class="internal-nav flex">
-        <a href="/" class="internal-nav-item">Client Landing Page</a>
-        <a href="/home" class="internal-nav-item">Client Home</a>
+        <div class="internal-nav__left">
+            <a href="/" class="internal-nav-item">Client Landing Page</a>
+            <a href="/home" class="internal-nav-item">Client Home</a>
+        </div>
+        <div class="internal-nav__right">
+            <button class="internal-nav__add-brand brand-add">
+                <i class="fa-solid fa-circle-plus"></i> Add Brand
+            </button>
+        </div>
     </div>
 
-    <section class="internal-main">
+    <section class="internal-main flex">
 
-        <!-- <div class="search-bar">---------------------</div>
-        <p>Brands List goes here</p>
-        <div class="trending-brand-list">
-            <ul class="brand-list">
-                <% for (let brand of brands) { %>
-                    <li><span class="name">
-                            <%=brand.name%>
-                        </span>
-                        <a href="/internal/brands/<%=brand._id%>">Brand ID -></a>
-                    </li>
-                    <% } %>
-            </ul>
+        <div class="internal-brand-list-section">
+            <h1>Brand List:</h1>
+            <div class="internal-title-line"></div>
+
+            <div class="add-new-brand flex">
+                <button class="internal-btn internal-main-btn brand-add">Add New Brand</button>
+            </div>
+
+            <ul class="internal-brand-list">
+
         </div>
-        <br>
-        <br> -->
-
-        <ul class="brand-list">
-            <!-- <li class="brand-list__brand flex">
-                <a href="" class="internal-main-brand-logo"><img src="/images/logo/unity.png" alt="" class="brand-list__brand-logo"></a>
-                <div class="brand-list__text flex-column">
-                    <a href="" class="brand-list__brand-title">Unity</a>
-                    <p class="brand-list__brand-industry">Developer Platform, Augmented Reality, Mobile Apps</p>
-                </div>
-            </li> -->
-
-            <% for (let brand of brands) { %>
-                <li class="brand-list__brand flex">
-                    <a href="/internal/brands/<%=brand._id%>" class="internal-main-brand-logo"><img src="<%=brand.logo.url%>" alt="" class="brand-list__brand-logo"></a>
-                    <div class="brand-list__text flex-column">
-                        <a href="/internal/brands/<%=brand._id%>" class="brand-list__brand-title"><%=brand.name%></a>
-                        <p class="brand-list__brand-industry"><%=brand.industry%></p>
-                    </div>
-                </div>    
-            <% } %>
-            <!-- <div>
-
-                <button class="view-more-btn">View More</button>
-            </div> -->
-
-        </ul>
 
 
 
         <div class="action-items">
 
-            <div class="add-new-brand">
-                <button class="internal-btn internal-main-btn brand-add">Add New Brand</button>
-            </div>
+
             <br>
 
             <div class="view-action-history">
@@ -62,12 +38,14 @@
 
         </div>
 
-
-
-
-
     </section>
 
+
+    <script>
+        // have to do it this way because of default formatter auto adding space to ejs
+        // < % - will not work, space between % and - 
+        let brands = JSON.parse(`<%-JSON.stringify(brands)%>`);
+    </script>
 
     <script src="/js/internal/index.js" type="module">
     </script>
