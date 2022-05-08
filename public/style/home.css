@@ -93,7 +93,7 @@ ul {
 .user-profile-avatar {
   width: 7rem;
   height: 7rem;
-  border: 0.1rem solid black;
+  border: 0.2rem solid var(--main-color);
   border-radius: 100%;
 }
 

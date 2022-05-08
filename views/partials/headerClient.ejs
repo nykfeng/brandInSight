@@ -47,30 +47,38 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li><a class="main-nav-link" href="#products"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
-            </li> -->
+
             <li><a class="main-nav-link" href="/brands"><i class="fa-solid fa-building"></i> Brands</a>
             </li>
             <li><a class="main-nav-link" href="/contacts"><i class="fa-solid fa-address-book"></i> Contacts</a>
             </li>
 
             <% if (currentUser) { %>
-                <li class="user-profile"><a class="main-nav-link" href="#">
+                <li class="user-profile">
+                    <a class="main-nav-link" href="#">
                         <i class="fa-solid fa-circle-user"></i>
                         Account
                     </a>
                     <ul class="sub-menu sub-menu--user-profile">
-                        <li></i>
-                            <p>
-                                👋 <%= currentUser.username%>
-                            </p>
+                        <li>
+                            <a href="/user-profile" class="sub-menu--account flex">
+                                <span>👋</span>
+                                <span>
+                                    <%= currentUser.username%>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a href="/user/<%=currentUser._id%>"><i
-                                    class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i>Account Settings</a>
+                            <a href="/user/<%=currentUser._id%>" class="sub-menu--account flex">
+                                <i class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i>
+                                <span>Account Settings</span>
+                            </a>
                         </li>
-                        <li><i class="fa-solid fa-right-from-bracket linear-gradient-text"></i>
-                            <a href="/logout">Log Out</a>
+                        <li>
+                            <a href="/logout" class="sub-menu--account flex">
+                                <i class="fa-solid fa-right-from-bracket linear-gradient-text"></i>
+                                <span>Log Out</span>
+                            </a>
                         </li>
 
                     </ul>

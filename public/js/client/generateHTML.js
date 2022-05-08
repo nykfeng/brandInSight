@@ -266,14 +266,16 @@ function contactListRow(contact, index) {
 // user profile subscribed brand list
 function profileSubBrands(brand) {
   const html = `
-  <li class="subscribed-brands-list-item flex">
+  <li class="subscribed-brands-list-item flex" data-brand-id="${brand._id}">
     <div class="logo-item">
       <img src="${brand.logo.url}" alt="" class="subscribed-brand-logo">
     </div>
 
     <div class="brand-information-item">
       <div class="brand-name-item">
-          ${brand.name}
+          <a href="/brands/${brand._id}">
+            ${brand.name}
+          </a>
       </div>
       <a href="${brand.website}" class="brand-website-item">
           ${brand.website}
@@ -289,9 +291,9 @@ function profileSubBrands(brand) {
 }
 
 // user profile saved contact list
-function profleSavedBrands(contact) {
+function profleSavedContacts(contact) {
   const html = `
-  <li class="saved-contacts-list-item flex">
+  <li class="saved-contacts-list-item flex" data-contact-id="${contact._id}">
     <div class="logo-item">
       <img src="" alt="" class="contact-brand-logo">
     </div>
@@ -307,14 +309,16 @@ function profleSavedBrands(contact) {
 
     <div class="contact-method flex-column">
       <div class="contact-phoneNumber-item">
+        <i class="fa-solid fa-square-phone"></i>
         ${contact.phoneNumber}
       </div>
     <div class="contact-email-item">
+        <i class="fa-solid fa-envelope"></i>
         ${contact.email}
       </div>
     </div>
 
-    <a href="${contact.linkedin}" class="contact-linkedin-item">
+    <a href="https://${contact.linkedin}" class="contact-linkedin-item">
       <i class="fa-brands fa-linkedin"></i>
     </a>
 
@@ -341,5 +345,5 @@ export default {
   brandListRow,
   contactListRow,
   profileSubBrands,
-  profleSavedBrands
+  profleSavedContacts,
 };

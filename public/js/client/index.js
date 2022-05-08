@@ -22,6 +22,9 @@ let trendingBrands;
 let viewedBrands;
 let adSpendBrands;
 
+// maximum item per page for list item
+const MAX_PER_PAGE = 5;
+
 // when the client home page HTML is loaded, javascript will send request to get client data
 window.onload = function () {
   init();
@@ -50,7 +53,7 @@ async function trendingBrandList() {
 
     if (user.subscribedBrands.length > 0) {
       user.subscribedBrands.forEach((subBrand) => {
-        // subscribedBrands array contains only id value, so subBrand
+        // subscribedBrands array contains only id value (string not object), so use subBrand
         if (subBrand === brand._id) subscribed = true;
       });
     }
@@ -110,11 +113,13 @@ async function subscribedBrandsList() {
     subscribedBrands = await getData.listOfSubscribedBrands();
   }
 
-  subscribedBrands.forEach((brand) => {
+  subscribedBrands.forEach((brand, index) => {
+    if (index < MAX_PER_PAGE) {
     subscribedBrandListEl.insertAdjacentHTML(
       "beforeend",
       generateHTML.subscribedBrandList(brand)
     );
+    }
   });
 
   // listen for clicking subscribe buttons
@@ -129,13 +134,15 @@ async function viewedHistoryBrandsList() {
     viewedBrands = await getData.listOfViewedHistoryBrand();
   }
 
-  viewedBrands.forEach((brand) => {
-    viewedBrandListEl.insertAdjacentHTML(
-      "beforeend",
-      generateHTML.viewedHistoryBrandList(brand)
-    );
+  viewedBrands.forEach((brand, index) => {
+    if (index < MAX_PER_PAGE) {
+      viewedBrandListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.viewedHistoryBrandList(brand)
+      );
+    }
   });
-  
+
   // listen for clicking subscribe buttons
   const subBtns = viewedBrandListEl.querySelectorAll(".right-brand-status");
   subscriptionButtons(subBtns);
@@ -146,11 +153,13 @@ async function adSpendBrandsList() {
   // get all the brands with ad spend from server
   adSpendBrands = await getData.listOfBrandsWithAdSpend();
 
-  adSpendBrands.forEach((brand) => {
+  adSpendBrands.forEach((brand, index) => {
+    if (index < MAX_PER_PAGE) {
     adSpendListEl.insertAdjacentHTML(
       "beforeend",
       generateHTML.adSpendBrandsList(brand)
     );
+    }
   });
 }
 

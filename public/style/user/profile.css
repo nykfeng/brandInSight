@@ -21,6 +21,7 @@
 .profile-content h1 {
   font-size: 2.2rem;
   text-decoration: underline;
+  margin-bottom: 1.5rem;
 }
 
 .user-profile-main .welcome-area {
@@ -41,15 +42,14 @@
   width: 55%;
 }
 
-/* subscribed brand section */
+.profile-content > * {
+  padding: 1.5rem;
+}
+
+/* ----------- subscribed brand section ----------------*/
 .subscribed-brand-logo {
   width: 5rem;
   height: 5rem;
-}
-
-.profile-content > * {
-  /* width: 50%; */
-  padding: 1.5rem;
 }
 
 .user-subscribed-brands-list {
@@ -68,7 +68,11 @@
   color: var(--main-color);
 }
 
-/* saved contact section */
+.brand-name-item:hover {
+  color: var(--main-color);
+}
+
+/* --------------- saved contact section -----------------*/
 .user-saved-contacts-list {
   gap: 1rem;
 }
@@ -88,6 +92,10 @@
   font-size: 1.5rem;
 }
 
+.contact-name-item {
+  font-weight: bold;
+}
+
 .contact-position-item {
   font-size: 1.3rem;
 }
@@ -100,4 +108,26 @@
 .contact-linkedin-item {
   font-size: 3.5rem;
   color: var(--main-color);
+}
+
+/* buttons */
+.user-subscribed-brands-list .brand-list__subscription-status i:active,
+.user-saved-contacts-list .contact-list__subscription-status i:active {
+  transform: scale(0.98);
+}
+
+.user-subscribed-brands-list .brand-list__subscription-status i:hover,
+.user-saved-contacts-list .contact-list__subscription-status i:hover {
+  opacity: 0.8;
+}
+
+.user-saved-contacts-list .contact-list__subscription-status i {
+  cursor: pointer;
+}
+
+/* pagination specific */
+.profile-saved-contacts {
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
 }

@@ -107,6 +107,10 @@ function insertModuleHTML(
   module,
   subscribed = false
 ) {
+  console.log("moduleDataListEl is ", moduleDataListEl);
+
+  console.log("module is ", module);
+
   switch (module) {
     case "contacts":
       for (let i = startIndex; i < endIndex; i++) {
@@ -159,6 +163,29 @@ function insertModuleHTML(
         );
       }
       break;
+    case "profile-subscribed-brands":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.profileSubBrands(data[i])
+        );
+      }
+      break;
+    case "profile-saved-contacts":
+      console.log("inside for loop");
+      console.log("startIndex is ", startIndex);
+      console.log("endIndex is ", endIndex);
+      console.log();
+
+      for (let i = startIndex; i < endIndex; i++) {
+        console.log("i is ", i);
+
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.profleSavedContacts(data[i])
+        );
+      }
+      break;
     default:
   }
 }
@@ -171,6 +198,11 @@ function pageContentGenerate(dataListEl, startIndex, endIndex) {}
 // and the size (number of data) to display that page
 function determinePaginationDataIndex(dataSize, pageNumber, numberPerPage) {
   let size;
+
+  console.log("Inside determinePagination");
+  console.log("dataSize is ", dataSize);
+  console.log("pageNumber is ", pageNumber);
+  console.log("numberPerPage is ", numberPerPage);
 
   // starting index
   // if page 2 clicks, 2 - 1 = 1
@@ -212,6 +244,10 @@ function setNumberPerPage(module) {
     case "leaderships":
       numberPerPage = 6;
       break;
+    case "profile-subscribed-brands":
+    case "profile-saved-contacts":
+      numberPerPage = 10;
+      break;
     default:
       numberPerPage = 0;
   }
@@ -239,6 +275,12 @@ function setModuleElement(element, module) {
       break;
     case "adSpend-brands":
       moduleEl = element.querySelector(".right-brands-list__adSpend");
+      break;
+    case "profile-subscribed-brands":
+      moduleEl = element.querySelector(".user-subscribed-brands-list");
+      break;
+    case "profile-saved-contacts":
+      moduleEl = element.querySelector(".user-saved-contacts-list");
       break;
     default:
       moduleEl = "";

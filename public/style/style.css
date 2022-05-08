@@ -155,6 +155,11 @@ html {
   display: inline-block;
 }
 
+.sub-menu--account {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .main-nav-list li .sub-menu {
   display: none;
   min-width: 25rem;
