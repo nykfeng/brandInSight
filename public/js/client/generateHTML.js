@@ -295,7 +295,7 @@ function profleSavedContacts(contact) {
   const html = `
   <li class="saved-contacts-list-item flex" data-contact-id="${contact._id}">
     <div class="logo-item">
-      <img src="" alt="" class="contact-brand-logo">
+      <img src="${contact.brand_logo}" alt="" class="contact-brand-logo">
     </div>
 
     <div class="contact-basics flex-column">

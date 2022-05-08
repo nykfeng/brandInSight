@@ -85,8 +85,7 @@ function pageSetup(
   );
   // delete and insert page html elements for the module
   let moduleDataListEl = setModuleElement(element, module);
-  console.log("module element is ");
-  console.log(moduleDataListEl);
+
   // manipulate HTML content, delete old data
   moduleDataListEl.innerHTML = "";
   // moduleDataListEl insert new data
@@ -107,10 +106,6 @@ function insertModuleHTML(
   module,
   subscribed = false
 ) {
-  console.log("moduleDataListEl is ", moduleDataListEl);
-
-  console.log("module is ", module);
-
   switch (module) {
     case "contacts":
       for (let i = startIndex; i < endIndex; i++) {
@@ -172,14 +167,7 @@ function insertModuleHTML(
       }
       break;
     case "profile-saved-contacts":
-      console.log("inside for loop");
-      console.log("startIndex is ", startIndex);
-      console.log("endIndex is ", endIndex);
-      console.log();
-
       for (let i = startIndex; i < endIndex; i++) {
-        console.log("i is ", i);
-
         moduleDataListEl.insertAdjacentHTML(
           "beforeend",
           generateHTML.profleSavedContacts(data[i])
@@ -190,19 +178,12 @@ function insertModuleHTML(
   }
 }
 
-// control function for generating HTML pagination data item
-function pageContentGenerate(dataListEl, startIndex, endIndex) {}
 
 // a function logics to determine what is the starting index of the data
 // to display on certain page
 // and the size (number of data) to display that page
 function determinePaginationDataIndex(dataSize, pageNumber, numberPerPage) {
   let size;
-
-  console.log("Inside determinePagination");
-  console.log("dataSize is ", dataSize);
-  console.log("pageNumber is ", pageNumber);
-  console.log("numberPerPage is ", numberPerPage);
 
   // starting index
   // if page 2 clicks, 2 - 1 = 1

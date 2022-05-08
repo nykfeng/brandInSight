@@ -5,7 +5,6 @@ async function trendingList() {
     method: "GET",
   });
   const data = await res.json();
-  console.log(data);
   const listOfBrands = Array.from(data.docs);
   return listOfBrands;
 }
@@ -18,7 +17,6 @@ async function sendQuery(query) {
     query: query,
   });
   const data = await res.json();
-  console.log(data);
   const listOfBrands = Array.from(data.docs);
   return listOfBrands;
 }
@@ -30,8 +28,7 @@ async function listOfSubscribedBrands() {
     method: "GET",
   });
   const listOfBrands = await res.json();
-  console.log("from server, brand list by ids");
-  console.log(listOfBrands);
+
   return listOfBrands;
 }
 
@@ -42,8 +39,7 @@ async function listOfViewedHistoryBrand() {
     method: "GET",
   });
   const listOfBrands = await res.json();
-  console.log("from server, brand list by ids");
-  console.log(listOfBrands);
+
   return listOfBrands;
 }
 
@@ -54,17 +50,27 @@ async function listOfBrandsWithAdSpend() {
     method: "GET",
   });
   const listOfBrands = await res.json();
-  console.log("from server, brand list by ids");
-  console.log(listOfBrands);
+
   return listOfBrands;
 }
 
+//--------------------------- Profile page ----------------
+// ------- contact list associated brand logo url ----------
+async function listOfBrandLogoURL() {
+  const url = `/brands/logoURL`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+
+  const listOfContactsWithBrandLogos = await res.json();
+  return listOfContactsWithBrandLogos;
+}
 
 export default {
   trendingList,
   sendQuery,
   listOfSubscribedBrands,
   listOfViewedHistoryBrand,
-  listOfBrandsWithAdSpend
+  listOfBrandsWithAdSpend,
+  listOfBrandLogoURL,
 };
-

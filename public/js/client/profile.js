@@ -1,6 +1,7 @@
 import generateHTML from "./generateHTML.js";
 import userActivity from "./userActivity.js";
 import pagination from "./pagination.js";
+import getData from "../getData.js";
 
 //Dom element selector
 const subBrandListEl = document.querySelector(".user-subscribed-brands-list");
@@ -8,9 +9,6 @@ const saveContactListEl = document.querySelector(".user-saved-contacts-list");
 
 // maximum of list item per page
 const MAX_PER_PAGE = 10;
-
-console.log("user is ");
-console.log(user);
 
 // -------------------------- profile subscribed brands -----------------------------------
 // Rendering subscribed brand list if there are any
@@ -60,14 +58,13 @@ if (user.subscribedBrands.length > 0) {
     subscribedBrandsEl.insertAdjacentHTML("beforeend", html);
 
     const paginationEl = subscribedBrandsEl.querySelector(
-      ".profile-saved-contacts"
+      ".profile-subscribed-brands"
     );
 
     const viewMoreBtn = subscribedBrandsEl.querySelector(".view-more-btn");
 
     viewMoreBtn.addEventListener("click", function () {
       this.style.display = "none";
-      console.log("clicked");
       paginationEl.insertAdjacentHTML(
         "beforeend",
         pagination.setupButtons(
@@ -78,9 +75,12 @@ if (user.subscribedBrands.length > 0) {
       );
 
       const module = this.parentNode.getAttribute("data-module"); // Get module name
-      console.log("module namne is ", module);
 
-      pagination.setupControl(subscribedBrandsEl, user.subscribedBrands, module);
+      pagination.setupControl(
+        subscribedBrandsEl,
+        user.subscribedBrands,
+        module
+      );
     });
   }
 }
@@ -88,11 +88,16 @@ if (user.subscribedBrands.length > 0) {
 // -------------------------- profile saved contacts -----------------------------------
 // Rendering saved contact list if there are any
 if (user.savedContacts.length > 0) {
+  // need to get contact's associated brand logo url separately
+  await setupContactBrandLogo();
+
   const savedContactsEl = document.querySelector(
     ".profile-user-saved-contacts"
   );
   const noDataEl = savedContactsEl.querySelector(".no-data-yet");
-  noDataEl.remove();
+  noDataEl.remove(); // if there are contact data, remove the dummy text
+
+  // render the initial first page of saved contact list
   user.savedContacts.forEach((contact, index) => {
     if (index < MAX_PER_PAGE) {
       saveContactListEl.insertAdjacentHTML(
@@ -108,6 +113,7 @@ if (user.savedContacts.length > 0) {
     ".user-saved-contacts-list .contact-list__subscription-status i"
   );
 
+  // to listen for unsaving the any contact
   saveContactBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       let contactId = this.closest(".saved-contacts-list-item").dataset
@@ -116,13 +122,10 @@ if (user.savedContacts.length > 0) {
       if (this.classList.contains("fa-circle-plus")) {
         this.classList.remove("fa-circle-plus");
         this.classList.add("fa-circle-check");
-        console.log(contactId);
         userActivity.saveContact(contactId);
       } else {
         this.classList.remove("fa-circle-check");
         this.classList.add("fa-circle-plus");
-        console.log(contactId);
-
         userActivity.unsaveContact(contactId);
       }
     });
@@ -136,16 +139,13 @@ if (user.savedContacts.length > 0) {
     </div>
     `;
     savedContactsEl.insertAdjacentHTML("beforeend", html);
-
     const paginationEl = savedContactsEl.querySelector(
       ".profile-saved-contacts"
     );
 
     const viewMoreBtn = savedContactsEl.querySelector(".view-more-btn");
-
     viewMoreBtn.addEventListener("click", function () {
       this.style.display = "none";
-      console.log("clicked");
       paginationEl.insertAdjacentHTML(
         "beforeend",
         pagination.setupButtons(
@@ -156,11 +156,21 @@ if (user.savedContacts.length > 0) {
       );
 
       const module = this.parentNode.getAttribute("data-module"); // Get module name
-      console.log("module namne is ", module);
-
       pagination.setupControl(savedContactsEl, user.savedContacts, module);
     });
   }
 }
 
-//
+// Set up contact list's brand logo
+// add brand_logo to contact object
+async function setupContactBrandLogo() {
+  const contactWithLogoList = await getData.listOfBrandLogoURL();
+
+  user.savedContacts.forEach((userContact) => {
+    contactWithLogoList.forEach((contactLogo) => {
+      if (userContact._id === contactLogo.contact_id) {
+        userContact.brand_logo = contactLogo.brand_logo;
+      }
+    });
+  });
+}

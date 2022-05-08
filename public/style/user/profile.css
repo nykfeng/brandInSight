@@ -50,6 +50,7 @@
 .subscribed-brand-logo {
   width: 5rem;
   height: 5rem;
+  object-fit: contain;
 }
 
 .user-subscribed-brands-list {
@@ -85,6 +86,7 @@
 .logo-item .contact-brand-logo {
   width: 2.5rem;
   height: 2.5rem;
+  object-fit: contain;
 }
 
 .contact-basics {
@@ -126,7 +128,7 @@
 }
 
 /* pagination specific */
-.profile-saved-contacts {
+.profile-saved-contacts, .profile-subscribed-brands {
   margin-top: 2rem;
   justify-content: center;
   align-items: center;

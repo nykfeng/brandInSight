@@ -1,6 +1,7 @@
 // actual mongoose models
 const Brand = require("../models/Brand");
 const User = require("../models/User");
+const Contact = require("../models/Contact");
 
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
@@ -17,7 +18,6 @@ const { cloudinary } = require("../cloudinary");
 // };
 
 // -=-=-=-=-=-==-=-=- These can be deleted -=-=-=-=-=-=-=-=-=-=-==-
-
 
 // get a list of trending brands
 module.exports.trending = async (req, res) => {
@@ -94,7 +94,7 @@ module.exports.listOfViewedBrands = async (req, res) => {
       id: brand._id,
       name: brand.name,
       logo: brand.logo.url,
-      subscribed
+      subscribed,
     });
   });
 
@@ -133,8 +133,30 @@ module.exports.listOfBrandsWithAdSpending = async (req, res) => {
   res.send(listOfBrands);
 };
 
-// CRUD
-module.exports.add = async (req, res, next) => {
+// Get brand logo url by contacts
+module.exports.listOfBrandLogoURL = async (req, res) => {
+  const contactBrandLogoData = [];
+
+  const contactIdList = req.user.savedContacts;
+  for (const contactItem of contactIdList) {
+    const contact = await Contact.findById(contactItem._id);
+    const brand = await Brand.findById(contact.brand);
+    // console.log(brand);
+
+    contactBrandLogoData.push({
+      contact_id: contactItem._id,
+      brand_logo: brand.logo.url,
+    });
+  }
+
+  console.log("Outside of loop");
+  console.log(contactBrandLogoData);
+  res.send(contactBrandLogoData);
+};
+
+// CRUD --------------------------------------------
+// -------------------------------------------------
+module.exports.add = async (req, res) => {
   const brand = new Brand(req.body.brand);
 
   if (req.file) {

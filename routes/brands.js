@@ -44,6 +44,7 @@ router.get("/searching", isLoggedIn, catchAsync(brands.searching));
 router.get("/withAdSpend", isLoggedIn, catchAsync(brands.listOfBrandsWithAdSpending));
 router.get("/subscribedList/:userId", isLoggedIn, catchAsync(brands.listOfSubscribedBrands));
 router.get("/viewedList/:userId", isLoggedIn, catchAsync(brands.listOfViewedBrands));
+router.get('/logoURL', isLoggedIn, catchAsync(brands.listOfBrandLogoURL));
 
 
 router
