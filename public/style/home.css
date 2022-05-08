@@ -1,20 +1,3 @@
-/* main {
-  max-width: 120rem;
-  margin: 0 auto;
-  font-size: 1.8rem;
-}
-
-.simple-nav {
-  padding: 2rem;
-  display: flex;
-  gap: 4rem;
-  font-size: 1.5em;
-}
-
-.trending-brand-list a {
-  color: #2d31fa;
-} */
-
 a,
 a:focus,
 a:active {
@@ -188,7 +171,8 @@ ul {
 }
 
 .home-trending-brands h1,
-.home-news-activity h1 {
+.home-news-activity h1,
+.home-internal-tool h1 {
   margin-bottom: 0.1rem;
   background-color: var(--main-color);
   display: inline-block;
@@ -197,6 +181,11 @@ ul {
 
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+}
+
+.home-internal-tool p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .home-column-title-line {
@@ -384,6 +373,7 @@ ul.brand-list > li:before {
 .right-brand-logo {
   width: 2rem;
   height: 2rem;
+  object-fit: contain;
 }
 
 .right-brand-item {
@@ -416,4 +406,13 @@ ul.brand-list > li:before {
 
 .right-brand-spend p {
   font-size: 1.3rem;
+}
+
+.home-internal-tool .internal-tool-btn {
+  font-size: 2rem;
+  padding: 0.5rem 0.5rem;
+  color: #fff;
+  background-color: var(--variety-color-purple);
+
+  border-radius: 0.5rem;
 }

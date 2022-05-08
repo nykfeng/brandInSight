@@ -90,7 +90,7 @@ module.exports.listOfViewedBrands = async (req, res) => {
       }
     }
 
-    listOfBrands.push({
+    listOfBrands.unshift({
       id: brand._id,
       name: brand.name,
       logo: brand.logo.url,
