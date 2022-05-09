@@ -111,7 +111,7 @@ async function subscribedBrandsList() {
   if (user.subscribedBrands.length > 0) {
     // get all the subscribed brands from server
     subscribedBrands = await getData.listOfSubscribedBrands();
-  }
+  
 
   subscribedBrands.forEach((brand, index) => {
     if (index < MAX_PER_PAGE) {
@@ -126,13 +126,14 @@ async function subscribedBrandsList() {
   const subBtns = subscribedBrandListEl.querySelectorAll(".right-brand-status");
   subscriptionButtons(subBtns);
 }
+}
 
 // Get and make viewed history brands list on the right panel
 async function viewedHistoryBrandsList() {
   if (user.viewedBrandHistory.length > 0) {
     // get all the user viewed brands from server
     viewedBrands = await getData.listOfViewedHistoryBrand();
-  }
+  
 
   viewedBrands.forEach((brand, index) => {
     if (index < MAX_PER_PAGE) {
@@ -146,6 +147,7 @@ async function viewedHistoryBrandsList() {
   // listen for clicking subscribe buttons
   const subBtns = viewedBrandListEl.querySelectorAll(".right-brand-status");
   subscriptionButtons(subBtns);
+}
 }
 
 // Get and make brands list with ad spend descendingly on the right panel

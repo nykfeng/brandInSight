@@ -4,11 +4,11 @@ import pagination from "./pagination.js";
 // DOM element
 const mainBrandListEl = document.querySelector("#brand-list-main");
 const mainContactListEl = document.querySelector("#contact-list-main");
-const brandListTableEl = document.querySelector('.brand-table-list');
+const brandListTableEl = document.querySelector(".brand-table-list");
 
 // max number for items per table page
 const MAX_BRAND_PER_PAGE = 15;
-const MAX_CONTACT_PER_PAGE = 5;
+const MAX_CONTACT_PER_PAGE = 25;
 
 // render the table list
 function render(moduleData, tableEl) {
@@ -16,7 +16,7 @@ function render(moduleData, tableEl) {
   // render the first page
   if (tableEl.classList.contains("brand-table")) {
     moduleData.forEach((data, index) => {
-      const tableListEl = tableEl.querySelector('.brand-table-list');
+      const tableListEl = tableEl.querySelector(".brand-table-list");
       // set up the initial page within the max number
       if (index < MAX_BRAND_PER_PAGE) {
         tableListEl.insertAdjacentHTML(
@@ -28,13 +28,16 @@ function render(moduleData, tableEl) {
 
     // if there are more than 1 page of data, render view more for pagination
     if (moduleData.length > MAX_BRAND_PER_PAGE) {
-      const html = `
+      if (!document.querySelector(".main-contact-list-viewmore")) {
+        const html = `
       <div class="main-brand-list-viewmore flex" data-module="main-brand-list">
         <button class="view-more-btn">View More</button>
       </div>
     `;
 
-      mainBrandListEl.insertAdjacentHTML("beforeend", html);
+        mainBrandListEl.insertAdjacentHTML("beforeend", html);
+      }
+
       const paginationEl = mainBrandListEl.querySelector(
         ".main-brand-list-viewmore"
       );
@@ -57,11 +60,11 @@ function render(moduleData, tableEl) {
     }
   }
 
-
   // Contact list -------------------------------------------------------
+  // render first page
   if (tableEl.classList.contains("contact-table")) {
     moduleData.forEach((data, index) => {
-      const tableListEl = tableEl.querySelector('.contact-table-list');
+      const tableListEl = tableEl.querySelector(".contact-table-list");
       // set up the initial page within the max number
       if (index < MAX_CONTACT_PER_PAGE) {
         tableListEl.insertAdjacentHTML(
@@ -70,16 +73,18 @@ function render(moduleData, tableEl) {
         );
       }
     });
-  
+
     // if there are more than 1 page of data, render view more for pagination
     if (moduleData.length > MAX_CONTACT_PER_PAGE) {
-      const html = `
+      if (!document.querySelector(".main-contact-list-viewmore")) {
+        const html = `
         <div class="main-contact-list-viewmore flex" data-module="main-contact-list">
           <button class="view-more-btn">View More</button>
         </div>
       `;
+        mainContactListEl.insertAdjacentHTML("beforeend", html);
+      }
 
-      mainContactListEl.insertAdjacentHTML("beforeend", html);
       const paginationEl = mainContactListEl.querySelector(
         ".main-contact-list-viewmore"
       );

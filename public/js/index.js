@@ -10,6 +10,7 @@ const nextBtn = document.querySelector(".carousel__button--right");
 let currentSlide = 0;
 let currentDot = 0;
 
+// --------- For carousel
 prevBtn.addEventListener("click", function () {
   determinePrev(slideEls.length - 1);
   showCurrent();
@@ -58,3 +59,35 @@ function showCurrent() {
   slideEls[currentSlide].classList.add("current-slide");
   dotEls[currentDot].classList.add("current-slide--dot");
 }
+
+// for free user login
+async function freeUserLogin() {
+  const cred = {
+    username: "testuser",
+    password: "Tstu1234567",
+  };
+  const url = "/login";
+
+  const data = new URLSearchParams();
+  for (const [key, value] of Object.entries(cred)) {
+    data.append(key, value);
+  }
+  console.log("data is ");
+  console.log(data);
+
+  await fetch(url, {
+    method: "POST",
+    headers: new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+    }),
+    body: data,
+  });
+}
+
+const freeUserBtn = document.querySelector(".free-user-login");
+
+freeUserBtn.addEventListener("click", async function () {
+  console.log("free user clicked");
+  await freeUserLogin();
+});
+

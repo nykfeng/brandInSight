@@ -8,6 +8,7 @@ const client = require("../controllers/client");
 
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
+const { ifLoggedIn } = require("../middleware/ifLoggedIn");
 
 // self-defined utility helper functions
 const catchAsync = require("../utils/catchAsync");
@@ -31,7 +32,7 @@ router
 
 router
   .route("/login")
-  .get(users.renderLogin)
+  .get(ifLoggedIn, users.renderLogin)
   .post(
     passport.authenticate("local", {
       failureFlash: true,

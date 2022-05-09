@@ -257,7 +257,7 @@ function setNumberPerPage(module) {
       numberPerPage = 15;
       break;
     case "main-contact-list":
-      numberPerPage = 5;
+      numberPerPage = 25;
       break;
     case "internal-brand-list":
       numberPerPage = 7;
