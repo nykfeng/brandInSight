@@ -141,7 +141,6 @@ module.exports.listOfBrandLogoURL = async (req, res) => {
   for (const contactItem of contactIdList) {
     const contact = await Contact.findById(contactItem._id);
     const brand = await Brand.findById(contact.brand);
-    // console.log(brand);
 
     contactBrandLogoData.push({
       contact_id: contactItem._id,
@@ -149,8 +148,6 @@ module.exports.listOfBrandLogoURL = async (req, res) => {
     });
   }
 
-  console.log("Outside of loop");
-  console.log(contactBrandLogoData);
   res.send(contactBrandLogoData);
 };
 

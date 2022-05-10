@@ -8,7 +8,7 @@ const brandListTableEl = document.querySelector(".brand-table-list");
 
 // max number for items per table page
 const MAX_BRAND_PER_PAGE = 15;
-const MAX_CONTACT_PER_PAGE = 25;
+const MAX_CONTACT_PER_PAGE = 20;
 
 // render the table list
 function render(moduleData, tableEl) {

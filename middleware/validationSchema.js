@@ -72,12 +72,20 @@ const leadershipSchema = Joi.object({
       url: Joi.string().allow(""),
       filename: Joi.string().allow(""),
     },
-  })
-})
+  }),
+});
+
+const historySchema = Joi.object({
+  history: Joi.object({
+    action: Joi.string().required(),
+    date: Joi.date().required(),
+  }),
+});
 
 module.exports = {
   brandSchema,
   contactSchema,
   brandHighlightsSchema,
-  leadershipSchema
+  leadershipSchema,
+  historySchema
 };

@@ -10,7 +10,7 @@ function newBrandModal() {
 
   <div class="input-group flex">
         <label for="name">Name</label>
-        <input type="text" id="name" name="brand[name]">
+        <input type="text" id="name" name="brand[name]" required>
   </div>
 
   <div class="input-group flex">
