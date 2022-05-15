@@ -2,6 +2,7 @@
 const Brand = require("../models/Brand");
 const User = require("../models/User");
 const Contact = require("../models/Contact");
+const History = require("../models/History");
 
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
@@ -42,12 +43,22 @@ module.exports.searching = async (req, res) => {
   // using RegEx to set it to /term/i
   const reg = new RegExp(term, "i");
 
+  // logging activity
+  const history = new History({
+    user: req.user,
+    action: "Searched",
+    searchTerm: term,
+    date: new Date(),
+  });
+
   const options = {
     page: 1,
     limit: 10,
   };
 
   const searchResults = await Brand.paginate({ name: reg }, options);
+
+  await history.save();
 
   res.send(searchResults);
 };
@@ -153,33 +164,33 @@ module.exports.listOfBrandLogoURL = async (req, res) => {
 
 // CRUD --------------------------------------------
 // -------------------------------------------------
-module.exports.add = async (req, res) => {
-  const brand = new Brand(req.body.brand);
+// module.exports.add = async (req, res) => {
+//   const brand = new Brand(req.body.brand);
 
-  if (req.file) {
-    let url = req.file.path;
-    let filename = req.file.filename;
+//   if (req.file) {
+//     let url = req.file.path;
+//     let filename = req.file.filename;
 
-    const newUrl = url.replace("logo", `brands/${brand._id}/logo`);
-    const newFilename = filename.replace("logo", `brands/${brand._id}/logo`);
+//     const newUrl = url.replace("logo", `brands/${brand._id}/logo`);
+//     const newFilename = filename.replace("logo", `brands/${brand._id}/logo`);
 
-    await cloudinary.uploader.rename(
-      filename,
-      newFilename,
-      function (error, result) {
-        console.log(result, error);
-      }
-    );
+//     await cloudinary.uploader.rename(
+//       filename,
+//       newFilename,
+//       function (error, result) {
+//         console.log(result, error);
+//       }
+//     );
 
-    brand.logo = { url: newUrl, filename: newFilename };
+//     brand.logo = { url: newUrl, filename: newFilename };
 
-    // brand.logo = { url: req.file.path, filename: req.file.filename };
-  }
+//     // brand.logo = { url: req.file.path, filename: req.file.filename };
+//   }
 
-  await brand.save();
-  req.flash("success", "Successfully created a new brand!");
-  res.redirect(`/internal/brands/${brand._id}`);
-};
+//   await brand.save();
+//   req.flash("success", "Successfully created a new brand!");
+//   res.redirect(`/internal/brands/${brand._id}`);
+// };
 
 // this route will be for client side brand page
 module.exports.getById = async (req, res) => {
@@ -225,15 +236,17 @@ module.exports.getById = async (req, res) => {
   res.render("client/brand", { brand });
 };
 
-module.exports.renderEditForm = async (req, res) => {
-  const { id } = req.params;
-  const brand = await Brand.findById(id);
-  if (!brand) {
-    req.flash("error", "Cannot find that brand!");
-    return res.redirect("/brands");
-  }
-  res.render("internal/brands/edit", { brand });
-};
+//----------------------- No longer needed, need review -------------------------------
+
+// module.exports.renderEditForm = async (req, res) => {
+//   const { id } = req.params;
+//   const brand = await Brand.findById(id);
+//   if (!brand) {
+//     req.flash("error", "Cannot find that brand!");
+//     return res.redirect("/brands");
+//   }
+//   res.render("internal/brands/edit", { brand });
+// };
 
 module.exports.update = async (req, res) => {
   const { id } = req.params;

@@ -12,9 +12,39 @@ module.exports.index = async (req, res) => {
   res.render("internal/index", { brands });
 };
 
-// render new brand page to create a brand
-module.exports.renderNewBrandForm = async (req, res) => {
-  res.render("internal/brands/new");
+// // render new brand page to create a brand
+// module.exports.renderNewBrandForm = async (req, res) => {
+//   res.render("internal/brands/new");
+// };
+
+// ************************ CRUD ********************************
+// ----- Add route ------
+module.exports.add = async (req, res) => {
+  const brand = new Brand(req.body.brand);
+
+  if (req.file) {
+    let url = req.file.path;
+    let filename = req.file.filename;
+
+    const newUrl = url.replace("logo", `brands/${brand._id}/logo`);
+    const newFilename = filename.replace("logo", `brands/${brand._id}/logo`);
+
+    await cloudinary.uploader.rename(
+      filename,
+      newFilename,
+      function (error, result) {
+        console.log(result, error);
+      }
+    );
+
+    brand.logo = { url: newUrl, filename: newFilename };
+
+    // brand.logo = { url: req.file.path, filename: req.file.filename };
+  }
+
+  await brand.save();
+  req.flash("success", "Successfully created a new brand!");
+  res.redirect(`/internal/brands/${brand._id}`);
 };
 
 // render brand edit page with all brand information
@@ -25,7 +55,7 @@ module.exports.brandEdit = async (req, res) => {
     .populate("contact")
     .populate("leadership");
 
-  res.render("internal/brands/brandPage", { brand });
+  res.render("internal/brands/brand", { brand });
 };
 
 // Update brand information

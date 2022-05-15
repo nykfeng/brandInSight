@@ -53,6 +53,6 @@ router
   .put(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.update))
   .delete(isLoggedIn, catchAsync(brands.deleteBrand));
 
-router.get("/:id/edit", isLoggedIn, catchAsync(brands.renderEditForm));
+// router.get("/:id/edit", isLoggedIn, catchAsync(brands.renderEditForm));
 
 module.exports = router;

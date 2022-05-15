@@ -10,11 +10,11 @@ const historySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Brand",
   },
-  brand: {
+  contact: {
     type: Schema.Types.ObjectId,
     ref: "Contact",
   },
-  brand: {
+  leadership: {
     type: Schema.Types.ObjectId,
     ref: "Leadership",
   },
@@ -24,6 +24,9 @@ const historySchema = new Schema({
   date: {
     type: Date,
   },
+  searchTerm : {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model("History", historySchema);

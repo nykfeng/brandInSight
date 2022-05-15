@@ -25,7 +25,6 @@ const upload = multer({ storage });
 
 router.route("/").get(isLoggedIn, catchAsync(internal.index));
 
-router.route("/new").get(isLoggedIn, catchAsync(internal.renderNewBrandForm));
 
 router
   .route("/brands/:id")
