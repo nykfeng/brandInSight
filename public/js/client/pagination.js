@@ -199,6 +199,14 @@ function insertModuleHTML(
         );
       }
       break;
+    case "internal-history-list":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          internalHTML.historyList(data[i])
+        );
+      }
+      break;
     default:
   }
 }
@@ -251,6 +259,7 @@ function setNumberPerPage(module) {
       break;
     case "profile-subscribed-brands":
     case "profile-saved-contacts":
+    case "internal-history-list":
       numberPerPage = 10;
       break;
     case "main-brand-list":
@@ -304,6 +313,9 @@ function setModuleElement(element, module) {
       break;
     case "internal-brand-list":
       moduleEl = element.querySelector(".internal-brand-list");
+      break;
+    case "internal-history-list":
+      moduleEl = element.querySelector(".internal-history-list");
       break;
     default:
       moduleEl = "";
