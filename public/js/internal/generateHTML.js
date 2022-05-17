@@ -323,6 +323,31 @@ function brandList(brand) {
   return html;
 }
 
+function historyList(history) {
+  const html = `
+  <li class="action-history-item">
+    <div class="history-item-container flex">
+      <div class="history-user">
+          <div class="history-user-icon" data-label="${history.username.charAt(
+            0
+          )}"></div>
+          <div class="history-user-name">${history.username}</div>
+      </div>
+      <div class="history-action">
+      ${history.action}
+      </div>
+      <div class="history-module">
+      ${history.module}
+      </div>
+      <div class="history-date">
+      ${history.date}
+      </div>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
 export default {
   newBrandModal,
   newLeadershipModal,
@@ -332,4 +357,5 @@ export default {
   deleteBrandConfirmation,
   searchResultList,
   brandList,
+  historyList
 };

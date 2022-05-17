@@ -71,10 +71,11 @@
 /* ---------------------------------------------- */
 /* ---------------------------------------------- */
 .internal-brand-list-section {
-  width: 60%;
+  width: 55%;
 }
 
-.internal-brand-list-section h1 {
+.internal-brand-list-section h1,
+.view-action-history-section h1 {
   margin-bottom: 0.1rem;
   background-color: var(--variety-color-purple);
   display: inline-block;
@@ -97,12 +98,14 @@
   max-width: 80rem;
 }
 
-.add-new-brand {
+.add-new-brand,
+.view-history-button {
   justify-content: flex-end;
   margin-bottom: 2.5rem;
 }
 
-.add-new-brand:hover {
+.add-new-brand:hover,
+.view-history-button:hover {
   opacity: 0.75;
 }
 
@@ -120,6 +123,56 @@
   margin-bottom: 2rem;
 }
 
+/* history list */
+/* ---------------------------------------------- */
+/* ---------------------------------------------- */
+.view-action-history-section {
+  width: 45%;
+}
+
+.action-history-list {
+  list-style: none;
+  gap: 1rem;
+}
+
+.history-user-icon {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  background: #555555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-user-icon::after {
+  content: attr(data-label);
+  color: #ffffff;
+}
+
+
+.history-item-container {
+  padding: 0.5rem;
+  gap: 1.3rem;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  align-items: center;
+
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------- */
 .internal-main-brand-logo {
   display: inline-flex;
 }
