@@ -1,7 +1,8 @@
 // actual mongoose models
 const Contact = require("../models/Contact");
 const Brand = require("../models/Brand");
-const Leadership = require("../models/Leadership")
+const Leadership = require("../models/Leadership");
+const History = require("../models/History");
 
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
@@ -43,6 +44,17 @@ module.exports.add = async (req, res) => {
   }
 
   await brand.save();
+
+  // after the brand is saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Added",
+    module: "Brand",
+    brand,
+    date: new Date(),
+  });
+  await history.save();
+
   req.flash("success", "Successfully created a new brand!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
@@ -75,6 +87,17 @@ module.exports.brandUpdate = async (req, res) => {
     brand.logo = { url: req.file.path, filename: req.file.filename };
   }
   await brand.save();
+
+  // after the brand is saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Edited",
+    module: "Brand",
+    brand,
+    date: new Date(),
+  });
+  await history.save();
+
   req.flash("success", "Successfully updated brand information!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
@@ -90,6 +113,16 @@ module.exports.brandHighlightsUpdate = async (req, res) => {
   );
 
   await brand.save();
+
+  // after the brand is saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Edited",
+    module: "Brand",
+    brand,
+    date: new Date(),
+  });
+  await history.save();
 
   req.flash("success", "Successfully updated brand information!");
   res.redirect(`/internal/brands/${id}`);
@@ -127,7 +160,12 @@ module.exports.deleteBrand = async (req, res) => {
       await cloudinary.uploader.destroy(
         leadershipDoc.profilePicture.filename,
         function (error, result) {
-          console.log("Cloudinary Result: ", result, "Cloudinary Error: ", error);
+          console.log(
+            "Cloudinary Result: ",
+            result,
+            "Cloudinary Error: ",
+            error
+          );
         }
       );
 
@@ -151,8 +189,18 @@ module.exports.deleteBrand = async (req, res) => {
     }
   }
 
+  // before the brand is removed and saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Removed",
+    module: "Brand",
+    brand,
+    date: new Date(),
+  });
+  await history.save();
+
   await brand.remove();
-  console.log("Brand removed")
+
   req.flash("success", "Successfully deleted a brand!");
-  res.redirect(200,'/internal');
+  res.redirect(200, "/internal");
 };

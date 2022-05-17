@@ -6,6 +6,9 @@ const historySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  module: {
+    type: String,
+  },
   brand: {
     type: Schema.Types.ObjectId,
     ref: "Brand",

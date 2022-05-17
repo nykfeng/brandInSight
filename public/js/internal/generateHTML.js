@@ -6,7 +6,7 @@ function newBrandModal() {
   <h1>Add New Brand:</h1>
   </div>
 
-  <form action="/brands" method="POST" class="new-brand-form flex-column" enctype="multipart/form-data">
+  <form action="/internal/brand" method="POST" class="new-brand-form flex-column" enctype="multipart/form-data">
 
   <div class="input-group flex">
         <label for="name">Name</label>

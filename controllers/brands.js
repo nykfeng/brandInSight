@@ -47,6 +47,7 @@ module.exports.searching = async (req, res) => {
   const history = new History({
     user: req.user,
     action: "Searched",
+    module: "Search",
     searchTerm: term,
     date: new Date(),
   });

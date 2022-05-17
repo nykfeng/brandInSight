@@ -15,6 +15,7 @@ const { validateBrand } = require("../middleware/validateData");
 
 // controller
 const brands = require("../controllers/brands");
+const internal = require("../controllers/internal");
 
 // for handling image -- logo
 const multer = require("multer");
@@ -24,10 +25,10 @@ const upload = multer({ storage });
 // -----------------------------------------------
 
 // Express offers this way of grouping routes
-router
-  .route("/")
+// router
+//   .route("/")
   // .get(isLoggedIn, catchAsync(brands.index))
-  .post(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.add));
+  // .post(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(internal.add));
   // .post(upload.single("logo"), (req, res) => {
   //   console.log(req.body);
   //   console.log(req.file);

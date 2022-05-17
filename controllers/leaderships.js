@@ -1,6 +1,7 @@
 // actual mongoose models
 const Leadership = require("../models/Leadership");
 const Brand = require("../models/Brand");
+const History = require("../models/History");
 
 // util function to edit cloudinary file path
 const { leadershipFileRename } = require("../utils/cloudinaryRename");
@@ -22,7 +23,17 @@ module.exports.add = async (req, res) => {
 
   await leadership.save();
   await brand.save();
-  console.log(leadership);
+
+  // after the leadership is saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Added",
+    module: "Leadership",
+    leadership,
+    date: new Date(),
+  });
+  await history.save();
+
   req.flash("success", "Successfully created a new leadership profile!");
   res.redirect(`/internal/brands/${brand._id}`);
 };
@@ -48,6 +59,17 @@ module.exports.edit = async (req, res) => {
   }
 
   await leadership.save();
+
+  // after the leadership is saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Edited",
+    module: "Leadership",
+    leadership,
+    date: new Date(),
+  });
+  await history.save();
+
   req.flash("success", "Successfully updated leadership information!");
   res.redirect(`/internal/brands/${id}`);
 };
@@ -56,15 +78,23 @@ module.exports.edit = async (req, res) => {
 module.exports.deleteLeadership = async (req, res) => {
   const { id, leadershipId } = req.params;
 
-  console.log("brand id: ", id);
-  console.log("leadership id: ", leadershipId);
-
   await Brand.findByIdAndUpdate(id, { $pull: { leadership: leadershipId } });
   // delete file on Cloudinary
   const leadership = await Leadership.findById(leadershipId);
   if (leadership.profilePicture.filename) {
     await cloudinary.uploader.destroy(leadership.profilePicture.filename);
   }
+
+  // before the leadership is removed and saved, write it to history
+  const history = new History({
+    user: req.user,
+    action: "Removed",
+    module: "Leadership",
+    leadership,
+    date: new Date(),
+  });
+  await history.save();
+
   await Leadership.findByIdAndDelete(leadershipId);
   req.flash("success", "Successfully deleted the leadership data!");
 };
