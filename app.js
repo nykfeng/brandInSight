@@ -27,6 +27,7 @@ const leadershipRoutes = require("./routes/leaderships");
 const userRoutes = require("./routes/users");
 const clientRoutes = require("./routes/client");
 const internalRoutes = require("./routes/internal");
+const historyRoutes = require("./routes/history");
 
 const PORT = process.env.port || 3080;
 
@@ -99,6 +100,7 @@ app.use("/brands/:id/leadership", leadershipRoutes);
 app.use("/", userRoutes);
 app.use("/", clientRoutes);
 app.use("/internal", internalRoutes);
+app.use("/history", historyRoutes);
 
 // ;------------------------
 

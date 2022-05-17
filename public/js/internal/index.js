@@ -1,11 +1,15 @@
 import modal from "./modal.js";
 import generateHTML from "./generateHTML.js";
 import pagination from "../client/pagination.js";
+import getData from "../getData.js";
 
 //DOM elements to work with
 const addNewBrandBtns = document.querySelectorAll(".brand-add");
+const viewHistoryBtn = document.querySelector(".view-history");
+
 const brandListSection = document.querySelector(".internal-brand-list-section"); // brand list section
-const brandListEl = document.querySelector(".internal-brand-list"); //ul element
+const brandListEl = document.querySelector(".internal-brand-list"); //brand list ul element
+const historyListEl = document.querySelector(".action-history-list"); //history list ul element
 
 // Max number of item per page for pagination
 const MAX_PER_PAGE = 7;
@@ -17,8 +21,7 @@ addNewBrandBtns.forEach((btn) => {
   });
 });
 
-
-
+// rendering the list of brands
 if (brands.length > 0) {
   // iterate the list and reneder at max 10 items at first
   brands.forEach((brand, index) => {
@@ -39,7 +42,6 @@ if (brands.length > 0) {
     `;
     brandListSection.insertAdjacentHTML("beforeend", html);
 
-    
     const paginationEl = brandListSection.querySelector(
       ".internal-brand-list-viewmore"
     );
@@ -63,3 +65,15 @@ if (brands.length > 0) {
 }
 
 
+viewHistoryBtn.addEventListener("click", async function () {
+  // getting the history list data from backend server
+  const historyList = await getData.allActionHistory();
+
+  // rendering the list
+  historyList.forEach((history) => {
+    historyListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.historyList(history)
+    );
+  });
+});
