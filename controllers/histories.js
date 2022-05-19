@@ -11,11 +11,13 @@ module.exports.getList = async (req, res) => {
 
   const historySimplied = [];
   histories.forEach((history) => {
-    const module = history[history.module.toLowerCase()]
+    let module = history[history.module.toLowerCase()]
       ? history[history.module.toLowerCase()].name
       : history.module;
 
-    if (module === "Searched") module = history.searchTerm;
+    if (module === "Search") {
+      module = history.searchTerm;
+    }
 
     historySimplied.push({
       username: history.user.username,

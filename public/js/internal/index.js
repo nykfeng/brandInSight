@@ -73,7 +73,7 @@ viewHistoryBtn.addEventListener("click", async function () {
   const historyList = await getData.allActionHistory();
 
   // rendering the list (first page of the list)
-  historyList.forEach((history, index) => {
+  historyList.reverse().forEach((history, index) => {
     if (index < MAX_HISTORY_PER_PAGE)
       historyListEl.insertAdjacentHTML(
         "beforeend",
