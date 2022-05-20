@@ -184,4 +184,12 @@ brandNoteEl.addEventListener("click", async function () {
     brandNoteContent.style.display = "none";
     brandNoteContent.dataset.status = "off";
   }
+
+  // sensing keyup will save the change in textarea to server
+  brandNoteContent.addEventListener("change", async function () {
+    // only save when there was a change
+    if (brandNote.note != this.value) {
+      await userActivity.saveBrandNote(this.value);
+    }
+  });
 });

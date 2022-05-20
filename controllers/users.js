@@ -129,26 +129,49 @@ module.exports.profile = async (req, res) => {
 // brand specific page, getting brand note from the user
 // ------------------------------------------------------------------
 module.exports.brandNotes = async (req, res) => {
-  console.log("req params");
-  console.log(req.params);
-  const user = req.user;
 
-  const brandId = req.params.brandId;
+  const { user } = req;
+  const { brandId } = req.params;
+
   let brandNoteContent;
 
-  user.brandNote.forEach((note) => {
-    if ((note.brandId = brandId)) {
-      brandNoteContent = note.note;
+  // use brand id to match if there is already existing notes
+  user.brandNote.forEach((n) => {
+    if (n.brandId === brandId) {
+      brandNoteContent = n.note;
     }
   });
 
-  console.log("brandNoteContent");
-  console.log(brandNoteContent);
+  res.send({ note: brandNoteContent });
+};
 
-  // req.user.brandNote.push({
-  //   brandId: req.params.brandId,
-  //   note: "osoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and",
-  // });
+// brand specific page, saving brand note to user
+// ---------------------------------------------------------------------
+module.exports.saveBrandNotes = async (req, res) => {
+  let sentinel = false;
 
-  res.send({note: brandNoteContent});
+  const { user } = req;
+  const { brandId } = req.params;
+  const { note } = req.body;
+
+  // if there is no note attached, no change is necessary
+  if (!note) return;
+
+  // find the note from the user saved brand note list
+  user.brandNote.forEach((n) => {
+    if (n.brandId === brandId) {
+      n.note = note;
+      sentinel = true;
+    }
+  });
+
+  // if note was not already existed, add a new one
+  if (!sentinel) {
+    user.brandNote.push({
+      brandId,
+      note,
+    });
+  }
+
+  await user.save();
 };

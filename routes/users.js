@@ -56,7 +56,8 @@ router
 
 router
   .route("/user/brandNote/:brandId")
-  .get(isLoggedIn, catchAsync(users.brandNotes));
+  .get(isLoggedIn, catchAsync(users.brandNotes))
+  .post(isLoggedIn, catchAsync(users.saveBrandNotes));
 
 router.get("/user-profile", isLoggedIn, catchAsync(users.profile));
 

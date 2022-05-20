@@ -36,7 +36,6 @@ async function saveContact(contactId) {
     data.append(key, value);
   }
 
-
   const url = `/user/${user._id}/savedContacts`;
   await fetch(url, {
     method: "POST",
@@ -63,9 +62,25 @@ async function unsaveContact(contactId) {
   });
 }
 
+async function saveBrandNote(note) {
+  const url = `/user/brandNote/${brand._id}`;
+  const data = new URLSearchParams();
+  for (const [key, value] of Object.entries({ note: note })) {
+    data.append(key, value);
+  }
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: data,
+  });
+}
+
 export default {
   addBrandSubscription,
   deleteBrandSubscription,
   saveContact,
-  unsaveContact
+  unsaveContact,
+  saveBrandNote,
 };
