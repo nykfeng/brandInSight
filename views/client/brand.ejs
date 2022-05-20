@@ -10,12 +10,12 @@
                 <div class="brand-header-container flex">
                     <div class="brand-heading-container flex">
                         <div class="brand-header-title-container flex">
-                            <div class="brand-type"><i class="fa-solid fa-building"></i> 
-                            <% if (brand.typeOfCompany.stockTicker != 'N/A') {%> 
-                                Public Company
-                            <% } else { %>    
-                                Private Company
-                            <% } %>    
+                            <div class="brand-type"><i class="fa-solid fa-building"></i>
+                                <% if (brand.typeOfCompany.stockTicker !='N/A' ) {%>
+                                    Public Company
+                                    <% } else { %>
+                                        Private Company
+                                        <% } %>
                             </div>
                             <div class="brand-name">
                                 <%= brand.name %>
@@ -28,7 +28,12 @@
                             <div class="brand-add-notes header-btn"><i class="fa-solid fa-clipboard"></i> Add Brand
                                 Note
                             </div>
-                            <div class="brand-subscribe-status status-no header-btn"><i class="fa-solid fa-circle-plus"></i>
+                            <textarea class="brand-notes" data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta et, nulla expedita
+                                laboriosam illo ipsum tempore error ipsam, earum porro aperiam rerum! Deserunt alias eos
+                                aut maxime assumenda cum incidunt!
+                            </textarea>
+                            <div class="brand-subscribe-status status-no header-btn"><i
+                                    class="fa-solid fa-circle-plus"></i>
                                 Subscribe</div>
                         </div>
                     </div>
@@ -345,47 +350,56 @@
 
                             <!-- Loop to get exactly 3 contacts here -->
 
-                            <% if (brand.contact.length>0) { %> 
-                                <% const number = brand.contact.length > 3? 3 : brand.contact.length %> 
-                                <% for (let i=0; i < number; i++) { %>
-                                    <li class="contacts-item" data-contact-id="<%= brand.contact[i]._id%>">
-                                        <div class="contacts-basics flex">
-                                            <a href="<%= brand.contact[i].linkedin %>" class="contacts-name"><span
-                                                    class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i> </span><%= brand.contact[i].name %>  </a>
-                                            <p class="contacts-title"><%= brand.contact[i].position %></p>
-                                            <p class="contacts-rank"><%= brand.contact[i].rank %></p>
-                                        </div>
-                                        <div class="contacts-info flex">
-                                            <p class="contacts-email">
-                                                <a href="mailto:<%= brand.contact[i].email %>">
-                                                    <i class="fa-solid fa-envelope"></i> <%= brand.contact[i].email %>
+                            <% if (brand.contact.length>0) { %>
+                                <% const number=brand.contact.length> 3? 3 : brand.contact.length %>
+                                    <% for (let i=0; i < number; i++) { %>
+                                        <li class="contacts-item" data-contact-id="<%= brand.contact[i]._id%>">
+                                            <div class="contacts-basics flex">
+                                                <a href="<%= brand.contact[i].linkedin %>" class="contacts-name"><span
+                                                        class="contacts-linkedin"><i class="fa-brands fa-linkedin"></i>
+                                                    </span>
+                                                    <%= brand.contact[i].name %>
                                                 </a>
-                                            </p>
-                                            <p class="contacts-phone">
-                                                <a href="tel:<%= brand.contact[i].phoneNumber %>">
-                                                    <i class="fa-solid fa-square-phone"></i> <%= brand.contact[i].phoneNumber %>
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="contact-save">
-                                            <div class="contacts-button contacts-save-button">
-                                                <i class="fa-solid fa-circle-plus"></i> SAVE
+                                                <p class="contacts-title">
+                                                    <%= brand.contact[i].position %>
+                                                </p>
+                                                <p class="contacts-rank">
+                                                    <%= brand.contact[i].rank %>
+                                                </p>
                                             </div>
-                                        </div>
+                                            <div class="contacts-info flex">
+                                                <p class="contacts-email">
+                                                    <a href="mailto:<%= brand.contact[i].email %>">
+                                                        <i class="fa-solid fa-envelope"></i>
+                                                        <%= brand.contact[i].email %>
+                                                    </a>
+                                                </p>
+                                                <p class="contacts-phone">
+                                                    <a href="tel:<%= brand.contact[i].phoneNumber %>">
+                                                        <i class="fa-solid fa-square-phone"></i>
+                                                        <%= brand.contact[i].phoneNumber %>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="contact-save">
+                                                <div class="contacts-button contacts-save-button">
+                                                    <i class="fa-solid fa-circle-plus"></i> SAVE
+                                                </div>
+                                            </div>
 
-                                    </li>
-                                <% } %> 
-                            <% } %> 
+                                        </li>
+                                        <% } %>
+                                            <% } %>
 
                         </ul>
                     </div>
 
                     <!-- base display is 0-3, if more than 3 to display, use the show more button -->
-                    <% if (brand.contact.length>3) { %> 
+                    <% if (brand.contact.length>3) { %>
                         <div class="view-more-block flex" data-module="contacts">
                             <button class="view-more-btn">View More</button>
                         </div>
-                    <% } %> 
+                        <% } %>
                 </div>
 
                 <div class="brand-leadership-block flex">
@@ -397,29 +411,34 @@
 
                         <!-- Loop to get exactly 6 or less leadership display here -->
 
-                        <% if (brand.leadership.length > 0) { %> 
-                            <% const number = brand.leadership.length > 6? 6 : brand.leadership.length %> 
-                            <% for (let i=0; i < number; i++) { %>
-                                <li class="leadership-list-item flex">
-                                    <div class="leadershipt-list-profile-block">
-                                        <img src="<%= brand.leadership[i].profilePicture.url %>" alt="" class="leadership-profile">
-                                    </div>
-                                    <div class="leadership-detail flex">
-                                        <p class="leadership-name"><%= brand.leadership[i].name %></p>
-                                        <p class="leadership-role"><%= brand.leadership[i].position %></p>
-                                    </div>
-                                </li>
-                            <% } %> 
-                        <% } %> 
+                        <% if (brand.leadership.length> 0) { %>
+                            <% const number=brand.leadership.length> 6? 6 : brand.leadership.length %>
+                                <% for (let i=0; i < number; i++) { %>
+                                    <li class="leadership-list-item flex">
+                                        <div class="leadershipt-list-profile-block">
+                                            <img src="<%= brand.leadership[i].profilePicture.url %>" alt=""
+                                                class="leadership-profile">
+                                        </div>
+                                        <div class="leadership-detail flex">
+                                            <p class="leadership-name">
+                                                <%= brand.leadership[i].name %>
+                                            </p>
+                                            <p class="leadership-role">
+                                                <%= brand.leadership[i].position %>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <% } %>
+                                        <% } %>
 
                     </ul>
 
                     <!-- base display is 0-6, if more than 6 to display, use the show more button -->
-                    <% if (brand.leadership.length > 6) { %> 
+                    <% if (brand.leadership.length> 6) { %>
                         <div class="view-more-block flex" data-module="leaderships">
                             <button class="view-more-btn">View More</button>
                         </div>
-                    <% } %> 
+                        <% } %>
 
                 </div>
 

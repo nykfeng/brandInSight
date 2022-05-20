@@ -64,7 +64,8 @@
 }
 
 .internal-main-btn {
-  background-color: var(--variety-color-purple);
+  color: #fff;
+  background-color: var(--stock-green);
 }
 
 /* brand list */

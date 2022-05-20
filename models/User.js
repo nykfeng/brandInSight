@@ -33,6 +33,16 @@ const UserSchema = new Schema({
       ref: "Brand",
     },
   ],
+  brandNote: [
+    {
+      brandId: {
+        type: String,
+      },
+      note: {
+        type: String,
+      },
+    },
+  ],
   profilePicture: {
     url: String,
     filename: String,

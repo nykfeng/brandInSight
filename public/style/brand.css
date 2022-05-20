@@ -98,6 +98,23 @@
 .brand-user-options {
   gap: 1rem;
   align-items: flex-start;
+
+  position: relative;
+}
+
+.brand-notes {
+  display: none;
+  position: absolute;
+  z-index: 100;
+
+  width: 33.3rem;
+  height: 20rem;
+  padding: 1rem;
+  top: 110%;
+
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 
 .brand-header-container {

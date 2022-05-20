@@ -7,8 +7,12 @@ const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
 const brandConctactsEl = document.querySelector("#contacts");
 
-// Brand subscription status from top menu
+// Brand top menu buttons
 const subscribedEl = document.querySelector(".brand-subscribe-status");
+const brandNoteEl = document.querySelector(".brand-add-notes");
+
+// brand note
+const brandNoteContent = document.querySelector(".brand-notes");
 
 // Certain data variables have to be set up after html is loaded
 init();
@@ -144,7 +148,7 @@ brandConctactsEl.addEventListener("click", function (e) {
   }
 });
 
-// listen for top menu buttons
+// listen for brand subscribe button
 subscribedEl.addEventListener("click", function () {
   if (this.classList.contains("status-no")) {
     this.classList.remove("status-no");
@@ -156,5 +160,22 @@ subscribedEl.addEventListener("click", function () {
     this.classList.add("status-no");
     subscribedEl.innerHTML = `<i class="fa-solid fa-circle-plus"></i> Subscribe`;
     userActivity.deleteBrandSubscription(brand._id);
+  }
+});
+
+// listen for brand note button
+brandNoteEl.addEventListener("click", function () {
+  // change the button style to show it has been clicked and responded
+  brandNoteEl.style.backgroundColor = 'black';
+  brandNoteEl.style.color = '#FFF';
+  // get brand note data from server
+
+  // render the html with brand note
+  if (brandNoteContent.dataset.status === "off") {
+    brandNoteContent.style.display = "block";
+    brandNoteContent.dataset.status = "on";
+  } else {
+    brandNoteContent.style.display = "none";
+    brandNoteContent.dataset.status = "off";
   }
 });
