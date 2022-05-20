@@ -1,10 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// mongoose user model
-const User = require("../models/User");
-
-// client controller
-const client = require("../controllers/client");
 
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
@@ -59,7 +54,11 @@ router
   .post(isLoggedIn, catchAsync(users.saveContact))
   .delete(isLoggedIn, catchAsync(users.unsaveContact));
 
-router.get('/user-profile', isLoggedIn, catchAsync(users.profile))  
+router
+  .route("/user/brandNote/:brandId")
+  .get(isLoggedIn, catchAsync(users.brandNotes));
+
+router.get("/user-profile", isLoggedIn, catchAsync(users.profile));
 
 router.get("/logout", users.logout);
 

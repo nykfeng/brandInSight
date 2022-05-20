@@ -1,3 +1,4 @@
+import getData from "../getData.js";
 import pagination from "./pagination.js";
 import userActivity from "./userActivity.js";
 
@@ -164,17 +165,22 @@ subscribedEl.addEventListener("click", function () {
 });
 
 // listen for brand note button
-brandNoteEl.addEventListener("click", function () {
-  // change the button style to show it has been clicked and responded
-  brandNoteEl.style.backgroundColor = 'black';
-  brandNoteEl.style.color = '#FFF';
+brandNoteEl.addEventListener("click", async function () {
   // get brand note data from server
+  const brandNote = await getData.brandNote();
+  brandNoteContent.textContent = brandNote.note;
 
   // render the html with brand note
   if (brandNoteContent.dataset.status === "off") {
+    // change the button style to show it has been clicked and responded
+    this.style.backgroundColor = "#000";
+    this.style.color = "#FFF";
     brandNoteContent.style.display = "block";
     brandNoteContent.dataset.status = "on";
   } else {
+    // change the button style to show it has been clicked and responded
+    this.style.backgroundColor = "#FFF";
+    this.style.color = "#000";
     brandNoteContent.style.display = "none";
     brandNoteContent.dataset.status = "off";
   }

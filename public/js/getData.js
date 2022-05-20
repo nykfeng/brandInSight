@@ -66,7 +66,6 @@ async function listOfBrandLogoURL() {
   return listOfContactsWithBrandLogos;
 }
 
-
 //--------------------------- Internal main page ----------------
 // -------  action history list  ----------
 async function allActionHistory() {
@@ -79,6 +78,18 @@ async function allActionHistory() {
   return historyList;
 }
 
+//--------------------------- brand specific page ----------------
+// -------  brand note content  ----------
+async function brandNote() {
+  const url = `/user/brandNote/${brand._id}`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+
+  const brandNote = await res.json();
+  return brandNote;
+}
+
 export default {
   trendingList,
   sendQuery,
@@ -86,5 +97,6 @@ export default {
   listOfViewedHistoryBrand,
   listOfBrandsWithAdSpend,
   listOfBrandLogoURL,
-  allActionHistory
+  allActionHistory,
+  brandNote,
 };

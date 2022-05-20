@@ -125,3 +125,30 @@ module.exports.profile = async (req, res) => {
 
   res.render("authen/profile");
 };
+
+// brand specific page, getting brand note from the user
+// ------------------------------------------------------------------
+module.exports.brandNotes = async (req, res) => {
+  console.log("req params");
+  console.log(req.params);
+  const user = req.user;
+
+  const brandId = req.params.brandId;
+  let brandNoteContent;
+
+  user.brandNote.forEach((note) => {
+    if ((note.brandId = brandId)) {
+      brandNoteContent = note.note;
+    }
+  });
+
+  console.log("brandNoteContent");
+  console.log(brandNoteContent);
+
+  // req.user.brandNote.push({
+  //   brandId: req.params.brandId,
+  //   note: "osoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and",
+  // });
+
+  res.send({note: brandNoteContent});
+};
