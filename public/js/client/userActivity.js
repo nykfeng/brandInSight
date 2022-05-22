@@ -62,6 +62,7 @@ async function unsaveContact(contactId) {
   });
 }
 
+// specific brand page, user adding brand note to server -----------------
 async function saveBrandNote(note) {
   const url = `/user/brandNote/${brand._id}`;
   const data = new URLSearchParams();
