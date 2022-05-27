@@ -146,6 +146,10 @@ html {
   background-color: var(--secondary-color);
 }
 
+/* .main-nav-hamburger-button {
+  display: none !important;
+} */
+
 /* Hover drop down */
 
 .main-nav-link {

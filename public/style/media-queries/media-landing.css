@@ -1,0 +1,49 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/**************************/
+/* BELOW 1344px (Smaller desktops) */
+/**************************/
+
+@media (max-width: 84em) {
+}
+
+/**************************/
+/* BELOW 1250px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 78em) {
+  html {
+    /* 9px / 16px  */
+    font-size: 56.25%;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .main-nav-link {
+    padding: 1rem 0;
+  }
+
+  .main-nav-list > li {
+    display: none;
+  }
+
+  .main-nav-list li .sub-menu {
+    left: auto;
+    right: 125%;
+    top: 1rem;
+  }
+
+  .main-nav-hamburger-button {
+    font-size: 4rem;
+
+    cursor: pointer;
+    display: flex !important;
+  }
+
+  .main-nav-hamburger-button:hover {
+    opacity: 0.8;
+  }
+}

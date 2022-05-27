@@ -7,10 +7,12 @@ const dotEls = Array.from(dotNavEl.children);
 const prevBtn = document.querySelector(".carousel__button--left");
 const nextBtn = document.querySelector(".carousel__button--right");
 
+const hamburgerBtn = document.querySelector(".main-nav-hamburger-button");
+
 let currentSlide = 0;
 let currentDot = 0;
 
-// --------- For carousel
+// --------- For carousel -------------
 prevBtn.addEventListener("click", function () {
   determinePrev(slideEls.length - 1);
   showCurrent();
@@ -91,3 +93,12 @@ freeUserBtn.addEventListener("click", async function () {
   await freeUserLogin();
 });
 
+// hambuger button to show and close nav menu for smaller screens
+hamburgerBtn.addEventListener("click", function () {
+  const navListEl = document.querySelector('.main-nav-list');
+  const menuList = document.querySelectorAll(".main-nav-list li");
+  navListEl.style.justifyContent = 'flex-start';
+  menuList.forEach((list) => {
+    list.style.display = "flex";
+  });
+});
