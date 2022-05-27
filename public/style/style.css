@@ -106,7 +106,6 @@ html {
   align-items: center;
 }
 
-
 .main-nav-link:link,
 .main-nav-link:visited {
   display: inline-block;
@@ -761,6 +760,8 @@ button.carousel__indicator {
   flex-direction: column;
   gap: 2rem;
   margin-right: 4rem;
+
+  grid-area: logo;
 }
 
 .logo-col-logo-container {
@@ -821,4 +822,11 @@ button.carousel__indicator {
 .footer-link:hover,
 .footer-link:active {
   color: var(--main-color);
+}
+
+.address-col {
+  grid-area: address;
+}
+.nav-col {
+  grid-area: info;
 }

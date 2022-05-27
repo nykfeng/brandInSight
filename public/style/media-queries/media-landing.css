@@ -25,7 +25,6 @@
   .main-nav-link {
     padding: 1rem 0;
     position: relative;
-
   }
 
   .main-nav-list[action="close-dropdown"] > li {
@@ -36,6 +35,11 @@
   .main-nav-list[action="open-dropdown"] > li {
     display: flex;
     position: absolute;
+  }
+
+  .main-nav-list > li {
+    width: 20rem;
+    justify-content: flex-end;
   }
 
   .main-nav-list > li:nth-child(1) {
@@ -74,6 +78,9 @@
     top: 1rem;
   }
 
+  a.main-nav-link {
+  }
+
   .main-nav-hamburger-button {
     font-size: 4rem;
 
@@ -86,4 +93,100 @@
   .main-nav-hamburger-button:hover {
     opacity: 0.8;
   }
+
+  /* how it works section */
+  .section-howItWorks {
+    max-width: 90rem;
+  }
+
+  /* call to action */
+  .section-cta {
+    max-width: 100rem;
+  }
 }
+
+/**************************/
+/* BELOW 1100px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 68.75em) {
+  .section-hero {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+
+    margin-top: 0;
+    max-width: 100rem;
+
+    padding: 4rem 1rem;
+  }
+
+  .hero-image {
+    max-width: 65rem;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-btn {
+    justify-content: center;
+  }
+
+  .hero-image {
+    margin: 0 auto;
+  }
+
+  /* call for action */
+  .cta {
+    margin: 0 auto;
+
+    width: 68rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-img-box {
+    width: 68rem;
+    height: 59rem;
+  }
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/**************************/
+/* BELOW 1000px (Landscape Tablets) */
+/**************************/
+@media (max-width: 62.5em) {
+  .howItWorks-element {
+    flex-direction: column;
+  }
+
+  .grid--footer {
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+  }
+
+  .grid--footer > nav:nth(1) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  .grid--footer > nav:nth(2) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+
+  .grid--footer > nav:nth(3) {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+  }
+}
+
+/**************************/
+/* BELOW 704px (Smaller tablets) */
+/**************************/
