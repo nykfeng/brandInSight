@@ -24,10 +24,48 @@
   }
   .main-nav-link {
     padding: 1rem 0;
+    position: relative;
+
   }
 
-  .main-nav-list > li {
+  .main-nav-list[action="close-dropdown"] > li {
     display: none;
+    position: absolute;
+  }
+
+  .main-nav-list[action="open-dropdown"] > li {
+    display: flex;
+    position: absolute;
+  }
+
+  .main-nav-list > li:nth-child(1) {
+    top: 10%;
+    right: 10%;
+  }
+
+  .main-nav-list > li:nth-child(2) {
+    top: 80%;
+    right: 2%;
+  }
+
+  .main-nav-list > li:nth-child(3) {
+    top: 130%;
+    right: 2%;
+  }
+
+  .main-nav-list > li:nth-child(4) {
+    top: 180%;
+    right: 2%;
+  }
+
+  .main-nav-list > li:nth-child(5) {
+    top: 230%;
+    right: 2%;
+  }
+
+  .main-nav-list > li:nth-child(6) {
+    top: 290%;
+    right: 2%;
   }
 
   .main-nav-list li .sub-menu {
@@ -41,6 +79,8 @@
 
     cursor: pointer;
     display: flex !important;
+
+    justify-self: center;
   }
 
   .main-nav-hamburger-button:hover {
