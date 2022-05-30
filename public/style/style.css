@@ -761,7 +761,6 @@ button.carousel__indicator {
   gap: 2rem;
   margin-right: 4rem;
 
-  grid-area: logo;
 }
 
 .logo-col-logo-container {
@@ -824,9 +823,4 @@ button.carousel__indicator {
   color: var(--main-color);
 }
 
-.address-col {
-  grid-area: address;
-}
-.nav-col {
-  grid-area: info;
-}
+
