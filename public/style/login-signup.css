@@ -51,7 +51,6 @@ main {
   font-size: 3rem;
 }
 
-
 #login-form,
 #signup-form {
   padding: 5rem 5rem 2rem 5rem;
@@ -112,6 +111,10 @@ main {
   gap: 2rem;
   justify-content: space-between;
 }
+
+/* .form-group label {
+  width: 8rem;
+} */
 
 .button-group {
   display: flex;

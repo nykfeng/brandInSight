@@ -14,13 +14,6 @@ const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
 // DOM elements view more buttons -------------------
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
-// DOM elements for working with hamburger button -------------------
-const hamburgerBtn = document.querySelector(".main-nav-hamburger-button");
-const mainNavEl = document.querySelector(".main-nav");
-const mainNavListEl = document.querySelector(".main-nav-list");
-
-// variable for hamburger button
-let hambugerSentinel = false;
 
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
@@ -262,24 +255,3 @@ function setUpPagination(
 }
 
 
-// open and close hamburger navigation buttons
-hamburgerBtn.addEventListener("click", function () {
-  // const navListEl = document.querySelector('.main-nav-list');
-  // const menuList = document.querySelectorAll(".main-nav-list li");
-
-  if (!hambugerSentinel) {
-    // menuList.forEach((list) => {
-    //   list.style.display = "flex";
-    // });
-    mainNavListEl.setAttribute("action", "open-dropdown");
-    mainNavEl.setAttribute("action", "open-dropdown");
-    hambugerSentinel = true;
-  } else {
-    // menuList.forEach((list) => {
-    //   list.style.display = "none";
-    // });
-    mainNavListEl.setAttribute("action", "close-dropdown");
-    mainNavEl.setAttribute("action", "close-dropdown");
-    hambugerSentinel = false;
-  }
-});

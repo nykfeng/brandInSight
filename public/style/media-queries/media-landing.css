@@ -39,7 +39,7 @@
 
   .main-nav-list > li {
     justify-content: flex-end;
-    width: 15rem;
+    width: 20rem;
   }
 
   .main-nav-list > li:nth-child(1) {
@@ -420,6 +420,22 @@
   /* singup login dialogue box */
   .login-signup-container {
     width: 100%;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .login-signup-container .submit {
+    margin-top: 2rem;
+  }
+
+  #login-form {
+    padding: 2.5rem 2.5rem 1rem 2.5rem;
+  }
+  .login-container .button-group {
+    margin-top: 2.5rem;
   }
 }
 
