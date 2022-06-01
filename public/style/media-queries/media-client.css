@@ -1,0 +1,55 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/**************************/
+/* BELOW 1450px (Smaller desktops) */
+/**************************/
+
+@media (max-width: 90em) {
+  .header {
+    padding: 0 2rem;
+  }
+  .main-nav-list {
+    gap: 1.5rem;
+  }
+
+  .search-bar {
+    min-width: 40rem;
+  }
+}
+
+/**************************/
+/* BELOW 1250px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 78em) {
+  /* nav section */
+  .main-nav-list > li {
+    height: auto;
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    background-color: #f1f1f1dc;
+    border-radius: 1rem;
+    justify-content: center;
+  }
+
+  /* sub nav sections */
+  .main-nav-list .user-profile .sub-menu--user-profile {
+    left: auto;
+    right: 100%;
+  }
+
+  .main-nav-list li .sub-menu {
+    right: 100%;
+  }
+}
+
+/**************************/
+/* BELOW 704px (Smaller tablets) */
+/**************************/
+@media (max-width: 44em) {
+  /* nav in column view */
+  .main-nav-list {
+    gap: 8rem;
+  }
+}

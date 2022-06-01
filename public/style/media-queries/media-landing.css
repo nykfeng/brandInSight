@@ -39,6 +39,7 @@
 
   .main-nav-list > li {
     justify-content: flex-end;
+    width: 15rem;
   }
 
   .main-nav-list > li:nth-child(1) {
@@ -73,7 +74,7 @@
 
   .main-nav-list li .sub-menu {
     left: auto;
-    right: 125%;
+    right: 100%;
     top: 1rem;
   }
 
@@ -414,6 +415,11 @@
   .main-nav-list > li:nth-child(6) {
     top: 25%;
     right: 0;
+  }
+
+  /* singup login dialogue box */
+  .login-signup-container {
+    width: 100%;
   }
 }
 

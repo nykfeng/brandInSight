@@ -16,17 +16,21 @@
     <link rel="stylesheet" href="/style/authen.css">
     <link rel="stylesheet" href="/style/components.css">
     <link rel="stylesheet" href="/style/animation.css">
+    <!-- media query -->
+    <link rel="stylesheet" href="/style/media-queries/media-landing.css">
+
 
     <script src="/js/flash.js" defer></script>
     <script src="/js/request.js" type="module" defer></script>
+    <script src="/js/nav-menu.js" defer></script>
     <title>BrandInSight</title>
 </head>
 
 <body>
     <%- include("../partials/headerLoginSignUp") %>
-    <%- include("../partials/flash") %>
-        <%- body %>
-            <%- include("../partials/footerClient") %>
+        <%- include("../partials/flash") %>
+            <%- body %>
+                <%- include("../partials/footerClient") %>
 
 </body>
 
