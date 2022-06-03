@@ -14,6 +14,13 @@ const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
 // DOM elements view more buttons -------------------
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
+// left panel text
+const userFunctionEl = document.querySelector(
+  ".user-functions .functions-title"
+);
+const businessFunctionEl = document.querySelector(
+  ".business-functions .functions-title"
+);
 
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
@@ -112,21 +119,22 @@ async function subscribedBrandsList() {
   if (user.subscribedBrands.length > 0) {
     // get all the subscribed brands from server
     subscribedBrands = await getData.listOfSubscribedBrands();
-  
 
-  subscribedBrands.forEach((brand, index) => {
-    if (index < MAX_PER_PAGE) {
-    subscribedBrandListEl.insertAdjacentHTML(
-      "beforeend",
-      generateHTML.subscribedBrandList(brand)
+    subscribedBrands.forEach((brand, index) => {
+      if (index < MAX_PER_PAGE) {
+        subscribedBrandListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.subscribedBrandList(brand)
+        );
+      }
+    });
+
+    // listen for clicking subscribe buttons
+    const subBtns = subscribedBrandListEl.querySelectorAll(
+      ".right-brand-status"
     );
-    }
-  });
-
-  // listen for clicking subscribe buttons
-  const subBtns = subscribedBrandListEl.querySelectorAll(".right-brand-status");
-  subscriptionButtons(subBtns);
-}
+    subscriptionButtons(subBtns);
+  }
 }
 
 // Get and make viewed history brands list on the right panel
@@ -134,21 +142,20 @@ async function viewedHistoryBrandsList() {
   if (user.viewedBrandHistory.length > 0) {
     // get all the user viewed brands from server
     viewedBrands = await getData.listOfViewedHistoryBrand();
-  
 
-  viewedBrands.forEach((brand, index) => {
-    if (index < MAX_PER_PAGE) {
-      viewedBrandListEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.viewedHistoryBrandList(brand)
-      );
-    }
-  });
+    viewedBrands.forEach((brand, index) => {
+      if (index < MAX_PER_PAGE) {
+        viewedBrandListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.viewedHistoryBrandList(brand)
+        );
+      }
+    });
 
-  // listen for clicking subscribe buttons
-  const subBtns = viewedBrandListEl.querySelectorAll(".right-brand-status");
-  subscriptionButtons(subBtns);
-}
+    // listen for clicking subscribe buttons
+    const subBtns = viewedBrandListEl.querySelectorAll(".right-brand-status");
+    subscriptionButtons(subBtns);
+  }
 }
 
 // Get and make brands list with ad spend descendingly on the right panel
@@ -158,10 +165,10 @@ async function adSpendBrandsList() {
 
   adSpendBrands.forEach((brand, index) => {
     if (index < MAX_PER_PAGE) {
-    adSpendListEl.insertAdjacentHTML(
-      "beforeend",
-      generateHTML.adSpendBrandsList(brand)
-    );
+      adSpendListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.adSpendBrandsList(brand)
+      );
     }
   });
 }
@@ -254,4 +261,9 @@ function setUpPagination(
   pagination.setupControl(moduleEl, moduleData, module);
 }
 
-
+// monitor viewport change to adjust text for media queries
+// window.addEventListener("resize", function () {
+//   let width = window.innerWidth;
+//   console.log("window width is ", width);
+//   if (width)
+// });

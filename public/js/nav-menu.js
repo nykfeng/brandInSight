@@ -27,14 +27,16 @@ hamburgerBtn.addEventListener("click", function () {
 });
 
 // search icon dropdown for search bar to show or disappear
-searchExpIconBtn.addEventListener("click", function () {
-  if (!searchIconSentinel) {
-    this.setAttribute("action", "open-dropdown");
-    searchIconSentinel = true;
-    this.innerHTML = `<i class="fa-solid fa-magnifying-glass-minus"></i>`;
-  } else {
-    this.setAttribute("action", "close-dropdown");
-    searchIconSentinel = false;
-    this.innerHTML = `<i class="fa-solid fa-magnifying-glass-plus"></i>`;
-  }
-});
+if (searchExpIconBtn) {
+  searchExpIconBtn.addEventListener("click", function () {
+    if (!searchIconSentinel) {
+      this.setAttribute("action", "open-dropdown");
+      searchIconSentinel = true;
+      this.innerHTML = `<i class="fa-solid fa-magnifying-glass-minus"></i>`;
+    } else {
+      this.setAttribute("action", "close-dropdown");
+      searchIconSentinel = false;
+      this.innerHTML = `<i class="fa-solid fa-magnifying-glass-plus"></i>`;
+    }
+  });
+}

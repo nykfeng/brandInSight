@@ -6,85 +6,82 @@
         <aside class="home-left-panel">
 
             <div class="welcome-area">
-                <% if (currentUser.profilePicture) { %> 
+                <% if (currentUser.profilePicture) { %>
                     <a href="/user-profile">
                         <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
                     </a>
-                <% } else { %>
-                    <a href="/user-profile">
-                        <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
-                    </a>
-                <% } %>
-                <div class="welcome-text-area">
-                    <h3 class="welcome-text">Welcome,</h3>
-                    <a href="/user-profile">
-                        <h3 class="user-profile-name">
-                        <% if (currentUser.firstName) { %>
-                            <%= currentUser.firstName %>
-                            <%= currentUser.lastName %>
-                        <% } else { %>
-                            <%= currentUser.username %>
+                    <% } else { %>
+                        <a href="/user-profile">
+                            <img src="/public/images/baseImgs/blank-profile-picture.png" alt=""
+                                class="user-profile-avatar">
+                        </a>
                         <% } %>
-                        </h3>
-                    </a>
-                </div>
+                            <div class="welcome-text-area">
+                                <h3 class="welcome-text">Welcome,</h3>
+                                <a href="/user-profile">
+                                    <h3 class="user-profile-name">
+                                        <% if (currentUser.firstName) { %>
+                                            <%= currentUser.firstName %>
+                                                <%= currentUser.lastName %>
+                                                    <% } else { %>
+                                                        <%= currentUser.username %>
+                                                            <% } %>
+                                    </h3>
+                                </a>
+                            </div>
             </div>
 
-            <div class="home-left-panel__division-tab">
-
-            </div>
 
             <div class="user-functions">
-                <p class="functions-title">User functions</p>
+                <p class="functions-title">User Functions</p>
+                <p class="functions-title--lower-resolution">Functions</p>
                 <ul class="user-functions-list functions-list">
                     <li class="user-functions-item">
                         <a href="" class="functions-item">
                             <i class="fa-solid fa-thumbs-up"></i>
-                            Recommendations</a>
+                            <span> Recommendations</span></a>
                     </li>
                     <li class="user-functions-item">
                         <a href="/user-profile" class="functions-item">
                             <i class="fa-solid fa-align-justify"></i>
-                            My Lists</a>
+                            <span> My Lists</span></a>
                     </li>
                     <li class="user-functions-item">
                         <a href="/user-profile" class="functions-item">
                             <i class="fa-solid fa-bookmark"></i>
-                            My Saved Contacts</a>
+                            <span> My Saved Contacts</span></a>
                     </li>
                     <li class="user-functions-item">
                         <a href="/user-profile" class="functions-item">
                             <i class="fa-solid fa-book"></i>
-                            My Followed Brands</a>
+                            <span> My Followed Brands</span></a>
                     </li>
                 </ul>
             </div>
 
             <div class="business-functions">
                 <p class="functions-title">BrandInSights Explore</p>
+                <p class="functions-title--lower-resolution">Explore</p>
                 <ul class="business-functions-list functions-list">
                     <li class="business-functions-item">
                         <a href="" class="functions-item">
                             <i class="fa-solid fa-money-check"></i>
-                            Brands Search</a>
+                            <span> Brands Search</span></a>
                     </li>
                     <li class="business-functions-item">
                         <a href="" class="functions-item">
                             <i class="fa-solid fa-address-book"></i>
-                            Discover Contacts</a>
+                            <span> Discover Contacts</span></a>
                     </li>
                     <li class="business-functions-item">
                         <a href="" class="functions-item">
                             <i class="fa-solid fa-building-columns"></i>
-                            Private Investors</a>
+                            <span> Private Investors</span></a>
                     </li>
                 </ul>
             </div>
 
-            <!-- <% if (currentUser) { %>
-            <h2>👋Welcome back, <%= currentUser.username%>
-            </h2>
-            <% } %> -->
+
         </aside>
 
         <!-- home main content column -->
@@ -193,19 +190,13 @@
                 <div class="home-column-title-line"></div>
                 <p>To manage and edit brand data, use the internal management tool</p>
                 <a href="/internal" class="internal-tool-btn">Internal Tools</a>
-    
+
             </div>
-    
-
-
-
-
         </section>
 
         <!-- home page right panel -->
-
-        <!-- subscribed brands -->
         <aside class="home-right-panel">
+            <!-- subscribed brands -->
             <div class="home-subscribed-brands right-tab">
                 <h2><i class="fa-regular fa-bookmark"></i> Subscribed Brands</h2>
                 <ul class="right-brands-list right-brands-list__subscribed">
@@ -221,7 +212,7 @@
             <div class="home-recently-viewed right-tab">
                 <h2><i class="fa-regular fa-clock"></i> Recently Viewed Brands:</h2>
                 <ul class="right-brands-list right-brands-list__viewed">
-                    
+
                 </ul>
 
                 <div class="right-brand-view-more flex" data-module="viewed-brands">
@@ -244,7 +235,7 @@
 
         </aside>
 
-       
+
     </main>
 
     <script>
