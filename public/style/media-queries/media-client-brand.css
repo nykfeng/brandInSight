@@ -233,3 +233,73 @@
     flex-direction: column;
   }
 }
+
+/**************************/
+/* BELOW 500px (phones) */
+/**************************/
+@media (max-width: 31.25em) {
+  /* header */
+  /* header brand logo */
+  .brand-header .brand-logo {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .brand-header .brand-container {
+    gap: 0.5rem;
+  }
+
+  .brand-user-options {
+    flex-direction: row;
+  }
+  .brand-header-container {
+    position: relative;
+  }
+
+  .brand-header-tab-container {
+    transform: translateY(10%) translateX(-15%);
+  }
+
+  /* brand summary */
+  .brand-about {
+    transform: translateY(-4%);
+  }
+
+  /* brand header buttons */
+  .header-btn span {
+    display: none;
+  }
+
+  /* brand contacts */
+  .contacts-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1rem;
+  }
+
+  .contacts-basics {
+    grid-column: 1 / 4;
+  }
+
+  .contacts-info {
+    grid-column: 1 / 3;
+    align-self: flex-start;
+    gap: 1rem;
+  }
+  .contact-save {
+    grid-column: 3 / 4;
+    width: 65%;
+    justify-self: flex-end;
+  }
+
+  /* brand leadership */
+  .leadership-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .leadership-list-item {
+    width: 100%;
+  }
+}

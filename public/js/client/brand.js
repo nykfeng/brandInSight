@@ -30,7 +30,7 @@ function checkCurrentBrandSubscriptionStatus() {
   if (status) {
     subscribedEl.classList.remove("status-no");
     subscribedEl.classList.add("status-yes");
-    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Subscribed`;
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i><span> Subscribed</span>`;
   }
 }
 
@@ -154,12 +154,12 @@ subscribedEl.addEventListener("click", function () {
   if (this.classList.contains("status-no")) {
     this.classList.remove("status-no");
     this.classList.add("status-yes");
-    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Subscribed`;
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-check"></i><span> Subscribed</span>`;
     userActivity.addBrandSubscription(brand._id);
   } else {
     this.classList.remove("status-yes");
     this.classList.add("status-no");
-    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-plus"></i> Subscribe`;
+    subscribedEl.innerHTML = `<i class="fa-solid fa-circle-plus"></i><span> Subscribe</span>`;
     userActivity.deleteBrandSubscription(brand._id);
   }
 });
