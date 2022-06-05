@@ -4,7 +4,10 @@
         <span class="internal-logo-text internal-background-color">Internal Site</span>
     </a>
 
-    <div class="search-area">
+    <div class="search-area internal-search-bar">
+        <div class="search-icon-to-expand" action="close-dropdown">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </div>
         <div class="search-bar">
             <input type="text" class="search-bar__input" placeholder="Search a brand...">
             <button class='search-bar__submit internal-background-color'><i class="fas fa-search"></i></button>
@@ -19,23 +22,26 @@
     <nav class="main-nav">
         <ul class="main-nav-list">
             <li class="user-profile">
-                <a href="#"><i class="fa-solid fa-circle-user"></i> Account</a>
-                    
-                    <ul class="sub-menu sub-menu--user-profile">
-                        <li>
-                            <a href="/user-profile" class="">
-                                <span>👋</span> <%= currentUser.username%>
-                            </a>
-                        </li>
+                <a href="#"><i class="fa-solid fa-circle-user"></i><span> Account</span></a>
 
-                        <li>
-                            <a href="/user/<%=currentUser._id%>"><i class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i> Account Settings</a>
-                        </li>
+                <ul class="sub-menu sub-menu--user-profile">
+                    <li>
+                        <a href="/user-profile" class="">
+                            <span>👋</span>
+                            <%= currentUser.username%>
+                        </a>
+                    </li>
 
-                        <li>
-                            <a href="/logout"><i class="fa-solid fa-right-from-bracket linear-gradient-text"></i> Log Out</a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="/user/<%=currentUser._id%>"><i
+                                class="fa-solid fa-screwdriver-wrench linear-gradient-text"></i> Account Settings</a>
+                    </li>
+
+                    <li>
+                        <a href="/logout"><i class="fa-solid fa-right-from-bracket linear-gradient-text"></i> Log
+                            Out</a>
+                    </li>
+                </ul>
             </li>
 
 

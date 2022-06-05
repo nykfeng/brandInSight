@@ -61,6 +61,10 @@
   border-radius: 1rem;
 }
 
+.internal-search-bar .search-icon-to-expand {
+  background-color: var(--variety-color-purple);
+}
+
 /* ------------------------- search result items ------------------------ */
 .search-result {
   max-width: 50rem;

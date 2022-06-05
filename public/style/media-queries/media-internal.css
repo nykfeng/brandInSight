@@ -1,0 +1,157 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/**************************/
+/* BELOW 1250px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 78em) {
+  /* main body content */
+  .internal-main {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .internal-brand-list-section {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .view-action-history-section {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* brand list */
+  .internal-brand-list {
+    margin: 0 auto;
+  }
+
+  /* search bar */
+  .search-bar {
+    min-width: 40rem;
+  }
+
+  .search-result {
+    max-width: 40rem;
+  }
+}
+
+/**************************/
+/* BELOW 1000px (Smaller laptop/tablet) */
+/**************************/
+@media (max-width: 62.5em) {
+  .logo {
+    font-size: 3.5rem;
+  }
+
+  /* search bar */
+  .search-bar {
+    min-width: 30rem;
+  }
+
+  .search-result {
+    max-width: 30rem;
+  }
+}
+
+/**************************/
+/* BELOW 800px (Smaller tablets) */
+/**************************/
+@media (max-width: 50em) {
+  /* search bar hiding input bar */
+  .search-icon-to-expand {
+    display: flex;
+  }
+
+  .search-icon-to-expand[action="close-dropdown"] + .search-bar {
+    display: none;
+    position: absolute;
+  }
+
+  .search-icon-to-expand[action="open-dropdown"] + .search-bar {
+    display: flex;
+    position: absolute;
+    top: 120%;
+    transform: translateX(-86%);
+    overflow: visible;
+  }
+
+  .search-result {
+    position: absolute;
+    top: 100%;
+    transform: translateX(0%);
+    z-index: 100;
+  }
+}
+
+/**************************/
+/* BELOW 544px (Phones) */
+/**************************/
+@media (max-width: 34em) {
+  /* header and logo */
+  .header {
+    padding: 0.5rem;
+  }
+  .logo {
+    font-size: 2.8rem;
+  }
+  .internal-logo-text {
+    font-size: 1.3rem;
+  }
+
+  .user-profile a {
+    font-size: 3rem;
+  }
+  .sub-menu--user-profile {
+    max-width: 16rem;
+  }
+  .sub-menu--user-profile a {
+    font-size: 2rem;
+  }
+}
+
+/**************************/
+/* BELOW 400px (Phones) */
+/**************************/
+@media (max-width: 25em) {
+  /* user profile  */
+  .user-profile a {
+    font-size: 3.5rem;
+  }
+  .sub-menu--user-profile a {
+    font-size: 1.5rem;
+  }
+
+  .main-nav-list .user-profile .sub-menu--user-profile {
+    min-width: auto;
+    left: -450%;
+    top: 5.5rem;
+  }
+  .user-profile span {
+    display: none;
+  }
+
+  /* nav bar */
+  .internal-nav {
+    padding: 1rem;
+    gap: 0;
+  }
+  .internal-nav__left {
+    max-width: 20rem;
+  }
+
+  /* brand list content */
+  /* brand logo */
+  .brand-list__brand-logo {
+    width: 6rem;
+    height: 6rem;
+  }
+  /* brand title */
+  .brand-list__brand-title {
+    font-size: 2rem;
+  }
+  .brand-list__brand-industry {
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+  }
+}

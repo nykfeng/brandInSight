@@ -12,19 +12,21 @@ let hambugerSentinel = false;
 let searchIconSentinel = false;
 
 // hambuger button to show and close nav menu for smaller screens
-hamburgerBtn.addEventListener("click", function () {
-  if (!hambugerSentinel) {
-    mainNavListEl.setAttribute("action", "open-dropdown");
-    mainNavEl.setAttribute("action", "open-dropdown");
-    hambugerSentinel = true;
-    hamburgerBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-  } else {
-    mainNavListEl.setAttribute("action", "close-dropdown");
-    mainNavEl.setAttribute("action", "close-dropdown");
-    hambugerSentinel = false;
-    hamburgerBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
-  }
-});
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", function () {
+    if (!hambugerSentinel) {
+      mainNavListEl.setAttribute("action", "open-dropdown");
+      mainNavEl.setAttribute("action", "open-dropdown");
+      hambugerSentinel = true;
+      hamburgerBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    } else {
+      mainNavListEl.setAttribute("action", "close-dropdown");
+      mainNavEl.setAttribute("action", "close-dropdown");
+      hambugerSentinel = false;
+      hamburgerBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+    }
+  });
+}
 
 // search icon dropdown for search bar to show or disappear
 if (searchExpIconBtn) {

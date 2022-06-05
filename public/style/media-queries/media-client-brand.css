@@ -232,6 +232,14 @@
     display: flex;
     flex-direction: column;
   }
+
+  .brand-about {
+    transform: translateY(-4%);
+  }
+
+  .brand-hightlights {
+    border: none;
+  }
 }
 
 /**************************/
@@ -241,8 +249,9 @@
   /* header */
   /* header brand logo */
   .brand-header .brand-logo {
-    width: 7rem;
-    height: 7rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    padding: 0.2rem;
   }
 
   .brand-header .brand-container {
@@ -254,18 +263,33 @@
   }
   .brand-header-container {
     position: relative;
+    width: 70%;
+  }
+
+  .brand-heading-container {
+    justify-content: space-between;
+    gap: 2rem;
   }
 
   .brand-header-tab-container {
-    transform: translateY(10%) translateX(-15%);
+    gap: 1rem;
+    transform: translateY(10%) translateX(-25%);
   }
 
   /* brand summary */
   .brand-about {
-    transform: translateY(-4%);
+    transform: translateY(-3.5%);
   }
 
   /* brand header buttons */
+  .brand-header .header-btn {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
   .header-btn span {
     display: none;
   }
