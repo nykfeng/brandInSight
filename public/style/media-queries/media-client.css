@@ -97,6 +97,35 @@
   .welcome-area .user-profile-name {
     font-size: 1.6rem;
   }
+
+  .functions-list li {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/**************************/
+/* BELOW 1000px (Smaller laptop/tablet) */
+/**************************/
+@media (max-width: 62.5em) {
+  /* right home panel */
+  /* the 3 lists to show up upon hover */
+  .home-subscribed-brands,
+  .home-recently-viewed,
+  .home-most-ad-spend {
+    display: none;
+    position: absolute;
+    transform: translateX(-110%) translateY(-30%);
+    width: 30rem;
+  }
+
+  .home-subscribed-brands--media,
+  .home-recently-viewed--media,
+  .home-most-ad-spend--media {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
 }
 
 /**************************/

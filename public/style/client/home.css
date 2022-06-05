@@ -135,6 +135,21 @@ ul {
   margin-bottom: 0.8rem;
 }
 
+.home-subscribed-brands--media,
+.home-recently-viewed--media,
+.home-most-ad-spend--media {
+  display: none;
+  font-size: 5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.home-subscribed-brands--media:hover,
+.home-recently-viewed--media:hover,
+.home-most-ad-spend--media:hover {
+  color: var(--main-color);
+}
+
 /*  home main content column */
 /* --------------------------- */
 /* --------------------------- */

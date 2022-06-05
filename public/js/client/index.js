@@ -14,13 +14,20 @@ const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
 // DOM elements view more buttons -------------------
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
-// left panel text
-const userFunctionEl = document.querySelector(
-  ".user-functions .functions-title"
-);
-const businessFunctionEl = document.querySelector(
-  ".business-functions .functions-title"
-);
+// right panel three list element
+const subBrandEl = document.querySelector(".home-subscribed-brands");
+const viewedBrandEl = document.querySelector(".home-recently-viewed");
+const adSpendEl = document.querySelector(".home-most-ad-spend");
+
+// right panel three list icon
+const subBrandIcon = document.querySelector(".home-subscribed-brands--media");
+const viewedBrandIcon = document.querySelector(".home-recently-viewed--media");
+const adSpendIcon = document.querySelector(".home-most-ad-spend--media");
+
+// icon sentinel variables
+let subBrandIconSentinel = { sentinel: false };
+let viewedBrandIconSentinel = { sentinel: false };
+let adSpendIconSentinel = { sentinel: false };
 
 let trendingSubBtns; // Since these button have yet to generated at this point, using let
 
@@ -261,9 +268,52 @@ function setUpPagination(
   pagination.setupControl(moduleEl, moduleData, module);
 }
 
-// monitor viewport change to adjust text for media queries
-// window.addEventListener("resize", function () {
-//   let width = window.innerWidth;
-//   console.log("window width is ", width);
-//   if (width)
-// });
+//  right panel clicking to open and close list panels
+subBrandIcon.addEventListener("click", function () {
+  if (!subBrandIconSentinel.sentinel) {
+    setIconDisplayBlock(subBrandEl, subBrandIconSentinel);
+    setOtherIconsDisplayNone("subBrand");
+  } else {
+    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
+  }
+});
+viewedBrandIcon.addEventListener("click", function () {
+  if (!viewedBrandIconSentinel.sentinel) {
+    setIconDisplayBlock(viewedBrandEl, viewedBrandIconSentinel);
+    setOtherIconsDisplayNone("viewBrand");
+  } else {
+    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
+  }
+});
+adSpendIcon.addEventListener("click", function () {
+  if (!adSpendIconSentinel.sentinel) {
+    setIconDisplayBlock(adSpendEl, adSpendIconSentinel);
+    setOtherIconsDisplayNone("adSpend");
+  } else {
+    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+  }
+});
+
+function setIconDisplayBlock(element, elObj) {
+  element.style.display = "block";
+  elObj.sentinel = true;
+}
+
+function setIconDisplayNone(element, elObj) {
+  element.style.display = "none";
+  elObj.sentinel = false;
+}
+
+// set other lists to be no display
+function setOtherIconsDisplayNone(currentIcon) {
+  if (currentIcon === "subBrand") {
+    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
+    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+  } else if (currentIcon === "viewBrand") {
+    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
+    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+  } else if (currentIcon === "adSpend") {
+    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
+    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
+  }
+}
