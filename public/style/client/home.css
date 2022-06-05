@@ -101,6 +101,12 @@ ul {
   white-space: nowrap;
 }
 
+.user-functions-item a,
+.business-functions-item a {
+  font-weight: 600;
+  color: #30303096;
+}
+
 .user-functions,
 .business-functions {
   border-top: 1rem solid var(--main-color);
@@ -335,6 +341,26 @@ ul.brand-list > li:before {
   margin-top: 0.5rem;
 }
 
+/*  home main content column -- internal tool section */
+/* -------------------------------------------------- */
+
+.home-internal-tool {
+  margin-bottom: 5rem;
+}
+
+.home-internal-tool .internal-tool-btn {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 15rem;
+  font-size: 2rem;
+  padding: 0.5rem 0.5rem;
+  color: #fff;
+  background-color: var(--variety-color-purple);
+
+  border-radius: 0.5rem;
+}
+
 /*  right panel  */
 /* --------------------------- */
 /* --------------------------- */
@@ -426,15 +452,10 @@ ul.brand-list > li:before {
   transform: scale(0.98);
 }
 
-.right-brand-spend p {
-  font-size: 1.3rem;
+.view-more-btn:hover {
+  opacity: 0.75;
 }
 
-.home-internal-tool .internal-tool-btn {
-  font-size: 2rem;
-  padding: 0.5rem 0.5rem;
-  color: #fff;
-  background-color: var(--variety-color-purple);
-
-  border-radius: 0.5rem;
+.right-brand-spend p {
+  font-size: 1.3rem;
 }

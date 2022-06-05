@@ -8,8 +8,9 @@
   .header {
     padding: 0 2rem;
   }
+  /* nav bar becoming vertical */
   .main-nav-list {
-    gap: 1.5rem;
+    gap: 3.5rem;
   }
 
   .search-bar {
@@ -142,6 +143,22 @@
 /* BELOW 800px (Smaller tablets) */
 /**************************/
 @media (max-width: 50em) {
+  /* home center column */
+  .home-column {
+    max-width: 35rem;
+  }
+
+  .brand-list__brand-title {
+    font-size: 1.6rem;
+    max-width: 20rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .brand-list__brand-industry {
+    font-size: 1.3rem;
+  }
+
   /* search bar hiding input bar */
   .search-icon-to-expand {
     display: flex;
@@ -163,18 +180,69 @@
     top: 240%;
     transform: translateX(-90%);
   }
+
+  /* newsfeed */
+  .newsfeed-item .news-image {
+    width: 20%;
+    height: 30%;
+  }
+
+  /* nav bar becoming vertical */
+  .main-nav-list {
+    gap: 5.5rem;
+  }
 }
 
 /**************************/
-/* BELOW 704px (Smaller tablets) */
+/* BELOW 650px (Bigger phones) */
 /**************************/
-@media (max-width: 44em) {
+@media (max-width: 40.625em) {
+  /* content body */
+  .content-body {
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  /* left panel */
+  .welcome-text-area {
+    display: none;
+  }
+
+  .home-left-panel {
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+  }
+
+  .functions-list {
+    display: flex;
+  }
+
+  /* right panel */
+  .home-right-panel {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin-bottom: 5rem;
+  }
+
+  .home-subscribed-brands--media[action="open-panel"] + .home-subscribed-brands,
+  .home-recently-viewed--media[action="open-panel"] + .home-recently-viewed,
+  .home-most-ad-spend--media[action="open-panel"] + .home-most-ad-spend {
+    transform: translateX(0%) translateY(30%);
+  }
 }
 
 /**************************/
 /* BELOW 544px (Phones) */
 /**************************/
 @media (max-width: 34em) {
+  /* header */
+  .header {
+    padding: 0.5rem;
+  }
+
+  /* nav bar */
   .search-icon-to-expand[action="open-dropdown"] + .search-bar {
     min-width: 30rem;
     transform: translateX(-87%);
@@ -183,5 +251,10 @@
   .search-result {
     max-width: 30rem;
     transform: translateX(-87%);
+  }
+
+  /* nav bar becoming vertical */
+  .main-nav-list {
+    gap: 6.5rem;
   }
 }
