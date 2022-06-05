@@ -110,10 +110,20 @@
 @media (max-width: 62.5em) {
   /* right home panel */
   /* the 3 lists to show up upon hover */
-  .home-subscribed-brands,
-  .home-recently-viewed,
-  .home-most-ad-spend {
+  .home-subscribed-brands--media[action="close-panel"]
+    + .home-subscribed-brands,
+  .home-recently-viewed--media[action="close-panel"] + .home-recently-viewed,
+  .home-most-ad-spend--media[action="close-panel"] + .home-most-ad-spend {
     display: none;
+    /* position: absolute;
+    transform: translateX(-110%) translateY(-30%);
+    width: 30rem; */
+  }
+
+  .home-subscribed-brands--media[action="open-panel"] + .home-subscribed-brands,
+  .home-recently-viewed--media[action="open-panel"] + .home-recently-viewed,
+  .home-most-ad-spend--media[action="open-panel"] + .home-most-ad-spend {
+    display: block;
     position: absolute;
     transform: translateX(-110%) translateY(-30%);
     width: 30rem;

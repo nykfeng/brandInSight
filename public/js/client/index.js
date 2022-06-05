@@ -271,49 +271,51 @@ function setUpPagination(
 //  right panel clicking to open and close list panels
 subBrandIcon.addEventListener("click", function () {
   if (!subBrandIconSentinel.sentinel) {
-    setIconDisplayBlock(subBrandEl, subBrandIconSentinel);
+    setIconDisplayBlock(this, subBrandIconSentinel);
     setOtherIconsDisplayNone("subBrand");
   } else {
-    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
+    setIconDisplayNone(this, subBrandIconSentinel);
   }
 });
 viewedBrandIcon.addEventListener("click", function () {
   if (!viewedBrandIconSentinel.sentinel) {
-    setIconDisplayBlock(viewedBrandEl, viewedBrandIconSentinel);
+    setIconDisplayBlock(this, viewedBrandIconSentinel);
     setOtherIconsDisplayNone("viewBrand");
   } else {
-    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
+    setIconDisplayNone(this, viewedBrandIconSentinel);
   }
 });
 adSpendIcon.addEventListener("click", function () {
   if (!adSpendIconSentinel.sentinel) {
-    setIconDisplayBlock(adSpendEl, adSpendIconSentinel);
+    setIconDisplayBlock(this, adSpendIconSentinel);
     setOtherIconsDisplayNone("adSpend");
   } else {
-    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+    setIconDisplayNone(this, adSpendIconSentinel);
   }
 });
 
 function setIconDisplayBlock(element, elObj) {
-  element.style.display = "block";
+  // element.style.display = "block";
+  element.setAttribute("action", "open-panel");
   elObj.sentinel = true;
 }
 
 function setIconDisplayNone(element, elObj) {
-  element.style.display = "none";
+  // element.style.display = "none";
+  element.setAttribute("action", "close-panel");
   elObj.sentinel = false;
 }
 
 // set other lists to be no display
 function setOtherIconsDisplayNone(currentIcon) {
   if (currentIcon === "subBrand") {
-    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
-    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+    setIconDisplayNone(viewedBrandIcon, viewedBrandIconSentinel);
+    setIconDisplayNone(adSpendIcon, adSpendIconSentinel);
   } else if (currentIcon === "viewBrand") {
-    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
-    setIconDisplayNone(adSpendEl, adSpendIconSentinel);
+    setIconDisplayNone(subBrandIcon, subBrandIconSentinel);
+    setIconDisplayNone(adSpendIcon, adSpendIconSentinel);
   } else if (currentIcon === "adSpend") {
-    setIconDisplayNone(subBrandEl, subBrandIconSentinel);
-    setIconDisplayNone(viewedBrandEl, viewedBrandIconSentinel);
+    setIconDisplayNone(subBrandIcon, subBrandIconSentinel);
+    setIconDisplayNone(viewedBrandIcon, viewedBrandIconSentinel);
   }
 }
