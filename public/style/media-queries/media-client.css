@@ -126,6 +126,9 @@
   .profile-user-saved-contacts {
     width: 65%;
   }
+
+  
+
 }
 
 /**************************/
@@ -286,6 +289,11 @@
   .profile-user-subscribed-brands {
     width: 80%;
   }
+
+  /* user setting page */
+  .user-setting__content {
+    padding: 1.5rem;
+  }
 }
 
 /**************************/
@@ -321,5 +329,10 @@
   .profile-user-subscribed-brands,
   .profile-user-saved-contacts {
     width: 100%;
+  }
+
+  /* user setting page */
+  .user-setting-main {
+    width: 95%;
   }
 }

@@ -1,0 +1,235 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/**************************/
+/* BELOW 1250px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 78em) {
+  /* ------ brand header ------- */
+  /* brand option tabs */
+  .brand-header-tab {
+    padding: 1.7rem;
+    font-size: 1.7rem;
+  }
+
+  /* leadership */
+  .leadership-profile {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .leadership-name {
+    font-size: 1.5rem;
+  }
+
+  /* contacts  */
+  .contacts-item {
+    padding: 1rem 0;
+  }
+  .contacts-basics .contacts-name {
+    font-size: 1.5rem;
+  }
+
+  .contacts-button {
+    font-size: 1.5rem;
+  }
+}
+
+/**************************/
+/* BELOW 1000px (Smaller laptop/tablet) */
+/**************************/
+@media (max-width: 62.5em) {
+  /* brand summary brand about */
+  .brand-about .brand-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .brand-details {
+    grid-column: 1 / 3;
+    width: 90%;
+    margin: 0 auto;
+    border: none;
+  }
+
+  .brand-about {
+    transform: translateY(-5%);
+  }
+
+  .brand-news-activity {
+    width: 100%;
+  }
+  /*  header tabs */
+  .brand-header-tab-container {
+    width: 80%;
+  }
+
+  .brand-header-tab {
+    padding: 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  .brand-header .header-btn {
+    font-size: 1.5rem;
+  }
+
+  /* brand financial  */
+  .brand-financial-stock {
+    width: 70%;
+  }
+
+  .stock-statistics-item {
+    gap: 1.5rem;
+  }
+  .brand-highlights-item {
+    padding: 1.3rem;
+  }
+
+  /* brand contacts and leadership */
+  .brand-contacts .brand-container {
+    flex-direction: column;
+  }
+
+  .brand-contacts-block {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .brand-leadership-block {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/**************************/
+/* BELOW 850px (Smaller tablets) */
+/**************************/
+@media (max-width: 53.125em) {
+  /* brand financial */
+  .stock-stats .stock-price {
+    font-size: 1.8rem;
+  }
+  .stock-stat-list .list-input {
+    font-size: 1.3rem;
+  }
+
+  .brand-highlights-item {
+    padding: 1rem;
+  }
+
+  /* brand contacts and leadership */
+  .brand-contacts-block {
+    width: 90%;
+  }
+  .brand-leadership-block {
+    width: 90%;
+  }
+
+  /*  header tabs */
+  .brand-header-tab-container {
+    width: 90%;
+  }
+}
+
+/**************************/
+/* BELOW 760px (Bigger phones) */
+/**************************/
+@media (max-width: 47.5em) {
+  .brand-user-options {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .brand-header-tab-container {
+    width: 100%;
+  }
+
+  .brand-header-tab {
+    padding: 0.7rem;
+  }
+
+  /* brand financial */
+  .brand-financial-content {
+    flex-direction: column;
+  }
+  .brand-financial-stock {
+    width: 100%;
+  }
+}
+
+/**************************/
+/* BELOW 650px (Bigger phones) */
+/**************************/
+@media (max-width: 40.625em) {
+  /* brand contacts and leadership */
+  .brand-contacts-block {
+    width: 100%;
+  }
+  .brand-leadership-block {
+    width: 100%;
+  }
+
+  .contacts-button {
+    font-size: 1.1rem;
+  }
+
+  .leadership-list {
+    gap: 1rem;
+  }
+  .leadership-list-item {
+    width: 45%;
+  }
+
+  /* header brand logo */
+  .brand-header .brand-logo {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  /* header brand text */
+  .brand-type {
+    font-size: 1.5rem;
+  }
+  .brand-name {
+    font-size: 2rem;
+  }
+  .brand-website {
+    font-size: 1.2rem;
+  }
+
+  /* header buttons */
+  .brand-header .header-btn {
+    font-size: 1.2rem;
+  }
+
+  /* brand summary about brand */
+  .brand-details {
+    width: 100%;
+  }
+}
+
+/**************************/
+/* BELOW 550px (phones) */
+/**************************/
+@media (max-width: 34.375em) {
+  /* brand header */
+  .brand-header .brand-container {
+    padding: 3rem 1.2rem;
+  }
+
+  /* header brand logo */
+  .brand-header .brand-logo {
+    width: 13rem;
+    height: 13rem;
+  }
+  /* header buttons */
+  .brand-header .header-btn {
+    font-size: 1.1rem;
+  }
+
+  /* brand summary brand about */
+  .brand-about .brand-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

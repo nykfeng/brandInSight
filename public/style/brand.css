@@ -422,6 +422,7 @@
   width: 50%;
   flex-direction: column;
   gap: 2rem;
+  justify-content: space-between;
 }
 
 .contacts-item {
