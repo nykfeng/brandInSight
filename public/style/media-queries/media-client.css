@@ -103,6 +103,29 @@
     display: flex;
     justify-content: center;
   }
+
+  /* user profile page */
+  .welcome-area {
+    align-items: flex-start;
+  }
+
+  .welcome-text-area {
+    align-self: flex-start;
+  }
+
+  .user-profile-main {
+    width: 90rem;
+  }
+
+  .profile-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-user-subscribed-brands,
+  .profile-user-saved-contacts {
+    width: 65%;
+  }
 }
 
 /**************************/
@@ -136,6 +159,14 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+  }
+
+  .user-profile-main {
+    width: 75rem;
+  }
+
+  .saved-contacts-list-item {
+    gap: 1.5rem;
   }
 }
 
@@ -191,6 +222,21 @@
   .main-nav-list {
     gap: 5.5rem;
   }
+
+  /* user profile */
+  .user-profile-main {
+    width: 60rem;
+  }
+
+  .profile-user-subscribed-brands {
+    width: 70%;
+  }
+  .profile-user-saved-contacts {
+    width: 90%;
+  }
+  .saved-contacts-list-item {
+    gap: 0.5rem;
+  }
 }
 
 /**************************/
@@ -231,6 +277,15 @@
   .home-most-ad-spend--media[action="open-panel"] + .home-most-ad-spend {
     transform: translateX(0%) translateY(30%);
   }
+
+  /* user profile */
+  .user-profile-main {
+    width: 45rem;
+  }
+
+  .profile-user-subscribed-brands {
+    width: 80%;
+  }
 }
 
 /**************************/
@@ -256,5 +311,15 @@
   /* nav bar becoming vertical */
   .main-nav-list {
     gap: 6.5rem;
+  }
+
+  /* user profile */
+  .user-profile-main {
+    width: 35rem;
+  }
+
+  .profile-user-subscribed-brands,
+  .profile-user-saved-contacts {
+    width: 100%;
   }
 }
