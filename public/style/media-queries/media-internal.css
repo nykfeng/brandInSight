@@ -82,6 +82,25 @@
     transform: translateX(0%);
     z-index: 100;
   }
+
+  /* new brand form */
+  .internal-brand-leadership--add {
+    width: 90%;
+  }
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+  .new-brand-form #name {
+    width: auto;
+  }
+
+  .new-brand-form {
+    gap: 0.5rem;
+  }
 }
 
 /**************************/
@@ -102,11 +121,35 @@
   .user-profile a {
     font-size: 3rem;
   }
+
+  .user-profile a span {
+    display: none;
+  }
   .sub-menu--user-profile {
     max-width: 16rem;
   }
   .sub-menu--user-profile a {
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+
+  .main-nav-list .user-profile .sub-menu--user-profile {
+    left: -500%;
+    min-width: 18rem;
+  }
+
+  .main-nav-list li .sub-menu {
+    top: 6rem;
+  }
+
+  /* to move the profile icon to the left */
+  .main-nav {
+    margin-right: 5%;
+  }
+
+  /* internal nav */
+  .internal-nav__left {
+    display: flex;
+    flex-direction: column;
   }
 }
 
