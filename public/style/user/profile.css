@@ -73,6 +73,10 @@
   color: var(--main-color);
 }
 
+.subscribed-brands-list-item .brand-website-item {
+  font-size: 1.3rem;
+}
+
 /* --------------- saved contact section -----------------*/
 .user-saved-contacts-list {
   gap: 1rem;
@@ -128,7 +132,8 @@
 }
 
 /* pagination specific */
-.profile-saved-contacts, .profile-subscribed-brands {
+.profile-saved-contacts,
+.profile-subscribed-brands {
   margin-top: 2rem;
   justify-content: center;
   align-items: center;

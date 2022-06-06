@@ -126,9 +126,6 @@
   .profile-user-saved-contacts {
     width: 65%;
   }
-
-  
-
 }
 
 /**************************/
@@ -329,6 +326,32 @@
   .profile-user-subscribed-brands,
   .profile-user-saved-contacts {
     width: 100%;
+  }
+
+  .saved-contacts-list-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-bottom: 1px solid black;
+  }
+
+  .contact-basics {
+    grid-column: 2 / 4;
+  }
+
+  .contact-method {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .contact-linkedin-item {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+  }
+
+  .contact-list__subscription-status {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
   }
 
   /* user setting page */
