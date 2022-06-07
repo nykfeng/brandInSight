@@ -207,6 +207,14 @@ function insertModuleHTML(
         );
       }
       break;
+    case "newsfeed":
+      for (let i = startIndex; i < endIndex; i++) {
+        moduleDataListEl.insertAdjacentHTML(
+          "beforeend",
+          generateHTML.brandStoriesAndNews(data[i].article, data[i].logoUrl)
+        );
+      }
+      break;
     default:
   }
 }
@@ -249,6 +257,7 @@ function setNumberPerPage(module) {
     case "viewed-brands":
     case "adSpend-brands":
     case "trending-brands":
+    case "newsfeed":
       numberPerPage = 5;
       break;
     case "contacts":
@@ -316,6 +325,9 @@ function setModuleElement(element, module) {
       break;
     case "internal-history-list":
       moduleEl = element.querySelector(".internal-history-list");
+      break;
+    case "newsfeed":
+      moduleEl = element.querySelector(".home-newsfeed-list");
       break;
     default:
       moduleEl = "";

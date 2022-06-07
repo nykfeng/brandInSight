@@ -6,7 +6,7 @@ function shortenString(str, length) {
   } else return "";
 }
 
-// To trime white space
+// To trim white space
 function trimWhiteSpace(str) {
  const newStr = str.replace(" ", "")
  return newStr
@@ -17,8 +17,15 @@ function numberFormat(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+// Convert javascript date to more readable date format
+function customDateFormat(dateInput) {
+  const articleDate = new Date(dateInput);
+  return articleDate.toDateString()
+}
+
 export default {
   shortenString,
   trimWhiteSpace,
   numberFormat,
+  customDateFormat
 };

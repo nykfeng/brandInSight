@@ -62,9 +62,6 @@ async function listOfBrandStoriesAndNews() {
     method: "GET",
   });
   const listOfBrands = await res.json();
-  console.log("Client list of stories and news");
-  console.log(listOfBrands);
-
   return listOfBrands;
 }
 

@@ -275,7 +275,7 @@ function brandStoriesAndNews(article, logoUrl) {
           <h3 class="news-title">${article.title}</h3>
           <span class="news-source-name">${article.source.name}</span>
           <span> on </span>
-          <span class="news-published-date"> ${article.publishedAt}</span>
+          <span class="news-published-date"> ${utilities.customDateFormat(article.publishedAt)}</span>
       </div>
       <p class="news-content">${article.content}</p>
     </div>

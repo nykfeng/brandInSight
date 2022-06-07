@@ -33,6 +33,7 @@ let subscribedBrands;
 let trendingBrands;
 let viewedBrands;
 let adSpendBrands;
+let newsfeedList = [];
 
 // maximum item per page for list item
 const MAX_PER_PAGE = 5;
@@ -191,6 +192,35 @@ function trendingListContentLoader() {
   }
 }
 
+// Brand stories and news
+// getting and rendering the brand newsfeed and stories
+async function homeNewsfeed() {
+  const brandList = await getData.listOfBrandStoriesAndNews();
+
+  for (const brand in brandList) {
+    brandList[brand].articles.forEach((article) => {
+      newsfeedList.push({
+        name: brandList[brand].name,
+        logoUrl: brandList[brand].logoUrl,
+        article,
+      });
+    });
+  }
+
+  // randomize the result list
+  newsfeedList.sort(() => 0.5 - Math.random());
+
+  newsfeedList.forEach((newsfeed, index) => {
+    if (index < MAX_PER_PAGE) {
+      newsfeedListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.brandStoriesAndNews(newsfeed.article, newsfeed.logoUrl)
+      );
+    }
+  });
+
+}
+
 // view more button
 viewMoreBtns.forEach((viewMoreBtn) => {
   viewMoreBtn.addEventListener("click", function () {
@@ -249,6 +279,16 @@ function modulePagination(module, paginationContainerEl, viewMoreParent) {
         trendingBrands
       );
       break;
+    case "newsfeed":
+      setUpPagination(
+        paginationContainerEl,
+        module,
+        newsfeedList.length,
+        COUNT_PER_PAGE,
+        viewMoreParent,
+        newsfeedList
+      );
+      break;
     default:
   }
 }
@@ -268,7 +308,9 @@ function setUpPagination(
   pagination.setupControl(moduleEl, moduleData, module);
 }
 
-//  right panel clicking to open and close list panels
+// right panel clicking to open and close list panels
+// this is for media query when the lists were hided as icons
+// click to show the list and hide the list
 subBrandIcon.addEventListener("click", function () {
   if (!subBrandIconSentinel.sentinel) {
     setIconDisplayBlock(this, subBrandIconSentinel);
@@ -295,13 +337,11 @@ adSpendIcon.addEventListener("click", function () {
 });
 
 function setIconDisplayBlock(element, elObj) {
-  // element.style.display = "block";
   element.setAttribute("action", "open-panel");
   elObj.sentinel = true;
 }
 
 function setIconDisplayNone(element, elObj) {
-  // element.style.display = "none";
   element.setAttribute("action", "close-panel");
   elObj.sentinel = false;
 }
@@ -317,18 +357,5 @@ function setOtherIconsDisplayNone(currentIcon) {
   } else if (currentIcon === "adSpend") {
     setIconDisplayNone(subBrandIcon, subBrandIconSentinel);
     setIconDisplayNone(viewedBrandIcon, viewedBrandIconSentinel);
-  }
-}
-
-// getting and rendering the brand newsfeed and stories
-async function homeNewsfeed() {
-  const brandList = await getData.listOfBrandStoriesAndNews();
-  for (const brand in brandList) {
-    brandList[brand].articles.forEach((article) => {
-      newsfeedListEl.insertAdjacentHTML(
-        "beforeend",
-        generateHTML.brandStoriesAndNews(article, brandList[brand].logoUrl)
-      );
-    });
   }
 }
