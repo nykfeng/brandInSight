@@ -4,8 +4,6 @@ const router = express.Router();
 // self-defined utility helper functions
 const catchAsync = require("../utils/catchAsync");
 
-// actual mongoose models
-const Brand = require("../models/Brand");
 
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
@@ -15,7 +13,6 @@ const { validateBrand } = require("../middleware/validateData");
 
 // controller
 const brands = require("../controllers/brands");
-const internal = require("../controllers/internal");
 
 // for handling image -- logo
 const multer = require("multer");
@@ -46,6 +43,7 @@ router.get("/withAdSpend", isLoggedIn, catchAsync(brands.listOfBrandsWithAdSpend
 router.get("/subscribedList/:userId", isLoggedIn, catchAsync(brands.listOfSubscribedBrands));
 router.get("/viewedList/:userId", isLoggedIn, catchAsync(brands.listOfViewedBrands));
 router.get('/logoURL', isLoggedIn, catchAsync(brands.listOfBrandLogoURL));
+router.get('/trendingBrandStoriesAndNews', isLoggedIn, catchAsync(brands.brandStoriesAndNews));
 
 
 router

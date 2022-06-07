@@ -4,26 +4,20 @@ const User = require("../models/User");
 const Contact = require("../models/Contact");
 const History = require("../models/History");
 
+const axios = require("axios").default;
+
 // need cloudinary function to delete file on it
 const { cloudinary } = require("../cloudinary");
 
-// -=-=-=-=-=-==-=-=- These can be deleted -=-=-=-=-=-=-=-=-=-=-==-
+// trending brand list (hard code list now)
+const trendingBrands = require("../utils/trending");
 
-// module.exports.index = async (req, res) => {
-//   const brands = await Brand.find({});
-//   res.render("client/brands", { brands });
-// };
-
-// module.exports.renderAddForm = async (req, res) => {
-//   res.render("internal/brands/new");
-// };
-
-// -=-=-=-=-=-==-=-=- These can be deleted -=-=-=-=-=-=-=-=-=-=-==-
+// -=-=-=-=-=-==-=-=- API endpoints for data -=-=-=-=-=-=-=-=-=-=-==-
 
 // get a list of trending brands
 module.exports.trending = async (req, res) => {
-  // some algorithm to determine trending
-  // TODO
+  // some algorithm to determine what brands are trending
+  // features for an ideal world scenario
 
   // setting option for pagination
   const options = {
@@ -41,6 +35,8 @@ module.exports.searching = async (req, res) => {
   // the query is named term
   const term = req.query.term;
   // using RegEx to set it to /term/i
+  // regexp = new RegExp("pattern", "flags");
+  // flag i , which stands for 'ignore casing', we can make the expression carry out a case-insensitive search.
   const reg = new RegExp(term, "i");
 
   // logging activity
@@ -163,8 +159,51 @@ module.exports.listOfBrandLogoURL = async (req, res) => {
   res.send(contactBrandLogoData);
 };
 
-// CRUD --------------------------------------------
-// -------------------------------------------------
+// Get brand stories and news
+module.exports.brandStoriesAndNews = async (req, res) => {
+  const list = trendingBrands.brandList();
+
+  const newsAPI = process.env.NEWSAPI_KEY;
+  let storiesAndNews = {};
+
+  for (let index = 0; index < list.length; index++) {
+    // create an property named after the brand
+    storiesAndNews[list[index]] = { name: list[index] };
+    // create an article array to hold articles
+    storiesAndNews[list[index]].articles = [];
+
+    // need an regex expression to search database
+    const reg = new RegExp(list[index], "i");
+    const getBrandsByName = await Brand.paginate({ name: reg });
+
+    // Get the logo url so it can be worked with later on
+    storiesAndNews[list[index]].logoUrl = getBrandsByName.docs[0].logo.url;
+
+    // earch brand gets a list of 3 articles from News API
+    await axios
+      .get(
+        `https://newsapi.org/v2/everything?language=en&q=${list[index]}&apiKey=${newsAPI}`
+      )
+      .then(function (response) {
+        // handle success
+        const articles = response.data.articles.slice(0, 3);
+        // console.log(articles);
+        for (let i = 0; i < 3; i++) {
+          storiesAndNews[list[index]].articles.push(articles[i]);
+        }
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }
+
+
+  res.send(storiesAndNews);
+};
+
+// -=-=-=-=-=-==-=-=- CRUD actions -=-=-=-=-=-=-=-=-=-=-==-
+
 // module.exports.add = async (req, res) => {
 //   const brand = new Brand(req.body.brand);
 

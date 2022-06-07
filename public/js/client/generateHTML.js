@@ -263,6 +263,27 @@ function contactListRow(contact, index) {
   return html;
 }
 
+// home page
+// brand stories and news
+function brandStoriesAndNews(article, logoUrl) {
+  const html = `
+  <li class="newsfeed-item">
+    <img src="${article.urlToImage}" alt="" class="news-image">
+    <div class="news-text-block">
+      <div class="news-avatar"><img src="${logoUrl}" class="article-brand-logo"></div>
+      <div class="news-title-block">
+          <h3 class="news-title">${article.title}</h3>
+          <span class="news-source-name">${article.source.name}</span>
+          <span> on </span>
+          <span class="news-published-date"> ${article.publishedAt}</span>
+      </div>
+      <p class="news-content">${article.content}</p>
+    </div>
+  </li>
+  `;
+  return html;
+}
+
 // user profile subscribed brand list
 function profileSubBrands(brand) {
   const html = `
@@ -331,6 +352,8 @@ function profleSavedContacts(contact) {
   return html;
 }
 
+//
+
 export default {
   homeTrendingList,
   pagination,
@@ -346,4 +369,5 @@ export default {
   contactListRow,
   profileSubBrands,
   profleSavedContacts,
+  brandStoriesAndNews
 };

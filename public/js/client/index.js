@@ -10,14 +10,11 @@ const subscribedBrandListEl = document.querySelector(
 );
 const viewedBrandListEl = document.querySelector(".right-brands-list__viewed");
 const adSpendListEl = document.querySelector(".right-brands-list__adSpend");
+// brand stories and news
+const newsfeedListEl = document.querySelector(".home-newsfeed-list");
 
 // DOM elements view more buttons -------------------
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
-
-// right panel three list element
-const subBrandEl = document.querySelector(".home-subscribed-brands");
-const viewedBrandEl = document.querySelector(".home-recently-viewed");
-const adSpendEl = document.querySelector(".home-most-ad-spend");
 
 // right panel three list icon
 const subBrandIcon = document.querySelector(".home-subscribed-brands--media");
@@ -54,6 +51,9 @@ function init() {
   subscribedBrandsList();
   viewedHistoryBrandsList();
   adSpendBrandsList();
+
+  // Get the newsfeed and render them
+  homeNewsfeed();
 }
 
 // Set up the trending list with brands on home page
@@ -317,5 +317,18 @@ function setOtherIconsDisplayNone(currentIcon) {
   } else if (currentIcon === "adSpend") {
     setIconDisplayNone(subBrandIcon, subBrandIconSentinel);
     setIconDisplayNone(viewedBrandIcon, viewedBrandIconSentinel);
+  }
+}
+
+// getting and rendering the brand newsfeed and stories
+async function homeNewsfeed() {
+  const brandList = await getData.listOfBrandStoriesAndNews();
+  for (const brand in brandList) {
+    brandList[brand].articles.forEach((article) => {
+      newsfeedListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.brandStoriesAndNews(article, brandList[brand].logoUrl)
+      );
+    });
   }
 }

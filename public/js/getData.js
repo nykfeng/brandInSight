@@ -54,6 +54,20 @@ async function listOfBrandsWithAdSpend() {
   return listOfBrands;
 }
 
+// get brand stories and news
+async function listOfBrandStoriesAndNews() {
+  const url = `/brands/trendingBrandStoriesAndNews`;
+
+  const res = await fetch(url, {
+    method: "GET",
+  });
+  const listOfBrands = await res.json();
+  console.log("Client list of stories and news");
+  console.log(listOfBrands);
+
+  return listOfBrands;
+}
+
 //--------------------------- Profile page ----------------
 // ------- contact list associated brand logo url ----------
 async function listOfBrandLogoURL() {
@@ -99,4 +113,5 @@ export default {
   listOfBrandLogoURL,
   allActionHistory,
   brandNote,
+  listOfBrandStoriesAndNews
 };

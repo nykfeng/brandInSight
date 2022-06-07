@@ -309,8 +309,6 @@ ul.brand-list > li:before {
 }
 
 .newsfeed-item .news-title-block {
-  margin-left: 1rem;
-  margin-top: 1rem;
   display: inline-block;
 }
 
@@ -320,6 +318,33 @@ ul.brand-list > li:before {
 
 .news-header {
   display: flex;
+}
+
+.news-text-block {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 1.25fr;
+}
+
+.news-avatar .article-brand-logo {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 0.2rem solid var(--main-color);
+}
+
+.news-avatar {
+  grid-column: 1 / 2;
+}
+
+.news-title-block {
+  grid-column: 2 / -1;
+}
+
+.news-content {
+  grid-row: 2 / 3;
+  grid-column: 1 / -1;
 }
 
 .news-title-block .news-source-name {
