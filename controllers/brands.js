@@ -202,6 +202,26 @@ module.exports.brandStoriesAndNews = async (req, res) => {
   res.send(storiesAndNews);
 };
 
+// Get brand stock pricing numbers
+module.exports.brandStockPricing = async (req, res) => {
+  const stockAPIKEY = process.env.IEX_KEY;
+  // get brand stock ticker
+
+
+  // return stock pricing info as object to return
+
+}
+
+// Get brand stock financials numbers
+module.exports.brandStockFinancials = async (req, res) => {
+  const stockAPIKEY = process.env.IEX_KEY;
+// get brand stock ticker
+
+
+  // return stock financials info as object to return
+}
+
+
 // -=-=-=-=-=-==-=-=- CRUD actions -=-=-=-=-=-=-=-=-=-=-==-
 
 // module.exports.add = async (req, res) => {

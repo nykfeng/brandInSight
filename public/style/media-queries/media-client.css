@@ -151,6 +151,8 @@
     position: absolute;
     transform: translateX(-110%) translateY(-30%);
     width: 30rem;
+    border: 1px solid black;
+    box-shadow: 0.3rem 0.4rem 1rem #080808;
   }
 
   .home-subscribed-brands--media,

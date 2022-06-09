@@ -7,6 +7,9 @@ const brandHeaderEls = document.querySelectorAll(".brand-header-tab");
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
 const brandConctactsEl = document.querySelector("#contacts");
+// Brand stock and financial elements
+const brandStockEl = document.querySelector('.brand-financial-stock-information');
+const brandFinancialsEl = document.querySelector('.stock-statistics');
 
 // Brand top menu buttons
 const subscribedEl = document.querySelector(".brand-subscribe-status");
@@ -15,6 +18,7 @@ const brandNoteEl = document.querySelector(".brand-add-notes");
 // brand note
 const brandNoteContent = document.querySelector(".brand-notes");
 
+
 // Certain data variables have to be set up after html is loaded
 init();
 
@@ -22,6 +26,7 @@ function init() {
   checkCurrentBrandSubscriptionStatus();
   checkUserContactSubscription();
   resetContactButtons();
+  showBrandStock();
 }
 
 // This is brand page, so check if the current brand is a subscribed from user
@@ -193,3 +198,28 @@ brandNoteEl.addEventListener("click", async function () {
     }
   });
 });
+
+// Get and render brand stock information
+function showBrandStock() {
+  if (!checkBrandStockStatus()) {
+    // show no financial information since not public
+    return;
+  }
+  // there is stock
+  // so get info from API
+
+  // get stock basic numbers
+
+  // get stock financial info
+  
+
+  // use generate HTML to render
+  
+}
+
+// Check if the brand has a stock symbol
+function checkBrandStockStatus() {
+  if (brand.typeOfCompany.stockTicker != "N/A") {
+    return true;
+  } else return false;
+}
