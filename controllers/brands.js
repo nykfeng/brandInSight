@@ -159,7 +159,7 @@ module.exports.listOfBrandLogoURL = async (req, res) => {
   res.send(contactBrandLogoData);
 };
 
-// Get brand stories and news
+// Get brand stories and news for the trending list
 module.exports.brandStoriesAndNews = async (req, res) => {
   const list = trendingBrands.brandList();
 
@@ -198,29 +198,86 @@ module.exports.brandStoriesAndNews = async (req, res) => {
       });
   }
 
-
   res.send(storiesAndNews);
+};
+
+// Get specific brand news .... for one brand only
+module.exports.oneBrandNews = async (req, res) => {
+  // get brand name
+  const brandName = req.query.brand;
+
+  const newsAPI = process.env.NEWSAPI_KEY;
+  let news = [];
+
+  // axios for news API
+  await axios
+    .get(
+      `https://newsapi.org/v2/everything?language=en&q=${brandName}&apiKey=${newsAPI}`
+    )
+    .then(function (response) {
+      // handle success
+      news = response.data.articles.slice(0, 3);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  res.send(news);
 };
 
 // Get brand stock pricing numbers
 module.exports.brandStockPricing = async (req, res) => {
   const stockAPIKEY = process.env.IEX_KEY;
   // get brand stock ticker
+  const stockTicker = req.query.stockTicker;
 
+  let quote;
+  // get stock quote and pricing
+  await axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/${stockTicker}/quote?token=${stockAPIKEY}`
+    )
+    .then(function (response) {
+      // handle success
+      quote = response.data;
+      console.log("stock quote backend is");
+      console.log(quote);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
 
   // return stock pricing info as object to return
-
-}
+  res.send(quote);
+};
 
 // Get brand stock financials numbers
 module.exports.brandStockFinancials = async (req, res) => {
   const stockAPIKEY = process.env.IEX_KEY;
-// get brand stock ticker
+  // get brand stock ticker
+  const stockTicker = req.query.stockTicker;
 
-
-  // return stock financials info as object to return
-}
-
+  // axios for stock information API
+  let balanceSheet;
+  // get stock quote and pricing
+  await axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/${stockTicker}/balance-sheet?token=${stockAPIKEY}`
+    )
+    .then(function (response) {
+      // handle success
+      balanceSheet = response.data;
+      console.log("balance sheet backend is");
+      console.log(balanceSheet);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  // return stock pricing info as object to return
+  res.send(balanceSheet);
+};
 
 // -=-=-=-=-=-==-=-=- CRUD actions -=-=-=-=-=-=-=-=-=-=-==-
 

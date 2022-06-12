@@ -275,7 +275,9 @@ function brandStoriesAndNews(article, logoUrl) {
           <h3 class="news-title">${article.title}</h3>
           <span class="news-source-name">${article.source.name}</span>
           <span> on </span>
-          <span class="news-published-date"> ${utilities.customDateFormat(article.publishedAt)}</span>
+          <span class="news-published-date"> ${utilities.customDateFormat(
+            article.publishedAt
+          )}</span>
       </div>
       <p class="news-content">${article.content}</p>
     </div>
@@ -352,7 +354,28 @@ function profleSavedContacts(contact) {
   return html;
 }
 
-//
+// client brand page
+function newsStories(newsStory) {
+  const html = `
+  <li class="brand-news-item flex-column">
+    <div class="brand-news__title-block flex">
+      <div class="brand-news__title-icon">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>News ▫ </span>
+      </div>
+      <div class="brand-news__date">${utilities.customDateFormat(
+        newsStory.publishedAt
+      )}</div>
+    </div>
+    <div class="brand-news__article-block">
+      <p class="brand-news-source">${newsStory.source.name}</p>
+      <a class="brand-news-article" href="${newsStory.url}">${
+    newsStory.title
+  }</a>
+    </div>
+  </li>`;
+  return html;
+}
 
 export default {
   homeTrendingList,
@@ -369,5 +392,6 @@ export default {
   contactListRow,
   profileSubBrands,
   profleSavedContacts,
-  brandStoriesAndNews
+  brandStoriesAndNews,
+  newsStories,
 };

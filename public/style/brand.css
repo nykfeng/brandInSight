@@ -287,15 +287,28 @@
   font-size: 1.2rem;
 }
 
+.brand-news__title-icon span {
+  margin-right: 0.5rem;
+}
+
 .brand-news-item {
   gap: 0.5rem;
   border-bottom: 1px solid rgb(160, 160, 160);
-  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .brand-news-source {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.brand-news-article {
+  padding: 0.5rem 0;
+  display: block;
+}
+
+.brand-news-article:hover {
+  color: var(--main-color);
 }
 
 .brand-news__article-block p {

@@ -1,4 +1,5 @@
 import getData from "../getData.js";
+import generateHTML from "./generateHTML.js";
 import pagination from "./pagination.js";
 import userActivity from "./userActivity.js";
 
@@ -7,9 +8,15 @@ const brandHeaderEls = document.querySelectorAll(".brand-header-tab");
 const viewMoreBtns = document.querySelectorAll(".view-more-btn");
 
 const brandConctactsEl = document.querySelector("#contacts");
+
+// Brand news stories element
+const brandNewsListEl = document.querySelector(".brand-news-list");
+
 // Brand stock and financial elements
-const brandStockEl = document.querySelector('.brand-financial-stock-information');
-const brandFinancialsEl = document.querySelector('.stock-statistics');
+const brandStockEl = document.querySelector(
+  ".brand-financial-stock-information"
+);
+const brandFinancialsEl = document.querySelector(".stock-statistics");
 
 // Brand top menu buttons
 const subscribedEl = document.querySelector(".brand-subscribe-status");
@@ -18,15 +25,15 @@ const brandNoteEl = document.querySelector(".brand-add-notes");
 // brand note
 const brandNoteContent = document.querySelector(".brand-notes");
 
-
 // Certain data variables have to be set up after html is loaded
 init();
 
-function init() {
+async function init() {
   checkCurrentBrandSubscriptionStatus();
   checkUserContactSubscription();
   resetContactButtons();
   showBrandStock();
+  await showBrandNews();
 }
 
 // This is brand page, so check if the current brand is a subscribed from user
@@ -211,10 +218,8 @@ function showBrandStock() {
   // get stock basic numbers
 
   // get stock financial info
-  
 
   // use generate HTML to render
-  
 }
 
 // Check if the brand has a stock symbol
@@ -222,4 +227,22 @@ function checkBrandStockStatus() {
   if (brand.typeOfCompany.stockTicker != "N/A") {
     return true;
   } else return false;
+}
+
+// Get and render brand news
+// Get 3 pieces of news
+
+async function showBrandNews() {
+  const brandName = brand.name;
+  const newsStories = await getData.brandNews(brandName);
+
+  console.log("brand news stories are ");
+  console.log(newsStories);
+
+  newsStories.forEach((newsPiece) => {
+    brandNewsListEl.insertAdjacentHTML(
+      "beforeend",
+      generateHTML.newsStories(newsPiece)
+    );
+  });
 }

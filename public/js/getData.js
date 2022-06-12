@@ -101,6 +101,19 @@ async function brandNote() {
   return brandNote;
 }
 
+// -------  brand news ---------
+async function brandNews(brandName) {
+  const query = brandName;
+  const url = `/brands/oneBrandNews`;
+  const res = await fetch(url, {
+    method: "GET",
+    query: query,
+  });
+
+  const brandNews = await res.json();
+  return brandNews;
+}
+
 export default {
   trendingList,
   sendQuery,
@@ -110,5 +123,6 @@ export default {
   listOfBrandLogoURL,
   allActionHistory,
   brandNote,
-  listOfBrandStoriesAndNews
+  listOfBrandStoriesAndNews,
+  brandNews,
 };
