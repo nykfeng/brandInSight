@@ -225,13 +225,14 @@ module.exports.oneBrandNews = async (req, res) => {
   res.send(news);
 };
 
-// Get brand stock pricing numbers
+// Get brand stock pricing numbers (Quote)
 module.exports.brandStockPricing = async (req, res) => {
   const stockAPIKEY = process.env.IEX_KEY;
   // get brand stock ticker
-  const stockTicker = req.query.stockTicker;
+  const stockTicker = req.query.term;
 
   let quote;
+  let stats;
   // get stock quote and pricing
   await axios
     .get(
@@ -240,16 +241,30 @@ module.exports.brandStockPricing = async (req, res) => {
     .then(function (response) {
       // handle success
       quote = response.data;
-      console.log("stock quote backend is");
-      console.log(quote);
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     });
 
+  // get stock stats
+  await axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/${stockTicker}/stats?token=${stockAPIKEY}`
+    )
+    .then(function (response) {
+      // handle success
+      stats = response.data;
+      console.log("stock stats backend is");
+      console.log(stats);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });  
+
   // return stock pricing info as object to return
-  res.send(quote);
+  res.send({quote, stats});
 };
 
 // Get brand stock financials numbers

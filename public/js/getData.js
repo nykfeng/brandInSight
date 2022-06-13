@@ -114,6 +114,20 @@ async function brandNews(brandName) {
   return brandNews;
 }
 
+// -------  brand stock quote ---------
+async function brandStockQuote(brandSymbol) {
+  const query = brandSymbol;
+  const url = `/brands/brandStockPricing/?term=${query}`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+
+  const stockQuote = await res.json();
+  console.log("stock quote and info");
+  console.log(stockQuote);
+  return stockQuote;
+}
+
 export default {
   trendingList,
   sendQuery,
@@ -125,4 +139,5 @@ export default {
   brandNote,
   listOfBrandStoriesAndNews,
   brandNews,
+  brandStockQuote,
 };

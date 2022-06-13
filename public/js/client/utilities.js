@@ -8,8 +8,8 @@ function shortenString(str, length) {
 
 // To trim white space
 function trimWhiteSpace(str) {
- const newStr = str.replace(" ", "")
- return newStr
+  const newStr = str.replace(" ", "");
+  return newStr;
 }
 
 // set up number format with thousand as a separation
@@ -20,12 +20,38 @@ function numberFormat(number) {
 // Convert javascript date to more readable date format
 function customDateFormat(dateInput) {
   const articleDate = new Date(dateInput);
-  return articleDate.toDateString()
+  return articleDate.toDateString();
+}
+
+// Convert big number into decimates with units
+// Trillion, Billion, Million
+function convertBigNumber(bigNumber) {
+  const decWithUnit =
+    parseInt(bigNumber) >= 1000000000000
+      ? (parseInt(bigNumber) / 1000000000000).toFixed(2) + " T"
+      : parseInt(bigNumber) >= 1000000000
+      ? (parseInt(bigNumber) / 1000000000).toFixed(2) + " B"
+      : (parseInt(bigNumber) / 1000000).toFixed(2) + " B";
+  return decWithUnit;
+}
+
+// Extract if necessary the stock exact ticker name
+function getStockTickerName(fullTicker) {
+  let finalTicker = "";
+  if (fullTicker.includes(":")) {
+    finalTicker = fullTicker.substring(fullTicker.indexOf(":")+1);
+  } else {
+    finalTicker = fullTicker;
+  }
+  
+  return finalTicker;
 }
 
 export default {
   shortenString,
   trimWhiteSpace,
   numberFormat,
-  customDateFormat
+  customDateFormat,
+  convertBigNumber,
+  getStockTickerName
 };

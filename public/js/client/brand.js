@@ -2,6 +2,7 @@ import getData from "../getData.js";
 import generateHTML from "./generateHTML.js";
 import pagination from "./pagination.js";
 import userActivity from "./userActivity.js";
+import utilities from "./utilities.js";
 
 // HTML elements Selectors
 const brandHeaderEls = document.querySelectorAll(".brand-header-tab");
@@ -207,19 +208,34 @@ brandNoteEl.addEventListener("click", async function () {
 });
 
 // Get and render brand stock information
-function showBrandStock() {
+async function showBrandStock() {
   if (!checkBrandStockStatus()) {
     // show no financial information since not public
     return;
   }
   // there is stock
-  // so get info from API
+  
+  // Get stock ticker from its full name, like NVDA from NASDAQ:NVDA
+  const stockTicker = utilities.getStockTickerName(brand.typeOfCompany.stockTicker);
 
+  // so get info from API
   // get stock basic numbers
+  const stockQuote = await getData.brandStockQuote(stockTicker);
+
+  console.log('stock quote from front end');
+  console.log(stockQuote);
+
+
+  // get stock stats
+  // const stockStats = await getData.brandStockStats(stockTicker);
+
+  
 
   // get stock financial info
 
   // use generate HTML to render
+
+  // brandStockEl
 }
 
 // Check if the brand has a stock symbol
@@ -231,18 +247,19 @@ function checkBrandStockStatus() {
 
 // Get and render brand news
 // Get 3 pieces of news
-
 async function showBrandNews() {
   const brandName = brand.name;
   const newsStories = await getData.brandNews(brandName);
 
-  console.log("brand news stories are ");
-  console.log(newsStories);
-
-  newsStories.forEach((newsPiece) => {
-    brandNewsListEl.insertAdjacentHTML(
-      "beforeend",
-      generateHTML.newsStories(newsPiece)
-    );
-  });
+  if (newsStories) {
+    newsStories.forEach((newsPiece) => {
+      brandNewsListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.newsStories(newsPiece)
+      );
+    });
+  } else {
+    brandNewsListEl.innerHTML = "No news stories for the brand at the moment.";
+  }
 }
+

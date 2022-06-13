@@ -355,6 +355,7 @@ function profleSavedContacts(contact) {
 }
 
 // client brand page
+// specific brand news stories
 function newsStories(newsStory) {
   const html = `
   <li class="brand-news-item flex-column">
@@ -377,6 +378,91 @@ function newsStories(newsStory) {
   return html;
 }
 
+// client brand page
+// brand stock information
+function brandStockQuoteChart(brand, stock, stats) {
+  const html = `
+  <div class="stock-info flex">
+      <img src="${brand.logo.url || ""}" alt="" class="stock-logo">
+      <div class="stock-info-header flex">
+          <p class="stock-company-name">${brand.name}</p>
+          <p class="stock-symbol-full">
+              <span class="stock-symbol">${stock.symbol}</span>
+              <span class="stock-index-country"><i class="fa-solid fa-flag-usa"></i></span>
+              <span class="stock-index">${stock.primaryExchange}</span>
+          </p>
+      </div>
+  </div>
+
+  <div class="stock-stats flex">
+      <div class="stock-price-block">
+          <span class="stock-price">${stock.close}</span>
+          <span class="stock-currency">${stock.currency} </span>
+          <span class="stock-change">${stock.change} </span>
+          <span class="stock-change-percent">(${stock.changePercent})</span>
+      </div>
+
+      <ul class="stock-stat-list flex">
+          <li class="stock-stat-item">
+              <p class="stock-upcoming-earning list-input">${
+                stats.nextEarningsDate
+              }</p>
+              <span>UPCOMING EARNINGS</span>
+          </li>
+
+          <li class="stock-stat-item">
+              <p class="stock-EPS list-input">${stats.ttmEPS}</p>
+              <span>EPS</span>
+          </li>
+          <li class="stock-stat-item">
+              <p class="stock-market-cap list-input">${utilities.convertBigNumber(
+                stock.marketCap
+              )}</p>
+              <span>MARKET CAP</span>
+          </li>
+          <li class="stock-stat-item">
+              <p class="stock-divident-yield list-input">${
+                parseFloat(stats.dividendYield) * 100
+              }%</p>
+              <span>DIVIDEND YIELD</span>
+          </li>
+          <li class="stock-stat-item">
+              <p class="stock-PE list-input">${stock.peRatio}</p>
+              <span>P/E</span>
+          </li>
+      </ul>
+  </div>
+
+  <div class="stock-chart">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+          <div id="tradingview_1d14d" style="height: 400px;"><div id="tradingview_b5dc7-wrapper" style="position: relative;box-sizing: content-box;width: 100%;height: 100%;margin: 0 auto !important;padding: 0 !important;font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;"><div style="width: 100%;height: 100%;background: transparent;padding: 0 !important;"><iframe id="tradingview_b5dc7" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b5dc7&amp;symbol=NASDAQ%3ANVDA&amp;interval=D&amp;hidetoptoolbar=1&amp;saveimage=0&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=light&amp;style=2&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=localhost&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=NASDAQ%3ANVDA" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe></div></div></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+          <script type="text/javascript">
+              new TradingView.widget(
+                  {
+                      "autosize": true,
+                      "symbol": "${stock.primaryExchange}:${stock.symbol}",
+                      "interval": "D",
+                      "timezone": "Etc/UTC",
+                      "theme": "light",
+                      "style": "2",
+                      "locale": "en",
+                      "toolbar_bg": "#f1f3f6",
+                      "enable_publishing": false,
+                      "hide_top_toolbar": true,
+                      "save_image": false,
+                      "container_id": "tradingview_1d14d"
+                  }
+              );
+          </script>
+      </div>
+      <!-- TradingView Widget END -->
+  </div>
+  `;
+  return html;
+}
+
 export default {
   homeTrendingList,
   pagination,
@@ -394,4 +480,5 @@ export default {
   profleSavedContacts,
   brandStoriesAndNews,
   newsStories,
+  brandStockQuoteChart,
 };
