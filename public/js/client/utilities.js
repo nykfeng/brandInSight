@@ -26,6 +26,9 @@ function customDateFormat(dateInput) {
 // Convert big number into decimates with units
 // Trillion, Billion, Million
 function convertBigNumber(bigNumber) {
+  if (typeof bigNumber === "string") {
+    bigNumber = parseInt(bigNumber);
+  }
   const decWithUnit =
     parseInt(bigNumber) >= 1000000000000
       ? (parseInt(bigNumber) / 1000000000000).toFixed(2) + " T"
@@ -39,11 +42,11 @@ function convertBigNumber(bigNumber) {
 function getStockTickerName(fullTicker) {
   let finalTicker = "";
   if (fullTicker.includes(":")) {
-    finalTicker = fullTicker.substring(fullTicker.indexOf(":")+1);
+    finalTicker = fullTicker.substring(fullTicker.indexOf(":") + 1);
   } else {
     finalTicker = fullTicker;
   }
-  
+
   return finalTicker;
 }
 
@@ -53,5 +56,5 @@ export default {
   numberFormat,
   customDateFormat,
   convertBigNumber,
-  getStockTickerName
+  getStockTickerName,
 };

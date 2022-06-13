@@ -115,7 +115,7 @@ async function brandNews(brandName) {
 }
 
 // -------  brand stock quote ---------
-async function brandStockQuote(brandSymbol) {
+async function brandStockInfo(brandSymbol) {
   const query = brandSymbol;
   const url = `/brands/brandStockPricing/?term=${query}`;
   const res = await fetch(url, {
@@ -123,8 +123,6 @@ async function brandStockQuote(brandSymbol) {
   });
 
   const stockQuote = await res.json();
-  console.log("stock quote and info");
-  console.log(stockQuote);
   return stockQuote;
 }
 
@@ -139,5 +137,5 @@ export default {
   brandNote,
   listOfBrandStoriesAndNews,
   brandNews,
-  brandStockQuote,
+  brandStockInfo,
 };

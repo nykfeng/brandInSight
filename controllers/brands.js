@@ -227,16 +227,19 @@ module.exports.oneBrandNews = async (req, res) => {
 
 // Get brand stock pricing numbers (Quote)
 module.exports.brandStockPricing = async (req, res) => {
-  const stockAPIKEY = process.env.IEX_KEY;
+  const IEX_API_KEY = process.env.IEX_KEY;
+  const ALPHA_VANTAGE_API_KEY = process.env.ALPHAVANTAGE_KEY;
   // get brand stock ticker
   const stockTicker = req.query.term;
 
   let quote;
   let stats;
+  let financials;
+  let incomeStatement;
   // get stock quote and pricing
   await axios
     .get(
-      `https://cloud.iexapis.com/stable/stock/${stockTicker}/quote?token=${stockAPIKEY}`
+      `https://cloud.iexapis.com/stable/stock/${stockTicker}/quote?token=${IEX_API_KEY}`
     )
     .then(function (response) {
       // handle success
@@ -250,21 +253,51 @@ module.exports.brandStockPricing = async (req, res) => {
   // get stock stats
   await axios
     .get(
-      `https://cloud.iexapis.com/stable/stock/${stockTicker}/stats?token=${stockAPIKEY}`
+      `https://cloud.iexapis.com/stable/stock/${stockTicker}/stats?token=${IEX_API_KEY}`
     )
     .then(function (response) {
       // handle success
       stats = response.data;
-      console.log("stock stats backend is");
-      console.log(stats);
     })
     .catch(function (error) {
       // handle error
       console.log(error);
-    });  
+    });
+
+  // get stock balance sheet
+  await axios
+    .get(
+      `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${stockTicker}&apikey=${ALPHA_VANTAGE_API_KEY}`
+    )
+    .then(function (response) {
+      // handle success
+      financials = response.data;
+      console.log("stock financial backend is");
+      console.log(financials);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+
+  // get stock income statement
+  await axios
+    .get(
+      `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${stockTicker}&apikey=${ALPHA_VANTAGE_API_KEY}`
+    )
+    .then(function (response) {
+      // handle success
+      incomeStatement = response.data;
+      console.log("stock incomeStatement backend is");
+      console.log(incomeStatement);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
 
   // return stock pricing info as object to return
-  res.send({quote, stats});
+  res.send({ quote, stats, financials, incomeStatement });
 };
 
 // Get brand stock financials numbers

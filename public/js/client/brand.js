@@ -214,28 +214,30 @@ async function showBrandStock() {
     return;
   }
   // there is stock
-  
+
   // Get stock ticker from its full name, like NVDA from NASDAQ:NVDA
-  const stockTicker = utilities.getStockTickerName(brand.typeOfCompany.stockTicker);
+  const stockTicker = utilities.getStockTickerName(
+    brand.typeOfCompany.stockTicker
+  );
 
   // so get info from API
-  // get stock basic numbers
-  const stockQuote = await getData.brandStockQuote(stockTicker);
+  // get stock basic numbers, stats and financials (All in one go)
+  const stockInfo = await getData.brandStockInfo(stockTicker);
 
-  console.log('stock quote from front end');
-  console.log(stockQuote);
-
-
-  // get stock stats
-  // const stockStats = await getData.brandStockStats(stockTicker);
-
-  
-
-  // get stock financial info
+  console.log("stock quote from front end");
+  console.log(stockInfo);
 
   // use generate HTML to render
-
-  // brandStockEl
+  brandStockEl.innerHTML = generateHTML.brandStockQuoteChart(
+    brand,
+    stockInfo.quote,
+    stockInfo.stats
+  );
+  brandFinancialsEl.innerHTML = generateHTML.stockFinancials(
+    stockInfo.stats,
+    stockInfo.financials.annualReports[0],
+    stockInfo.incomeStatement.annualReports[0]
+  );
 }
 
 // Check if the brand has a stock symbol
@@ -262,4 +264,3 @@ async function showBrandNews() {
     brandNewsListEl.innerHTML = "No news stories for the brand at the moment.";
   }
 }
-
