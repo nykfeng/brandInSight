@@ -114,6 +114,18 @@ async function brandNews(brandName) {
   return brandNews;
 }
 
+// -------  stock signal news ---------
+async function stockSignal(stockTicker) {
+  const query = stockTicker;
+  const url = `/brands/oneStockSignal?ticker=${query}`;
+  const res = await fetch(url, {
+    method: "GET",
+  });
+
+  const stockSignalNews = await res.json();
+  return stockSignalNews;
+}
+
 // -------  brand stock quote ---------
 async function brandStockInfo(brandSymbol) {
   const query = brandSymbol;
@@ -137,5 +149,6 @@ export default {
   brandNote,
   listOfBrandStoriesAndNews,
   brandNews,
+  stockSignal,
   brandStockInfo,
 };

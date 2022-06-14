@@ -45,8 +45,8 @@ router.get("/viewedList/:userId", isLoggedIn, catchAsync(brands.listOfViewedBran
 router.get('/logoURL', isLoggedIn, catchAsync(brands.listOfBrandLogoURL));
 router.get('/trendingBrandStoriesAndNews', isLoggedIn, catchAsync(brands.brandStoriesAndNews));
 router.get('/oneBrandNews', isLoggedIn, catchAsync(brands.oneBrandNews));
+router.get('/oneStockSignal', isLoggedIn, catchAsync(brands.oneStockSignal));
 router.get('/brandStockPricing', isLoggedIn, catchAsync(brands.brandStockPricing));
-router.get('/brandStockFinancials', isLoggedIn, catchAsync(brands.brandStockFinancials));
 
 
 router

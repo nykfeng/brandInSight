@@ -13,6 +13,9 @@ const brandConctactsEl = document.querySelector("#contacts");
 // Brand news stories element
 const brandNewsListEl = document.querySelector(".brand-news-list");
 
+// Brand stock signal news list element
+const stockSignalListEl = document.querySelector(".brand-stock-signal-list");
+
 // Brand stock and financial elements
 const brandStockEl = document.querySelector(
   ".brand-financial-stock-information"
@@ -213,7 +216,7 @@ async function showBrandStock() {
     // show no financial information since not public
     return;
   }
-  // there is stock
+  // when there is stock, do the following
 
   // Get stock ticker from its full name, like NVDA from NASDAQ:NVDA
   const stockTicker = utilities.getStockTickerName(
@@ -223,11 +226,23 @@ async function showBrandStock() {
   // so get info from API
   // get stock basic numbers, stats and financials (All in one go)
   const stockInfo = await getData.brandStockInfo(stockTicker);
-
-  console.log("stock quote from front end");
-  console.log(stockInfo);
+  // get stock signal news
+  const stockSignal = await getData.stockSignal(stockTicker);
 
   // use generate HTML to render
+  // stock signal news
+  if (stockSignal) {
+    stockSignal.forEach((newsPiece) => {
+      stockSignalListEl.insertAdjacentHTML(
+        "beforeend",
+        generateHTML.newsStories(newsPiece)
+      );
+    });
+  } else {
+    stockSignalListEl.innerHTML = "No stock signal at the moment.";
+  }
+
+  // stock info
   brandStockEl.innerHTML = generateHTML.brandStockQuoteChart(
     brand,
     stockInfo.quote,
@@ -264,3 +279,5 @@ async function showBrandNews() {
     brandNewsListEl.innerHTML = "No news stories for the brand at the moment.";
   }
 }
+
+

@@ -415,7 +415,7 @@
 
 .stock-statistics {
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .stock-statistics-item {
@@ -423,6 +423,20 @@
   justify-content: space-between;
 
   gap: 3rem;
+}
+
+.brand-stock-signal {
+  flex-direction: column;
+  width: 25%;
+  gap: 2rem;
+}
+
+.brand-stock-signal-list {
+  flex-direction: column;
+}
+
+.brand-stock-signal-list .brand-news-article {
+  font-size: 1.2rem;
 }
 
 /* brand contacts section */

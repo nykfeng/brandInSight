@@ -225,6 +225,31 @@ module.exports.oneBrandNews = async (req, res) => {
   res.send(news);
 };
 
+// Get specific brand stock signal .... for one brand only
+module.exports.oneStockSignal = async (req, res) => {
+  // get brand name
+  const stockTicker = req.query.ticker;
+
+  const newsAPI = process.env.NEWSAPI_KEY;
+  let news = [];
+
+  // axios for news API
+  await axios
+    .get(
+      `https://newsapi.org/v2/everything?language=en&q=${stockTicker}&apiKey=${newsAPI}`
+    )
+    .then(function (response) {
+      // handle success
+      // Showing 6 pieces of news
+      news = response.data.articles.slice(0, 6);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  res.send(news);
+};
+
 // Get brand stock pricing numbers (Quote)
 module.exports.brandStockPricing = async (req, res) => {
   const IEX_API_KEY = process.env.IEX_KEY;
@@ -272,8 +297,6 @@ module.exports.brandStockPricing = async (req, res) => {
     .then(function (response) {
       // handle success
       financials = response.data;
-      console.log("stock financial backend is");
-      console.log(financials);
     })
     .catch(function (error) {
       // handle error
@@ -288,8 +311,6 @@ module.exports.brandStockPricing = async (req, res) => {
     .then(function (response) {
       // handle success
       incomeStatement = response.data;
-      console.log("stock incomeStatement backend is");
-      console.log(incomeStatement);
     })
     .catch(function (error) {
       // handle error
@@ -300,32 +321,7 @@ module.exports.brandStockPricing = async (req, res) => {
   res.send({ quote, stats, financials, incomeStatement });
 };
 
-// Get brand stock financials numbers
-module.exports.brandStockFinancials = async (req, res) => {
-  const stockAPIKEY = process.env.IEX_KEY;
-  // get brand stock ticker
-  const stockTicker = req.query.stockTicker;
 
-  // axios for stock information API
-  let balanceSheet;
-  // get stock quote and pricing
-  await axios
-    .get(
-      `https://cloud.iexapis.com/stable/stock/${stockTicker}/balance-sheet?token=${stockAPIKEY}`
-    )
-    .then(function (response) {
-      // handle success
-      balanceSheet = response.data;
-      console.log("balance sheet backend is");
-      console.log(balanceSheet);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
-  // return stock pricing info as object to return
-  res.send(balanceSheet);
-};
 
 // -=-=-=-=-=-==-=-=- CRUD actions -=-=-=-=-=-=-=-=-=-=-==-
 
