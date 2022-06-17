@@ -61,6 +61,22 @@
   .brand-news-activity {
     width: 100%;
   }
+
+  /* brand financial container */
+  .brand-financial-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .brand-financial-stock {
+    grid-column: 1 / 3;
+  }
+
+  .brand-financial-stock, .brand-stock-signal  {
+    width: 100%;
+  }
+
   /*  header tabs */
   .brand-header-tab-container {
     width: 80%;
@@ -76,10 +92,6 @@
   }
 
   /* brand financial  */
-  .brand-financial-stock {
-    width: 70%;
-  }
-
   .stock-statistics-item {
     gap: 1.5rem;
   }
@@ -240,6 +252,12 @@
 
   .brand-hightlights {
     border: none;
+  }
+
+  /* brand financial */
+  .brand-financial-content {
+    display: flex;
+    flex-direction: column;
   }
 }
 
