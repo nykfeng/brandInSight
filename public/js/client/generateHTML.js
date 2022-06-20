@@ -381,6 +381,10 @@ function newsStories(newsStory) {
 // client brand page
 // brand stock information
 function brandStockQuoteChart(brand, stock, stats) {
+  // Fix issue caused by using "New York Stock Exchange" as the exchange name
+  const exchange = stock.primaryExchange.toLowerCase().includes("new york")
+    ? "NYSE"
+    : stock.primaryExchange;
   const html = `
   <div class="stock-info flex">
       <img src="${brand.logo.url || ""}" alt="" class="stock-logo">
@@ -436,13 +440,17 @@ function brandStockQuoteChart(brand, stock, stats) {
   <div class="stock-chart">
       <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container">
-          <div id="tradingview_1d14d" style="height: 400px;"><div id="tradingview_b5dc7-wrapper" style="position: relative;box-sizing: content-box;width: 100%;height: 100%;margin: 0 auto !important;padding: 0 !important;font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;"><div style="width: 100%;height: 100%;background: transparent;padding: 0 !important;"><iframe id="tradingview_b5dc7" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b5dc7&amp;symbol=${stock.primaryExchange}%3A${stock.symbol}&amp;interval=D&amp;hidetoptoolbar=1&amp;saveimage=0&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=light&amp;style=2&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=localhost&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=${stock.primaryExchange}%3A${stock.symbol}" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe></div></div></div>
+          <div id="tradingview_1d14d" style="height: 400px;"><div id="tradingview_b5dc7-wrapper" style="position: relative;box-sizing: content-box;width: 100%;height: 100%;margin: 0 auto !important;padding: 0 !important;font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;"><div style="width: 100%;height: 100%;background: transparent;padding: 0 !important;"><iframe id="tradingview_b5dc7" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b5dc7&amp;symbol=${exchange}%3A${
+    stock.symbol
+  }&amp;interval=D&amp;hidetoptoolbar=1&amp;saveimage=0&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=light&amp;style=2&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=localhost&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=${exchange}%3A${
+    stock.symbol
+  }" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe></div></div></div>
           <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
           <script type="text/javascript">
               new TradingView.widget(
                   {
                       "autosize": true,
-                      "symbol": "${stock.primaryExchange}:${stock.symbol}",
+                      "symbol": "${exchange}:${stock.symbol}",
                       "interval": "D",
                       "timezone": "Etc/UTC",
                       "theme": "light",
@@ -467,35 +475,51 @@ function stockFinancials(stats, financials, incomeStatement) {
   const html = `
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Market Cap</span>
-      <span class="brand-highlights-number market-cap">${utilities.convertBigNumber(stats.marketcap)}</span>
+      <span class="brand-highlights-number market-cap">${utilities.convertBigNumber(
+        stats.marketcap
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Outstanding Shares</span>
-      <span class="brand-highlights-number outstanding-shares">${utilities.convertBigNumber(stats.sharesOutstanding)}</span>
+      <span class="brand-highlights-number outstanding-shares">${utilities.convertBigNumber(
+        stats.sharesOutstanding
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">EBITDA</span>
-      <span class="brand-highlights-number market-cap ebitda">${utilities.convertBigNumber(incomeStatement.ebitda)}</span>
+      <span class="brand-highlights-number market-cap ebitda">${utilities.convertBigNumber(
+        incomeStatement.ebitda
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Net Income</span>
-      <span class="brand-highlights-number market-cap net-income">${utilities.convertBigNumber(incomeStatement.netIncome)}</span>
+      <span class="brand-highlights-number market-cap net-income">${utilities.convertBigNumber(
+        incomeStatement.netIncome
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Revenue</span>
-      <span class="brand-highlights-number market-cap revenue">${utilities.convertBigNumber(incomeStatement.totalRevenue)}</span>
+      <span class="brand-highlights-number market-cap revenue">${utilities.convertBigNumber(
+        incomeStatement.totalRevenue
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Gross Profit</span>
-      <span class="brand-highlights-number market-cap gross-profit">${utilities.convertBigNumber(incomeStatement.grossProfit)}</span>
+      <span class="brand-highlights-number market-cap gross-profit">${utilities.convertBigNumber(
+        incomeStatement.grossProfit
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Total Cash</span>
-      <span class="brand-highlights-number market-cap total-cash">${utilities.convertBigNumber(financials.cashAndCashEquivalentsAtCarryingValue)}</span>
+      <span class="brand-highlights-number market-cap total-cash">${utilities.convertBigNumber(
+        financials.cashAndCashEquivalentsAtCarryingValue
+      )}</span>
   </li>
   <li class="brand-highlights-item stock-statistics-item flex">
       <span class="brand-highlights-option">Total Debt</span>
-      <span class="brand-highlights-number market-cap">${utilities.convertBigNumber(financials.longTermDebt)}</span>
+      <span class="brand-highlights-number market-cap">${utilities.convertBigNumber(
+        financials.longTermDebt
+      )}</span>
   </li>
   `;
   return html;
@@ -519,5 +543,5 @@ export default {
   brandStoriesAndNews,
   newsStories,
   brandStockQuoteChart,
-  stockFinancials
+  stockFinancials,
 };
