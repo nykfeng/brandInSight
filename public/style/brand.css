@@ -345,6 +345,17 @@
   gap: 1.5rem;
 }
 
+.brand-financial-stock-information:empty {
+  border: none;
+}
+
+.brand-financial-stock-information:empty::after {
+  content: "No data yet!";
+  color: gray;
+  font-size: 1.6rem;
+  /* font-style: italic; */
+}
+
 .stock-info {
   gap: 1.5rem;
 }
@@ -418,6 +429,12 @@
   gap: 1.5rem;
 }
 
+.stock-statistics:empty::after {
+  content: "No data yet!";
+  color: gray;
+  font-size: 1.6rem;
+}
+
 .stock-statistics-item {
   font-size: 1.5rem;
   justify-content: space-between;
@@ -445,6 +462,13 @@
 .brand-contacts {
   background-color: #fff;
   /* min-height: 48rem;  */
+}
+
+/* when there is no data yet */
+.contact-list-no-data::after {
+  content: "No data yet!";
+  color: gray;
+  font-size: 1.6rem;
 }
 
 .brand-contacts-block {
@@ -532,6 +556,12 @@
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
+}
+
+.leadership-list-no-data::after {
+  content: "No data yet!";
+  color: gray;
+  font-size: 1.6rem;
 }
 
 .leadership-list-item {

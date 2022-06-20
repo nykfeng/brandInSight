@@ -220,7 +220,7 @@ async function showBrandStock() {
 
   // Get stock ticker from its full name, like NVDA from NASDAQ:NVDA
   const stockTicker = utilities.getStockTickerName(
-    brand.typeOfCompany.stockTicker
+    brand.typeOfCompany.stockTicker.replace(" ","")
   );
 
   // so get info from API

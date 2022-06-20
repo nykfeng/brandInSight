@@ -196,86 +196,14 @@
                         <h1 class="brand-section-title">
                             <i class="fa-solid fa-chart-line"></i> Brand Financials
                         </h1>
-                        <div class="brand-financial-stock-information flex">
-                            <!-- <div class="stock-info flex">
-                                <img src="<%=brand.logo.url %>" alt="" class="stock-logo">
-                                <div class="stock-info-header flex">
-                                    <p class="stock-company-name">Nvidia Corp.</p>
-                                    <p class="stock-symbol-full">
-                                        <span class="stock-symbol">NVDA</span>
-                                        <span class="stock-index-country"><i class="fa-solid fa-flag-usa"></i></span>
-                                        <span class="stock-index">NASDAQ</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="stock-stats flex">
-                                <div class="stock-price-block">
-                                    <span class="stock-price">267.34</span>
-                                    <span class="stock-currency">USD </span>
-                                    <span class="stock-change">+2.81 </span>
-                                    <span class="stock-change-percent">(1.06%)</span>
-                                </div>
-
-                                <ul class="stock-stat-list flex">
-                                    <li class="stock-stat-item">
-                                        <p class="stock-upcoming-earning list-input">May 30</p>
-                                        <span>UPCOMING EARNINGS</span>
-                                    </li>
-
-                                    <li class="stock-stat-item">
-                                        <p class="stock-EPS list-input">6.08</p>
-                                        <span>EPS</span>
-                                    </li>
-                                    <li class="stock-stat-item">
-                                        <p class="stock-market-cap list-input">1.231T</p>
-                                        <span>MARKET CAP</span>
-                                    </li>
-                                    <li class="stock-stat-item">
-                                        <p class="stock-divident-yield list-input">0.28%</p>
-                                        <span>DIVIDEND YIELD</span>
-                                    </li>
-                                    <li class="stock-stat-item">
-                                        <p class="stock-PE list-input">25.02</p>
-                                        <span>P/E</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="stock-chart">
-                                <div class="tradingview-widget-container">
-                                    <div id="tradingview_1d14d" style="height: 400px;"></div>
-                                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                                    <script type="text/javascript">
-                                        new TradingView.widget(
-                                            {
-                                                "autosize": true,
-                                                "symbol": "NASDAQ:NVDA",
-                                                "interval": "D",
-                                                "timezone": "Etc/UTC",
-                                                "theme": "light",
-                                                "style": "2",
-                                                "locale": "en",
-                                                "toolbar_bg": "#f1f3f6",
-                                                "enable_publishing": false,
-                                                "hide_top_toolbar": true,
-                                                "save_image": false,
-                                                "container_id": "tradingview_1d14d"
-                                            }
-                                        );
-                                    </script>
-                                </div>
-                            </div> -->
-                        </div>
+                        <div class="brand-financial-stock-information flex"></div>
                     </div>
 
                     <div class="brand-financial-statistics flex">
                         <h1 class="brand-section-title">
                             <i class="fa-solid fa-money-check-dollar"></i> Financial Statistics
                         </h1>
-                        <ul class="stock-statistics flex">
-
-                        </ul>
+                        <ul class="stock-statistics flex"></ul>
                     </div>
 
                     <div class="brand-stock-signal flex" id="signals">
@@ -351,9 +279,10 @@
                                             </div>
 
                                         </li>
-                                        <% } %>
-                                            <% } %>
-
+                                    <% } %>
+                            <% } else {%>
+                                <li class="contact-list-no-data"></li>
+                            <% } %> 
                         </ul>
                     </div>
 
@@ -391,8 +320,10 @@
                                             </p>
                                         </div>
                                     </li>
-                                    <% } %>
-                                        <% } %>
+                            <% } %>
+                        <% } else {%>
+                            <li class="leadership-list-no-data"></li>
+                        <% } %> 
 
                     </ul>
 
@@ -401,21 +332,18 @@
                         <div class="view-more-block flex" data-module="leaderships">
                             <button class="view-more-btn">View More</button>
                         </div>
-                        <% } %>
-
+                    <% } %>
                 </div>
-
-
             </section>
         </article>
 
-        <article class="brand-ad-spend">
+        <!-- <article class="brand-ad-spend">
 
         </article>
 
         <article class="brand-actions">
 
-        </article>
+        </article> -->
 
     </main>
     <script>
@@ -423,15 +351,7 @@
         // < % - will not work, space between % and - 
         let brand = JSON.parse(`<%-JSON.stringify(brand)%>`);
 
-
-
-        console.log('brand is in client view brand page');
-        console.log(brand);
-
-
-        // let user = JSON.parse(`<%-JSON.stringify(currentUser)%>`);
-
-        // console.log(`The current user at client brand page ${brand.name} is `);
-        // console.log(user);
+        // console.log('brand is in client view brand page');
+        // console.log(brand);
     </script>
     <script src="/js/client/brand.js" type="module" defer></script>
