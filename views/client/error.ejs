@@ -20,7 +20,11 @@
             <h2>Page does not exist!</h2>
             <h2>Check the following error message for more details</h2>
             <p class="error-page-message">
+                <% if (process.env.NODE_ENV !== "production") { %> 
                 <%= error %>
+                <% } else { %> 
+                <%= error.name %>     
+                <% } %> 
             </p>
         </div>
     </section>

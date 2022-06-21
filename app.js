@@ -55,11 +55,13 @@ app.set("views", path.join(__dirname, "views"));
 
 // -----  session for now, change during production --------
 const sessionConfig = {
+  name: "session", // use sth so it is not the default connect.sid
   secret: "thisneedstobemorecomplicated",
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure: true, // with this, only https is allowed
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //a week's time in millieseconds
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
@@ -106,7 +108,6 @@ app.use("/history", historyRoutes);
 
 app.get("/", ifLoggedIn, landingPage);
 
-// app.get("/free-user", homePage);
 
 // ---------------------------
 
