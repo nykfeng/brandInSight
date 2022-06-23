@@ -21,12 +21,6 @@ const open = function (module, currentBrand) {
 };
 
 const closeModalListener = function () {
-  // const closeModalBtn = document.querySelector('.modal-cancel');
-  // closeModalBtn.addEventListener('click', function() {
-  //     const modalEl = document.querySelector('.modal-background');
-  //     modalEl.remove();
-  // })
-
   bodyEl.addEventListener("click", function (e) {
     if (
       e.target.classList.contains("modal-background") ||

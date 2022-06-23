@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const path = require("path");
-const Brand = require("./models/Brand");
-const Contact = require("./models/Contact");
 const User = require("./models/User");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
@@ -17,7 +15,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
 // our own middleware to verify logged in
-const { isLoggedIn } = require("./middleware/isLoggedIn");
 const { ifLoggedIn } = require("./middleware/ifLoggedIn")
 
 // routes
@@ -109,33 +106,11 @@ app.use("/history", historyRoutes);
 app.get("/", ifLoggedIn, landingPage);
 
 
-// ---------------------------
-
-async function homePage(req, res) {
-  const brands = await Brand.find({});
-
-  res.render("client/home", { brands });
-}
-
 async function landingPage(req, res) {
   res.render("client/landing");
 }
 
-async function createBrand(req, res) {
-  // const brand = new Brand({
-  //   name: "Nvidia Corp",
-  //   website: "www.nvidia.com",
-  //   description:
-  //     "NVIDIA is a computing platform company, innovating at the intersection of graphics, HPC, and AI.",
-  //   employee: {
-  //     min: 10000,
-  //     max: 15000,
-  //   },
-  //   headquarters: "Santa Clara",
-  // });
-  // await brand.save();
-  // res.send(brand);
-}
+
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found", 404));

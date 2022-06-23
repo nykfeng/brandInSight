@@ -21,18 +21,6 @@ const upload = multer({ storage });
 
 // -----------------------------------------------
 
-// Express offers this way of grouping routes
-// router
-//   .route("/")
-  // .get(isLoggedIn, catchAsync(brands.index))
-  // .post(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(internal.add));
-  // .post(upload.single("logo"), (req, res) => {
-  //   console.log(req.body);
-  //   console.log(req.file);
-  //   res.send("It's working~!");
-
-  // });
-
 // the /new route has to be before /:id, otherwise express takes /new as id
 router.get("/new", isLoggedIn, catchAsync(brands.renderAddForm));
 
@@ -48,13 +36,11 @@ router.get('/oneBrandNews', isLoggedIn, catchAsync(brands.oneBrandNews));
 router.get('/oneStockSignal', isLoggedIn, catchAsync(brands.oneStockSignal));
 router.get('/brandStockPricing', isLoggedIn, catchAsync(brands.brandStockPricing));
 
-
+// Express offers this way of grouping routes
 router
   .route("/:id")
   .get(isLoggedIn, catchAsync(brands.getById))
   .put(isLoggedIn, upload.single("logo"), validateBrand, catchAsync(brands.update))
   .delete(isLoggedIn, catchAsync(brands.deleteBrand));
-
-// router.get("/:id/edit", isLoggedIn, catchAsync(brands.renderEditForm));
 
 module.exports = router;

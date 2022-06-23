@@ -397,17 +397,6 @@ module.exports.getById = async (req, res) => {
   res.render("client/brand", { brand });
 };
 
-//----------------------- No longer needed, need review -------------------------------
-
-// module.exports.renderEditForm = async (req, res) => {
-//   const { id } = req.params;
-//   const brand = await Brand.findById(id);
-//   if (!brand) {
-//     req.flash("error", "Cannot find that brand!");
-//     return res.redirect("/brands");
-//   }
-//   res.render("internal/brands/edit", { brand });
-// };
 
 module.exports.update = async (req, res) => {
   const { id } = req.params;
