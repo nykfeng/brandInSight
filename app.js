@@ -14,6 +14,11 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
+// app security
+const mongoSanitize = require('express-mongo-sanitize');
+
+
+
 // our own middleware to verify logged in
 const { ifLoggedIn } = require("./middleware/ifLoggedIn")
 
@@ -44,6 +49,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(mongoSanitize());
 
 app.engine("ejs", ejsMate);
 
