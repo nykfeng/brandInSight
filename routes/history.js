@@ -7,8 +7,6 @@ const catchAsync = require("../utils/catchAsync");
 // our own middleware to verify logged in
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
-// validation with Joi schema
-const { validateHistory } = require("../middleware/validateData");
 
 // contacts controller
 const histories = require("../controllers/histories");

@@ -9,11 +9,6 @@ const catchAsync = require("../utils/catchAsync");
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
 
-const passport = require("passport");
-
-// brand controller
-const brands = require("../controllers/brands");
-
 // client controller
 const client = require("../controllers/client");
 

@@ -17,8 +17,6 @@ const LocalStrategy = require("passport-local");
 // app security
 const mongoSanitize = require('express-mongo-sanitize');
 
-
-
 // our own middleware to verify logged in
 const { ifLoggedIn } = require("./middleware/ifLoggedIn")
 
@@ -32,6 +30,7 @@ const internalRoutes = require("./routes/internal");
 const historyRoutes = require("./routes/history");
 
 const PORT = process.env.port || 3080;
+const secret = process.env.SECRET;
 
 mongoose.connect("mongodb://localhost:27017/brandInSight", {
   useNewUrlParser: true,
@@ -59,7 +58,7 @@ app.set("views", path.join(__dirname, "views"));
 // -----  session for now, change during production --------
 const sessionConfig = {
   name: "session", // use sth so it is not the default connect.sid
-  secret: "thisneedstobemorecomplicated",
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -108,7 +107,6 @@ app.use("/internal", internalRoutes);
 app.use("/history", historyRoutes);
 
 // ;------------------------
-
 app.get("/", ifLoggedIn, landingPage);
 
 

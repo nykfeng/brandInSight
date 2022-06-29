@@ -26,31 +26,31 @@ const Joi = baseJoi.extend(extension);
 
 const brandSchema = Joi.object({
   brand: Joi.object({
-    name: Joi.string().required(),
+    name: Joi.string().required().escapeHTML(),
     employee: Joi.number().min(0).allow("").optional(),
-    headquarters: Joi.string().allow(""),
-    website: Joi.string().allow(""),
-    description: Joi.string().allow(""),
+    headquarters: Joi.string().allow("").escapeHTML(),
+    website: Joi.string().allow("").escapeHTML(),
+    description: Joi.string().allow("").escapeHTML(),
     typeOfCompany: {
       isPublicCompany: Joi.boolean().allow(""),
-      stockTicker: Joi.string().allow(""),
+      stockTicker: Joi.string().allow("").escapeHTML(),
     },
     socialMedia: {
       facebook: {
-        profileHandle: Joi.string().allow(""),
+        profileHandle: Joi.string().allow("").escapeHTML(),
         likes: Joi.number().min(0).allow("").optional(),
       },
       twitter: {
-        profileHandle: Joi.string().allow(""),
+        profileHandle: Joi.string().allow("").escapeHTML(),
         followers: Joi.number().min(0).allow("").optional(),
       },
       linkedin: {
-        profileHandle: Joi.string().allow(""),
+        profileHandle: Joi.string().allow("").escapeHTML(),
       },
     },
-    industry: [Joi.string().allow("")],
+    industry: [Joi.string().allow("").escapeHTML()],
     foundedDate: Joi.number().min(1900).allow("").optional(),
-    founders: [Joi.string().allow("")],
+    founders: [Joi.string().allow("").escapeHTML()],
     highlights: {
       acquisition: Joi.number().min(0).allow("").optional(),
       investment: Joi.number().min(0).allow("").optional(),
@@ -58,8 +58,8 @@ const brandSchema = Joi.object({
       contacts: Joi.number().min(0).allow("").optional(),
     },
     logo: {
-      url: Joi.string().allow(""),
-      filename: Joi.string().allow(""),
+      url: Joi.string().allow("").escapeHTML(),
+      filename: Joi.string().allow("").escapeHTML(),
     },
   }).required(),
 });
@@ -77,30 +77,30 @@ const brandHighlightsSchema = Joi.object({
 
 const contactSchema = Joi.object({
   contact: Joi.object({
-    name: Joi.string().required(),
-    position: Joi.string().required(),
-    rank: Joi.string(),
-    phoneNumber: Joi.string().allow(""),
-    email: Joi.string().email().allow(""),
-    location: Joi.string().allow(""),
-    linkedin: Joi.string().allow(""),
+    name: Joi.string().required().escapeHTML(),
+    position: Joi.string().required().escapeHTML(),
+    rank: Joi.string().escapeHTML(),
+    phoneNumber: Joi.string().allow("").escapeHTML(),
+    email: Joi.string().email().allow("").escapeHTML(),
+    location: Joi.string().allow("").escapeHTML(),
+    linkedin: Joi.string().allow("").escapeHTML(),
   }).required(),
 });
 
 const leadershipSchema = Joi.object({
   leadership: Joi.object({
-    name: Joi.string().required(),
-    position: Joi.string().required(),
+    name: Joi.string().required().escapeHTML(),
+    position: Joi.string().required().escapeHTML(),
     profilePicture: {
-      url: Joi.string().allow(""),
-      filename: Joi.string().allow(""),
+      url: Joi.string().allow("").escapeHTML(),
+      filename: Joi.string().allow("").escapeHTML(),
     },
   }),
 });
 
 const historySchema = Joi.object({
   history: Joi.object({
-    action: Joi.string().required(),
+    action: Joi.string().required().escapeHTML(),
     date: Joi.date().required(),
   }),
 });
