@@ -6,15 +6,10 @@ const ExpressError = require("../utils/ExpressError");
 
 // Custom error message from validating by Joi
 module.exports.validateBrand = (req, res, next) => {
-  // console.log("req.body.brand");
-  // console.log(req.body);
-  // console.log("----------------------------");
-  // console.log(req.file);
-
   const { error } = brandSchema.validate(req.body);
 
   if (error) {
-    console.log('brandSchema error by JOI ---')
+    // console.log('brandSchema error by JOI ---')
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
@@ -37,11 +32,8 @@ module.exports.validateBrandHighlights = (req, res, next)=> {
 module.exports.validateContact = (req, res, next) => {
   const { error } = contactSchema.validate(req.body);
 
-  console.log('Error in Joi Contact, req body is ---------------------');
-  console.log(req.body);
 
   if (error) {
-    console.log('contactSchema error by JOI ---')
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
@@ -53,12 +45,9 @@ module.exports.validateContact = (req, res, next) => {
 module.exports.validateLeadership = (req, res, next) => {
   const { error } = leadershipSchema.validate(req.body);
 
-  console.log('Error in Joi Leadership, req body is ---------------------');
-  console.log(error);
-  console.log(req.body);
 
   if (error) {
-    console.log('leadershipSchema error by JOI ---')
+    // console.log('leadershipSchema error by JOI ---')
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
@@ -71,12 +60,9 @@ module.exports.validateLeadership = (req, res, next) => {
 module.exports.validateHistory = (req, res, next) => {
   const { error } = historySchema.validate(req.body);
 
-  console.log('Error in Joi History, req body is ---------------------');
-  console.log(error);
-  console.log(req.body);
 
   if (error) {
-    console.log('historySchema error by JOI ---')
+    // console.log('historySchema error by JOI ---')
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
