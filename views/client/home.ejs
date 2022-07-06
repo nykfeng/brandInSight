@@ -6,13 +6,13 @@
         <aside class="home-left-panel">
 
             <div class="welcome-area">
-                <% if (currentUser.profilePicture) { %>
+                <% if (currentUser.profilePicture.url) { %>
                     <a href="/user-profile">
                         <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
                     </a>
                     <% } else { %>
                         <a href="/user-profile">
-                            <img src="/public/images/baseImgs/blank-profile-picture.png" alt=""
+                            <img src="./images/baseImgs/blank-profile-picture.png" alt=""
                                 class="user-profile-avatar">
                         </a>
                         <% } %>

@@ -9,9 +9,11 @@
             enctype="multipart/form-data">
             <div class="user-setting__profile-pic-block flex">
                 <div class="user-setting__profile-pic">
-                    <% if (user.profilePicture) { %>
+                    <% if (user.profilePicture.url) { %>
                         <img src="<%=user.profilePicture.url %>" alt="" class="user-profile-img">
-                        <% } %>
+                    <% } else { %>
+                        <img src="/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-img">
+                    <% } %>    
                 </div>
 
                 <div class="user-setting__upload flex-column">

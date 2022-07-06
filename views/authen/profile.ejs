@@ -3,13 +3,13 @@
 <main class="user-profile-main">
 
     <div class="welcome-area">
-        <% if (currentUser.profilePicture) { %> 
+        <% if (currentUser.profilePicture.url) { %> 
             
                 <img src="<%= currentUser.profilePicture.url %>" alt="" class="user-profile-avatar">
             
         <% } else { %>
             
-                <img src="/public/images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
+                <img src="./images/baseImgs/blank-profile-picture.png" alt="" class="user-profile-avatar">
             
         <% } %>
         <div class="welcome-text-area">

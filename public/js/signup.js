@@ -118,6 +118,7 @@ async function submitRegistration() {
   if (isNameValid && isEmailValid && isPassword1Valid && isPassword2Valid) {
     await register(storeFormData());
     renderFormAfterRegistration();
+    window.location.replace("/");
   }
 }
 
