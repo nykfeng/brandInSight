@@ -13,12 +13,13 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const MongoStore = require("connect-mongo");
 
 // app security
-const mongoSanitize = require('express-mongo-sanitize');
+const mongoSanitize = require("express-mongo-sanitize");
 
 // our own middleware to verify logged in
-const { ifLoggedIn } = require("./middleware/ifLoggedIn")
+const { ifLoggedIn } = require("./middleware/ifLoggedIn");
 
 // routes
 const brandRoutes = require("./routes/brands");
@@ -33,7 +34,6 @@ const PORT = process.env.port || 3080;
 const secret = process.env.SECRET;
 // keep the local connection here in case the server won't connect, we can still test
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/brandInSight";
-
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
@@ -58,8 +58,20 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// -----  session for now, change during production --------
+// setting up the option config for connect-mongo
+// Storing session data on mongo instead of in memory
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  secret,
+  touchAfter: 24 * 3600, // in total number of seconds
+});
+
+store.on("error", function (e) {
+  console.log("Session store error", e);
+});
+
 const sessionConfig = {
+  store,
   name: "session", // use sth so it is not the default connect.sid
   secret,
   resave: false,
@@ -112,12 +124,9 @@ app.use("/history", historyRoutes);
 // ;------------------------
 app.get("/", ifLoggedIn, landingPage);
 
-
 async function landingPage(req, res) {
   res.render("client/landing");
 }
-
-
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found", 404));
