@@ -1,8 +1,8 @@
 // actual mongoose models
-const Brand = require("../models/Brand.js");
-const User = require("../models/User.js");
-const Contact = require("../models/Contact.js");
-const History = require("../models/History.js");
+const Brand = require("../models/Brand");
+const User = require("../models/User");
+const Contact = require("../models/Contact");
+const History = require("../models/History");
 
 const axios = require("axios").default;
 

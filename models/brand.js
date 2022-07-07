@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Contact = require("./Contact");
+
 const Schema = mongoose.Schema; // Doing this to shorten the variable name down the line,
 //since mongoose.Schema will be used a lot
 
