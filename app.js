@@ -30,7 +30,7 @@ const clientRoutes = require("./routes/client");
 const internalRoutes = require("./routes/internal");
 const historyRoutes = require("./routes/history");
 
-const PORT = process.env.port || 3080;
+const PORT = process.env.PORT || 3080;
 const secret = process.env.SECRET;
 // keep the local connection here in case the server won't connect, we can still test
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/brandInSight";
