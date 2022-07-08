@@ -1,3 +1,4 @@
+// main page
 const trackEl = document.querySelector(".carousel__track");
 const slideEls = Array.from(trackEl.children);
 

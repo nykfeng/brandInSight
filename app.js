@@ -100,10 +100,8 @@ passport.deserializeUser(User.deserializeUser());
 // These are also coming from the plugin
 
 app.use(flash());
-
 // ------ middleware for handling flash ----------
 // need to define before routes
-
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
@@ -111,8 +109,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// ------------ Routes --------------
+// ---------- main paga, if user logged in then home page --------------
+// the middle ifLoggedIn will redirect to home if user is logged in
+// otherwise, next() will trigger and move to landing page
+app.get("/", ifLoggedIn, landingPage);
 
+// ------------ Routes Handles--------------
 app.use("/brands", brandRoutes);
 app.use("/brands/:id/contact", contactRoutes);
 app.use("/brands/:id/leadership", leadershipRoutes);
@@ -121,8 +123,6 @@ app.use("/", clientRoutes);
 app.use("/internal", internalRoutes);
 app.use("/history", historyRoutes);
 
-// ;------------------------
-app.get("/", ifLoggedIn, landingPage);
 
 async function landingPage(req, res) {
   res.render("client/landing");
@@ -134,9 +134,7 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
-  // TODO
-  // console.log("err---", err); // There is error on the home page
-  console.log("Express last error----");
+  console.log("Express error----");
   console.log(err);
   if (!err.message) err.message = "Something went super wrong!";
   res.status(statusCode).render("client/error", { error: err });
