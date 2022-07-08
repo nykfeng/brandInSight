@@ -111,7 +111,7 @@ app.use((req, res, next) => {
 
 // ---------- main paga, if user logged in then home page --------------
 // the middle ifLoggedIn will redirect to home if user is logged in
-// otherwise, next() will trigger and move to landing page
+// otherwise, next() middleware will trigger and move to landing page
 app.get("/", ifLoggedIn, landingPage);
 
 // ------------ Routes Handles--------------
