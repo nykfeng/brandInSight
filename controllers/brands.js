@@ -365,6 +365,7 @@ module.exports.getById = async (req, res) => {
   if (brand) {
     const user = await User.findById(req.user._id);
     // check if the brand is already on the viewed history list
+    // if it is, remove it from the old position on the list
     if (user.viewedBrandHistory.length > 0) {
       for (let i = 0; i < user.viewedBrandHistory.length; i++) {
         // need to use String function to convert the id to string
@@ -377,7 +378,7 @@ module.exports.getById = async (req, res) => {
       }
     }
 
-    // now check if the view history array has exceeded 100 lenght
+    // now check if the view history array has exceeded 100 length
     // 100 is our max here
     const MAX_LENGTH = 100;
     if (user.viewedBrandHistory.length === MAX_LENGTH) {
