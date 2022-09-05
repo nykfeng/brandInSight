@@ -2,7 +2,7 @@
 is a platform that provides brand and business information to customers on demand. 
 
 ## Deployed Application
-- [BrandInSigh ->](https://brand-insight.herokuapp.com/)
+- [BrandInSight ->](https://brand-insight.herokuapp.com/)
 
 ### App
 A responsive full-stack CRUD application that mimics real data research startup. A landing page that introduces the startup, a client logged in home page to display user customized information, a dropdown search bar that shows instant feedback, a designated endpoint to view detailed and specific information about a brand/company. Additionally, a built-in admin tool that used by the startup internal team to add, modify, and delete any information the client can see.
