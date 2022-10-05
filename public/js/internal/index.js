@@ -2,6 +2,7 @@ import modal from "./modal.js";
 import generateHTML from "./generateHTML.js";
 import pagination from "../client/pagination.js";
 import getData from "../getData.js";
+import utilities from "./utilities.js";
 
 //DOM elements to work with
 const addNewBrandBtns = document.querySelectorAll(".brand-add");
@@ -74,6 +75,7 @@ viewHistoryBtn.addEventListener("click", async function () {
 
   // rendering the list (first page of the list)
   historyList.reverse().forEach((history, index) => {
+    history.date = utilities.convertToReadableDate(history.date);
     if (index < MAX_HISTORY_PER_PAGE)
       historyListEl.insertAdjacentHTML(
         "beforeend",
