@@ -360,6 +360,10 @@
     display: flex;
   }
 
+  .main-nav-list li:hover {
+    background-color: var(--background-blue);
+  }
+
   /* .main-nav[action="close-dropdown"] {
     transform: translateX(100%);
   } */
